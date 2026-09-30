@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Build rules, run tests, build web page and agent pack
+        run: tools/build_all.sh
+      - name: Generated files are committed and current
+        run: |
+          git diff --exit-code -- rules/requirements.json rules/aafdid-rules.json web/index.html agent/ \
+            || (echo "Generated files are out of date. Run tools/build_all.sh and commit." && exit 1)

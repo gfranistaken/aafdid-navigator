@@ -1,7 +1,7 @@
 {
   "name": "AAFDID Navigator rules",
   "version": "1.0.0",
-  "built": "2026-09-30",
+  "rules_date": "2026-09-30",
   "aafdid_capture": "2026-08-22 (browser print-to-PDF of every AAFDID table page, parsed in the aafdid-open project)",
   "live_check": "2026-09-30: every captured row located on the live AAFDID pages; differences corrected (sources/corrections-2026-09-30.json)",
   "aos_source": "DoDI 5000.74, Change 1 (2021-06-24); AAFDID has no AoS table",

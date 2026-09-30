@@ -549,7 +549,7 @@ for r in out:
     for p in r["pathways"]:
         counts.setdefault(p, {}); counts[p][r["kind"]] = counts[p].get(r["kind"], 0) + 1
 meta = {
-    "name": "AAFDID Navigator rules", "version": VERSION, "built": datetime.date.today().isoformat(),
+    "name": "AAFDID Navigator rules", "version": VERSION, "rules_date": CHECKED,
     "aafdid_capture": f"{CAPTURED} (browser print-to-PDF of every AAFDID table page, parsed in the aafdid-open project)",
     "live_check": f"{CHECKED}: every captured row located on the live AAFDID pages; differences corrected (sources/corrections-2026-09-30.json)",
     "aos_source": "DoDI 5000.74, Change 1 (2021-06-24); AAFDID has no AoS table",

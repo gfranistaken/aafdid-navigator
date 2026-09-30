@@ -1,0 +1,37 @@
+AAFDID Navigator is dual-licensed by content type.
+
+1. Data and documentation: CC0 1.0 Universal (public domain dedication)
+   Applies to: rules/, sources/, agent/, docs/, README.md.
+   These files are derived from U.S. Government works (AAFDID tables, DoD and
+   DoW issuances, and the U.S. Code), which are not subject to copyright in the
+   United States. To the extent possible under law, the contributors waive all
+   copyright and related rights in their additions.
+   Full text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+2. Code: MIT License
+   Applies to: engine/, tools/, tests/, web/.
+
+   Copyright (c) 2026 AAFDID Navigator contributors
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+This project is unofficial. It is not affiliated with or endorsed by the
+Warfighting Acquisition University, the Defense Acquisition University, or the
+Department of War. AAFDID is an overview: comply with its tabular notes and the
+full text of each cited source.

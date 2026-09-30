@@ -1,0 +1,711 @@
+<title>AAFDID Navigator</title>
+<meta name="description" content="Find the AAFDID information requirements for a DoW acquisition program, in the order you will need them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a working file for one program. A sticky rail of five numbered steps on the left, one reading column on the right. Milestone diamonds carry the program's timeline. */
+:root {
+  --paper: #f5f6f8; --panel: #ffffff; --ink: #14202d; --ink-2: #435061; --ink-3: #697586;
+  --rule: #d7dde5; --rule-2: #e9edf1; --shade: #eef1f5;
+  --accent: #1a4480; --accent-ink: #ffffff; --accent-2: #dfe8f5;
+  --gold: #b97c00; --gold-2: #fbf0d6;
+  --stat: #8a2432; --stat-bg: #f8e5e8; --reg: #0e5e62; --reg-bg: #dcefee; --both: #5b3e8c; --both-bg: #ece6f6;
+  --may: #8f5c00; --may-bg: #fbf0d6; --trig: #633b99; --trig-bg: #eee7f8; --und: #566271; --und-bg: #e9edf1; --na: #8a94a0;
+  --focus: #2e6fd1;
+  --font-ui: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-head: "Merriweather", Georgia, "Times New Roman", serif;
+  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e131a; --panel: #151c26; --ink: #e5eaf0; --ink-2: #b2bcc8; --ink-3: #8894a2;
+    --rule: #2a3442; --rule-2: #1f2834; --shade: #1a2230;
+    --accent: #86b4f0; --accent-ink: #0e131a; --accent-2: #1c2d45;
+    --gold: #f0b429; --gold-2: #3a2d10;
+    --stat: #f28b98; --stat-bg: #3b1c23; --reg: #6fcfcc; --reg-bg: #11302f; --both: #bda3ea; --both-bg: #2a2142;
+    --may: #f0b429; --may-bg: #3a2d10; --trig: #c7a6f1; --trig-bg: #2a2142; --und: #a8b2bd; --und-bg: #232c38; --na: #6f7a87;
+    --focus: #86b4f0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0e131a; --panel: #151c26; --ink: #e5eaf0; --ink-2: #b2bcc8; --ink-3: #8894a2;
+  --rule: #2a3442; --rule-2: #1f2834; --shade: #1a2230;
+  --accent: #86b4f0; --accent-ink: #0e131a; --accent-2: #1c2d45;
+  --gold: #f0b429; --gold-2: #3a2d10;
+  --stat: #f28b98; --stat-bg: #3b1c23; --reg: #6fcfcc; --reg-bg: #11302f; --both: #bda3ea; --both-bg: #2a2142;
+  --may: #f0b429; --may-bg: #3a2d10; --trig: #c7a6f1; --trig-bg: #2a2142; --und: #a8b2bd; --und-bg: #232c38; --na: #6f7a87;
+  --focus: #86b4f0;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 15px/1.55 var(--font-ui); margin: 0; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+button { font: inherit; color: inherit; }
+h1, h2, h3 { text-wrap: balance; }
+.mono { font-family: var(--font-mono); }
+
+.masthead { border-bottom: 1px solid var(--rule); background: var(--panel); }
+.masthead-in { max-width: 1180px; margin: 0 auto; padding: 28px 16px 22px; display: grid; gap: 10px; }
+.eyebrow { font: 600 12px/1 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+h1 { font: 900 clamp(26px, 4vw, 36px)/1.15 var(--font-head); margin: 0; letter-spacing: -.01em; }
+.lede { font-size: 17px; color: var(--ink-2); margin: 0; max-width: 64ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--ink-3); }
+.meta b { color: var(--ink-2); font-weight: 600; }
+.changes { margin-top: 6px; border: 1px solid var(--rule); border-left: 3px solid var(--gold); border-radius: var(--radius); background: var(--gold-2); }
+.changes > summary { cursor: pointer; padding: 10px 14px; font-weight: 600; font-size: 14px; list-style: none; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.changes > summary::-webkit-details-marker { display: none; }
+.changes > summary .hint { font-weight: 400; color: var(--ink-2); }
+.changes[open] > summary { border-bottom: 1px solid var(--rule); }
+.change-list { padding: 4px 14px 12px; display: grid; gap: 10px; }
+.change-item h4 { margin: 8px 0 2px; font-size: 14px; }
+.change-item p { margin: 0; font-size: 14px; color: var(--ink-2); white-space: pre-line; }
+.change-item .src { font-size: 13px; margin-top: 3px; }
+
+.shell { max-width: 1180px; margin: 0 auto; padding-inline: 16px; display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 36px; }
+.rail { position: sticky; top: env(safe-area-inset-top, 0px); align-self: start; padding-block: 28px; }
+.rail ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; counter-reset: step; }
+.rail a { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: center; padding: 7px 8px; border-radius: var(--radius); text-decoration: none; color: var(--ink-2); font-size: 14px; }
+.rail a:hover { background: var(--shade); color: var(--ink); }
+.rail a .n { width: 24px; height: 24px; display: grid; place-items: center; border: 1.5px solid var(--rule); border-radius: 50%; font: 600 12px/1 var(--font-mono); color: var(--ink-3); background: var(--panel); }
+.rail a.done .n { border-color: var(--accent); color: var(--accent); }
+.rail .rail-foot { margin-top: 18px; font-size: 12px; color: var(--ink-3); line-height: 1.45; }
+main { padding-block: 16px 64px; min-width: 0; }
+section.step { padding-block: 28px 8px; border-bottom: 1px solid var(--rule-2); scroll-margin-top: 12px; }
+section.step:last-of-type { border-bottom: 0; }
+.step-head { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: baseline; margin-bottom: 14px; }
+.step-num { font: 500 13px/1 var(--font-mono); color: var(--accent); border: 1.5px solid var(--accent); border-radius: 50%; width: 28px; height: 28px; display: grid; place-items: center; }
+h2 { font: 700 22px/1.25 var(--font-head); margin: 0; }
+.step-lede { grid-column: 2; margin: 0; color: var(--ink-2); max-width: 66ch; }
+
+/* step 1 */
+.finder-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 16px; min-width: 0; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.finder-q { font-size: 16px; font-weight: 600; margin: 4px 0 6px; }
+.finder-help { font-size: 13.5px; color: var(--ink-2); margin: 0 0 4px; }
+.finder-cite { font-size: 12px; color: var(--ink-3); margin: 0 0 12px; }
+.btnrow { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { border: 1px solid var(--rule); background: var(--panel); border-radius: var(--radius); padding: 7px 14px; cursor: pointer; font-weight: 600; font-size: 14px; }
+.btn:hover { border-color: var(--ink-3); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--accent); padding-inline: 6px; }
+.trail { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; font-size: 12.5px; }
+.trail span { background: var(--shade); border-radius: 99px; padding: 2px 9px; color: var(--ink-2); }
+.result-box { border-top: 1px solid var(--rule-2); margin-top: 14px; padding-top: 12px; }
+.pw-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.pw { text-align: left; border: 1px solid var(--rule); background: var(--panel); border-radius: var(--radius); padding: 10px 11px; cursor: pointer; display: grid; gap: 2px; min-width: 0; }
+.pw:hover { border-color: var(--ink-3); }
+.pw .pw-code { font: 500 12px/1 var(--font-mono); color: var(--ink-3); }
+.pw .pw-name { font-weight: 600; font-size: 14px; line-height: 1.3; }
+.pw .pw-ins { font-size: 12px; color: var(--ink-3); }
+.pw[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: var(--accent-2); }
+.pw[aria-pressed="true"] .pw-code { color: var(--accent); }
+.pw-summary { margin-top: 12px; font-size: 14px; color: var(--ink-2); }
+.pw-summary p { margin: 0 0 6px; }
+
+/* step 2 */
+.example-flag { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; background: var(--gold-2); border: 1px solid var(--rule); border-radius: 99px; padding: 3px 4px 3px 11px; margin-bottom: 12px; }
+.field { display: grid; gap: 6px; padding: 14px 0; border-top: 1px solid var(--rule-2); }
+.field:first-of-type { border-top: 0; }
+.field label, .field .label { font-weight: 600; font-size: 15px; }
+.field .why { font-size: 13px; color: var(--ink-3); }
+.field.flash { animation: flash 1.6s ease-out; }
+@keyframes flash { 0% { background: var(--gold-2); } 100% { background: transparent; } }
+@media (prefers-reduced-motion: reduce) { .field.flash { animation: none; background: var(--gold-2); } }
+input[type="text"], textarea { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 8px 10px; width: 100%; max-width: 520px; }
+textarea { max-width: 100%; font: 13px/1.5 var(--font-mono); min-height: 120px; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { border: 1px solid var(--rule); background: var(--panel); border-radius: var(--radius); padding: 6px 11px; cursor: pointer; font-size: 14px; text-align: left; }
+.seg button:hover { border-color: var(--ink-3); }
+.seg button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.seg button.unsure[aria-pressed="true"] { background: var(--und-bg); color: var(--ink); border-color: var(--und); }
+.opt-help { font-size: 12.5px; color: var(--ink-3); margin: 2px 0 0; }
+.money { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.money input { max-width: 220px; }
+.money .echo { font: 500 13px var(--font-mono); color: var(--ink-3); }
+
+.timeline { overflow-x: auto; padding: 6px 2px 2px; }
+.timeline ol { list-style: none; margin: 0; padding: 0; display: flex; min-width: max-content; position: relative; }
+.timeline li { position: relative; }
+.timeline li + li::before { content: ""; position: absolute; top: 17px; left: -50%; width: 100%; height: 2px; background: var(--rule); z-index: 0; }
+.timeline button { position: relative; z-index: 1; display: grid; justify-items: center; gap: 6px; background: none; border: 0; cursor: pointer; padding: 4px 10px; min-width: 76px; color: var(--ink-2); }
+.dia { width: 16px; height: 16px; transform: rotate(45deg); border: 2px solid var(--ink-3); background: var(--panel); margin: 5px 0 3px; }
+.timeline button:hover .dia { border-color: var(--ink); }
+.timeline button[aria-pressed="true"] .dia { background: var(--gold); border-color: var(--gold); }
+.timeline button[aria-pressed="true"] { color: var(--ink); font-weight: 600; }
+.timeline .ev-short { font-size: 12.5px; white-space: nowrap; }
+.timeline .ev-all { font-size: 12.5px; }
+.ev-name { font-size: 13px; color: var(--ink-2); margin: 6px 0 0; }
+
+/* step 3 */
+.counts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.count { border: 1px solid var(--rule); border-radius: var(--radius); padding: 8px 12px; background: var(--panel); display: grid; gap: 0; min-width: 104px; cursor: pointer; text-align: left; }
+.count .num { font: 700 22px/1.1 var(--font-ui); font-variant-numeric: tabular-nums; }
+.count .lab { font-size: 12.5px; color: var(--ink-2); }
+.count.required .num { color: var(--accent); }
+.count.conditional .num { color: var(--may); }
+.count.triggered .num { color: var(--trig); }
+.count.undetermined .num { color: var(--und); }
+.count.not_applicable .num { color: var(--na); }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 8px; }
+.toolbar input[type="search"] { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius); padding: 7px 10px; min-width: 0; flex: 1 1 220px; max-width: 360px; }
+.scat { margin-bottom: 14px; }
+.scat .big { font: 700 18px/1.2 var(--font-head); }
+.group { margin-top: 20px; }
+.group > h3 { font-size: 15px; margin: 0 0 4px; display: flex; gap: 8px; align-items: baseline; }
+.group > h3 .gcount { font: 500 13px var(--font-mono); color: var(--ink-3); }
+.group > .gnote { font-size: 13.5px; color: var(--ink-2); margin: 0 0 8px; max-width: 72ch; }
+.reqs { border: 1px solid var(--rule); border-radius: var(--radius); background: var(--panel); overflow: hidden; }
+details.req + details.req { border-top: 1px solid var(--rule-2); }
+details.req > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 78px minmax(0, 1fr) auto; gap: 4px 12px; padding: 9px 12px; align-items: baseline; }
+details.req > summary::-webkit-details-marker { display: none; }
+details.req > summary:hover { background: var(--shade); }
+details.req[open] > summary { background: var(--shade); }
+.code { font: 500 12.5px/1.4 var(--font-mono); color: var(--ink-3); }
+.rname { font-size: 14px; font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; }
+.chip { font-size: 11.5px; line-height: 1; padding: 4px 7px; border-radius: 99px; white-space: nowrap; border: 1px solid transparent; }
+.t-statutory { background: var(--stat-bg); color: var(--stat); }
+.t-regulatory { background: var(--reg-bg); color: var(--reg); }
+.t-both { background: var(--both-bg); color: var(--both); }
+.t-unspecified, .t-depends { background: var(--und-bg); color: var(--und); }
+.w { background: transparent; border-color: var(--rule); color: var(--ink-2); font-family: var(--font-mono); font-size: 11px; }
+.w.focus { border-color: var(--gold); background: var(--gold-2); color: var(--ink); }
+.w.upd { border-style: dashed; }
+.flag { background: var(--may-bg); color: var(--may); }
+.req-body { padding: 4px 12px 14px 102px; font-size: 13.5px; }
+.req-body dl { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 6px 14px; margin: 6px 0 0; }
+.req-body dt { color: var(--ink-3); font-size: 12.5px; padding-top: 1px; }
+.req-body dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+.req-body .note { white-space: pre-line; }
+.req-body .cur { border-left: 3px solid var(--gold); padding-left: 8px; }
+.req-body ul { margin: 0; padding-left: 18px; }
+.muted { color: var(--ink-3); }
+.empty { padding: 14px; color: var(--ink-3); font-size: 14px; }
+.need { display: grid; gap: 6px; }
+.need button { justify-self: start; }
+details.na > summary { cursor: pointer; font-weight: 600; font-size: 15px; padding: 6px 0; }
+details.na .reqs { margin-top: 6px; }
+
+/* step 4 and 5 */
+ol.do { margin: 0; padding-left: 22px; display: grid; gap: 10px; max-width: 70ch; }
+ol.do li::marker { font-family: var(--font-mono); color: var(--accent); }
+ol.do .cite { font-size: 12.5px; color: var(--ink-3); }
+.pw-notes { margin-top: 14px; max-width: 70ch; }
+.pw-notes li { margin-bottom: 6px; color: var(--ink-2); }
+.handoff { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; }
+pre.block { font: 12.5px/1.5 var(--font-mono); background: var(--shade); border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px; margin: 8px 0; overflow-x: auto; white-space: pre; }
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 99px; font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.toast.show { opacity: 1; }
+.agent-steps { margin: 8px 0 0; padding-left: 20px; }
+.agent-steps li { margin-bottom: 6px; }
+footer { border-top: 1px solid var(--rule); background: var(--panel); }
+.foot-in { max-width: 1180px; margin: 0 auto; padding: 22px 16px 34px; font-size: 13px; color: var(--ink-3); display: grid; gap: 8px; }
+.foot-in p { margin: 0; max-width: 90ch; }
+
+@media (max-width: 980px) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .rail { position: static; padding-block: 12px 0; }
+  .rail ol { display: flex; overflow-x: auto; gap: 4px; }
+  .rail a { grid-template-columns: 24px auto; white-space: nowrap; }
+  .rail .rail-foot { display: none; }
+  .finder-grid, .handoff { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  .pw-grid { grid-template-columns: minmax(0, 1fr); }
+  details.req > summary { grid-template-columns: minmax(0, 1fr); }
+  .chips { justify-content: flex-start; }
+  .req-body { padding-left: 12px; }
+  .req-body dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .req-body dd { margin-bottom: 8px; }
+  .step-lede { grid-column: 1 / -1; }
+}
+</style>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="eyebrow">Adaptive Acquisition Framework · Document Identification</div>
+    <h1>AAFDID Navigator</h1>
+    <p class="lede">Work out which information requirements apply to your program, when each one is due, and which ones the decision authority can tailor. It covers all six pathways.</p>
+    <div class="meta" id="meta"></div>
+    <details class="changes" id="changes"></details>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="rail" aria-label="Steps">
+    <ol>
+      <li><a href="#pathway" id="nav-pathway"><span class="n">1</span>Find the pathway</a></li>
+      <li><a href="#profile" id="nav-profile"><span class="n">2</span>Describe the program</a></li>
+      <li><a href="#requirements" id="nav-requirements"><span class="n">3</span>See what applies</a></li>
+      <li><a href="#tailor" id="nav-tailor"><span class="n">4</span>Tailor and approve</a></li>
+      <li><a href="#handoff" id="nav-handoff"><span class="n">5</span>Hand it off</a></li>
+    </ol>
+    <p class="rail-foot">Unofficial tool. AAFDID's own tabular notes and the full text of each cited source govern.</p>
+  </nav>
+
+  <main>
+    <section class="step" id="pathway" aria-labelledby="h-pathway">
+      <div class="step-head"><span class="step-num">1</span><h2 id="h-pathway">Find the pathway</h2>
+        <p class="step-lede">Answer the finder's questions, or pick the pathway your program already uses. The decision authority approves the choice, and programs can combine pathways.</p></div>
+      <div class="finder-grid">
+        <div class="card" id="finder" aria-live="polite"></div>
+        <div class="card">
+          <h3>Or pick it directly</h3>
+          <div class="pw-grid" id="pw-grid"></div>
+          <div class="pw-summary" id="pw-summary"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="profile" aria-labelledby="h-profile">
+      <div class="step-head"><span class="step-num">2</span><h2 id="h-profile">Describe the program</h2>
+        <p class="step-lede">Only the questions that change the list for your pathway appear. Leave any you can't answer yet as "Not sure". The requirements that depend on it show under "Needs an answer".</p></div>
+      <div id="example-flag"></div>
+      <div class="card">
+        <div class="field">
+          <label for="program-name">Program or effort name</label>
+          <input type="text" id="program-name" autocomplete="off" placeholder="For example: F3 replacement power supply">
+        </div>
+        <div class="field" id="field-event">
+          <span class="label" id="lab-event">Which decision point or phase comes next?</span>
+          <div class="timeline" id="timeline" role="group" aria-labelledby="lab-event"></div>
+          <p class="ev-name" id="ev-name"></p>
+        </div>
+        <div id="questions"></div>
+      </div>
+    </section>
+
+    <section class="step" id="requirements" aria-labelledby="h-requirements">
+      <div class="step-head"><span class="step-num">3</span><h2 id="h-requirements">See what applies</h2>
+        <p class="step-lede">Requirements due at your next event come first, then later events, ongoing items, items that may apply, and items that are only triggered by an event such as a breach. Open any row to read AAFDID's note and source.</p></div>
+      <div id="results"></div>
+    </section>
+
+    <section class="step" id="tailor" aria-labelledby="h-tailor">
+      <div class="step-head"><span class="step-num">4</span><h2 id="h-tailor">Tailor and get approval</h2>
+        <p class="step-lede">The list is the starting point. The decision authority decides what the program actually delivers.</p></div>
+      <ol class="do" id="tailor-steps"></ol>
+      <div class="pw-notes" id="tailor-notes"></div>
+    </section>
+
+    <section class="step" id="handoff" aria-labelledby="h-handoff">
+      <div class="step-head"><span class="step-num">5</span><h2 id="h-handoff">Hand it off</h2>
+        <p class="step-lede">Save the profile, share the checklist, or give the profile to an AI agent. The agent files in the project repository use the same rules and the same requirement codes.</p></div>
+      <div class="handoff">
+        <div class="card">
+          <h3>Program profile</h3>
+          <p class="muted" style="margin:0;font-size:13.5px">Paste this into an AI agent built from the agent pack, or keep it to reload later.</p>
+          <pre class="block" id="profile-block"></pre>
+          <div class="btnrow">
+            <button class="btn primary" type="button" id="copy-block">Copy profile</button>
+            <button class="btn" type="button" id="copy-check">Copy checklist</button>
+            <button class="btn" type="button" id="copy-md">Copy report</button>
+            <button class="btn" type="button" id="copy-json">Copy JSON</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Load a saved profile</h3>
+          <label for="paste" class="muted" style="font-size:13.5px">Paste a profile block (AAFDID PROFILE v1) or its JSON.</label>
+          <textarea id="paste" spellcheck="false" placeholder="AAFDID PROFILE v1&#10;pathway: mca&#10;event: ms_b&#10;mca_program_type: acat_ii"></textarea>
+          <div class="btnrow" style="margin-top:8px">
+            <button class="btn" type="button" id="load">Load profile</button>
+            <button class="btn ghost" type="button" id="clear">Start a blank profile</button>
+          </div>
+          <h3 style="margin-top:18px">Using an AI agent</h3>
+          <ol class="agent-steps">
+            <li>Build the agent from the <a href="https://github.com/gfranistaken/aafdid-navigator/tree/main/agent" target="_blank" rel="noopener">agent pack</a>. It includes short instructions, one knowledge file per pathway, and test scenarios for checking the agent's answers.</li>
+            <li>Paste the profile, or type "start intake" and let the agent ask the same questions as step 2.</li>
+            <li>Check the agent's answer against this page. The codes should match.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="foot-in" id="foot"></div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="application/json" id="rules-data">__RULES_JSON__</script>
+<script>
+/*__ENGINE__*/
+</script>
+<script>
+(function () {
+  'use strict';
+  var B = JSON.parse(document.getElementById('rules-data').textContent);
+  var A = window.AAFDID;
+  var Q = B.questions.questions;
+  var PW = {}; B.pathways.forEach(function (p) { PW[p.id] = p; });
+  var CUR = {}; B.currency.notes.forEach(function (n) { CUR[n.id] = n; });
+  var STORE = 'aafdid-navigator-profile-v1';
+  var EXAMPLE = { program: 'F3 replacement power supply', pathway: 'mta', event: 'entrance', mta_path: 'rf', mta_size: 'non_major', international: false, contract_value: 45000000, contract_cost_type: false };
+
+  var state = { profile: {}, example: false, finderPath: [], finderAt: B.finder.start, typeFilter: 'all', search: '' };
+
+  function $(id) { return document.getElementById(id); }
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === 'text') e.textContent = v;
+      else if (k === 'html') e.innerHTML = v;
+      else if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v === true ? '' : v);
+    });
+    (kids || []).forEach(function (k) { if (k !== null && k !== undefined) e.appendChild(typeof k === 'string' ? document.createTextNode(k) : k); });
+    return e;
+  }
+  function money(n) {
+    if (n === null || n === undefined || n === '') return '';
+    if (n >= 1e9) return '$' + (+(n / 1e9).toFixed(3)) + 'B';
+    if (n >= 1e6) return '$' + (+(n / 1e6).toFixed(3)) + 'M';
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function toast(msg) { var t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.h); toast.h = setTimeout(function () { t.classList.remove('show'); }, 1800); }
+  function copy(text, label) {
+    function fallback() {
+      var ta = el('textarea', { style: 'position:fixed;left:-9999px;top:0' }); ta.value = text; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      toast(ok ? label + ' copied' : 'Copy was blocked. Select the text and copy it manually.');
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { toast(label + ' copied'); }, fallback);
+      else fallback();
+    } catch (e) { fallback(); }
+  }
+  function save() { try { localStorage.setItem(STORE, JSON.stringify({ profile: state.profile, example: state.example })); } catch (e) { /* storage unavailable */ } }
+  function restore() {
+    try { var s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && s.profile) { state.profile = s.profile; state.example = !!s.example; return true; } } catch (e) { /* ignore */ }
+    return false;
+  }
+
+  // ------------------------------------------------ header, changes, footer
+  function renderMeta() {
+    var m = B.meta;
+    $('meta').innerHTML = '';
+    [['Rules', m.version], ['AAFDID capture', 'Aug 22, 2026'], ['Checked against live AAFDID', 'Sep 30, 2026'], ['Requirements', String(m.requirements)]].forEach(function (x) {
+      $('meta').appendChild(el('span', null, [x[0] + ': ', el('b', { text: x[1] })]));
+    });
+    var ch = $('changes'); ch.innerHTML = '';
+    ch.appendChild(el('summary', null, [el('span', { text: 'Changed since AAFDID’s tables were last updated' }), el('span', { 'class': 'hint', text: B.currency.notes.length + ' notes. Open to read.' })]));
+    var list = el('div', { 'class': 'change-list' });
+    list.appendChild(el('p', { style: 'margin:8px 0 0;font-size:14px;color:var(--ink-2)', text: B.currency.aafdid_status }));
+    B.currency.notes.forEach(function (n) {
+      var src = el('div', { 'class': 'src' });
+      n.sources.forEach(function (s, i) { if (i) src.appendChild(document.createTextNode(' · ')); src.appendChild(el('a', { href: s.url, target: '_blank', rel: 'noopener', text: s.title })); });
+      list.appendChild(el('div', { 'class': 'change-item' }, [el('h4', { text: n.title + ' (' + n.date + ')' }), el('p', { text: n.text }), src]));
+    });
+    ch.appendChild(list);
+    $('foot').innerHTML = '';
+    $('foot').appendChild(el('p', null, ['Source tables: ', el('a', { href: 'https://www.waru.edu/aafdid', target: '_blank', rel: 'noopener', text: 'AAFDID' }), ' (Warfighting Acquisition University). ' + B.meta.aafdid_capture + '. ' + B.meta.live_check + '.']));
+    $('foot').appendChild(el('p', { text: 'Acquisition of Services entries come from ' + B.meta.aos_source + '.' }));
+    $('foot').appendChild(el('p', { text: B.meta.disclaimer }));
+    $('foot').appendChild(el('p', null, ['Rules, engines, agent pack and tests: ', el('a', { href: 'https://github.com/gfranistaken/aafdid-navigator', target: '_blank', rel: 'noopener', text: 'github.com/gfranistaken/aafdid-navigator' }), '. Data CC0, code MIT.']));
+  }
+
+  // ------------------------------------------------ step 1
+  function renderFinder() {
+    var box = $('finder'); box.innerHTML = '';
+    box.appendChild(el('h3', { text: B.finder.title }));
+    box.appendChild(el('p', { 'class': 'finder-help', text: B.finder.intro }));
+    var step = null;
+    B.finder.steps.forEach(function (s) { if (s.id === state.finderAt) step = s; });
+    if (step) {
+      box.appendChild(el('p', { 'class': 'finder-q', text: step.text }));
+      box.appendChild(el('p', { 'class': 'finder-help', text: step.help }));
+      box.appendChild(el('p', { 'class': 'finder-cite', text: step.cite }));
+      box.appendChild(el('div', { 'class': 'btnrow' }, [
+        el('button', { 'class': 'btn primary', type: 'button', onclick: function () { answerFinder(step, 'yes'); } }, ['Yes']),
+        el('button', { 'class': 'btn', type: 'button', onclick: function () { answerFinder(step, 'no'); } }, ['No'])
+      ]));
+    } else {
+      var res = state.finderAt.replace('result:', '');
+      var p = PW[res];
+      var rb = el('div', { 'class': 'result-box' }, [
+        el('p', { 'class': 'finder-q', text: 'Likely pathway: ' + p.name + ' (' + p.code + ')' }),
+        el('p', { 'class': 'finder-help', text: p.summary }),
+        el('div', { 'class': 'btnrow' }, [
+          el('button', { 'class': 'btn primary', type: 'button', onclick: function () { setPathway(res, true); } }, ['Use this pathway']),
+          el('button', { 'class': 'btn ghost', type: 'button', onclick: restartFinder }, ['Start over'])
+        ])
+      ]);
+      box.appendChild(rb);
+    }
+    if (state.finderPath.length) {
+      var tr = el('div', { 'class': 'trail', 'aria-label': 'Your answers' });
+      state.finderPath.forEach(function (a) { tr.appendChild(el('span', { text: a })); });
+      box.appendChild(tr);
+      if (step) box.appendChild(el('button', { 'class': 'btn ghost', type: 'button', onclick: restartFinder, style: 'margin-top:6px' }, ['Start over']));
+    }
+  }
+  function answerFinder(step, ans) {
+    var n = step[ans];
+    var short = { f_services: 'Services', f_business: 'Business system', f_urgent: 'Urgent need', f_software: 'Mainly software', f_mta: 'Within 5 years' }[step.id] || step.id;
+    state.finderPath.push(short + ': ' + ans);
+    state.finderAt = n.result ? 'result:' + n.result : n.next;
+    renderFinder();
+  }
+  function restartFinder() { state.finderPath = []; state.finderAt = B.finder.start; renderFinder(); }
+
+  function renderPathways() {
+    var g = $('pw-grid'); g.innerHTML = '';
+    B.pathways.forEach(function (p) {
+      g.appendChild(el('button', { 'class': 'pw', type: 'button', 'aria-pressed': state.profile.pathway === p.id ? 'true' : 'false', onclick: function () { setPathway(p.id, false); } }, [
+        el('span', { 'class': 'pw-code', text: p.code }), el('span', { 'class': 'pw-name', text: p.name }), el('span', { 'class': 'pw-ins', text: p.instruction.split(';')[0] })
+      ]));
+    });
+    var s = $('pw-summary'); s.innerHTML = '';
+    var p = PW[state.profile.pathway];
+    if (p) {
+      s.appendChild(el('p', { text: p.summary }));
+      s.appendChild(el('p', null, [el('b', { text: 'Decision authority. ' }), p.decision_authority]));
+      s.appendChild(el('p', null, [el('a', { href: p.aafdid_url, target: '_blank', rel: 'noopener', text: 'AAFDID ' + p.code + ' page' }), ' · ', el('a', { href: p.aaf_url, target: '_blank', rel: 'noopener', text: 'AAF ' + p.code + ' pathway' })]));
+    } else {
+      s.appendChild(el('p', { 'class': 'muted', text: 'No pathway chosen yet.' }));
+    }
+  }
+  function setPathway(id, fromFinder) {
+    var keep = { program: state.profile.program };
+    if (state.profile.pathway === id) return scrollTo('profile');
+    state.profile = keep; state.profile.pathway = id; state.example = false;
+    update();
+    if (fromFinder) scrollTo('profile');
+  }
+  function scrollTo(id) { var t = $(id); if (t) t.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); }
+
+  // ------------------------------------------------ step 2
+  function setAnswer(id, v) {
+    if (v === null || v === undefined || v === '') delete state.profile[id]; else state.profile[id] = v;
+    state.example = false;
+    update();
+  }
+  function renderProfile() {
+    var flag = $('example-flag'); flag.innerHTML = '';
+    if (state.example) {
+      flag.appendChild(el('div', { 'class': 'example-flag' }, ['Example program loaded so the page opens with a real result.', el('button', { 'class': 'btn ghost', type: 'button', onclick: clearAll }, ['Start blank'])]));
+    }
+    var nm = $('program-name');
+    if (document.activeElement !== nm) nm.value = state.profile.program || '';
+    var p = PW[state.profile.pathway];
+    var tl = $('timeline'); tl.innerHTML = '';
+    $('ev-name').textContent = '';
+    if (!p) {
+      tl.appendChild(el('p', { 'class': 'muted', style: 'margin:0', text: 'Choose a pathway in step 1 to see its decision points.' }));
+    } else {
+      var ol = el('ol');
+      var allBtn = el('button', { type: 'button', 'aria-pressed': state.profile.event ? 'false' : 'true', onclick: function () { setAnswer('event', null); }, title: 'List every event' }, [el('span', { 'class': 'dia', style: 'border-style:dashed' }), el('span', { 'class': 'ev-all', text: 'All events' })]);
+      ol.appendChild(el('li', null, [allBtn]));
+      p.events.forEach(function (e) {
+        ol.appendChild(el('li', null, [el('button', { type: 'button', 'aria-pressed': state.profile.event === e.id ? 'true' : 'false', title: e.name, onclick: function () { setAnswer('event', e.id); } }, [el('span', { 'class': 'dia' }), el('span', { 'class': 'ev-short', text: e.short })])]));
+      });
+      tl.appendChild(ol);
+      var cur = null; p.events.forEach(function (e) { if (e.id === state.profile.event) cur = e; });
+      $('ev-name').textContent = cur ? 'Next: ' + cur.name + (cur.phase ? ' (phase: ' + cur.phase + ')' : '') : 'Showing requirements for every event.';
+    }
+    var box = $('questions'); box.innerHTML = '';
+    A.visibleQuestions(B, state.profile).forEach(function (q) {
+      if (q.id === 'pathway' || q.id === 'event') return;
+      box.appendChild(renderQuestion(q));
+    });
+  }
+  function renderQuestion(q) {
+    var f = el('div', { 'class': 'field', id: 'q-' + q.id });
+    var labId = 'lab-' + q.id;
+    f.appendChild(el(q.type === 'money' ? 'label' : 'span', q.type === 'money' ? { 'for': 'in-' + q.id, id: labId } : { 'class': 'label', id: labId }, [q.text]));
+    var v = state.profile[q.id];
+    if (q.type === 'choice' || q.type === 'boolean') {
+      var seg = el('div', { 'class': 'seg', role: 'group', 'aria-labelledby': labId });
+      var opts = q.type === 'boolean' ? [{ value: true, label: 'Yes' }, { value: false, label: 'No' }] : q.options;
+      opts.forEach(function (o) {
+        seg.appendChild(el('button', { type: 'button', 'aria-pressed': v === o.value ? 'true' : 'false', onclick: function () { setAnswer(q.id, o.value); } }, [o.label]));
+      });
+      seg.appendChild(el('button', { type: 'button', 'class': 'unsure', 'aria-pressed': v === undefined ? 'true' : 'false', onclick: function () { setAnswer(q.id, null); } }, ['Not sure']));
+      f.appendChild(seg);
+      if (q.options) q.options.forEach(function (o) { if (o.help && v === o.value) f.appendChild(el('p', { 'class': 'opt-help', text: o.help })); });
+    } else if (q.type === 'money') {
+      var inp = el('input', { type: 'text', id: 'in-' + q.id, inputmode: 'decimal', autocomplete: 'off', placeholder: 'e.g. 45M or 1.2B', value: v !== undefined ? money(v).replace('$', '') : '' });
+      var echo = el('span', { 'class': 'echo', text: v !== undefined ? '= ' + money(v) : 'Not entered' });
+      inp.addEventListener('change', function () {
+        var n = A.parseMoney(inp.value);
+        if (inp.value.trim() && n === null) { echo.textContent = 'Not a dollar amount. Try 45M, 1.2B or 45000000.'; return; }
+        setAnswer(q.id, n);
+      });
+      f.appendChild(el('div', { 'class': 'money' }, [inp, echo]));
+    }
+    var gates = q.gates && q.gates.length ? ' Affects ' + q.gates.length + ' requirement' + (q.gates.length === 1 ? '' : 's') + '.' : '';
+    f.appendChild(el('span', { 'class': 'why', text: q.why + gates }));
+    return f;
+  }
+
+  // ------------------------------------------------ step 3
+  var GROUP_NOTE = {
+    conditional: 'These apply only if the condition in the row or its AAFDID note is met, or at the decision authority’s or CSDR plan authority’s discretion. For MTA, AAFDID calls this table "requirements that may be applicable".',
+    review: 'AAFDID’s UCA page says to use the ACAT II and III entries of the MCA tables too, with applicability set by DoDI 5000.81.',
+    triggered: 'Nothing is due unless the event happens: a breach, a waiver, a deviation, a congressional inquiry, or a bridge contract.',
+    earlier: 'These were due at earlier events. They should already exist; check whether they need an update.',
+    reference: 'Rules that govern the baseline rather than documents to submit.',
+    ongoing: 'Recurring reports, contract-level reporting and compliance actions that are not tied to one event.'
+  };
+  function typeChip(t) { return el('span', { 'class': 'chip t-' + t, text: A.TYPE_LABEL[t] }); }
+  function reqRow(it, focus) {
+    var chips = el('span', { 'class': 'chips' }, [typeChip(it.type)]);
+    it.when.forEach(function (w) { chips.appendChild(el('span', { 'class': 'chip w' + (focus && w.event === focus ? ' focus' : '') + (w.submission === 'update' ? ' upd' : ''), title: w.name + (w.submission === 'update' ? ' (update)' : ' (initial)'), text: w.short + (w.submission === 'update' ? ' upd' : '') })); });
+    if (it.note_has_conditions && it.status !== 'not_applicable') chips.appendChild(el('span', { 'class': 'chip flag', text: 'Conditions in note' }));
+    if (it.currency && it.currency.length) chips.appendChild(el('span', { 'class': 'chip flag', text: 'Changed since' }));
+    var d = el('details', { 'class': 'req', 'data-status': it.status }, [el('summary', null, [el('span', { 'class': 'code', text: it.code }), el('span', { 'class': 'rname', text: it.name }), chips])]);
+    var dl = el('dl');
+    function row(k, v) { if (v === null || v === undefined || v === '') return; dl.appendChild(el('dt', { text: k })); dl.appendChild(v.nodeType ? v : el('dd', { text: v })); }
+    row('Applies when', it.applies_when);
+    if (it.reason && it.status === 'not_applicable') row('Why not', it.reason.replace('Applies when: ', 'It applies when: '));
+    if (it.missing) row('Needs', it.missing.map(function (f) { var q = null; Q.forEach(function (x) { if (x.id === f) q = x; }); return q ? q.text : f; }).join(' '));
+    if (it.review_reason) row('Why listed', it.review_reason);
+    row('When', it.when.length ? it.when.map(function (w) { return w.name + (w.submission === 'update' ? ' (update)' : ''); }).join('; ') : '');
+    row('Due', it.due_text);
+    if (it.phase) row('Phase', it.phase);
+    row('Type in AAFDID', it.type_text);
+    if (it.type_depends_on) row('Type depends on', it.type_depends_on.join(', '));
+    row('Approval', it.approval);
+    row('Procedure', it.procedure);
+    row('Source', it.source);
+    if (it.notes) row('AAFDID note', el('dd', { 'class': 'note', text: it.notes }));
+    if (it.footnotes) row('Footnotes', el('dd', null, [el('ul', null, it.footnotes.map(function (f) { return el('li', { text: f }); }))]));
+    if (it.currency) row('Changed since', el('dd', { 'class': 'cur' }, it.currency.map(function (c) { var n = CUR[c]; return el('p', { style: 'margin:0 0 6px' }, [el('b', { text: n.title + '. ' }), n.text.split('\n')[0]]); })));
+    row('Rule basis', it.rule_basis);
+    row('Table', el('dd', null, [el('a', { href: it.url, target: '_blank', rel: 'noopener', text: it.table })]));
+    d.appendChild(el('div', { 'class': 'req-body' }, [dl]));
+    return d;
+  }
+  function renderResults(r) {
+    var box = $('results'); box.innerHTML = '';
+    if (!r.pathway) { box.appendChild(el('div', { 'class': 'card empty', text: 'Choose a pathway in step 1 to see its requirements.' })); return; }
+    var counts = el('div', { 'class': 'counts' });
+    [['required', 'Required'], ['conditional', 'May apply'], ['triggered', 'If triggered'], ['undetermined', 'Needs an answer'], ['not_applicable', 'Not applicable']].forEach(function (c) {
+      counts.appendChild(el('button', { 'class': 'count ' + c[0], type: 'button', onclick: function () { var t = document.querySelector('[data-first="' + c[0] + '"]'); if (t) { if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView({ block: 'start' }); } } }, [el('span', { 'class': 'num', text: String(r.counts[c[0]] || 0) }), el('span', { 'class': 'lab', text: c[1] })]));
+    });
+    box.appendChild(counts);
+    if (r.derived.services_category) {
+      var sc = r.derived.services_category;
+      box.appendChild(el('div', { 'class': 'card scat' }, [el('div', { 'class': 'eyebrow', text: 'Services category' }), el('div', { 'class': 'big', text: sc.label + (sc.rule ? ': ' + sc.rule : '') }), sc.decision_authority ? el('div', { text: 'Decision authority: ' + sc.decision_authority }) : null, sc.note ? el('div', { 'class': 'muted', text: sc.note }) : null, el('div', { 'class': 'muted', style: 'font-size:12.5px', text: sc.cite })]));
+    }
+    var search = el('input', { type: 'search', id: 'filter-text', placeholder: 'Filter by code, name or source', 'aria-label': 'Filter requirements', value: state.search });
+    search.addEventListener('input', function () { state.search = search.value; renderGroups(r); });
+    var tsel = el('div', { 'class': 'seg', role: 'group', 'aria-label': 'Filter by type' });
+    [['all', 'All types'], ['statutory', 'Statutory'], ['regulatory', 'Regulatory']].forEach(function (t) {
+      tsel.appendChild(el('button', { type: 'button', 'aria-pressed': state.typeFilter === t[0] ? 'true' : 'false', onclick: function () { state.typeFilter = t[0]; renderResults(r); } }, [t[1]]));
+    });
+    box.appendChild(el('div', { 'class': 'toolbar' }, [search, tsel]));
+    box.appendChild(el('div', { id: 'groups' }));
+    renderGroups(r);
+  }
+  function passes(it) {
+    if (state.typeFilter === 'statutory' && ['statutory', 'both'].indexOf(it.type) === -1) return false;
+    if (state.typeFilter === 'regulatory' && ['regulatory', 'both'].indexOf(it.type) === -1) return false;
+    var s = state.search.trim().toLowerCase();
+    if (s && (it.code + ' ' + it.name + ' ' + it.source + ' ' + it.notes).toLowerCase().indexOf(s) === -1) return false;
+    return true;
+  }
+  function renderGroups(r) {
+    var host = $('groups'); host.innerHTML = '';
+    var focus = r.focus_event ? r.focus_event.id : null;
+    var groups = {};
+    r.items.forEach(function (it) { if (passes(it)) (groups[it.group] = groups[it.group] || []).push(it); });
+    var firstSeen = {};
+    var order = ['at_focus', 'by_event', 'later', 'ongoing', 'as_required', 'earlier', 'conditional', 'review', 'triggered', 'undetermined', 'reference'];
+    var any = false;
+    order.forEach(function (g) {
+      var list = groups[g]; if (!list || !list.length) return; any = true;
+      var title = A.GROUP_TITLE[g];
+      if (g === 'at_focus' && r.focus_event) title = 'Due at ' + r.focus_event.name;
+      var sec = el('div', { 'class': 'group' }, [el('h3', null, [title, el('span', { 'class': 'gcount', text: String(list.length) })])]);
+      if (GROUP_NOTE[g]) sec.appendChild(el('p', { 'class': 'gnote', text: GROUP_NOTE[g] }));
+      if (g === 'undetermined') {
+        var need = el('div', { 'class': 'card need' }, [el('p', { style: 'margin:0', text: 'Answer these in step 2 to settle the items below:' })]);
+        r.questions_needed.forEach(function (q) {
+          need.appendChild(el('button', { 'class': 'btn', type: 'button', onclick: function () { var t = $('q-' + q.id); if (t) { t.scrollIntoView({ block: 'center' }); t.classList.remove('flash'); void t.offsetWidth; t.classList.add('flash'); } } }, [q.text + ' (' + q.affects + ')']));
+        });
+        sec.appendChild(need);
+        sec.appendChild(el('div', { style: 'height:8px' }));
+      }
+      var reqs = el('div', { 'class': 'reqs' });
+      list.forEach(function (it) { var row = reqRow(it, focus); if (!firstSeen[it.status]) { firstSeen[it.status] = 1; row.setAttribute('data-first', it.status); } reqs.appendChild(row); });
+      sec.appendChild(reqs);
+      host.appendChild(sec);
+    });
+    var na = groups.not_applicable;
+    if (na && na.length) {
+      any = true;
+      var det = el('details', { 'class': 'group na', 'data-first': 'not_applicable' }, [el('summary', { text: 'Not applicable to this profile (' + na.length + ')' })]);
+      var reqs = el('div', { 'class': 'reqs' });
+      na.forEach(function (it) { reqs.appendChild(reqRow(it, focus)); });
+      det.appendChild(reqs); host.appendChild(det);
+    }
+    if (!any) host.appendChild(el('div', { 'class': 'card empty', text: 'No requirements match the filter.' }));
+  }
+
+  // ------------------------------------------------ step 4 and 5
+  function renderTailor(r) {
+    var ol = $('tailor-steps'); ol.innerHTML = '';
+    var p = r.pathway;
+    var steps = [
+      ['Confirm the pathway with the decision authority and get it recorded in an ADM.', p && p.id === 'mta' ? 'For MTA, the ADM also starts the 5-year clock (AAFDID MTA table).' : ''],
+      ['Separate statutory items from regulatory ones. Statutory requirements stay unless the statute itself allows a waiver.', 'AAFDID MCA overview: statutory requirements in the MCA tables may not be waived unless the relevant statute permits it.'],
+      ['For each regulatory item, recommend keep, tailor or not applicable, with a one-line reason. Read the AAFDID note first, because many entries carry their own conditions.', p && p.id === 'mta' ? 'AAFDID MTA overview: decision authorities keep discretion over documentation, and many items can sit inside the acquisition strategy.' : ''],
+      ['Combine where AAFDID allows it. Entries marked "Part of Acquisition Strategy" belong inside the strategy, not in separate documents.', ''],
+      ['Get the decision authority’s tailoring decisions in writing, usually in the ADM or the approved acquisition strategy.', p && p.id === 'dbs' ? 'AAFDID DBS overview: information supporting requirements validation and the annual investment certification cannot be tailored.' : ''],
+      ['File approved documents where the pathway requires them, such as the Acquisition Information Repository (AIR), and program data in DAVE.', p && p.id === 'mta' ? 'MTA: program identification data goes to DAVE (AAFDID Table 1).' : ''],
+      ['Run this again at every decision point, and whenever size, oversight status or contract plans change.', '']
+    ];
+    steps.forEach(function (s) { ol.appendChild(el('li', null, [s[0], s[1] ? el('div', { 'class': 'cite', text: s[1] }) : null])); });
+    var notes = $('tailor-notes'); notes.innerHTML = '';
+    if (p) {
+      notes.appendChild(el('h3', { style: 'font-size:15px;margin:0 0 6px', text: p.name + ': notes from AAFDID' }));
+      notes.appendChild(el('ul', null, (PW[p.id].notes || []).map(function (n) { return el('li', { text: n }); })));
+    }
+  }
+  function renderHandoff(r) {
+    $('profile-block').textContent = A.toProfileBlock(B, state.profile);
+    var done = { pathway: !!state.profile.pathway, profile: !!state.profile.pathway && r.counts.undetermined === 0, requirements: !!state.profile.pathway };
+    ['pathway', 'profile', 'requirements'].forEach(function (k) { $('nav-' + k).classList.toggle('done', done[k]); });
+  }
+
+  // ------------------------------------------------ main loop
+  var last = null;
+  function update() {
+    save();
+    last = A.evaluate(B, state.profile);
+    renderPathways(); renderProfile(); renderResults(last); renderTailor(last); renderHandoff(last);
+  }
+  function clearAll() { state.profile = {}; state.example = false; state.search = ''; restartFinder(); update(); }
+
+  $('program-name').addEventListener('input', function (e) { if (e.target.value.trim()) state.profile.program = e.target.value; else delete state.profile.program; state.example = false; save(); $('profile-block').textContent = A.toProfileBlock(B, state.profile); });
+  $('program-name').addEventListener('change', function () { update(); });
+  $('copy-block').addEventListener('click', function () { copy(A.toProfileBlock(B, state.profile), 'Profile'); });
+  $('copy-check').addEventListener('click', function () { copy(A.toChecklist(last), 'Checklist'); });
+  $('copy-md').addEventListener('click', function () { copy(A.toMarkdown(last), 'Report'); });
+  $('copy-json').addEventListener('click', function () { copy(JSON.stringify(last, null, 2), 'JSON'); });
+  $('load').addEventListener('click', function () {
+    var t = $('paste').value; if (!t.trim()) { toast('Paste a profile first.'); return; }
+    var input; try { input = JSON.parse(t); if (input && input.profile) input = input.profile; } catch (e) { input = A.parseProfileBlock(t); }
+    var n = A.normalize(B, input);
+    if (!n.pathway) { toast('No pathway found in that profile.'); return; }
+    state.profile = n; state.example = false; update(); toast('Profile loaded'); scrollTo('requirements');
+  });
+  $('clear').addEventListener('click', clearAll);
+
+  renderMeta();
+  if (!restore()) { state.profile = JSON.parse(JSON.stringify(EXAMPLE)); state.example = true; }
+  renderFinder();
+  update();
+}());
+</script>
