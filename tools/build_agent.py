@@ -220,7 +220,7 @@ def intake_file():
             elif q.get("type") == "boolean":
                 L.append("   - Values: `yes`, `no`, or leave blank if not sure.")
             elif q.get("type") == "money":
-                L.append("   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.")
+                L.append("   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.")
             else:
                 L.append("   - Values: " + "; ".join(f"`{o['value']}` = {o['label']}" + (f" (also: {', '.join(o['aliases'])})" if o.get("aliases") else "") for o in q["options"]))
                 for o in q["options"]:

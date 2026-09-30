@@ -31,7 +31,7 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: Decides the Clinger-Cohen Act entries. AAFDID presumes the first three CCA actions are satisfied for weapon systems with embedded IT.
    - Affects: MCA-C01, MCA-C02, MCA-C03, MCA-C04, MCA-C05, MCA-C06, MCA-C07, MCA-C08, MCA-C09, MCA-C10, MCA-C11, MCA-M15
 6. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
+   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: CSDR-02, CSDR-03, CSDR-04, CSDR-05, CSDR-06, EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
 7. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
@@ -59,7 +59,7 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: AAFDID's MTA tables mark each requirement for major systems, non-major systems, or programs above MDAP thresholds.
    - Affects: CSDR-02, MTA-S02, MTA-S03, MTA-S04, MTA-S05, MTA-S06, MTA-S07, MTA-S08, MTA-S11, MTA-S12, MTA-S13, MTA-S14, MTA-S16, MTA-S32, MTA-T01, MTA-T03, MTA-T04, MTA-T06, MTA-T07
 5. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
+   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: CSDR-02, CSDR-05, EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
 6. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
@@ -89,7 +89,7 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: Decides the Clinger-Cohen Act entries. AAFDID presumes the first three CCA actions are satisfied for weapon systems with embedded IT.
    - Also affects these MCA entries to review (12-uca.md): MCA-C01, MCA-C02, MCA-C03, MCA-C04, MCA-C05, MCA-C06, MCA-C07, MCA-C08, MCA-C09, MCA-C10, MCA-C11, MCA-M15
 6. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
+   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
    - Also affects these MCA entries to review (12-uca.md): CSDR-02, CSDR-03, CSDR-04, CSDR-05, CSDR-06, SWA-19
@@ -123,7 +123,7 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: The Core Logistics Determination is statutory for programs with software maintenance (10 U.S.C. 2464).
    - Affects: SWA-20
 7. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
+   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06, SWA-19
 8. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
@@ -149,7 +149,7 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: IOT&E reports, live fire reports and waivers apply only to oversight programs, and DOT&E approval of the operational test plan is statutory for them.
    - Affects: DBS-14, DBS-15, DBS-16
 5. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
+   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: CSDR-02, CSDR-03, CSDR-05, CSDR-06, EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
 6. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
@@ -165,12 +165,12 @@ Ask the questions for the program's pathway in the order below, one per message.
 2. `event`: Which decision point or phase comes next?
    - Values: `plan` = Plan: form the team, review the current strategy, market research (also: planning, plan phase); `develop` = Develop: define requirements, SRRB, acquisition strategy (also: development, develop phase); `execute` = Execute: award and manage performance (also: execution, execute phase). Leave blank to list every event.
    - Why it matters: Requirements due at that event are listed first, then later ones, then recurring and triggered items.
-3. `svc_total_value`: What is the total estimated value, from the independent government cost estimate, in current-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
+3. `svc_total_value`: What is the total estimated value of the services, all years, in current-year dollars?
+   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
    - Why it matters: Sets the services category (S-CAT), the decision authority and most thresholds (DoDI 5000.74, Table 1).
    - Affects: AOS-05, AOS-06, AOS-08, AOS-09, AOS-10, AOS-11, AOS-21, AOS-22
 4. `svc_annual_value`: What is the highest estimated value in any single year?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
+   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
    - Why it matters: S-CAT I applies above $300M in any year. A Services Acquisition Workshop is required at $250M a year, and a written acquisition plan at $25M in any fiscal year.
    - Affects: AOS-08, AOS-10, AOS-11
 5. `svc_special_interest`: Has ASD(A) designated it a Special Interest services acquisition?

@@ -611,7 +611,7 @@
         "field": "pathway",
         "eq": "aos"
       },
-      "text": "What is the total estimated value, from the independent government cost estimate, in current-year dollars?",
+      "text": "What is the total estimated value of the services, all years, in current-year dollars?",
       "type": "money",
       "why": "Sets the services category (S-CAT), the decision authority and most thresholds (DoDI 5000.74, Table 1).",
       "gates": [

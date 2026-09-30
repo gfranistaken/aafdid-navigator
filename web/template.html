@@ -13,6 +13,7 @@
   --stat: #8a2432; --stat-bg: #f8e5e8; --reg: #0e5e62; --reg-bg: #dcefee; --both: #5b3e8c; --both-bg: #ece6f6;
   --may: #8f5c00; --may-bg: #fbf0d6; --trig: #633b99; --trig-bg: #eee7f8; --und: #566271; --und-bg: #e9edf1; --na: #8a94a0;
   --focus: #2e6fd1;
+  --warn-ink: #7f1d1d; --warn-bg: #fdecec; --warn-edge: #c0392b;
   --font-ui: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-head: "Merriweather", Georgia, "Times New Roman", serif;
   --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -27,6 +28,7 @@
     --stat: #f28b98; --stat-bg: #3b1c23; --reg: #6fcfcc; --reg-bg: #11302f; --both: #bda3ea; --both-bg: #2a2142;
     --may: #f0b429; --may-bg: #3a2d10; --trig: #c7a6f1; --trig-bg: #2a2142; --und: #a8b2bd; --und-bg: #232c38; --na: #6f7a87;
     --focus: #86b4f0;
+    --warn-ink: #ffb4ab; --warn-bg: #3a1618; --warn-edge: #f07167;
     color-scheme: dark;
   }
 }
@@ -38,6 +40,7 @@
   --stat: #f28b98; --stat-bg: #3b1c23; --reg: #6fcfcc; --reg-bg: #11302f; --both: #bda3ea; --both-bg: #2a2142;
   --may: #f0b429; --may-bg: #3a2d10; --trig: #c7a6f1; --trig-bg: #2a2142; --und: #a8b2bd; --und-bg: #232c38; --na: #6f7a87;
   --focus: #86b4f0;
+  --warn-ink: #ffb4ab; --warn-bg: #3a1618; --warn-edge: #f07167;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -49,6 +52,16 @@ button { font: inherit; color: inherit; }
 h1, h2, h3 { text-wrap: balance; }
 .mono { font-family: var(--font-mono); }
 
+.secbanner { background: var(--warn-bg); color: var(--warn-ink); border-bottom: 2px solid var(--warn-edge); }
+.secbanner-in { max-width: 1180px; margin: 0 auto; padding: 12px 16px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; align-items: start; }
+.secicon { width: 22px; height: 22px; margin-top: 1px; color: var(--warn-edge); }
+.sectext > p { margin: 0; font-size: 14.5px; line-height: 1.5; max-width: 112ch; }
+.secmore { margin-top: 6px; font-size: 13.5px; }
+.secmore > summary { cursor: pointer; font-weight: 600; width: fit-content; text-decoration: underline; text-underline-offset: 2px; }
+.secmore p { margin: 6px 0 8px; max-width: 100ch; }
+.secmore .btn { background: var(--panel); }
+.field-note { margin: 2px 0 0; padding-left: 8px; border-left: 3px solid var(--warn-edge); font-size: 13px; color: var(--ink-2); max-width: 70ch; }
+.foot-warn { color: var(--warn-ink); }
 .masthead { border-bottom: 1px solid var(--rule); background: var(--panel); }
 .masthead-in { max-width: 1180px; margin: 0 auto; padding: 28px 16px 22px; display: grid; gap: 10px; }
 .eyebrow { font: 600 12px/1 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
@@ -234,6 +247,19 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
 }
 </style>
 <!--BODY-->
+<aside class="secbanner" aria-label="Security notice">
+  <div class="secbanner-in">
+    <svg class="secicon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.8 1.8 20.8h20.4L12 2.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 9.2v5.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.25" fill="currentColor"/></svg>
+    <div class="sectext">
+      <p><strong>Not a secure system. Do not enter sensitive information.</strong> That includes classified information, Controlled Unclassified Information (CUI), source selection or other procurement-sensitive information such as an IGCE, proprietary data, and personal information. This is an unofficial public website, not a U.S. Government system. A generic program label and rounded dollar figures are all the tool needs.</p>
+      <details class="secmore">
+        <summary>What happens to what you enter</summary>
+        <p>The page runs entirely in your browser, and nothing you enter is sent to a server. It does keep your answers in this browser on this device, so they are still here when you come back. On a shared computer, use a private window, or clear them when you finish.</p>
+        <button class="btn" type="button" id="forget">Clear saved answers</button>
+      </details>
+    </div>
+  </div>
+</aside>
 <header class="masthead">
   <div class="masthead-in">
     <div class="eyebrow">Adaptive Acquisition Framework · Document Identification</div>
@@ -253,7 +279,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
       <li><a href="#tailor" id="nav-tailor"><span class="n">4</span>Tailor and approve</a></li>
       <li><a href="#handoff" id="nav-handoff"><span class="n">5</span>Hand it off</a></li>
     </ol>
-    <p class="rail-foot">Unofficial tool. AAFDID's own tabular notes and the full text of each cited source govern.</p>
+    <p class="rail-foot"><b class="foot-warn">Not a secure system: no CUI or other sensitive information.</b> Unofficial tool. AAFDID's own tabular notes and the full text of each cited source govern.</p>
   </nav>
 
   <main>
@@ -272,12 +298,13 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
 
     <section class="step" id="profile" aria-labelledby="h-profile">
       <div class="step-head"><span class="step-num">2</span><h2 id="h-profile">Describe the program</h2>
-        <p class="step-lede">Only the questions that change the list for your pathway appear. Leave any you can't answer yet as "Not sure". The requirements that depend on it show under "Needs an answer".</p></div>
+        <p class="step-lede">Only the questions that change the list for your pathway appear. Leave any you can't answer yet as "Not sure". The requirements that depend on it show under "Needs an answer". No answer here needs sensitive detail.</p></div>
       <div id="example-flag"></div>
       <div class="card">
         <div class="field">
           <label for="program-name">Program or effort name</label>
-          <input type="text" id="program-name" autocomplete="off" placeholder="For example: F3 replacement power supply">
+          <input type="text" id="program-name" autocomplete="off" placeholder="For example: F3 replacement power supply" aria-describedby="program-note">
+          <p class="field-note" id="program-note">Use a generic label, not a classified or sensitive program name.</p>
         </div>
         <div class="field" id="field-event">
           <span class="label" id="lab-event">Which decision point or phase comes next?</span>
@@ -318,7 +345,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
         </div>
         <div class="card">
           <h3>Load a saved profile</h3>
-          <label for="paste" class="muted" style="font-size:13.5px">Paste a profile block (AAFDID PROFILE v1) or its JSON.</label>
+          <label for="paste" class="muted" style="font-size:13.5px">Paste a profile block (AAFDID PROFILE v1) or its JSON. Don't paste anything sensitive.</label>
           <textarea id="paste" spellcheck="false" placeholder="AAFDID PROFILE v1&#10;pathway: mca&#10;event: ms_b&#10;mca_program_type: acat_ii"></textarea>
           <div class="btnrow" style="margin-top:8px">
             <button class="btn" type="button" id="load">Load profile</button>
@@ -328,7 +355,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
           <h3 style="margin-top:18px">Using an AI agent</h3>
           <ol class="agent-steps">
             <li>Build the agent from the <a href="https://github.com/gfranistaken/aafdid-navigator/tree/main/agent" target="_blank" rel="noopener">agent pack</a>. It includes short instructions, one knowledge file per pathway, and test scenarios for checking the agent's answers.</li>
-            <li>Paste the profile, or type "start intake" and let the agent ask the same questions as step 2.</li>
+            <li>Paste the profile, or type "start intake" and let the agent ask the same questions as step 2. Share it only with an AI tool your organization has approved for the information in it.</li>
             <li>Check the agent's answer against this page. The codes should match.</li>
           </ol>
         </div>
@@ -422,6 +449,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     });
     ch.appendChild(list);
     $('foot').innerHTML = '';
+    $('foot').appendChild(el('p', null, [el('b', { 'class': 'foot-warn', text: 'Not a secure system. ' }), 'Do not enter classified information, CUI or other sensitive information. The page runs in your browser, sends nothing you enter to a server, and keeps your answers only in this browser.']));
     $('foot').appendChild(el('p', null, ['Source tables: ', el('a', { href: 'https://www.waru.edu/aafdid', target: '_blank', rel: 'noopener', text: 'AAFDID' }), ' (Warfighting Acquisition University). ' + B.meta.aafdid_capture + '. ' + B.meta.live_check + '.']));
     $('foot').appendChild(el('p', { text: 'Acquisition of Services entries come from ' + B.meta.aos_source + '.' }));
     $('foot').appendChild(el('p', { text: B.meta.disclaimer }));
@@ -558,7 +586,9 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
         if (inp.value.trim() && n === null) { echo.textContent = 'Not a dollar amount. Try 45M, 1.2B or 45000000.'; return; }
         setAnswer(q.id, n);
       });
+      inp.setAttribute('aria-describedby', 'note-' + q.id);
       f.appendChild(el('div', { 'class': 'money' }, [inp, echo]));
+      f.appendChild(el('p', { 'class': 'field-note', id: 'note-' + q.id, text: 'A rounded figure is enough, because the tool only compares it with thresholds. Don’t enter an IGCE or any other sensitive estimate.' }));
     }
     var gates = q.gates && q.gates.length ? ' Affects ' + q.gates.length + ' requirement' + (q.gates.length === 1 ? '' : 's') + '.' : '';
     f.appendChild(el('span', { 'class': 'why', text: q.why + gates }));
@@ -744,6 +774,12 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     scrollTo(nd.unrecognized.length ? 'handoff' : 'requirements');
   });
   $('clear').addEventListener('click', clearAll);
+  $('forget').addEventListener('click', function () {
+    clearAll();
+    $('paste').value = '';
+    try { localStorage.removeItem(STORE); } catch (e) { /* storage unavailable */ }
+    toast('Saved answers cleared from this browser');
+  });
 
   renderMeta();
   if (!restore()) { state.profile = JSON.parse(JSON.stringify(EXAMPLE)); state.example = true; }

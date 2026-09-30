@@ -31,7 +31,7 @@
 | `it_type` | choice | MCA, UCA | `it_system` `embedded_it` `none` |
 | `contract_value` | money | MCA, MTA, UCA, SWA, DBS | then-year dollars, including options |
 | `contract_cost_type` | boolean | MCA, MTA, UCA, SWA, DBS | cost-reimbursable or incentive, 18 months or more |
-| `svc_total_value` | money | AoS | IGCE, current-year dollars |
+| `svc_total_value` | money | AoS | total estimated value, all years, current-year dollars (rounded is enough) |
 | `svc_annual_value` | money | AoS | highest single year |
 | `svc_special_interest` | boolean | AoS | |
 | `svc_vehicle` | choice | AoS | `standalone` `idiq_base` `task_order` |
