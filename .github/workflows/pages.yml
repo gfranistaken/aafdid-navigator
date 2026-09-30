@@ -18,11 +18,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Collect the site
-        run: |
-          mkdir -p _site
-          cp web/index.html _site/index.html
-          cp rules/aafdid-rules.json _site/aafdid-rules.json
+      - name: Build the site (page, llms.txt, knowledge files, answer files)
+        run: python3 tools/build_site.py _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

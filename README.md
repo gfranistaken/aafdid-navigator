@@ -28,6 +28,7 @@ People and agents use the same rule base, so they get the same answer with the s
 | --- | --- |
 | A program manager, engineer or analyst | The [web navigator](https://gfranistaken.github.io/aafdid-navigator/), or `web/index.html` opened straight from disk (it works offline) |
 | Building an agent in GenAI.mil, Claude, ChatGPT or similar | [`agent/`](agent/README.md): instructions, knowledge files and test scenarios |
+| An AI tool that can only read web pages | Point it at [llms.txt](https://gfranistaken.github.io/aafdid-navigator/llms.txt), not the page (see below) |
 | An agent or script that can run code | `node engine/cli.js profile.txt` or `python3 engine/aafdid.py profile.txt` |
 | Maintaining the rules | `rules/`, `sources/`, `tools/`, `tests/` (see [docs/RULES.md](docs/RULES.md)) |
 
@@ -108,6 +109,16 @@ python3 tests/run_tests.py   # both engines, all scenarios: identical JSON, Mark
 ## Publish the web page with GitHub Pages
 
 The workflow in `.github/workflows/pages.yml` publishes `web/index.html` and the rules bundle on every push to `main`. To turn it on once, go to Settings > Pages > Build and deployment and set Source to GitHub Actions. The page then lives at `https://gfranistaken.github.io/aafdid-navigator/`, and the bundle at `.../aafdid-rules.json`.
+
+## For AI tools that read web pages
+
+The web page draws its requirement lists with JavaScript, so a tool that reads it as text sees no requirements. The published site therefore also carries plain-text files:
+
+- **[llms.txt](https://gfranistaken.github.io/aafdid-navigator/llms.txt)** tells an AI assistant how to get a correct answer. It should ask for the pathway, the pathway's key answer and the next decision point, and then read the matching answer file.
+- **`answers/<pathway>/<key answer>/<event>.md`** holds the engine's own result for each of 112 common profiles, with every other answer left unknown. Each file has a "Settle the open items" section that says, per open question, what each answer does to each open item, as computed by the engine. See the [list of answer files](https://gfranistaken.github.io/aafdid-navigator/answers/index.md).
+- **`agent/*.md`** holds the agent-pack knowledge files.
+
+The page itself carries a note that points AI tools to llms.txt. `tools/build_site.py` builds all of this when the Pages workflow runs; none of it is committed. For the most reliable results, build an agent from the agent pack, or use a tool that can run the engine.
 
 ## Limits worth knowing
 

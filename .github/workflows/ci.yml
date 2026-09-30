@@ -15,6 +15,8 @@ jobs:
           node-version: "20"
       - name: Build rules, run tests, build web page and agent pack
         run: tools/build_all.sh
+      - name: Site for AI tools builds
+        run: python3 tools/build_site.py /tmp/site-check
       - name: Generated files are committed and current
         run: |
           git diff --exit-code -- rules/ web/index.html web/artifact.html agent/ tests/expected/ \

@@ -40,6 +40,9 @@ The limits on instruction length, file count and file size were not yet measured
 ### Claude (Projects) or ChatGPT (custom GPT)
 Paste `AGENT_INSTRUCTIONS.md` into the project or GPT instructions and upload the knowledge files. Then run the same checks.
 
+### AI tools that can only read web pages
+Point the tool at `https://gfranistaken.github.io/aafdid-navigator/llms.txt`, not at the web page, which draws its lists with JavaScript. The tool should ask for the pathway, key answer and next event, then read the matching precomputed answer file. See the README's "For AI tools that read web pages".
+
 ### Agents that can run code
 Deterministic answers are better than a model reading tables. Clone this repository and run the engine:
 
