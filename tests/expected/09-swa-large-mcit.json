@@ -2,19 +2,20 @@
  "profile": {
   "program": "Mission planning software (example)",
   "pathway": "swa",
-  "event": "execution_entry",
   "swa_above_acat_ii": true,
   "mission_critical_it": true,
   "dote_oversight": true,
   "software_maintenance": true,
   "contract_value": 150000000,
-  "contract_cost_type": true
+  "contract_cost_type": true,
+  "event": "execution_entry"
  },
  "pathway": "swa",
  "focus_event": "execution_entry",
  "counts": {
   "required": 43,
   "conditional": 4,
+  "review": 0,
   "triggered": 0,
   "undetermined": 0,
   "reference": 0,
@@ -26,6 +27,7 @@
   "thresholds-2025",
   "evms-2026"
  ],
+ "unrecognized": [],
  "items": [
   [
    "SWA-04",
@@ -101,6 +103,12 @@
   ],
   [
    "SWA-16",
+   "required",
+   "at_focus",
+   "regulatory"
+  ],
+  [
+   "SWA-01",
    "required",
    "at_focus",
    "regulatory"
@@ -185,12 +193,6 @@
   ],
   [
    "SWA-34",
-   "required",
-   "later",
-   "regulatory"
-  ],
-  [
-   "SWA-01",
    "required",
    "later",
    "regulatory"

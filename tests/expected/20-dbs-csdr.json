@@ -1,0 +1,193 @@
+{
+ "profile": {
+  "program": "Business system with a large contract (example)",
+  "pathway": "dbs",
+  "mission_critical_it": false,
+  "dote_oversight": false,
+  "contract_value": 150000000,
+  "contract_cost_type": true,
+  "event": "limited_deployment_atp"
+ },
+ "pathway": "dbs",
+ "focus_event": "limited_deployment_atp",
+ "counts": {
+  "required": 13,
+  "conditional": 6,
+  "review": 0,
+  "triggered": 0,
+  "undetermined": 0,
+  "reference": 0,
+  "not_applicable": 8
+ },
+ "derived": {},
+ "questions_needed": [],
+ "currency_notes": [
+  "evms-2026",
+  "cmo-2021"
+ ],
+ "unrecognized": [],
+ "items": [
+  [
+   "DBS-11",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "DBS-12",
+   "required",
+   "later",
+   "statutory"
+  ],
+  [
+   "DBS-13",
+   "required",
+   "later",
+   "statutory"
+  ],
+  [
+   "EVM-03",
+   "required",
+   "ongoing",
+   "regulatory"
+  ],
+  [
+   "EVM-06",
+   "required",
+   "ongoing",
+   "regulatory"
+  ],
+  [
+   "DBS-01",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-02",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-03",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-05",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-07",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-08",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-09",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-10",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-04",
+   "conditional",
+   "conditional",
+   "statutory"
+  ],
+  [
+   "CSDR-01",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-02",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-03",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-05",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-06",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "DBS-06",
+   "not_applicable",
+   "not_applicable",
+   "statutory"
+  ],
+  [
+   "DBS-14",
+   "not_applicable",
+   "not_applicable",
+   "statutory"
+  ],
+  [
+   "DBS-15",
+   "not_applicable",
+   "not_applicable",
+   "statutory"
+  ],
+  [
+   "DBS-16",
+   "not_applicable",
+   "not_applicable",
+   "statutory"
+  ],
+  [
+   "EVM-01",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "EVM-02",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "EVM-04",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "EVM-05",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ]
+ ]
+}

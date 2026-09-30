@@ -17,5 +17,5 @@ jobs:
         run: tools/build_all.sh
       - name: Generated files are committed and current
         run: |
-          git diff --exit-code -- rules/requirements.json rules/aafdid-rules.json web/index.html agent/ \
+          git diff --exit-code -- rules/ web/index.html web/artifact.html agent/ tests/expected/ \
             || (echo "Generated files are out of date. Run tools/build_all.sh and commit." && exit 1)

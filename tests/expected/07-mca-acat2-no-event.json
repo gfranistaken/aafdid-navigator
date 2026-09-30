@@ -8,15 +8,17 @@
  "pathway": "mca",
  "focus_event": null,
  "counts": {
-  "required": 55,
+  "required": 54,
   "conditional": 1,
-  "triggered": 11,
-  "undetermined": 11,
+  "review": 0,
+  "triggered": 8,
+  "undetermined": 16,
   "reference": 3,
-  "not_applicable": 54
+  "not_applicable": 53
  },
  "derived": {},
  "questions_needed": [
+  "dote_oversight",
   "contract_value",
   "contract_cost_type"
  ],
@@ -25,6 +27,7 @@
   "jcids-2025",
   "evms-2026"
  ],
+ "unrecognized": [],
  "items": [
   [
    "MCA-M05",
@@ -78,13 +81,13 @@
    "MCA-M07",
    "required",
    "by_event",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M09",
    "required",
    "by_event",
-   "statutory"
+   "regulatory"
   ],
   [
    "MCA-M12",
@@ -100,6 +103,12 @@
   ],
   [
    "MCA-M14",
+   "required",
+   "by_event",
+   "regulatory"
+  ],
+  [
+   "MCA-M15",
    "required",
    "by_event",
    "regulatory"
@@ -138,13 +147,13 @@
    "MCA-M39",
    "required",
    "by_event",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M43",
    "required",
    "by_event",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M44",
@@ -174,7 +183,7 @@
    "MCA-M52",
    "required",
    "by_event",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M53",
@@ -198,7 +207,7 @@
    "MCA-M62",
    "required",
    "by_event",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M65",
@@ -264,13 +273,13 @@
    "MCA-M06",
    "required",
    "by_event",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M11",
    "required",
    "by_event",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M20",
@@ -288,7 +297,7 @@
    "MCA-M48",
    "required",
    "by_event",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M24",
@@ -310,18 +319,6 @@
   ],
   [
    "MCA-M35",
-   "required",
-   "by_event",
-   "statutory"
-  ],
-  [
-   "MCA-M28",
-   "required",
-   "by_event",
-   "regulatory"
-  ],
-  [
-   "MCA-M29",
    "required",
    "by_event",
    "statutory"
@@ -357,16 +354,10 @@
    "statutory"
   ],
   [
-   "MCA-D01",
+   "CSDR-01",
    "conditional",
    "conditional",
    "regulatory"
-  ],
-  [
-   "MCA-X01",
-   "triggered",
-   "triggered",
-   "statutory"
   ],
   [
    "MCA-X03",
@@ -405,12 +396,6 @@
    "statutory"
   ],
   [
-   "MCA-X16",
-   "triggered",
-   "triggered",
-   "statutory"
-  ],
-  [
    "MCA-X17",
    "triggered",
    "triggered",
@@ -423,10 +408,46 @@
    "regulatory"
   ],
   [
-   "MCA-X22",
-   "triggered",
-   "triggered",
+   "MCA-M28",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "MCA-M29",
+   "undetermined",
+   "undetermined",
    "statutory"
+  ],
+  [
+   "CSDR-02",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "CSDR-03",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "CSDR-04",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "CSDR-05",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "CSDR-06",
+   "undetermined",
+   "undetermined",
+   "regulatory"
   ],
   [
    "EVM-01",
@@ -465,34 +486,22 @@
    "regulatory"
   ],
   [
-   "MCA-D02",
+   "MCA-X01",
    "undetermined",
    "undetermined",
-   "regulatory"
+   "statutory"
   ],
   [
-   "MCA-D03",
+   "MCA-X16",
    "undetermined",
    "undetermined",
-   "regulatory"
+   "statutory"
   ],
   [
-   "MCA-D04",
+   "MCA-X22",
    "undetermined",
    "undetermined",
-   "regulatory"
-  ],
-  [
-   "MCA-D05",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MCA-D06",
-   "undetermined",
-   "undetermined",
-   "regulatory"
+   "statutory"
   ],
   [
    "MCA-B01",
@@ -517,12 +526,6 @@
    "not_applicable",
    "not_applicable",
    "statutory"
-  ],
-  [
-   "MCA-M15",
-   "not_applicable",
-   "not_applicable",
-   "both"
   ],
   [
    "MCA-M21",

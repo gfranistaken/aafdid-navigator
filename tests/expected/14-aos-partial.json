@@ -9,6 +9,7 @@
  "counts": {
   "required": 16,
   "conditional": 3,
+  "review": 0,
   "triggered": 1,
   "undetermined": 3,
   "reference": 0,
@@ -31,6 +32,7 @@
   "svc_sensitive_functions"
  ],
  "currency_notes": [],
+ "unrecognized": [],
  "items": [
   [
    "AOS-01",

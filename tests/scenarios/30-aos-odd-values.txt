@@ -1,0 +1,6 @@
+AAFDID PROFILE v1
+program: Services — odd spacing and a | pipe (example)
+pathway: aos
+svc_total_value: .5B
+svc_annual_value: 4.5e7
+svc_special_interest: no

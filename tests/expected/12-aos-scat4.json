@@ -2,19 +2,20 @@
  "profile": {
   "program": "Engineering support services (example)",
   "pathway": "aos",
-  "event": "develop",
   "svc_total_value": 40000000,
   "svc_annual_value": 12000000,
   "svc_special_interest": false,
   "svc_vehicle": "standalone",
   "svc_overlap": false,
-  "svc_sensitive_functions": false
+  "svc_sensitive_functions": false,
+  "event": "develop"
  },
  "pathway": "aos",
  "focus_event": "develop",
  "counts": {
   "required": 15,
   "conditional": 3,
+  "review": 0,
   "triggered": 1,
   "undetermined": 0,
   "reference": 0,
@@ -32,6 +33,7 @@
  },
  "questions_needed": [],
  "currency_notes": [],
+ "unrecognized": [],
  "items": [
   [
    "AOS-04",

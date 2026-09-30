@@ -2,23 +2,25 @@
  "profile": {
   "program": "Counter-UAS urgent need (example)",
   "pathway": "uca",
-  "event": "development",
   "uca_acat": "acat_iii",
   "contract_value": 12000000,
-  "contract_cost_type": true
+  "contract_cost_type": true,
+  "event": "development"
  },
  "pathway": "uca",
  "focus_event": "development",
  "counts": {
   "required": 4,
-  "conditional": 64,
+  "conditional": 2,
+  "review": 58,
   "triggered": 0,
-  "undetermined": 1,
+  "undetermined": 5,
   "reference": 0,
   "not_applicable": 4
  },
  "derived": {},
  "questions_needed": [
+  "dote_oversight",
   "it_type"
  ],
  "currency_notes": [
@@ -26,6 +28,7 @@
   "jcids-2025",
   "evms-2026"
  ],
+ "unrecognized": [],
  "items": [
   [
    "UCA-01",
@@ -65,381 +68,381 @@
   ],
   [
    "MCA-M04",
-   "conditional",
    "review",
-   "statutory"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M05",
-   "conditional",
+   "review",
    "review",
    "both"
   ],
   [
    "MCA-M06",
-   "conditional",
    "review",
-   "both"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M07",
-   "conditional",
    "review",
-   "both"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M08",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M09",
-   "conditional",
    "review",
-   "statutory"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M10",
-   "conditional",
+   "review",
    "review",
    "both"
   ],
   [
    "MCA-M11",
-   "conditional",
    "review",
-   "both"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M12",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M13",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M14",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
+   "MCA-M15",
+   "review",
+   "review",
+   "depends"
+  ],
+  [
    "MCA-M16",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M18",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M19",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M20",
-   "conditional",
+   "review",
    "review",
    "both"
   ],
   [
    "MCA-M23",
-   "conditional",
+   "review",
    "review",
    "both"
   ],
   [
    "MCA-M24",
-   "conditional",
+   "review",
    "review",
    "regulatory"
-  ],
-  [
-   "MCA-M28",
-   "conditional",
-   "review",
-   "regulatory"
-  ],
-  [
-   "MCA-M29",
-   "conditional",
-   "review",
-   "statutory"
   ],
   [
    "MCA-M32",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M33",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M35",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M39",
-   "conditional",
    "review",
-   "both"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M40",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M41",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M42",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M43",
-   "conditional",
    "review",
-   "both"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M44",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M45",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M46",
-   "conditional",
+   "review",
    "review",
    "both"
   ],
   [
    "MCA-M47",
-   "conditional",
+   "review",
    "review",
    "both"
   ],
   [
    "MCA-M48",
-   "conditional",
    "review",
-   "both"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M49",
-   "conditional",
+   "review",
    "review",
    "both"
   ],
   [
    "MCA-M51",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M52",
-   "conditional",
    "review",
-   "both"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M53",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M54",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M55",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M56",
-   "conditional",
+   "review",
    "review",
    "both"
   ],
   [
    "MCA-M57",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M58",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M61",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M62",
-   "conditional",
    "review",
-   "both"
+   "review",
+   "regulatory"
   ],
   [
    "MCA-M65",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M68",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M69",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M70",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M71",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-M72",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M74",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M76",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M78",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M79",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-M80",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
-   "MCA-X01",
-   "conditional",
-   "review",
-   "statutory"
-  ],
-  [
    "MCA-X03",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-X10",
-   "conditional",
+   "review",
    "review",
    "statutory"
   ],
   [
    "MCA-X11",
-   "conditional",
    "review",
-   "statutory"
-  ],
-  [
-   "MCA-X16",
-   "conditional",
    "review",
    "statutory"
   ],
   [
    "MCA-X17",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
    "MCA-X20",
-   "conditional",
+   "review",
    "review",
    "regulatory"
   ],
   [
-   "MCA-X22",
-   "conditional",
-   "review",
+   "MCA-M28",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "MCA-M29",
+   "undetermined",
+   "undetermined",
    "statutory"
   ],
   [
-   "MCA-M15",
+   "MCA-X01",
    "undetermined",
    "undetermined",
-   "both"
+   "statutory"
+  ],
+  [
+   "MCA-X16",
+   "undetermined",
+   "undetermined",
+   "statutory"
+  ],
+  [
+   "MCA-X22",
+   "undetermined",
+   "undetermined",
+   "statutory"
   ],
   [
    "EVM-02",

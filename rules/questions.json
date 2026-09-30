@@ -34,7 +34,13 @@
       ],
       "why": "Every requirement belongs to a pathway, so this answer scopes everything else.",
       "help": "Not sure? Use the pathway finder first.",
-      "gates": []
+      "gates": [
+        "CSDR-01",
+        "CSDR-02",
+        "CSDR-03",
+        "CSDR-05",
+        "CSDR-06"
+      ]
     },
     {
       "id": "event",
@@ -56,35 +62,62 @@
         {
           "value": "mdap",
           "label": "ACAT IB, IC or ID (MDAP)",
-          "help": "AAFDID label: ACAT IC or ID (MDAP). The statutory MDAP threshold is more than $1.0B RDT&E or $4.5B procurement in FY2024 dollars (10 U.S.C. 4201, amended December 2025). DoDI 5000.85 Table 1 still shows $525M and $3.065B in FY2020 dollars."
+          "help": "AAFDID label: ACAT IC or ID (MDAP). The statutory MDAP threshold is more than $1.0B RDT&E or $4.5B procurement in FY2024 dollars (10 U.S.C. 4201, amended December 2025). DoDI 5000.85 Table 1 still shows $525M and $3.065B in FY2020 dollars.",
+          "aliases": [
+            "MDAP",
+            "ACAT I",
+            "ACAT IB",
+            "ACAT IC",
+            "ACAT ID",
+            "ACAT IC or ID",
+            "ACAT IC or ID (MDAP)"
+          ]
         },
         {
           "value": "mais",
           "label": "ACAT IAM or IAC (MAIS), legacy",
-          "help": "Only two AAFDID rows still list MAIS: the Systems Engineering Plan and the Operational Test Plan."
+          "help": "Only two AAFDID rows still list MAIS: the Systems Engineering Plan and the Operational Test Plan.",
+          "aliases": [
+            "MAIS",
+            "ACAT IAM",
+            "ACAT IAC",
+            "ACAT IAM or IAC"
+          ]
         },
         {
           "value": "acat_ii",
           "label": "ACAT II (major system)",
-          "help": "The statutory major system threshold is more than $275M RDT&E or $1.3B procurement in FY2024 dollars (10 U.S.C. 3041(c), amended December 2025). DoDI 5000.85 Table 1 still shows $200M and $920M in FY2020 dollars."
+          "help": "The statutory major system threshold is more than $275M RDT&E or $1.3B procurement in FY2024 dollars (10 U.S.C. 3041(c), amended December 2025). DoDI 5000.85 Table 1 still shows $200M and $920M in FY2020 dollars.",
+          "aliases": [
+            "ACAT II",
+            "II",
+            "major system"
+          ]
         },
         {
           "value": "acat_iii",
-          "label": "ACAT III and below"
+          "label": "ACAT III and below",
+          "aliases": [
+            "ACAT III",
+            "III",
+            "ACAT III and below",
+            "ACAT III or below",
+            "ACAT IV"
+          ]
         }
       ],
       "why": "AAFDID's MCA tables mark each requirement by program type.",
       "gates": [
+        "CSDR-01",
+        "CSDR-02",
+        "CSDR-03",
+        "CSDR-04",
+        "CSDR-05",
+        "CSDR-06",
         "MCA-B01",
         "MCA-B02",
         "MCA-B03",
         "MCA-B04",
-        "MCA-D01",
-        "MCA-D02",
-        "MCA-D03",
-        "MCA-D04",
-        "MCA-D05",
-        "MCA-D06",
         "MCA-M01",
         "MCA-M02",
         "MCA-M03",
@@ -140,7 +173,6 @@
         "MCA-M53",
         "MCA-M54",
         "MCA-M55",
-        "MCA-M56",
         "MCA-M57",
         "MCA-M58",
         "MCA-M59",
@@ -158,7 +190,6 @@
         "MCA-M71",
         "MCA-M72",
         "MCA-M73",
-        "MCA-M74",
         "MCA-M75",
         "MCA-M76",
         "MCA-M77",
@@ -206,19 +237,92 @@
       "options": [
         {
           "value": "acat_ii",
-          "label": "ACAT II"
+          "label": "ACAT II",
+          "aliases": [
+            "ACAT II",
+            "II"
+          ]
         },
         {
           "value": "acat_iii",
-          "label": "ACAT III or below"
+          "label": "ACAT III or below",
+          "aliases": [
+            "ACAT III",
+            "III",
+            "ACAT III and below",
+            "ACAT III or below"
+          ]
         }
       ],
       "why": "The UCA table, and the MCA entries AAFDID points UCA programs to, are marked by ACAT level.",
       "gates": [
-        "UCA-01",
-        "UCA-02",
-        "UCA-03",
-        "UCA-04"
+        "MCA-M04",
+        "MCA-M05",
+        "MCA-M06",
+        "MCA-M07",
+        "MCA-M08",
+        "MCA-M09",
+        "MCA-M10",
+        "MCA-M11",
+        "MCA-M12",
+        "MCA-M13",
+        "MCA-M14",
+        "MCA-M15",
+        "MCA-M16",
+        "MCA-M18",
+        "MCA-M19",
+        "MCA-M20",
+        "MCA-M23",
+        "MCA-M24",
+        "MCA-M28",
+        "MCA-M29",
+        "MCA-M32",
+        "MCA-M33",
+        "MCA-M35",
+        "MCA-M39",
+        "MCA-M40",
+        "MCA-M41",
+        "MCA-M42",
+        "MCA-M43",
+        "MCA-M44",
+        "MCA-M45",
+        "MCA-M46",
+        "MCA-M47",
+        "MCA-M48",
+        "MCA-M49",
+        "MCA-M51",
+        "MCA-M52",
+        "MCA-M53",
+        "MCA-M54",
+        "MCA-M55",
+        "MCA-M56",
+        "MCA-M57",
+        "MCA-M58",
+        "MCA-M61",
+        "MCA-M62",
+        "MCA-M65",
+        "MCA-M66",
+        "MCA-M68",
+        "MCA-M69",
+        "MCA-M70",
+        "MCA-M71",
+        "MCA-M72",
+        "MCA-M74",
+        "MCA-M76",
+        "MCA-M78",
+        "MCA-M79",
+        "MCA-M80",
+        "MCA-X01",
+        "MCA-X03",
+        "MCA-X05",
+        "MCA-X06",
+        "MCA-X10",
+        "MCA-X11",
+        "MCA-X15",
+        "MCA-X16",
+        "MCA-X17",
+        "MCA-X20",
+        "MCA-X22"
       ]
     },
     {
@@ -232,16 +336,26 @@
       "options": [
         {
           "value": "rp",
-          "label": "Rapid Prototyping"
+          "label": "Rapid Prototyping",
+          "aliases": [
+            "RP",
+            "rapid prototyping",
+            "prototyping"
+          ]
         },
         {
           "value": "rf",
-          "label": "Rapid Fielding"
+          "label": "Rapid Fielding",
+          "aliases": [
+            "RF",
+            "rapid fielding",
+            "fielding"
+          ]
         }
       ],
       "why": "AAFDID's tables do not split the two paths, but CAPE's cost-estimate threshold differs, and DoDI 5000.80 asks for a lifecycle sustainment plan for Rapid Fielding.",
       "gates": [
-        "MTA-O06"
+        "MTA-T06"
       ]
     },
     {
@@ -256,32 +370,39 @@
         {
           "value": "non_major",
           "label": "Not a major system",
-          "help": "At or below 10 U.S.C. 3041(c): $275M RDT&E or $1.3B procurement in FY2024 dollars."
+          "help": "At or below 10 U.S.C. 3041(c): $275M RDT&E or $1.3B procurement in FY2024 dollars.",
+          "aliases": [
+            "non-major",
+            "nonmajor",
+            "non major",
+            "not major",
+            "not a major system"
+          ]
         },
         {
           "value": "major",
-          "label": "Major system, below MDAP thresholds"
+          "label": "Major system, below MDAP thresholds",
+          "aliases": [
+            "major",
+            "major system"
+          ]
         },
         {
           "value": "exceeds_mdap",
           "label": "Above MDAP thresholds",
-          "help": "More than $1.0B RDT&E or $4.5B procurement in FY2024 dollars (10 U.S.C. 4201). Needs USD(A&S) written approval to use MTA."
+          "help": "More than $1.0B RDT&E or $4.5B procurement in FY2024 dollars (10 U.S.C. 4201). Needs USD(A&S) written approval to use MTA.",
+          "aliases": [
+            "exceeds MDAP",
+            "above MDAP",
+            "MDAP",
+            "above MDAP thresholds",
+            "exceeds MDAP threshold"
+          ]
         }
       ],
       "why": "AAFDID's MTA tables mark each requirement for major systems, non-major systems, or programs above MDAP thresholds.",
       "gates": [
-        "MTA-O01",
-        "MTA-O02",
-        "MTA-O03",
-        "MTA-O04",
-        "MTA-O05",
-        "MTA-O06",
-        "MTA-O07",
-        "MTA-O08",
-        "MTA-O09",
-        "MTA-O10",
-        "MTA-O11",
-        "MTA-S01",
+        "CSDR-02",
         "MTA-S02",
         "MTA-S03",
         "MTA-S04",
@@ -289,43 +410,17 @@
         "MTA-S06",
         "MTA-S07",
         "MTA-S08",
-        "MTA-S09",
         "MTA-S11",
         "MTA-S12",
         "MTA-S13",
         "MTA-S14",
-        "MTA-S15",
         "MTA-S16",
-        "MTA-S17",
-        "MTA-S18",
-        "MTA-S19",
-        "MTA-S20",
-        "MTA-S21",
-        "MTA-S22",
-        "MTA-S23",
-        "MTA-S24",
-        "MTA-S25",
-        "MTA-S26",
-        "MTA-S27",
-        "MTA-S28",
-        "MTA-S29",
-        "MTA-S30",
-        "MTA-S31",
         "MTA-S32",
-        "MTA-S33"
-      ]
-    },
-    {
-      "id": "international",
-      "show_if": {
-        "field": "pathway",
-        "eq": "mta"
-      },
-      "text": "Will international partners be involved?",
-      "type": "boolean",
-      "why": "Decides whether the MTA International Involvement entry applies. DoDI 5000.80 Change 1 ties exportability to international partner involvement.",
-      "gates": [
-        "MTA-S10"
+        "MTA-T01",
+        "MTA-T03",
+        "MTA-T04",
+        "MTA-T06",
+        "MTA-T07"
       ]
     },
     {
@@ -364,17 +459,25 @@
       "show_if": {
         "field": "pathway",
         "in": [
+          "mca",
+          "uca",
           "swa",
           "dbs"
         ]
       },
-      "text": "Is the program on the DOT&E oversight list?",
+      "text": "Is the program on the DOT&E oversight list (including LFT&E oversight)?",
       "type": "boolean",
-      "why": "The IOT&E report, operational test plan and TEMP entries apply to oversight programs.",
+      "why": "IOT&E reports, live fire reports and waivers apply only to oversight programs, and DOT&E approval of the operational test plan is statutory for them.",
       "gates": [
         "DBS-14",
         "DBS-15",
         "DBS-16",
+        "MCA-M28",
+        "MCA-M29",
+        "MCA-M56",
+        "MCA-X01",
+        "MCA-X16",
+        "MCA-X22",
         "SWA-21",
         "SWA-23"
       ]
@@ -406,15 +509,31 @@
       "options": [
         {
           "value": "it_system",
-          "label": "Yes, it is an IT system, including a national security system"
+          "label": "Yes, it is an IT system, including a national security system",
+          "aliases": [
+            "IT",
+            "IT system",
+            "NSS",
+            "national security system",
+            "yes"
+          ]
         },
         {
           "value": "embedded_it",
-          "label": "Only IT embedded in a weapon system, or a command and control system that is not itself IT"
+          "label": "Only IT embedded in a weapon system, or a command and control system that is not itself IT",
+          "aliases": [
+            "embedded",
+            "embedded IT",
+            "weapon system"
+          ]
         },
         {
           "value": "none",
-          "label": "No IT"
+          "label": "No IT",
+          "aliases": [
+            "no IT",
+            "no"
+          ]
         }
       ],
       "why": "Decides the Clinger-Cohen Act entries. AAFDID presumes the first three CCA actions are satisfied for weapon systems with embedded IT.",
@@ -449,17 +568,17 @@
       "type": "money",
       "why": "EVMS and cost data reporting thresholds are set by contract value.",
       "gates": [
+        "CSDR-02",
+        "CSDR-03",
+        "CSDR-04",
+        "CSDR-05",
+        "CSDR-06",
         "EVM-01",
         "EVM-02",
         "EVM-03",
         "EVM-04",
         "EVM-05",
         "EVM-06",
-        "MCA-D02",
-        "MCA-D03",
-        "MCA-D04",
-        "MCA-D05",
-        "MCA-D06",
         "SWA-19"
       ]
     },
@@ -543,15 +662,34 @@
       "options": [
         {
           "value": "standalone",
-          "label": "A standalone contract, or a single-award IDIQ"
+          "label": "A standalone contract, or a single-award IDIQ",
+          "aliases": [
+            "standalone",
+            "contract",
+            "single-award IDIQ",
+            "single award"
+          ]
         },
         {
           "value": "idiq_base",
-          "label": "The base award of a multiple-award IDIQ"
+          "label": "The base award of a multiple-award IDIQ",
+          "aliases": [
+            "IDIQ base",
+            "MA-IDIQ base",
+            "MAC base",
+            "multiple-award IDIQ",
+            "base award"
+          ]
         },
         {
           "value": "task_order",
-          "label": "A task order under an IDIQ (enter the order's value above)"
+          "label": "A task order under an IDIQ (enter the order's value above)",
+          "aliases": [
+            "task order",
+            "TO",
+            "order",
+            "delivery order"
+          ]
         }
       ],
       "why": "A Services Acquisition Workshop is not required for a multiple-award IDIQ base, but it is required for any task order of $100M or more (DoDI 5000.74, para 4.2.d).",

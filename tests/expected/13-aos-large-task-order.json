@@ -2,19 +2,20 @@
  "profile": {
   "program": "Enterprise IT services task order (example)",
   "pathway": "aos",
-  "event": "develop",
   "svc_total_value": 150000000,
   "svc_annual_value": 60000000,
   "svc_special_interest": false,
   "svc_vehicle": "task_order",
   "svc_overlap": true,
-  "svc_sensitive_functions": true
+  "svc_sensitive_functions": true,
+  "event": "develop"
  },
  "pathway": "aos",
  "focus_event": "develop",
  "counts": {
   "required": 19,
   "conditional": 3,
+  "review": 0,
   "triggered": 1,
   "undetermined": 0,
   "reference": 0,
@@ -32,6 +33,7 @@
  },
  "questions_needed": [],
  "currency_notes": [],
+ "unrecognized": [],
  "items": [
   [
    "AOS-04",

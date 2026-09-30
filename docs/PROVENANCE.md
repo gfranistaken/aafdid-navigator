@@ -15,12 +15,12 @@ Every live table page was read through a fetch tool and compared row by row with
 | Table | Live rows | Result |
 | --- | --- | --- |
 | MCA Milestone and Phase | 80 | 78 rows exact; the OTP and SEP rows also list ACAT IAM/IAC (MAIS), which the capture missed (corrected) |
-| MCA Recurring, Exceptions, CCA, CSDR, EVMS (2 tables), APB, Breach | 3, 22, 11, 6, 3 + 3, 4, 3 | Names, marks and thresholds match. CCA action text and footnotes were cleaned from the live page (corrected). |
-| MTA Statutory/Regulatory | 33 | Marks, type and approval match. One note is missing a memo citation (added as an addendum). |
+| MCA Recurring, Exceptions, CCA, CSDR, EVMS (2 tables), APB, Breach | 3, 22, 11, 6, 3 + 3, 4, 3 | Names, marks and thresholds match. CCA action text and footnotes were cleaned from the live page, and the cost-type production exception's DUE text, scrambled by the PDF parser, was re-read live (corrected). |
+| MTA Statutory/Regulatory | 33 | Marks, type and approval match on 32 rows. ACQUISITION STRATEGY is also marked for non-major systems on the live page, as its note says (corrected). One note is missing a memo citation (added as an addendum). |
 | MTA Program Information (Table 1) | 11 | Capture had an extra header row (dropped). The TYPE column (all Regulatory) and footnotes were taken from the live page. |
 | SWA Application and Embedded SW | 34 | Capture was missing "Information Support Plan" (added). Cybersecurity TYPE and SOURCE and Market Research SOURCE were completed. |
 | SWA CCA | 11 | One action's truncated text was completed. |
-| DBS Statutory | 17 | Match. The Auditability source was completed, and the closing "None" row was dropped. |
+| DBS Statutory | 17 | Match. The Auditability source was completed, and the closing "None" row was dropped, leaving 16 records. |
 | UCA Unique | 4 | Match |
 
 Every correction, with the live text as evidence, is in `sources/corrections-2026-09-30.json`. `tools/build_rules.py` applies them, and each record's `provenance.check` says whether it matched or was corrected.
@@ -64,5 +64,6 @@ The UCA question uses the MDAP thresholds as amended in December 2025 (10 U.S.C.
 
 - The AAFDID Excel exports were not read directly, because the site blocks downloads from this environment. A browser-saved copy would allow a byte-level re-check.
 - DoDI 5000.81 (UCA) and DoDI 5000.75 (DBS) could not be fetched during the check. UCA and DBS records rest on AAFDID's tables, which were checked live.
-- Conditions stated only inside AAFDID notes are shown, not evaluated. Rows whose notes contain conditional wording are flagged.
+- Conditions stated only inside AAFDID notes are shown, not evaluated, except the DOT&E oversight gates, which are asked. Rows whose notes contain conditional wording are flagged.
+- The MTA "International Involvement" row is shown as may apply for every MTA program: AAFDID marks no size column for it, and the intake no longer asks about international partners.
 - The EVMS and CSDR rows keep AAFDID's thresholds. The deviation note says where the EVMS thresholds have changed.

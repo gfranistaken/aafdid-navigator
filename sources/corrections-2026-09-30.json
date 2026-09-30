@@ -6,30 +6,114 @@
     {
       "file": "mca_milestone_phase.json",
       "match_name": "OPERATIONAL TEST PLAN (OTP)",
-      "set": {"add_program_types": ["mais"]},
+      "set": {
+        "add_program_types": [
+          "mais"
+        ]
+      },
       "evidence": "Live Program Type cell reads 'ACAT IC OR ID (MDAP)ACAT IAM OR IAC (MAIS)ACAT II (Major Systems)ACAT III and below' (?search=PLAN)."
     },
     {
       "file": "mca_milestone_phase.json",
       "match_name": "Systems Engineering Plan (SEP)",
-      "set": {"add_program_types": ["mais"]},
+      "set": {
+        "add_program_types": [
+          "mais"
+        ]
+      },
       "evidence": "Live Program Type cell lists ACAT IAM OR IAC (MAIS) (?search=SYSTEM)."
     },
     {
       "file": "mca_cca.json",
       "note": "The capture embedded footnote digits in the action text and cut action 6. Clean text and footnotes below were confirmed on the live page.",
       "rows": [
-        {"index": 1, "action": "Determine that the acquisition supports core, priority functions of the DoD.", "footnotes": [3]},
-        {"index": 2, "action": "Establish outcome-based performance measures linked to strategic goals.", "footnotes": [3, 4], "documentation": "ICD, IS ICD, CDD, AoA, APB"},
-        {"index": 3, "action": "Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of commercial off-the-shelf technology.", "footnotes": [3, 4]},
-        {"index": 4, "action": "Determine that no private sector or government source can better support the function.", "footnotes": [4, 5]},
-        {"index": 5, "action": "Conduct an analysis of alternatives.", "footnotes": [4, 5]},
-        {"index": 6, "action": "Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS programs, conduct a life-cycle cost estimate.", "footnotes": [4, 5]},
-        {"index": 7, "action": "Develop clearly established measures and accountability for program progress.", "footnotes": [4], "documentation": "Acquisition Strategy, APB, TEMP"},
-        {"index": 8, "action": "Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, as described in DoDI 5000.82.", "footnotes": [4]},
-        {"index": 9, "action": "Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant standards.", "footnotes": [4]},
-        {"index": 10, "action": "Ensure, to the maximum extent practicable, (1) modular contracting has been used, and (2) the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent of future increments.", "footnotes": [4]},
-        {"index": 11, "action": "Register Mission-Critical and Mission-Essential systems with the DoD CIO.", "footnotes": [4, 6]}
+        {
+          "index": 1,
+          "action": "Determine that the acquisition supports core, priority functions of the DoD.",
+          "footnotes": [
+            3
+          ]
+        },
+        {
+          "index": 2,
+          "action": "Establish outcome-based performance measures linked to strategic goals.",
+          "footnotes": [
+            3,
+            4,
+            7
+          ],
+          "documentation": "ICD, IS ICD, CDD, AoA, APB"
+        },
+        {
+          "index": 3,
+          "action": "Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of commercial off-the-shelf technology.",
+          "footnotes": [
+            3,
+            4
+          ]
+        },
+        {
+          "index": 4,
+          "action": "Determine that no private sector or government source can better support the function.",
+          "footnotes": [
+            4,
+            5
+          ]
+        },
+        {
+          "index": 5,
+          "action": "Conduct an analysis of alternatives.",
+          "footnotes": [
+            4,
+            5
+          ]
+        },
+        {
+          "index": 6,
+          "action": "Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS programs, conduct a life-cycle cost estimate.",
+          "footnotes": [
+            4,
+            5
+          ]
+        },
+        {
+          "index": 7,
+          "action": "Develop clearly established measures and accountability for program progress.",
+          "footnotes": [
+            4,
+            7
+          ],
+          "documentation": "Acquisition Strategy, APB, TEMP"
+        },
+        {
+          "index": 8,
+          "action": "Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, as described in DoDI 5000.82.",
+          "footnotes": [
+            4
+          ]
+        },
+        {
+          "index": 9,
+          "action": "Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant standards.",
+          "footnotes": [
+            4
+          ]
+        },
+        {
+          "index": 10,
+          "action": "Ensure, to the maximum extent practicable, (1) modular contracting has been used, and (2) the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent of future increments.",
+          "footnotes": [
+            4
+          ]
+        },
+        {
+          "index": 11,
+          "action": "Register Mission-Critical and Mission-Essential systems with the DoD CIO.",
+          "footnotes": [
+            4,
+            6
+          ]
+        }
       ],
       "footnote_text": {
         "1": "The Milestone and Phase Information Requirements table indicates when the PM must report CCA compliance.",
@@ -44,16 +128,31 @@
     {
       "file": "mta.json",
       "match_name": "RELIABILITY AND MAINTAINABILITY (Part of Acquisition Strategy)",
-      "set": {"note_addendum": "The live AAFDID note also cites the January 31, 2019 USD(A&S) policy memo on implementing 10 U.S.C. 2443 (sustainment factors)."},
+      "set": {
+        "note_addendum": "The live AAFDID note also cites the January 31, 2019 USD(A&S) policy memo on implementing 10 U.S.C. 2443 (sustainment factors)."
+      },
       "evidence": "Live note cites 'January 31, 2019 USD(A&S) Policy Memo, \"Implementation of Title 10, United States Code, Section...'"
     },
     {
       "file": "mta_program_info.json",
       "drop_name": "REQUIREMENT",
-      "set_all": {"type": "Regulatory"},
+      "set_all": {
+        "type": "Regulatory"
+      },
       "rows": [
-        {"match_prefix": "Acquisition Strategy, to include", "name": "Acquisition Strategy, to include security, schedule, technical, and production risks; a test strategy or an assessment of test results with validation of required cybersecurity and interoperability as applicable; and a transition plan", "footnotes": [4]},
-        {"match_prefix": "Cost Estimate", "footnotes": [5]}
+        {
+          "match_prefix": "Acquisition Strategy, to include",
+          "name": "Acquisition Strategy, to include security, schedule, technical, and production risks; a test strategy or an assessment of test results with validation of required cybersecurity and interoperability as applicable; and a transition plan",
+          "footnotes": [
+            4
+          ]
+        },
+        {
+          "match_prefix": "Cost Estimate",
+          "footnotes": [
+            5
+          ]
+        }
       ],
       "footnote_text": {
         "1": "Non-major: equal to or below the threshold in 10 U.S.C. 3041(c) and 4202(b) (formerly 2302d).",
@@ -67,37 +166,69 @@
     {
       "file": "swa.json",
       "insert_after_name": "Cybersecurity Strategy (may be part of Acquisition Strategy or standalone document)",
-      "insert": {"name": "Information Support Plan", "execution_phase": "Entering the Execution Phase", "source": "DoDI 8330.01", "type": "Regulatory"},
+      "insert": {
+        "name": "Information Support Plan",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "DoDI 8330.01",
+        "type": "Regulatory"
+      },
       "evidence": "Row present live between Cybersecurity Strategy and Intellectual Property Strategy; missing from the capture (PDF page break)."
     },
     {
       "file": "swa.json",
       "match_name": "Cybersecurity Strategy (may be part of Acquisition Strategy or standalone document)",
-      "set": {"type": "Statutory for Mission Critical and Mission Essential IT programs, Regulatory for others", "source": "40 USC 11313, DoDI 5000.87, DoDI 8500.01, DoDI 5000.82"},
+      "set": {
+        "type": "Statutory for Mission Critical and Mission Essential IT programs, Regulatory for others",
+        "source": "40 USC 11313, DoDI 5000.87, DoDI 8500.01, DoDI 5000.82"
+      },
       "evidence": "Live TYPE and SOURCE cells are longer than the captured ones."
     },
     {
       "file": "swa.json",
       "match_name": "Market Research (Part of Acquisition Strategy)",
-      "set": {"source": "10 USC 3453 {formerly 2377}, 41 USC 3306(a)(1), 41 USC 3307(d)"},
+      "set": {
+        "source": "10 USC 3453 {formerly 2377}, 41 USC 3306(a)(1), 41 USC 3307(d)"
+      },
       "evidence": "Live SOURCE cell adds 41 USC 3307(d)."
     },
     {
       "file": "swa_cca.json",
       "match_prefix": "Redesign the processes",
-      "set": {"action": "Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of commercial off-the-shelf technology."},
+      "set": {
+        "action": "Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of commercial off-the-shelf technology."
+      },
       "evidence": "Live text ends 'maximize the use of commercial off-the-shelf technology'. The modular contracting action ends 'independent of....' on the live page itself."
     },
     {
       "file": "dbs.json",
       "match_name": "Auditability Compliance",
-      "set": {"source": "10 USC 2222(g)(1)(E); 10 USC Chapter 9A; Federal Financial Management Improvement Act"},
+      "set": {
+        "source": "10 USC 2222(g)(1)(E); 10 USC Chapter 9A; Federal Financial Management Improvement Act"
+      },
       "evidence": "Live SOURCE cell continues past the captured text with 'Federal Financial Management...'."
     },
     {
       "file": "dbs.json",
       "drop_name": "None",
       "evidence": "Closing 'None / Capability Support / N/A' row marks the end of the table."
+    },
+    {
+      "file": "mca_exceptions.json",
+      "match_name": "COST-TYPE PRODUCTION CONTRACT EXCEPTION CERTIFICATION",
+      "set": {
+        "due": "Applicable to contracts for the production of MDAPs: entered into, on, or after October 1, 2014, and for which the USD(A&S) has granted an exception to the prohibition against using a cost-type contract for MDAP production."
+      },
+      "evidence": "Live DUE cell (?search=COST-TYPE); the capture's word order was scrambled by the PDF parser."
+    },
+    {
+      "file": "mta.json",
+      "match_name": "ACQUISITION STRATEGY",
+      "set": {
+        "add_marks": [
+          "non_major"
+        ]
+      },
+      "evidence": "Two live reads show both MAJOR and NON-MAJOR marked; the note reads 'STATUTORY for Major systems. Regulatory for Non-major systems.'"
     }
   ]
 }

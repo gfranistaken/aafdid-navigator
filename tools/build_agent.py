@@ -27,6 +27,10 @@ Q = {q["id"]: q for q in B["questions"]["questions"]}
 CUR = {n["id"]: n for n in B["currency"]["notes"]}
 META = B["meta"]
 DISCLAIMER = "Unofficial. AAFDID is an overview: comply with its tabular notes and the full text of each cited source."
+APB_CODE = next(r["code"] for r in B["requirements"] if r["name"] == "ACQUISITION PROGRAM BASELINE (APB)")
+CITE_EXAMPLE = f"{APB_CODE} ACQUISITION PROGRAM BASELINE (APB)"
+EVERY_EVENTS = [(p, e) for p in B["pathways"] for e in p["events"] if e.get("every")]
+GATE_WORD = {"dote_oversight": "DOT&E oversight only", "it_type": "IT only", "mission_critical_it": "mission-critical IT only"}
 STATUS_WORD = {"event": "Required", "recurring": "Required (recurring)", "contract": "Required (contract-level)",
                "compliance": "Required (compliance action)", "conditional": "May apply", "triggered": "Only if triggered",
                "reference": "Reference rule"}
@@ -78,7 +82,16 @@ def record(r, pw_id):
     L.append(f"- When due: {when_line(r, pw)}")
     if r.get("type_rule"):
         tr = r["type_rule"]
-        L.append(f"- Type: {TYPE_WORD[tr['then']]} if `{cond_code(tr['if'])}`, otherwise {TYPE_WORD[tr['else']]}. AAFDID TYPE: {r['type_text']}")
+        unk = tr.get("unknown")
+        unk_txt = (f" If that is unknown: {TYPE_WORD[unk]}." if unk and unk != "depends" else " If that is unknown, the type depends on the answer.")
+        aaf = f" AAFDID TYPE: {r['type_text']}" if r.get("type_text") else ""
+        if tr.get("events"):
+            evn = {e["id"]: e["name"] for e in PW[r["pathways"][0]]["events"]}
+            at = ", ".join(evn[e] for e in tr["events"])
+            L.append(f"- Type by event: if `{cond_code(tr['if'])}`, {TYPE_WORD[tr['then']]} at {at}, and {TYPE_WORD[tr['else']]} at its other events. "
+                     f"Otherwise {TYPE_WORD[tr['else']]}.{unk_txt}{aaf}")
+        else:
+            L.append(f"- Type: {TYPE_WORD[tr['then']]} if `{cond_code(tr['if'])}`, otherwise {TYPE_WORD[tr['else']]}.{unk_txt}{aaf}")
     else:
         L.append(f"- Type: {TYPE_WORD[r['type']]}." + (f" AAFDID TYPE: {r['type_text']}" if r.get("type_text") else ""))
     if r.get("approval"):
@@ -91,6 +104,8 @@ def record(r, pw_id):
         L.append(f"- AAFDID note: {r['notes']}")
     for f in r.get("footnotes") or []:
         L.append(f"- Footnote: {f}")
+    if r.get("tool_note"):
+        L.append(f"- Tool note: {r['tool_note']}")
     for c in r.get("currency") or []:
         L.append(f"- Changed since AAFDID ({CUR[c]['title']}): see 20-changes-since-aafdid.md, note {c}.")
     L.append(f"- Page: {r['url']}")
@@ -106,16 +121,16 @@ def mca_matrix(reqs):
     for r in reqs:
         if r["table"] != "ms":
             continue
-        types = set()
         c = r["applies_if"]
-        for part in (c.get("all") or [c]):
-            if part.get("field") == "mca_program_type":
-                types |= set(part["in"])
+        parts = c.get("all") or [c]
+        typed = [pt for pt in parts if pt.get("field") == "mca_program_type"]
+        types = set(typed[0]["in"]) if typed else {"mdap", "mais", "acat_ii", "acat_iii"}
+        gates = [GATE_WORD.get(pt.get("field"), pt.get("field")) for pt in parts if pt.get("field") and pt.get("field") != "mca_program_type"]
         marks = ["●" if t in types else "" for t in ("mdap", "mais", "acat_ii", "acat_iii")]
         w = {x["event"]: ("I" if x["submission"] == "initial" else "U") for x in r["when"]}
         cells = [w.get(e["id"], "") for e in ev]
         name = r["name"].replace("|", "/")
-        extra = " (IT only)" if "it_type" in json.dumps(c) else ""
+        extra = "".join(f" ({g})" for g in gates)
         rows.append(f"| {r['code']} | {name}{extra} | " + " | ".join(marks) + " | " + " | ".join(cells) + " |")
     return "\n".join(rows)
 
@@ -129,7 +144,8 @@ def pathway_file(pid, num):
     L.append(f"- Governing instruction: {pw['instruction']}")
     L.append(f"- Summary: {pw['summary']}")
     L.append(f"- Decision authority: {pw['decision_authority']}")
-    L.append(f"- Events, in order: " + "; ".join(f"`{e['id']}` = {e['name']}" for e in pw["events"]))
+    L.append(f"- Events, in order: " + "; ".join(f"`{e['id']}` = {e['name']}" + (" (not a next event)" if e.get("every") else "")
+                                             for e in pw["events"]))
     for n in pw.get("notes") or []:
         L.append(f"- Note: {n}")
     L.append(f"- AAFDID page: {pw['aafdid_url']}")
@@ -138,7 +154,16 @@ def pathway_file(pid, num):
         ar = pw["also_review"]
         L.append("## Also review MCA entries")
         L.append("")
-        L.append(f"{ar['reason']} For a UCA program, take the MCA Milestone and Phase rows and the MCA Exceptions rows from 10-mca.md whose program type includes the program's `uca_acat` value (`acat_ii` means ACAT II, `acat_iii` means ACAT III and below). List them under \"Also review\" with status May apply. Do not list MCA rows marked only for MDAPs.")
+        tabs = " and ".join(f"`{t}`" for t in ar["tables"])
+        L.append(f"{ar['reason']}")
+        L.append("")
+        L.append(f"For a UCA program, go through the MCA records in 10-mca.md from tables {tabs} (codes MCA-M.. and MCA-X..):")
+        L.append("")
+        L.append(f"1. If `uca_acat` is unknown, list none of them. Ask the ACAT question first, because it decides which MCA entries apply.")
+        L.append(f"2. Otherwise test each record's Condition code with `{ar['map_field']['to']}` set to the program's `{ar['map_field']['from']}` value (`acat_ii` stays `acat_ii`; `acat_iii` stays `acat_iii`) and every other field from the profile.")
+        L.append("3. False: leave the record out. MDAP-only rows always drop out this way.")
+        L.append("4. Unknown: list it under Needs an answer, naming the missing field (for example `dote_oversight`).")
+        L.append("5. True: list it under \"Also review: MCA entries AAFDID points UCA programs to\", with status Also review, its MCA code, and its MCA events.")
         L.append("")
     if pid == "aos":
         L.append("## Services category (S-CAT)")
@@ -153,7 +178,7 @@ def pathway_file(pid, num):
     if pid == "mca":
         L.append("## Lookup matrix: Milestone and Phase Information Requirements")
         L.append("")
-        L.append("● = applies to that program type. I = initial submission at that event; U = update. Read the program type column and the next-event column together. Rows marked (IT only) also need `it_type` = it_system or embedded_it.")
+        L.append("● = applies to that program type. I = initial submission at that event; U = update. Read the program type column and the next-event column together. A row marked (DOT&E oversight only) also needs `dote_oversight` = yes; the record's Condition code is the full rule.")
         L.append("")
         L.append(mca_matrix(reqs))
         L.append("")
@@ -190,13 +215,14 @@ def intake_file():
             if q["id"] == "pathway":
                 L.append(f"   - Answer `{pid}` for this section.")
             elif q["id"] == "event":
-                L.append("   - Values: " + "; ".join(f"`{e['id']}` = {e['name']}" for e in pw["events"]) + ". Leave blank to list every event.")
+                L.append("   - Values: " + "; ".join(f"`{e['id']}` = {e['name']}" + (f" (also: {', '.join(e['aliases'])})" if e.get("aliases") else "")
+                                             for e in pw["events"] if not e.get("every")) + ". Leave blank to list every event.")
             elif q.get("type") == "boolean":
                 L.append("   - Values: `yes`, `no`, or leave blank if not sure.")
             elif q.get("type") == "money":
                 L.append("   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.")
             else:
-                L.append("   - Values: " + "; ".join(f"`{o['value']}` = {o['label']}" for o in q["options"]))
+                L.append("   - Values: " + "; ".join(f"`{o['value']}` = {o['label']}" + (f" (also: {', '.join(o['aliases'])})" if o.get("aliases") else "") for o in q["options"]))
                 for o in q["options"]:
                     if o.get("help"):
                         L.append(f"     - `{o['value']}`: {o['help']}")
@@ -205,6 +231,11 @@ def intake_file():
                 g = [c for c in q["gates"] if any(pid in r["pathways"] and r["code"] == c for r in B["requirements"])]
                 if g:
                     L.append(f"   - Affects: {', '.join(g)}")
+                ar = pw.get("also_review")
+                if ar:
+                    rv = [c for c in q["gates"] if c not in g]
+                    if rv:
+                        L.append(f"   - Also affects these MCA entries to review (12-uca.md): {', '.join(rv)}")
         L.append("")
     return "\n".join(L).rstrip() + "\n"
 
@@ -228,12 +259,14 @@ def procedure_file():
         "AAFDID PROFILE v1",
         "program: <name>",
         "pathway: <mca|mta|uca|swa|dbs|aos>",
-        "event: <event id from the pathway file, or omit>",
+        "event: <the next event's id from the pathway file, or omit>",
         "<field>: <value>",
         "unknown: <comma-separated fields not answered yet>",
         "```",
         "",
         "Only fields asked for the pathway appear (see 01-intake.md). Booleans are `yes` or `no`, and dollar amounts are plain numbers.",
+        "",
+        "When reading a pasted profile, match values to the options in 01-intake.md, including the listed synonyms (\"ACAT IC\" is `mdap`; \"Milestone B\" is `ms_b`). If a field is not an intake field for the pathway, or a value matches no option, say which ones you could not use and treat those fields as unknown.",
         "",
         "## Pathway finder",
         "",
@@ -252,21 +285,25 @@ def procedure_file():
         "1. Confirm the pathway. If the profile has none, run the pathway finder.",
         "2. Note the next event (`event`). If it is missing, list requirements by event instead of splitting them.",
         "3. Open the pathway's knowledge file. Use only records whose Pathway line names that pathway. The one exception is UCA, which also reviews some MCA rows (see 12-uca.md).",
-        "4. For each record, test its Condition code against the profile. A field the profile does not answer is unknown. `AND` is false if any part is false, and unknown if any part is unknown. `OR` is true if any part is true, and unknown if any part is unknown.",
+        "4. For each record, test its Condition code against the profile. `always` holds for every program on the pathway. A field the profile does not answer is unknown. `AND` is false if any part is false, and unknown if any part is unknown. `OR` is true if any part is true, and unknown if any part is unknown.",
         "5. Assign a status:",
         "   - The condition holds: use the record's \"Status when the condition holds\". Required, May apply, Only if triggered, or Reference rule.",
         "   - The condition is false but the \"May apply instead when\" code holds: May apply.",
-        "   - The condition is unknown: Needs an answer. Name the missing field and ask its question from 01-intake.md.",
-        "   - The condition is false: Not applicable. Give the Applies-when text as the reason.",
-        "6. Work out the type. If the record gives a type rule (Statutory if ..., otherwise ...), apply it to the profile. If its field is unknown, say the type depends on that answer.",
-        "7. Group the Required items:",
-        "   - Due at the next event: the When-due line includes the next event.",
+        "   - The condition, or the \"May apply instead when\" code, is unknown: Needs an answer. Name only the fields that keep it unknown (skip parts of an `OR` that are already false), and ask their questions from 01-intake.md.",
+        "   - Otherwise: Not applicable. Give the Applies-when text as the reason.",
+        "6. Work out the type. If the record gives a type rule (Statutory if ..., otherwise ...), apply it to the profile. If its field is unknown, use the type the record gives for that case, or say the type depends on that answer, and ask the question. A \"Type by event\" rule gives each event its own type: show it beside each event (for example `MS B (update, statutory)`), and give the record the type at the next event when it is due there, otherwise Statutory and regulatory if its events differ.",
+        "7. Group the Required items when a next event is given:",
+        "   - Due at the next event: the When-due line includes the next event."
+        + "".join(f" {p['code']} records due at \"{e['name'].split(' (')[0]}\" are due at every decision point, so they always go here." for p, e in EVERY_EVENTS),
         "   - Due at later events: it includes an event after the next one.",
-        "   - From earlier events: all its events come before the next one. It should already exist; check for updates.",
         "   - Ongoing: no event, such as recurring reports, contract-level items and compliance actions.",
-        "8. Then list, in this order: May apply, Also review (UCA only), Only if triggered, Needs an answer, Reference rules, then Not applicable.",
-        "9. After the lists, add any \"Changed since AAFDID\" notes attached to listed records, and the notes in 20-changes-since-aafdid.md that change the answer.",
-        "10. End with the questions that would settle the Needs-an-answer items, then the caveat below.",
+        "   - As required: its only events are AAFDID's \"Other\" column, not a numbered decision point.",
+        "   - From earlier events: all its numbered events come before the next one (it may also be due at Other). It should already exist; check for updates.",
+        "   Without a next event, list Required items under Due by event (with their events) and Ongoing.",
+        "   When the next event is Other, list the items due at Other first (Due at Other), then the rest under Due by event.",
+        "8. Then list, in this order: May apply, Also review (UCA only, see 12-uca.md), Only if triggered, Needs an answer, Reference rules, then Not applicable.",
+        "9. After the lists, add the questions that would settle more of the list: the ones behind Needs-an-answer items, types that depend on an answer, and for UCA the ACAT question.",
+        "10. Then add the \"Changed since AAFDID\" notes attached to listed records, and the notes in 20-changes-since-aafdid.md that change the answer. Then Not applicable, then the caveat below.",
         "",
         "## Output format",
         "",
@@ -276,20 +313,25 @@ def procedure_file():
         "# AAFDID requirements: <program name>",
         "- Pathway: <name> (<code>), <instruction>",
         "- Next event: <event name, or 'not given; all events listed'>",
-        "- Counts: <n> required, <n> may apply, <n> triggered, <n> need an answer, <n> not applicable",
+        "- Counts: <n> required, <n> may apply, <n> also review, <n> triggered, <n> need an answer, <n> not applicable",
+        "  (leave out \"also review\" when there are none)",
         "",
         "## Due at <event name> (<n>)",
         "| Code | Requirement | Type | When | Approval | Source |",
         "...",
+        "## Due by event (<n>)  (when no next event is given, or the next event is Other)",
         "## Due at later events (<n>)",
         "## Ongoing, contract-level and compliance items (<n>)",
+        "## As required (<n>)",
         "## From earlier events (<n>)",
         "## May apply: check the condition (<n>)",
         "| Code | Requirement | Type | Condition | Source |",
+        "## Also review: MCA entries AAFDID points UCA programs to (<n>)  (UCA only)",
         "## Only if triggered (<n>)",
         "## Needs an answer (<n>)",
         "| Code | Requirement | Missing answer |",
-        "## Questions that would settle the undetermined items",
+        "## Reference rules (<n>)",
+        "## Questions that would settle more of the list",
         "## Changes since AAFDID that affect this list",
         "## Not applicable (<n>)  (list codes and reasons; may be shortened if asked)",
         "",
@@ -308,7 +350,7 @@ def procedure_file():
         "- Never add a requirement that is not a record in the knowledge files. If the user asks about one, say it is not in the AAFDID knowledge files.",
         "- Never treat unknown as no. Unknown means Needs an answer.",
         "- Keep dollar thresholds as written, with their dollar basis. Do not convert them.",
-        "- Cite by code and name, for example `MCA-M05 ACQUISITION PROGRAM BASELINE (APB)`.",
+        f"- Cite by code and name, for example `{CITE_EXAMPLE}`.",
         "- Record codes belong to this rules release. Record ids in the JSON (`rules/aafdid-rules.json`) stay stable across releases.",
         "",
         "## Worked example",
@@ -361,7 +403,7 @@ You help DoW program offices find which AAFDID information requirements apply to
 - 20-changes-since-aafdid.md: changes made after AAFDID's tables were last updated.
 
 ## Conversation
-1. If the user pastes a block starting "AAFDID PROFILE v1", adopt it as the program profile.
+1. If the user pastes a block starting "AAFDID PROFILE v1", adopt it as the program profile. Name any field or value you can't match to 01-intake.md and treat it as unknown.
 2. If the user says "start intake", or asks for requirements without a profile, ask the intake questions for their pathway from 01-intake.md. Ask one question per message, in order, and always allow "not sure". If they don't know the pathway, run the pathway finder first.
 3. When the user says "show profile", print the profile block exactly as 00-procedure.md shows it, and nothing else.
 4. When asked which requirements apply, follow the procedure in 00-procedure.md and use its output format.
@@ -370,7 +412,7 @@ You help DoW program offices find which AAFDID information requirements apply to
 - Test each record's Condition code against the profile. A missing answer is unknown. List that record under "Needs an answer" with the question that settles it. Never guess, and never treat unknown as no.
 - Keep AAFDID's own words for names, types, sources, approval authorities and notes. Quote notes when asked for detail.
 - Statutory items cannot be tailored unless the statute allows a waiver. The decision authority may tailor regulatory items. If the source does not state something, say "source does not state".
-- Cite each requirement by code and name, for example "MCA-M05 ACQUISITION PROGRAM BASELINE (APB)".
+- Cite each requirement by code and name, for example "{CITE_EXAMPLE}".
 - Point out every "Changed since AAFDID" note that is attached to a listed record.
 - End every requirements answer with: "{DISCLAIMER}"
 - If a question is outside the knowledge files, say "Not in the AAFDID knowledge files" and name the source to check.
@@ -389,18 +431,17 @@ def tests_file():
          "1. Start a new chat.",
          "2. Paste the profile block.",
          "3. Ask: \"Which requirements apply?\"",
-         "4. Score the answer. It should list every code in the Required and May-apply lines, and none of the codes in the Must-not-list line.",
+         "4. Score the answer. It should list every code in the Required, May-apply and Also-review lines, and none of the codes in the Must-not-list line.",
          "",
          "For a fuller comparison, run the same profile through the web navigator or the engine: `node engine/cli.js <profile>`.",
          "",
          "Also check that `TAILCHECK` returns `TAIL-OK-AAFDID-NAV-1` exactly. If it doesn't, the instructions were cut off.",
          ""]
+    engine_only = {"28-bom-odd-json"}  # JSON-encoding quirks that only the engines see
     for f in sorted((ROOT / "tests" / "scenarios").iterdir()):
-        text = f.read_text()
-        try:
-            inp = json.loads(text)
-        except ValueError:
-            inp = A.parse_profile_block(text)
+        if f.stem in engine_only:
+            continue
+        inp = A.parse_input(f.read_bytes().decode("utf-8", errors="replace"))
         res = A.evaluate(B, inp)
         if not res["pathway"]:
             continue
@@ -410,19 +451,28 @@ def tests_file():
         L.append(f"## {f.stem}")
         L.append("")
         L.append("```")
-        L.append(A.to_profile_block(B, inp))
+        if res["unrecognized"]:
+            # Give the agent the raw answers, so the test checks that it flags what it cannot use.
+            L.append(A.BLOCK_HEADER)
+            L += [f"{k}: {A.format_value({'type': 'boolean'} if isinstance(v, bool) else {}, v)}" for k, v in inp.items()]
+        else:
+            L.append(A.to_profile_block(B, inp))
         L.append("```")
         L.append("")
         if res["focus_event"]:
             at = [it["code"] for it in res["items"] if it["group"] == "at_focus"]
             L.append(f"- Due at {res['focus_event']['name']} ({len(at)}): {', '.join(at) or 'none'}")
-        for st, word in (("required", "Required"), ("conditional", "May apply"), ("triggered", "Only if triggered"), ("undetermined", "Needs an answer")):
+        for st, word in (("required", "Required"), ("conditional", "May apply"), ("review", "Also review"), ("triggered", "Only if triggered"), ("undetermined", "Needs an answer")):
+            if st == "review" and not by.get(st):
+                continue
             codes = by.get(st, [])
             L.append(f"- {word} ({len(codes)}): {', '.join(codes) if codes else 'none'}")
         if res["questions_needed"]:
             L.append(f"- Questions to ask: {', '.join(q['id'] for q in res['questions_needed'])}")
         na = by.get("not_applicable", [])
-        L.append(f"- Must not list as required or may apply ({len(na)}): {', '.join(na) if na else 'none'}")
+        L.append(f"- Must not list as required, may apply or also review ({len(na)}): {', '.join(na) if na else 'none'}")
+        if res["unrecognized"]:
+            L.append("- The agent should say it could not use: " + "; ".join(f"{u['field']} = {u['value']} ({u['reason']})" for u in res["unrecognized"]))
         sc = res["derived"].get("services_category")
         if sc:
             L.append(f"- Services category: {sc['label']}; decision authority: {sc['decision_authority']}")

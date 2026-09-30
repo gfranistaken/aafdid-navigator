@@ -10,6 +10,74 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Note: AAFDID prints the Limited and Full Deployment ATPs under the Functional Requirements and Acquisition Planning phase. This tool keeps AAFDID's wording.
 - AAFDID page: https://www.waru.edu/aafdid/dbs
 
+## Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs
+
+### CSDR-01 · Contractor Business Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: ACAT I and II programs and IS programs (including DBS) whose contractor business unit holds CSDR contracts expected to exceed $250M then-year. Not for business units whose only CSDR contracts are MTA contracts.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii}) OR pathway = dbs`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Required for contractor business entities (e.g., plant, site, or business unit) responsible for contracts or subcontracts with CSDR requirements that are expected to exceed $250 million, then-year dollars. Not required for business units based solely on CSDR requirement Middle Tier Acquisition Program contracts.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-02 · Contractor Cost Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: Required (contract-level).
+- Applies when: ACAT I and II programs: contracts over $50M, or $20M to $50M at the CSDR plan authority's discretion. MTA programs over $100M: contracts over $20M. IS programs over $100M, including DBS: contracts over $50M. All then-year dollars.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = mta AND mta_size is one of {major, exceeds_mdap} AND contract_value > 20,000,000)`
+- May apply instead when: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000 AND contract_value <= 50,000,000) OR (pathway = mta AND mta_size = non_major AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Acat i ii programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including FMS and programs in sustainment, regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for current and former ACAT I – II programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Information system programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Middle tier acquisition programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. Other programs gt 100m: May be required at the discretion of the CSDR approval authority for all high interest or high-risk contracts, subcontracts, or government-performed efforts. Not required: Contracts on programs with anticipated acquisition expenditures less than $100 million, then-year dollars. Contracts priced below $20 million, then-year dollars. PM requests and obtains approval from the DDCA for a reporting waiver (e.g., procurement of commercial systems).
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-03 · Maintenance and Repair Parts Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: Sustainment contracts over $50M for ACAT I and II programs and IS programs over $100M, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = dbs AND contract_value > 50,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: All sustainment contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed ACAT I-II level thresholds and IS programs that are anticipated to exceed $100 million, then-year dollars, when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-05 · Software Resources Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: Software development, production or maintenance efforts over $20M then-year for ACAT I and II programs, IS programs over $100M (including DBS) and MTA programs over $100M.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000) OR (pathway = mta AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Development and erp efforts: All contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for developing and/or producing software valued at more than $20 million, then-year dollars, for: Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest software efforts estimated below $20 million, then-year dollars, as determined by the CSDR plan approval authority, if the overall effort inclusive of non-software efforts exceeds $20 million, then-year dollars. Maintenance efforts: For all contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for: Programs with previous SRDR development or enterprise resource planning requirements or software maintenance efforts of more than $20 million, then-year dollars. Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-06 · Technical Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: Contracts over $50M for ACAT I and II programs and IS programs over $100M, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = dbs AND contract_value > 50,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: All contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed the ACAT I and II level threshold and IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
 ## DBS Statutory Requirements
 
 ### DBS-01 · Business Enterprise Architecture
@@ -48,7 +116,7 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 ### DBS-04 · CMO Certification
 
 - Pathway: DBS (Defense Business Systems). Table: DBS Statutory Requirements.
-- Status when the condition holds: Required.
+- Status when the condition holds: May apply.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Acquisition ATP (initial)
@@ -204,9 +272,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued < $20M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: Requires business case analysis and MDA approval.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -217,9 +286,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $20M &<$100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Government reserves the right to review a contractor’s EVMS when deemed necessary to verify compliance.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -230,9 +300,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Contractor will provide access to all pertinent records and data requested by the Contracting Officer or duly authorized representative as necessary to permit initial and ongoing Government compliance reviews to ensure that the EVMS complies, and continues to comply, with the guidelines in EIA-748.*
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -243,9 +314,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Contracts under $20M: not required. The PMO may request IPMDAR cost or schedule reporting.
 - Condition code: `contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: Integrated Program Management Data and Analysis Report (IPMDAR) may be used if cost and/or schedule reporting is requested by the program management office.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -256,9 +328,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($20M to under $100M).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: All IPMDAR datasets/files must be included in the CDRL. Tailoring in accordance with DI-MGMT-81861 and Implementation Guide is allowed.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -269,8 +342,9 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($100M or more).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: IPMDAR is required. All files are required.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements

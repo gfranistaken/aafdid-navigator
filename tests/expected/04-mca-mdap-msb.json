@@ -2,29 +2,33 @@
  "profile": {
   "program": "Next-gen radar (example)",
   "pathway": "mca",
-  "event": "ms_b",
   "mca_program_type": "mdap",
   "it_type": "it_system",
   "contract_value": 600000000,
-  "contract_cost_type": true
+  "contract_cost_type": true,
+  "event": "ms_b"
  },
  "pathway": "mca",
  "focus_event": "ms_b",
  "counts": {
-  "required": 98,
+  "required": 96,
   "conditional": 4,
-  "triggered": 25,
-  "undetermined": 0,
+  "review": 0,
+  "triggered": 22,
+  "undetermined": 5,
   "reference": 4,
   "not_applicable": 4
  },
  "derived": {},
- "questions_needed": [],
+ "questions_needed": [
+  "dote_oversight"
+ ],
  "currency_notes": [
   "thresholds-2025",
   "jcids-2025",
   "evms-2026"
  ],
+ "unrecognized": [],
  "items": [
   [
    "MCA-M05",
@@ -54,7 +58,7 @@
    "MCA-M07",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M12",
@@ -72,7 +76,7 @@
    "MCA-M15",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M18",
@@ -132,13 +136,13 @@
    "MCA-M39",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M43",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M44",
@@ -174,7 +178,7 @@
    "MCA-M52",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M53",
@@ -198,7 +202,7 @@
    "MCA-M62",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M65",
@@ -258,13 +262,13 @@
    "MCA-M06",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M11",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M17",
@@ -288,7 +292,7 @@
    "MCA-M48",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M64",
@@ -360,7 +364,7 @@
    "MCA-M09",
    "required",
    "later",
-   "statutory"
+   "both"
   ],
   [
    "MCA-M14",
@@ -411,18 +415,6 @@
    "statutory"
   ],
   [
-   "MCA-M28",
-   "required",
-   "later",
-   "regulatory"
-  ],
-  [
-   "MCA-M29",
-   "required",
-   "later",
-   "statutory"
-  ],
-  [
    "MCA-M41",
    "required",
    "later",
@@ -445,6 +437,18 @@
    "required",
    "later",
    "both"
+  ],
+  [
+   "CSDR-02",
+   "required",
+   "ongoing",
+   "regulatory"
+  ],
+  [
+   "CSDR-04",
+   "required",
+   "ongoing",
+   "regulatory"
   ],
   [
    "EVM-03",
@@ -525,18 +529,6 @@
    "statutory"
   ],
   [
-   "MCA-D02",
-   "required",
-   "ongoing",
-   "regulatory"
-  ],
-  [
-   "MCA-D04",
-   "required",
-   "ongoing",
-   "regulatory"
-  ],
-  [
    "MCA-R01",
    "required",
    "ongoing",
@@ -615,25 +607,25 @@
    "regulatory"
   ],
   [
-   "MCA-D01",
+   "CSDR-01",
    "conditional",
    "conditional",
    "regulatory"
   ],
   [
-   "MCA-D03",
+   "CSDR-03",
    "conditional",
    "conditional",
    "regulatory"
   ],
   [
-   "MCA-D05",
+   "CSDR-05",
    "conditional",
    "conditional",
    "regulatory"
   ],
   [
-   "MCA-D06",
+   "CSDR-06",
    "conditional",
    "conditional",
    "regulatory"
@@ -652,12 +644,6 @@
   ],
   [
    "MCA-N03",
-   "triggered",
-   "triggered",
-   "statutory"
-  ],
-  [
-   "MCA-X01",
    "triggered",
    "triggered",
    "statutory"
@@ -747,12 +733,6 @@
    "statutory"
   ],
   [
-   "MCA-X16",
-   "triggered",
-   "triggered",
-   "statutory"
-  ],
-  [
    "MCA-X17",
    "triggered",
    "triggered",
@@ -783,9 +763,33 @@
    "statutory"
   ],
   [
+   "MCA-M28",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "MCA-M29",
+   "undetermined",
+   "undetermined",
+   "statutory"
+  ],
+  [
+   "MCA-X01",
+   "undetermined",
+   "undetermined",
+   "statutory"
+  ],
+  [
+   "MCA-X16",
+   "undetermined",
+   "undetermined",
+   "statutory"
+  ],
+  [
    "MCA-X22",
-   "triggered",
-   "triggered",
+   "undetermined",
+   "undetermined",
    "statutory"
   ],
   [

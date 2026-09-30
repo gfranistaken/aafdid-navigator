@@ -2,17 +2,18 @@
  "profile": {
   "program": "Logistics business system (example)",
   "pathway": "dbs",
-  "event": "acquisition_atp",
   "mission_critical_it": true,
   "dote_oversight": false,
   "contract_value": 80000000,
-  "contract_cost_type": true
+  "contract_cost_type": true,
+  "event": "acquisition_atp"
  },
  "pathway": "dbs",
  "focus_event": "acquisition_atp",
  "counts": {
-  "required": 15,
-  "conditional": 0,
+  "required": 14,
+  "conditional": 6,
+  "review": 0,
   "triggered": 0,
   "undetermined": 0,
   "reference": 0,
@@ -24,13 +25,8 @@
   "evms-2026",
   "cmo-2021"
  ],
+ "unrecognized": [],
  "items": [
-  [
-   "DBS-04",
-   "required",
-   "at_focus",
-   "statutory"
-  ],
   [
    "DBS-05",
    "required",
@@ -114,6 +110,42 @@
    "required",
    "earlier",
    "statutory"
+  ],
+  [
+   "DBS-04",
+   "conditional",
+   "conditional",
+   "statutory"
+  ],
+  [
+   "CSDR-01",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-02",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-03",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-05",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-06",
+   "conditional",
+   "conditional",
+   "regulatory"
   ],
   [
    "DBS-14",

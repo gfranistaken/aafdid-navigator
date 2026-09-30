@@ -5,7 +5,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Governing instruction: DoDI 5000.87; 10 U.S.C. 3603
 - Summary: Application and embedded software paths with a planning phase and an execution phase of iterative releases. Programs are not treated as MDAPs, and viability must be shown within 1 year of first obligating funds.
 - Decision authority: The component acquisition executive unless USD(A&S) designates a special interest program or delegates otherwise (DoDI 5000.87, para 2.7.c).
-- Events, in order: `planning` = Entering the planning phase; `execution_entry` = Entering the execution phase; `execution` = During the execution phase; `each_decision` = Each decision point
+- Events, in order: `planning` = Entering the planning phase; `execution_entry` = Entering the execution phase; `execution` = During the execution phase; `each_decision` = Each decision point (due at every one) (not a next event)
 - Note: AAFDID calls its SWA table a draft first pass at statute tied to DoDI 5000.87. It does not separate application and embedded programs.
 - AAFDID page: https://www.waru.edu/aafdid/swa
 
@@ -17,7 +17,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
-- When due: Each decision point (initial)
+- When due: Each decision point (due at every one) (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.83
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
@@ -51,7 +51,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Entering the execution phase (initial)
-- Type: Statutory if `swa_above_acat_ii = yes`, otherwise Regulatory. AAFDID TYPE: Statutory for major programs (> ACAT II) Regulatory for others
+- Type: Statutory if `swa_above_acat_ii = yes`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory for major programs (> ACAT II) Regulatory for others
 - Source: 10 USC 4211 {formerly 2431a} DoDI 5000.87
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
@@ -62,7 +62,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Entering the execution phase (initial)
-- Type: Statutory if `swa_above_acat_ii = yes`, otherwise Regulatory. AAFDID TYPE: Statutory for programs (> ACAT II) Regulatory for Others
+- Type: Statutory if `swa_above_acat_ii = yes`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory for programs (> ACAT II) Regulatory for Others
 - Source: §1047, P.L. 110-417
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
@@ -106,7 +106,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Entering the execution phase (initial)
-- Type: Statutory if `mission_critical_it = yes`, otherwise Regulatory. AAFDID TYPE: Statutory for Mission Critical and Mission Essential IT programs, Regulatory for others
+- Type: Statutory if `mission_critical_it = yes`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory for Mission Critical and Mission Essential IT programs, Regulatory for others
 - Source: 40 USC 11313, DoDI 5000.87, DoDI 8500.01, DoDI 5000.82
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
@@ -162,8 +162,8 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Condition code: `always (every program on this pathway)`
 - When due: Entering the execution phase (initial)
 - Type: Regulatory. AAFDID TYPE: CAPE ICE for programs > ACAT II unless delegated
-- Approval: CAPE prepares the ICE above ACAT II unless it delegates
 - Source: DoDI 5000.87 DoDI 5000.73
+- Tool note: AAFDID's TYPE cell reads 'CAPE ICE for programs > ACAT II unless delegated'. This tool classifies the row as regulatory (DoDI 5000.87, 5000.73).
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
 ### SWA-15 · Test Strategy (may be part of Acquisition Strategy)
@@ -258,10 +258,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: SWA (Software Acquisition). Table: Application and Embedded Software Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: When it is on the DOT&E oversight list.
-- Condition code: `dote_oversight = yes`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: During the execution phase (initial)
-- Type: Statutory. AAFDID TYPE: Statutory for programs on the DOT&E Oversight List
+- Type: Statutory if `dote_oversight = yes`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory for programs on the DOT&E Oversight List
 - Source: 10 USC 4171 {formerly 2399}
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
@@ -395,9 +395,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy (Business Strategy section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C02 · CCA: Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS programs, conduct a life-cycle cost estimate.
@@ -407,9 +408,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Component Cost Estimate, Component Cost Position.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C03 · CCA: Determination that the acquisition supports core, priority functions of the DoD.
@@ -419,9 +421,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Capability Needs Statement (Capabilities section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C04 · CCA: Determine that no private sector or government source can better support the function
@@ -431,9 +434,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C05 · CCA: Develop clearly established measures and accountability for program progress.
@@ -443,9 +447,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy (Program Metrics, Value Assessment).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C06 · CCA: Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, to include relevant standards.
@@ -455,9 +460,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: System Architecture.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C07 · CCA: Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant standards.
@@ -467,9 +473,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Cybersecurity Strategy.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C08 · CCA: Ensure, to the maximum extent practicable, (1) modular contracting has been used, and (2) the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent of....
@@ -479,9 +486,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy (Contracting Strategy section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C09 · CCA: Establish outcome-based performance measures linked to strategic goals
@@ -491,9 +499,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Capability Needs Statement (Performance Attributes section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C10 · CCA: Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of commercial off-the-shelf technology.
@@ -503,9 +512,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Capability Needs Statement (Program Summary section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C11 · CCA: Register Mission-Critical and Mission-Essential systems with the DoD CIO.
@@ -515,9 +525,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: DoD Information Technology Portfolio Repository.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ## EVMS Application and Reporting Requirements (AAFDID: not specific to any one pathway)
@@ -529,9 +540,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued < $20M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: Requires business case analysis and MDA approval.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -542,9 +554,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $20M &<$100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Government reserves the right to review a contractor’s EVMS when deemed necessary to verify compliance.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -555,9 +568,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Contractor will provide access to all pertinent records and data requested by the Contracting Officer or duly authorized representative as necessary to permit initial and ongoing Government compliance reviews to ensure that the EVMS complies, and continues to comply, with the guidelines in EIA-748.*
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -568,9 +582,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Contracts under $20M: not required. The PMO may request IPMDAR cost or schedule reporting.
 - Condition code: `contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: Integrated Program Management Data and Analysis Report (IPMDAR) may be used if cost and/or schedule reporting is requested by the program management office.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -581,9 +596,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($20M to under $100M).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: All IPMDAR datasets/files must be included in the CDRL. Tailoring in accordance with DI-MGMT-81861 and Implementation Guide is allowed.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -594,8 +610,9 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($100M or more).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: IPMDAR is required. All files are required.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements

@@ -1,6 +1,6 @@
-# AOS requirements: Acquisition of Services
+# AoS requirements: Acquisition of Services
 
-Knowledge file 15 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the AOS pathway only.
+Knowledge file 15 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the AoS pathway only.
 
 - Governing instruction: DoDI 5000.74 (Change 1, June 2021)
 - Summary: Services at or above the simplified acquisition threshold, managed in three phases (Plan, Develop, Execute) and seven steps. The services category (S-CAT) sets the decision authority.
@@ -27,7 +27,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-01 · Independent Government Cost Estimate (IGCE)
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -40,7 +40,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-02 · Functional Services Manager (FSM) designation and multi-functional team
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -53,7 +53,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-03 · Market research, documented
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -66,7 +66,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-04 · Requirement cost analysis
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -79,7 +79,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-05 · Services Requirements Review Board (SRRB) validation and approval
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Total estimated value of $10M or more. For IDIQs, the base contract and any task order of $10M or more.
 - Condition code: `svc_total_value >= 10,000,000`
@@ -92,7 +92,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-06 · Workforce analysis: insource or outsource
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Reviewed at the SRRB: total estimated value of $10M or more.
 - Condition code: `svc_total_value >= 10,000,000`
@@ -105,20 +105,20 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-07 · Review and justification of critical functions and functions closely associated with inherently governmental functions
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Contractors will perform critical functions or functions closely associated with inherently governmental functions.
 - Condition code: `svc_sensitive_functions = yes`
 - When due: Develop: define requirements, SRRB, acquisition strategy (initial)
 - Type: Statutory. AAFDID TYPE: Statutory
 - Approval: Not stated
-- Source: DoDI 5000.74, paras 1.2.c and 4.3.g(8); 10 U.S.C. 2330a(e) as cited; FAR 7.503(e); DFARS 207.503
+- Source: DoDI 5000.74, paras 1.2.c and 4.3.g(8); 10 U.S.C. 2330a(e) as cited (now 10 U.S.C. 4505, per AAFDID's Title 10 crosswalk); FAR 7.503(e); DFARS 207.503
 - AAFDID note: Reliance on contractors for these functions must be reviewed, justified, and reduced to the maximum extent practicable.
 - Page: https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/500074p.pdf
 
 ### AOS-08 · Services Acquisition Workshop (SAW)
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Total value of $500M or more, or $250M or more in a year. For a multiple-award IDIQ, not the base award, but any task order of $100M or more.
 - Condition code: `(svc_vehicle = standalone AND (svc_total_value >= 500,000,000 OR svc_annual_value >= 250,000,000)) OR (svc_vehicle = task_order AND svc_total_value >= 100,000,000)`
@@ -131,7 +131,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-09 · Business case analysis for requirements that overlap existing vehicles
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: $50M or more, with potential significant overlap with an existing contract, a DoD or government-wide vehicle, or a best-in-class contract.
 - Condition code: `svc_total_value >= 50,000,000 AND svc_overlap = yes`
@@ -143,7 +143,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-10 · Acquisition strategy as a written acquisition plan
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Total cost of all contracts of $50M or more, or $25M or more in any fiscal year (DFARS 207.103(d)(i)(B)).
 - Condition code: `svc_total_value >= 50,000,000 OR svc_annual_value >= 25,000,000`
@@ -156,7 +156,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-11 · Acquisition strategy in streamlined documentation
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Below the written acquisition plan threshold: under $50M total and under $25M in every fiscal year.
 - Condition code: `svc_total_value < 50,000,000 AND svc_annual_value < 25,000,000`
@@ -169,7 +169,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-12 · Small business participation opportunities
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -182,7 +182,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-13 · Performance-based approach and contract type rationale
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -195,7 +195,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-14 · Intellectual property management mechanisms
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -208,7 +208,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-15 · Rationale and authority for other than full and open competition
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: May apply.
 - Applies when: Only if other than full and open competition is planned.
 - Condition code: `always (every program on this pathway)`
@@ -220,7 +220,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-16 · Consolidation or bundling summary, coordinated with the Office of Small Business Programs
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: May apply.
 - Applies when: Only if the requirement is consolidated or bundled.
 - Condition code: `always (every program on this pathway)`
@@ -232,7 +232,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-17 · Contract line items with Product or Service Codes
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -245,7 +245,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-18 · Performance management metrics
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -258,7 +258,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-19 · FSM cost and metrics tracking, with deviation notice
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -271,7 +271,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-20 · Trained and qualified contracting officer's representative (COR)
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -283,7 +283,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-21 · SRRB validation before exercising an option
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Acquisitions under SRRB review: $10M or more.
 - Condition code: `svc_total_value >= 10,000,000`
@@ -295,7 +295,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-22 · Independent management reviews (post-award)
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Post-award contracts with a total value of $100M or more, and others the component chooses.
 - Condition code: `svc_total_value >= 100,000,000`
@@ -308,7 +308,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-23 · Review of contracts where a contractor oversees other contractors
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: May apply.
 - Applies when: Only if one contractor oversees services performed by other contractors.
 - Condition code: `always (every program on this pathway)`
@@ -321,7 +321,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-24 · Bridge contract status update and notifications
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Only if triggered.
 - Applies when: A bridge contract is used because of inadequate planning, as the S-CAT decision authority determines. Contingency, humanitarian and disaster-response actions are excluded.
 - Condition code: `always (every program on this pathway)`

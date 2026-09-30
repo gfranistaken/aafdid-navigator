@@ -10,7 +10,7 @@ The FY2026 NDAA (Pub. L. 119-60, sec. 1804) raised the statutory MDAP threshold 
 
 - Source: 10 U.S.C. 4201 (MDAP definition): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section4201&num=0&edition=prelim
 - Source: 10 U.S.C. 3041 (major system definition): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section3041&num=0&edition=prelim
-- Attached to: MTA-O07
+- Attached to: MTA-T07
 - Also matters for the intake questions: mca_program_type, mta_size, swa_above_acat_ii, uca_acat
 
 ## jcids-2025: JCIDS disestablished (2025-08-20)
@@ -27,11 +27,12 @@ The November 7, 2025 memo renamed the Defense Acquisition System the Warfighting
 
 - Source: Memo, Transforming the Defense Acquisition System into the Warfighting Acquisition System, Nov 7, 2025: https://static.carahsoft.com/concrete/files/4917/6702/9385/Memorandum_Transforming_the_Defense_Acquisition_System_into_the_Warfighting_Acquisition_System.pdf
 
-## evms-2026: EVMS thresholds changed by class deviation (2026)
+## evms-2026: EVMS thresholds changed by class deviation (2026-02-01)
 
-DFARS Class Deviation 2026-O0011 (DFARS 234.201) sets $50M as the threshold for an EIA-748-compliant EVMS and $100M for a Government-validated EVMS on cost and incentive contracts. EVMS on a firm-fixed-price contract needs a waiver. AAFDID still shows $20M and $100M. Confirm the thresholds on contract with your contracting officer.
+DFARS Class Deviation 2026-O0011 (DFARS 234.201, clauses 252.234-7998 and -7999), effective February 1, 2026, sets $50M as the threshold for an EIA-748-compliant EVMS and $100M for a Government-validated EVMS on cost and incentive contracts. EVMS on a firm-fixed-price contract needs a waiver. AAFDID still shows $20M and $100M. Confirm the thresholds on contract with your contracting officer.
 
-- Source: DoD class deviations (DPCAP): https://www.acq.osd.mil/dpap/dars/class_deviations.html
+- Source: Class Deviation 2026-O0011 memo (DPCAP): https://www.acq.osd.mil/dpap/dars/classdev/DFARS_RFO/Part-234/2026-O0011_TAB_A_Deviation_Memo_DFARS_234.pdf
+- Source: Humphreys & Associates: EVMS thresholds class deviation memo: https://www.humphreys-assoc.com/earned-value-management-system-thresholds-class-deviation-memo/
 - Attached to: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
 
 ## mta-change1-2024: DoDI 5000.80 Change 1 and 10 U.S.C. 3602 (2024-11-25)
@@ -48,7 +49,7 @@ DoDI 5000.80 Change 1 changed several MTA rules:
 
 - Source: DoDI 5000.80 Original vs Change 1 briefing (Feb 2025): https://www.waru.edu/sites/default/files/2025-02/DODI%205000_80%20Original%20vs%20Change1%20Webinar%20202502%20no%20notes.pdf
 - Source: 10 U.S.C. 3602: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section3602&num=0&edition=prelim
-- Attached to: MTA-O01, MTA-O03, MTA-O11, MTA-S01, MTA-S02, MTA-S10, MTA-S17, MTA-S18
+- Attached to: MTA-S01, MTA-S02, MTA-S10, MTA-S17, MTA-S18, MTA-T01, MTA-T03, MTA-T11
 
 ## cmo-2021: Chief Management Officer repealed (2021-01-01)
 

@@ -1,0 +1,182 @@
+{
+ "profile": {
+  "program": "Services block pasted from a chat (example)",
+  "pathway": "aos",
+  "svc_total_value": 1500000000,
+  "svc_vehicle": "idiq_base",
+  "event": "execute"
+ },
+ "pathway": "aos",
+ "focus_event": "execute",
+ "counts": {
+  "required": 16,
+  "conditional": 3,
+  "review": 0,
+  "triggered": 1,
+  "undetermined": 2,
+  "reference": 0,
+  "not_applicable": 2
+ },
+ "derived": {
+  "services_category": {
+   "id": "I",
+   "label": "S-CAT I",
+   "rule": "$1B or more total, or more than $300M in any one year",
+   "decision_authority": "Service or component acquisition executive, or designee",
+   "note": "Unless ASD(A) designates it Special Interest.",
+   "cite": "DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current-year dollars (Table 1, note 1)"
+  }
+ },
+ "questions_needed": [
+  "svc_overlap",
+  "svc_sensitive_functions"
+ ],
+ "currency_notes": [],
+ "unrecognized": [],
+ "items": [
+  [
+   "AOS-17",
+   "required",
+   "at_focus",
+   "regulatory"
+  ],
+  [
+   "AOS-18",
+   "required",
+   "at_focus",
+   "regulatory"
+  ],
+  [
+   "AOS-19",
+   "required",
+   "at_focus",
+   "regulatory"
+  ],
+  [
+   "AOS-20",
+   "required",
+   "at_focus",
+   "regulatory"
+  ],
+  [
+   "AOS-21",
+   "required",
+   "at_focus",
+   "regulatory"
+  ],
+  [
+   "AOS-22",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "AOS-01",
+   "required",
+   "earlier",
+   "regulatory"
+  ],
+  [
+   "AOS-02",
+   "required",
+   "earlier",
+   "regulatory"
+  ],
+  [
+   "AOS-03",
+   "required",
+   "earlier",
+   "regulatory"
+  ],
+  [
+   "AOS-04",
+   "required",
+   "earlier",
+   "regulatory"
+  ],
+  [
+   "AOS-05",
+   "required",
+   "earlier",
+   "both"
+  ],
+  [
+   "AOS-06",
+   "required",
+   "earlier",
+   "regulatory"
+  ],
+  [
+   "AOS-10",
+   "required",
+   "earlier",
+   "regulatory"
+  ],
+  [
+   "AOS-12",
+   "required",
+   "earlier",
+   "regulatory"
+  ],
+  [
+   "AOS-13",
+   "required",
+   "earlier",
+   "regulatory"
+  ],
+  [
+   "AOS-14",
+   "required",
+   "earlier",
+   "regulatory"
+  ],
+  [
+   "AOS-15",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "AOS-16",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "AOS-23",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "AOS-24",
+   "triggered",
+   "triggered",
+   "statutory"
+  ],
+  [
+   "AOS-07",
+   "undetermined",
+   "undetermined",
+   "statutory"
+  ],
+  [
+   "AOS-09",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "AOS-08",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "AOS-11",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ]
+ ]
+}

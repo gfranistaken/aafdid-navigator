@@ -2,22 +2,22 @@
  "profile": {
   "program": "F3 replacement power supply (example)",
   "pathway": "mta",
-  "event": "entrance",
   "mta_path": "rf",
   "mta_size": "non_major",
-  "international": false,
   "contract_value": 45000000,
-  "contract_cost_type": false
+  "contract_cost_type": false,
+  "event": "entrance"
  },
  "pathway": "mta",
  "focus_event": "entrance",
  "counts": {
   "required": 6,
-  "conditional": 19,
+  "conditional": 23,
+  "review": 0,
   "triggered": 0,
   "undetermined": 0,
   "reference": 0,
-  "not_applicable": 25
+  "not_applicable": 23
  },
  "derived": {},
  "questions_needed": [],
@@ -25,41 +25,54 @@
   "thresholds-2025",
   "mta-change1-2024"
  ],
+ "unrecognized": [],
  "items": [
   [
-   "MTA-O02",
+   "MTA-T02",
    "required",
    "at_focus",
    "regulatory"
   ],
   [
-   "MTA-O05",
+   "MTA-T05",
    "required",
    "at_focus",
    "regulatory"
   ],
   [
-   "MTA-O08",
+   "MTA-T08",
    "required",
    "later",
    "regulatory"
   ],
   [
-   "MTA-O09",
+   "MTA-T09",
    "required",
    "later",
    "regulatory"
   ],
   [
-   "MTA-O10",
+   "MTA-T10",
    "required",
    "later",
    "regulatory"
   ],
   [
-   "MTA-O11",
+   "MTA-T11",
    "required",
    "later",
+   "regulatory"
+  ],
+  [
+   "CSDR-02",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-05",
+   "conditional",
+   "conditional",
    "regulatory"
   ],
   [
@@ -69,10 +82,22 @@
    "regulatory"
   ],
   [
+   "MTA-S02",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
    "MTA-S09",
    "conditional",
    "conditional",
    "both"
+  ],
+  [
+   "MTA-S10",
+   "conditional",
+   "conditional",
+   "regulatory"
   ],
   [
    "MTA-S15",
@@ -177,31 +202,31 @@
    "regulatory"
   ],
   [
-   "MTA-O01",
+   "MTA-T01",
    "not_applicable",
    "not_applicable",
    "regulatory"
   ],
   [
-   "MTA-O03",
+   "MTA-T03",
    "not_applicable",
    "not_applicable",
    "regulatory"
   ],
   [
-   "MTA-O04",
+   "MTA-T04",
    "not_applicable",
    "not_applicable",
    "regulatory"
   ],
   [
-   "MTA-O06",
+   "MTA-T06",
    "not_applicable",
    "not_applicable",
    "regulatory"
   ],
   [
-   "MTA-O07",
+   "MTA-T07",
    "not_applicable",
    "not_applicable",
    "regulatory"
@@ -243,12 +268,6 @@
    "regulatory"
   ],
   [
-   "MTA-S02",
-   "not_applicable",
-   "not_applicable",
-   "both"
-  ],
-  [
    "MTA-S03",
    "not_applicable",
    "not_applicable",
@@ -283,12 +302,6 @@
    "not_applicable",
    "not_applicable",
    "both"
-  ],
-  [
-   "MTA-S10",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
   ],
   [
    "MTA-S11",

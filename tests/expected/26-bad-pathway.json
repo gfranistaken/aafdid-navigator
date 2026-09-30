@@ -1,0 +1,26 @@
+{
+ "profile": {
+  "program": "Pathway typo (example)"
+ },
+ "pathway": null,
+ "focus_event": null,
+ "counts": {},
+ "derived": {},
+ "questions_needed": [
+  "pathway"
+ ],
+ "currency_notes": [],
+ "unrecognized": [
+  {
+   "field": "pathway",
+   "value": "MCAA",
+   "reason": "value not recognized"
+  },
+  {
+   "field": "event",
+   "value": "MS B",
+   "reason": "pathway missing"
+  }
+ ],
+ "items": []
+}

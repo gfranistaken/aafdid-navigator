@@ -161,7 +161,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for MDAPs and major systems.",
    "notes": "STATUTORY for MDAPs and major systems. Describe the top-level business and technical management approach in sufficient detail to allow the MDA to assess (1) the viability of the approach; (2) the method of implementing laws and policies; and (3) program objectives. Provide a clear explanation of how the strategy is designed to be implemented within the available resources of time, funding, and management capacity. Discuss the tailoring that will address program requirements and constraints. Where appropriate, the strategy should consider the delivery of required capability in increments, each dependent on available, mature technology, and recognizing up front the need for future capability improvements. 10 U.S.C. 4211 explicitly requires the Acquisition Approach to address industrial base considerations in accordance with 10 U.S.C. 4820.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -169,6 +169,17 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap",
+      "acat_ii"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
    },
    "note_has_conditions": false,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -283,7 +294,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for MDAPs at Milestones B and C and the FRP decision; Regulatory at all other combinations.",
    "notes": "STATUTORY for MDAPs at Milestones B and C and the FRP decision; a Regulatory requirement at all other Program Type/Event combinations, including the required draft at Development RFP Release. For the APB, the draft due at RFP Release does not require CAE approval. The APB is not approved by the MDA until Milestone B. See the introductory text for the Acquisition Program Baselines Table and the Statutory Program Breach Definitions Table for reporting requirements at other than the identified decision points.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -291,6 +302,22 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory",
+    "unknown": "both",
+    "events": [
+     "ms_b",
+     "ms_c",
+     "frp_dec"
+    ]
    },
    "note_has_conditions": false,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -340,7 +367,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for MDAPs and major systems; Regulatory for other programs.",
    "notes": "STATUTORY for MDAPs and major systems (including AIS programs that exceed the dollar thresholds for a \"major system,\" as identified in DoDI 5000.85, Appendix 3A); Regulatory for other programs. 10 U.S.C. 4211 provides a comprehensive/detailed list of required strategy content; required content may be extended with regulatory requirements. Major changes to the program planning reflected in the Acquisition Strategy require MDA approval. 1. If the MDA revises the strategy for an MDAP or major defense subprogram because of a significant or critical change to the cost of the program or system, or a significant change to the schedule or performance of the program or system, the MDA must notify the congressional defense committees consistent with the Exceptions, Waivers, and Alternative Management and Reporting Requirements Table. 2. The MDA must review and re-approve the strategy upon a significant change to the schedule or performance of the program (or system), or if there has been a significant or critical change to the cost of the program (or system). 3. The strategy may also be reviewed and approved at any other time considered relevant by the MDA. A summary of the Product Support Strategy in the Acquisition Strategy is a regulatory requirement for all programs at all milestones and the FRP decision. Many of the acquisition strategy information requirements have a respective entry in this Table.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -348,6 +375,17 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap",
+      "acat_ii"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
    },
    "note_has_conditions": true,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -454,7 +492,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for MDAPs at Milestone A through Milestone B.",
    "notes": "STATUTORY for MDAPs at Milestone A through Milestone B. The DoD Component is responsible for performing the AoA consistent with the study guidance developed by the Director, Cost Assessment and Program Evaluation (DCAPE) and the study plan approved by DCAPE. DoDD 5105.84 details the responsibility of DCAPE for AoAs. 10 U.S.C. 4251, as amended by Section 802 of the FY2025 NDAA, allows for the conduct of early experimentation with a combatant commander to satisfy the statutory requirement for an AoA.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -462,6 +500,23 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory",
+    "unknown": "both",
+    "events": [
+     "ms_a",
+     "cdd_val",
+     "dev_rfp_rel",
+     "ms_b"
+    ]
    },
    "note_has_conditions": false,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -544,7 +599,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for MDAPs and major weapon systems; Regulatory for all other programs. ACAT II stands in for major weapon systems.",
    "notes": "STATUTORY for MDAPs and major weapon systems; Regulatory for all other programs. Bandwidth requirements data will be documented in the Information Support Plan (ISP). If the ISP is waived for a program, conformance with bandwidth review will be based on data provided in the Capability Development Document (CDD), consistent with the Net-Ready guidance in Enclosure C to Chairman of the Joint Chiefs of Staff Instruction (CJCSI) 5123.01I, Charter of The Joint Requirements Oversight Council and Implementation of the Joint Capabilities Integration and Development System.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -552,6 +607,17 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap",
+      "acat_ii"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
    },
    "note_has_conditions": true,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -609,7 +675,7 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
+   "note_has_conditions": true,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
    "table_name": "Milestone and Phase Information Requirements",
    "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"
@@ -767,25 +833,14 @@
     }
    ],
    "applies_if": {
-    "all": [
-     {
-      "field": "mca_program_type",
-      "in": [
-       "mdap",
-       "acat_ii",
-       "acat_iii"
-      ]
-     },
-     {
-      "field": "it_type",
-      "in": [
-       "it_system",
-       "embedded_it"
-      ]
-     }
+    "field": "mca_program_type",
+    "in": [
+     "mdap",
+     "acat_ii",
+     "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID marks, plus the CCA table notes: CCA applies to programs that acquire IT, including national security systems",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for all programs that acquire IT; Regulatory for other programs.",
    "notes": "STATUTORY for all programs that acquire information technology (IT); Regulatory for other programs. See DoDI 5000.82 for amplifying regulatory policy. A summary of required actions is in the CCA Compliance Table. The PM will report CCA compliance to the MDA and the Component CIO or designee. For IT within an MCA program employing an incremental development model, the program manager will report CCA compliance at each Milestone and/or Limited Deployment Decision Point for the IT.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -794,8 +849,19 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
+   "type_rule": {
+    "if": {
+     "field": "it_type",
+     "in": [
+      "it_system",
+      "embedded_it"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
+   },
    "note_has_conditions": false,
-   "applies_when": "For MDAPs, ACAT II and ACAT III and below; for IT systems (including national security systems) and weapon or C2 systems with embedded IT.",
+   "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
    "table_name": "Milestone and Phase Information Requirements",
    "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"
   },
@@ -1053,7 +1119,7 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
+   "note_has_conditions": true,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
    "table_name": "Milestone and Phase Information Requirements",
    "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"
@@ -1438,14 +1504,22 @@
     }
    ],
    "applies_if": {
-    "field": "mca_program_type",
-    "in": [
-     "mdap",
-     "acat_ii",
-     "acat_iii"
+    "all": [
+     {
+      "field": "mca_program_type",
+      "in": [
+       "mdap",
+       "acat_ii",
+       "acat_iii"
+      ]
+     },
+     {
+      "field": "dote_oversight",
+      "eq": true
+     }
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Gated on DOT&E oversight: Note: for programs on the DOT&E oversight list for LFT&E only.",
    "notes": "Regulatory. Programs on the Director, Operational Test and Evaluation (DOT&E) Oversight List for LFT&E oversight only; due upon completion of LFT&E.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -1454,8 +1528,8 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
-   "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
+   "note_has_conditions": true,
+   "applies_when": "For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.",
    "table_name": "Milestone and Phase Information Requirements",
    "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"
   },
@@ -1479,14 +1553,22 @@
     }
    ],
    "applies_if": {
-    "field": "mca_program_type",
-    "in": [
-     "mdap",
-     "acat_ii",
-     "acat_iii"
+    "all": [
+     {
+      "field": "mca_program_type",
+      "in": [
+       "mdap",
+       "acat_ii",
+       "acat_iii"
+      ]
+     },
+     {
+      "field": "dote_oversight",
+      "eq": true
+     }
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Gated on DOT&E oversight: Note: required for DOT&E oversight list programs only.",
    "notes": "STATUTORY; required for DOT&E Oversight List programs only. The DOT&E publishes an online list of programs under operational test and evaluation (OT&E) and LFT&E oversight at https://osd.deps.mil/org/dote-extranet/SitePages/Home.aspx (requires login with a Common Access Card (CAC)). A final decision to proceed beyond Low-Rate Initial Production (LRIP) or beyond Limited Deployment may not be made until the DOT&E has submitted the IOT&E Report to the Secretary of Defense, and the congressional defense committees have received that report. If DoD decides to proceed to operational use of the program or to make procurement funds available for the program before the MDA's FRP decision, the DOT&E's report will be submitted as soon as practicable after the DoD decision to proceed.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -1495,8 +1577,8 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
-   "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
+   "note_has_conditions": true,
+   "applies_when": "For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.",
    "table_name": "Milestone and Phase Information Requirements",
    "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"
   },
@@ -1897,7 +1979,7 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
+   "note_has_conditions": true,
    "applies_when": "For MDAPs.",
    "table_name": "Milestone and Phase Information Requirements",
    "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"
@@ -1992,7 +2074,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for MDAPs; Regulatory for others.",
    "notes": "STATUTORY for MDAPs; Regulatory for others. Summarizes the results of the industrial base capabilities' analysis. The OSD Office of Industrial Base Policy hosts a number of resources providing detailed manufacturing and industrial base policy and guidance.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -2000,6 +2082,16 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
    },
    "note_has_conditions": false,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -2183,7 +2275,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for major weapon systems and subsystems; Regulatory for other program types. MDAP and ACAT II stand in for major weapon systems.",
    "notes": "STATUTORY for major weapon systems and subsystems; Regulatory for other program types. The IP Strategy must be updated as appropriate to support and account for evolving IP considerations associated with the award and administration of all contracts throughout the program life cycle. Becomes part of the Product Support Strategy (PSS) during Operations and Support (O&S). Title 10, Chapter 275, provides statute regarding the management of proprietary data and data rights.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -2191,6 +2283,17 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap",
+      "acat_ii"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
    },
    "note_has_conditions": false,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -2440,7 +2543,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for MDAPs and ACAT II programs; Regulatory for other programs.",
    "notes": "STATUTORY for MDAPs and ACAT II programs; Regulatory for other programs. A preliminary quantity is determined at the Development RFP Release Decision Point; the final LRIP quantity is determined at Milestone B. The LRIP quantity will be documented in the ADM. For programs on the DOT&E Oversight List, LRIP quantities must equal or exceed the numbers required for testing as identified in the approved Test and Evaluation Master Plan (TEMP). Additional compliance details are provided in the cited section of U.S.C.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -2448,6 +2551,17 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap",
+      "acat_ii"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
    },
    "note_has_conditions": true,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -2646,7 +2760,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for MDAPs; Regulatory for other programs.",
    "notes": "STATUTORY for MDAPs; Regulatory for other programs. Describe how a MOSA will or will not be used to evolve system capability, improve interoperability, reduce cost or schedule, and refresh technology. Planning will be consistent with the discussion in DoDI 5000.85, Para. 3C.3.a.(5).",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -2654,6 +2768,16 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
    },
    "note_has_conditions": false,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -2835,15 +2959,9 @@
     }
    ],
    "applies_if": {
-    "field": "mca_program_type",
-    "in": [
-     "mdap",
-     "mais",
-     "acat_ii",
-     "acat_iii"
-    ]
+    "const": true
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: approval by DOT&E is a STATUTORY requirement for programs on the DOT&E oversight list.",
    "notes": "STATUTORY/Regulatory. An OTP, approved before the start of OT&E, is mandatory for all programs. Approval by DOT&E is a STATUTORY requirement for programs on the DOT&E Oversight list. DoD Component-equivalent approval is a Regulatory requirement for all other programs.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -2852,8 +2970,17 @@
     "checked": "2026-09-30",
     "check": "corrected: added ACAT IAM/IAC (MAIS), shown on the live page"
    },
+   "type_rule": {
+    "if": {
+     "field": "dote_oversight",
+     "eq": true
+    },
+    "then": "statutory",
+    "else": "regulatory",
+    "unknown": "both"
+   },
    "note_has_conditions": true,
-   "applies_when": "For all MCA program types.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "Milestone and Phase Information Requirements",
    "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"
   },
@@ -3024,7 +3151,7 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
+   "note_has_conditions": true,
    "applies_when": "For MDAPs.",
    "table_name": "Milestone and Phase Information Requirements",
    "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"
@@ -3129,7 +3256,7 @@
      "acat_iii"
     ]
    },
-   "rule_basis": "AAFDID program type and lifecycle event marks",
+   "rule_basis": "AAFDID program type and lifecycle event marks. Type from the note: STATUTORY for MDAPs; regulatory for other programs.",
    "notes": "STATUTORY for MDAPs; regulatory for other program. A draft[^4] update is due for the Development RFP Release; approved at Milestone B. The PSS is part of the Life Cycle Sustainment Plan and satisfies the statutory product support strategy requirement of 10 U.S.C. 4324. USD(A&S), or designee, will approve the PSS for ACAT ID programs and USD(A&S)-designated business system or special interest programs. The CAE, or designee, will approve the PSS for an ACAT IB, or IC or below program. See DoDI 5000.91 for PSS details. The PSS has the following annexes: Core Logistics Analysis (row above); IP Strategy (row above); Preservation and Storage of Unique Tooling Plan (row above); Product Support Business Case Analysis (10 U.S.C. 4324 and DoDI 5000.91); Programmatic, Environment, Safety, and Occupational Health (ESOH) (PESHE) (row below); Replaced System sustainment Plan (row below); and System Disposal Plan (10 U.S.C. 4252, DoDI 4160.28, DoD 4160.21-M, DoD 4160.28-M and DoDI 5000.91).",
    "provenance": {
     "source": "sources/aafdid-capture/mca_milestone_phase.json",
@@ -3137,6 +3264,16 @@
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
+   },
+   "type_rule": {
+    "if": {
+     "field": "mca_program_type",
+     "in": [
+      "mdap"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
    },
    "note_has_conditions": false,
    "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
@@ -3733,13 +3870,7 @@
     }
    ],
    "applies_if": {
-    "field": "mca_program_type",
-    "in": [
-     "mdap",
-     "mais",
-     "acat_ii",
-     "acat_iii"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID program type and lifecycle event marks",
    "notes": "Regulatory. The MDA, or designee, is the approval authority for ACAT IB/IC SEPs, and below. The SEP approval authority for ACAT ID programs will be the USD(R&E) or delegated authority. The SEP will be approved before each release of acquisition Requests for Proposal (RFP) involving prototyping, technology maturation, risk reduction, engineering and manufacturing development, or production contracts. The SEP will be updated after contract award, if needed. A SEP outline and additional engineering guidance are available at https://www.cto.mil/sea/pg/ .",
@@ -3751,7 +3882,7 @@
     "check": "corrected: added ACAT IAM/IAC (MAIS), shown on the live page"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MCA program types.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "Milestone and Phase Information Requirements",
    "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"
   },
@@ -4127,7 +4258,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "ACAT REQUIREMENT DUE SOURCE TYPE REQUIREMENT PROCEDURE MDAP II ≤III STATUTORY. Provides the status of total program cost, schedule, and performance to Congress; provides program unit cost and unit cost breach information for a specific program. The first MSAR after the MDA's 10 U.S.C. 4252 CERTIFICATION AND DETERMINATION (a row in the Milestone and Phase Information Requirements Table) will include the certification and determination. For each MDAP that receives Milestone B approval after January 1, 2019, include a brief summary description of the key elements of the modular open systems approach or, if a modular open systems approach was not used, the rationale for not using such an approach. Every MSAR must include certification by the Secretary of the Military Department and the Chief of the armed force that program requirements are stable and funding is adequate to meet program cost, schedule, and performance objectives, and the Secretary and Chief must identify and report in the MSAR any increased program risk since the last report.",
+   "notes": "STATUTORY. Provides the status of total program cost, schedule, and performance to Congress; provides program unit cost and unit cost breach information for a specific program. The first MSAR after the MDA's 10 U.S.C. 4252 CERTIFICATION AND DETERMINATION (a row in the Milestone and Phase Information Requirements Table) will include the certification and determination. For each MDAP that receives Milestone B approval after January 1, 2019, include a brief summary description of the key elements of the modular open systems approach or, if a modular open systems approach was not used, the rationale for not using such an approach. Every MSAR must include certification by the Secretary of the Military Department and the Chief of the armed force that program requirements are stable and funding is adequate to meet program cost, schedule, and performance objectives, and the Secretary and Chief must identify and report in the MSAR any increased program risk since the last report.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_recurring.json",
     "row": 2,
@@ -4193,14 +4324,22 @@
    "when": [],
    "due_text": "A DoD Component- approved final draft plan is due 45 calendar days prior to the Development RFP Release decision. The final plan is required at Milestone B or as soon as practicable after program initiation.",
    "applies_if": {
-    "field": "mca_program_type",
-    "in": [
-     "mdap",
-     "acat_ii",
-     "acat_iii"
+    "all": [
+     {
+      "field": "mca_program_type",
+      "in": [
+       "mdap",
+       "acat_ii",
+       "acat_iii"
+      ]
+     },
+     {
+      "field": "dote_oversight",
+      "eq": true
+     }
     ]
    },
-   "rule_basis": "AAFDID ACAT marks",
+   "rule_basis": "AAFDID ACAT marks. Gated on DOT&E oversight: Note: only required for programs on the DOT&E oversight list for LFT&E.",
    "notes": "STATUTORY. Only required for programs on the DOT&E oversight list for LFT&E with or requesting a waiver from full-up, system-level testing.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
@@ -4210,7 +4349,7 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
+   "applies_when": "For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.",
    "table_name": "Exceptions, Waivers, and Alternative Management and Reporting Requirements",
    "url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements"
   },
@@ -4237,7 +4376,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+   "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 2,
@@ -4348,7 +4487,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+   "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 5,
@@ -4385,7 +4524,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "STATUTORY. Each level of change for dollars is defined in section 4211 with a cross reference to section 4371. A significant change in schedule is defined as a delay greater than six months. A significant change in performance is not defined in statute. ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+   "notes": "STATUTORY. Each level of change for dollars is defined in section 4211 with a cross reference to section 4371. A significant change in schedule is defined as a delay greater than six months. A significant change in performance is not defined in statute.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 6,
@@ -4493,7 +4632,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "STATUTORY. Due within 45 calendar days of a Program Deviation Report. Reporting under Chapter 325-Cost Growth-Unit Cost Reports (Nunn-McCurdy) does not apply if a program has received a limited reporting waiver under 10 U.S.C. 4351, subsection (h). ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+   "notes": "STATUTORY. Due within 45 calendar days of a Program Deviation Report. Reporting under Chapter 325-Cost Growth-Unit Cost Reports (Nunn-McCurdy) does not apply if a program has received a limited reporting waiver under 10 U.S.C. 4351, subsection (h).",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 9,
@@ -4569,7 +4708,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "The cited section of the law fully details the prohibition as well as the condition for the waivers. ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+   "notes": "The cited section of the law fully details the prohibition as well as the condition for the waivers.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 11,
@@ -4633,7 +4772,7 @@
    "approval": "",
    "procedure": "USD(A&S) to Congress",
    "when": [],
-   "due_text": "Applicable to contracts for the production of MDAPs: Entered October which The granted the using contract production. prohibition USD(A&S) a cost-type into, 1, an for 2014, exception MDAP on, has against and or after for to",
+   "due_text": "Applicable to contracts for the production of MDAPs: entered into, on, or after October 1, 2014, and for which the USD(A&S) has granted an exception to the prohibition against using a cost-type contract for MDAP production.",
    "applies_if": {
     "field": "mca_program_type",
     "in": [
@@ -4641,13 +4780,13 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "STATUTORY. The USD(A&S) may only grant the exception: (1) in the case of a particular cost-type contract if the USD(A&S) provides written certification to the congressional defense committees that a cost-type contract is ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III needed to provide a required capability in a timely and cost-effective manner; (2) the USD(A&S) takes affirmative steps to make sure that the use of cost-type pricing is limited to only those line items or portions of the contract where such pricing is needed to achieve the purposes of the exception; and, (3) an explanation of the steps identified under clause (2), accompanies the written certification under clause (1).",
+   "notes": "STATUTORY. The USD(A&S) may only grant the exception: (1) in the case of a particular cost-type contract if the USD(A&S) provides written certification to the congressional defense committees that a cost-type contract is needed to provide a required capability in a timely and cost-effective manner; (2) the USD(A&S) takes affirmative steps to make sure that the use of cost-type pricing is limited to only those line items or portions of the contract where such pricing is needed to achieve the purposes of the exception; and, (3) an explanation of the steps identified under clause (2), accompanies the written certification under clause (1).",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 13,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
-    "check": "matched live"
+    "check": "corrected from the live page"
    },
    "note_has_conditions": true,
    "applies_when": "For MDAPs.",
@@ -4677,7 +4816,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "STATUTORY The report due for Case 1 must include a description of the specific aspects of the DT&E plan determined to be inadequate; an explanation of why the program disregarded the DASD(DT&E)'s recommendations; and identification of the steps taken to address the concerns of the DASD(DT&E). The report due for Case 2 must include an explanation of why the program proceeded to IOT&E despite the DASD(DT&E) findings; a description of the aspects of the TEMP that had to be set aside to enable the program to proceed to IOT&E; a description of how the program addressed the specific areas of concern raised in the assessment of operational test readiness; and a ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III statement of whether IOT&E identified any significant shortcomings in the program. The USD(R&E) will compile all such exception reports and annually, not later than 60 days after the end of each fiscal year through 2018, submit a report on each case to the congressional defense committees. The D(DT&E) replaced the DASD(DT&E) during the OSD re-organization pursuant to Section 901 of P.L. 114-328.",
+   "notes": "STATUTORY The report due for Case 1 must include a description of the specific aspects of the DT&E plan determined to be inadequate; an explanation of why the program disregarded the DASD(DT&E)'s recommendations; and identification of the steps taken to address the concerns of the DASD(DT&E). The report due for Case 2 must include an explanation of why the program proceeded to IOT&E despite the DASD(DT&E) findings; a description of the aspects of the TEMP that had to be set aside to enable the program to proceed to IOT&E; a description of how the program addressed the specific areas of concern raised in the assessment of operational test readiness; and a statement of whether IOT&E identified any significant shortcomings in the program. The USD(R&E) will compile all such exception reports and annually, not later than 60 days after the end of each fiscal year through 2018, submit a report on each case to the congressional defense committees. The D(DT&E) replaced the DASD(DT&E) during the OSD re-organization pursuant to Section 901 of P.L. 114-328.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 14,
@@ -4744,14 +4883,22 @@
    "when": [],
    "due_text": "Due at Milestone B or as soon as practicable after program initiation.",
    "applies_if": {
-    "field": "mca_program_type",
-    "in": [
-     "mdap",
-     "acat_ii",
-     "acat_iii"
+    "all": [
+     {
+      "field": "mca_program_type",
+      "in": [
+       "mdap",
+       "acat_ii",
+       "acat_iii"
+      ]
+     },
+     {
+      "field": "dote_oversight",
+      "eq": true
+     }
     ]
    },
-   "rule_basis": "AAFDID ACAT marks",
+   "rule_basis": "AAFDID ACAT marks. Gated on DOT&E oversight: Note: only required for programs on the DOT&E oversight list for LFT&E.",
    "notes": "STATUTORY. Only required for programs on the DOT&E Oversight List for LFT&E that are requesting a waiver from full-up, system-level testing.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
@@ -4761,7 +4908,7 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
+   "applies_when": "For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.",
    "table_name": "Exceptions, Waivers, and Alternative Management and Reporting Requirements",
    "url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements"
   },
@@ -4790,7 +4937,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III Joint DoD and DNI oversight of wholly and majority National Intelligence Program-funded acquisition programs will be conducted in accordance with Intelligence Community Policy Guidance 801.1 and the Memorandum of Agreement (MoA) between the DNI and the Secretary of Defense.",
+   "notes": "Joint DoD and DNI oversight of wholly and majority National Intelligence Program-funded acquisition programs will be conducted in accordance with Intelligence Community Policy Guidance 801.1 and the Memorandum of Agreement (MoA) between the DNI and the Secretary of Defense.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 17,
@@ -4862,7 +5009,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III STATUTORY. The remedial actions required when a program or subprogram experiences critical cost growth. 10 U.S.C. 4376 identifies the required elements of the certification. 10 U.S.C. 4377 identifies required actions if the deficient program is not terminated.",
+   "notes": "STATUTORY. The remedial actions required when a program or subprogram experiences critical cost growth. 10 U.S.C. 4376 identifies the required elements of the certification. 10 U.S.C. 4377 identifies required actions if the deficient program is not terminated.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 19,
@@ -4936,7 +5083,7 @@
     ]
    },
    "rule_basis": "AAFDID ACAT marks",
-   "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+   "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
     "row": 21,
@@ -4966,14 +5113,22 @@
    "when": [],
    "due_text": "Due as soon as practicable after a decision to proceed to operational use or to make procurement funds available for a covered system is made prior to Milestone C approval.",
    "applies_if": {
-    "field": "mca_program_type",
-    "in": [
-     "mdap",
-     "acat_ii",
-     "acat_iii"
+    "all": [
+     {
+      "field": "mca_program_type",
+      "in": [
+       "mdap",
+       "acat_ii",
+       "acat_iii"
+      ]
+     },
+     {
+      "field": "dote_oversight",
+      "eq": true
+     }
     ]
    },
-   "rule_basis": "AAFDID ACAT marks",
+   "rule_basis": "AAFDID ACAT marks. Gated on DOT&E oversight: Note: DOT&E LFT&E oversight programs only.",
    "notes": "STATUTORY. DOT&E LFT&E Oversight programs only, including those that respond to urgent needs. Program also requires the LFT&E Report (see LFT&E Report row in the Milestone and Phase Information Requirements Table).",
    "provenance": {
     "source": "sources/aafdid-capture/mca_exceptions.json",
@@ -4982,8 +5137,8 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
-   "applies_when": "For MDAPs, ACAT II and ACAT III and below.",
+   "note_has_conditions": true,
+   "applies_when": "For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.",
    "table_name": "Exceptions, Waivers, and Alternative Management and Reporting Requirements",
    "url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements"
   },
@@ -4997,7 +5152,8 @@
    "name": "CCA action 1: Determine that the acquisition supports core, priority functions of the DoD.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5036,7 +5192,8 @@
    "name": "CCA action 2: Establish outcome-based performance measures linked to strategic goals.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5050,7 +5207,8 @@
    "notes": "Evidenced by: ICD, IS ICD, CDD, AoA, APB.",
    "footnotes": [
     "These requirements are presumed to be satisfied for weapons systems with embedded IT and for command and control systems that are not themselves IT systems.",
-    "These actions are also required to comply with section 811 of Pub. L. 106-398."
+    "These actions are also required to comply with section 811 of Pub. L. 106-398.",
+    "The APB and TEMP may be submitted in draft to expedite program assessment."
    ],
    "provenance": {
     "source": "sources/aafdid-capture/mca_cca.json",
@@ -5076,7 +5234,8 @@
    "name": "CCA action 3: Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of commercial off-the-shelf technology.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5116,7 +5275,8 @@
    "name": "CCA action 4: Determine that no private sector or government source can better support the function.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5156,7 +5316,8 @@
    "name": "CCA action 5: Conduct an analysis of alternatives.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5196,7 +5357,8 @@
    "name": "CCA action 6: Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS programs, conduct a life-cycle cost estimate.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5236,7 +5398,8 @@
    "name": "CCA action 7: Develop clearly established measures and accountability for program progress.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5252,7 +5415,8 @@
    "rule_basis": "AAFDID CCA table and its footnotes",
    "notes": "Evidenced by: Acquisition Strategy, APB, TEMP.",
    "footnotes": [
-    "These actions are also required to comply with section 811 of Pub. L. 106-398."
+    "These actions are also required to comply with section 811 of Pub. L. 106-398.",
+    "The APB and TEMP may be submitted in draft to expedite program assessment."
    ],
    "provenance": {
     "source": "sources/aafdid-capture/mca_cca.json",
@@ -5275,7 +5439,8 @@
    "name": "CCA action 8: Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, as described in DoDI 5000.82.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5317,7 +5482,8 @@
    "name": "CCA action 9: Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant standards.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5356,7 +5522,8 @@
    "name": "CCA action 10: Ensure, to the maximum extent practicable, (1) modular contracting has been used, and (2) the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent of future increments.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5395,7 +5562,8 @@
    "name": "CCA action 11: Register Mission-Critical and Mission-Essential systems with the DoD CIO.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -5426,29 +5594,48 @@
    "url": "https://www.waru.edu/aafdid/CCA-Compliance"
   },
   {
-   "id": "mca.csdr.contractor-business-data-report",
-   "code": "MCA-D01",
+   "id": "csdr.contractor-business-data-report",
+   "code": "CSDR-01",
    "pathways": [
-    "mca"
+    "mca",
+    "dbs"
    ],
    "table": "csdr",
    "name": "Contractor Business Data Report",
    "kind": "conditional",
    "type": "regulatory",
-   "type_text": "DoDI 5000.73",
+   "type_text": "",
    "source": "DoDI 5000.73",
-   "approval": "CSDR plan approval authority",
+   "approval": "",
    "when": [],
    "due_text": "Per the approved CSDR plan.",
    "applies_if": {
-    "field": "mca_program_type",
-    "in": [
-     "mdap",
-     "acat_ii"
+    "any": [
+     {
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "mca"
+       },
+       {
+        "field": "mca_program_type",
+        "in": [
+         "mdap",
+         "mais",
+         "acat_ii"
+        ]
+       }
+      ]
+     },
+     {
+      "field": "pathway",
+      "eq": "dbs"
+     }
     ]
    },
-   "applies_when": "ACAT I and II programs whose contractor business unit holds CSDR contracts expected to exceed $250M (then-year).",
-   "rule_basis": "AAFDID CSDR thresholds (then-year dollars)",
+   "applies_when": "ACAT I and II programs and IS programs (including DBS) whose contractor business unit holds CSDR contracts expected to exceed $250M then-year. Not for business units whose only CSDR contracts are MTA contracts.",
+   "rule_basis": "AAFDID CSDR table: its scope covers ACAT I-II programs, IS programs over $100M (DBS and software programs count as IS) and MTA programs over $100M",
+   "tool_note": "Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.",
    "notes": "Required for contractor business entities (e.g., plant, site, or business unit) responsible for contracts or subcontracts with CSDR requirements that are expected to exceed $250 million, then-year dollars. Not required for business units based solely on CSDR requirement Middle Tier Acquisition Program contracts.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_csdr.json",
@@ -5458,41 +5645,72 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "table_name": "Cost Data Reporting Requirements",
+   "table_name": "Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs",
    "url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements"
   },
   {
-   "id": "mca.csdr.contractor-cost-data-report",
-   "code": "MCA-D02",
+   "id": "csdr.contractor-cost-data-report",
+   "code": "CSDR-02",
    "pathways": [
-    "mca"
+    "mca",
+    "mta",
+    "dbs"
    ],
    "table": "csdr",
    "name": "Contractor Cost Data Report",
    "kind": "contract",
    "type": "regulatory",
-   "type_text": "DoDI 5000.73",
+   "type_text": "",
    "source": "DoDI 5000.73",
-   "approval": "CSDR plan approval authority",
+   "approval": "",
    "when": [],
    "due_text": "Per the approved CSDR plan.",
    "applies_if": {
-    "all": [
+    "any": [
      {
-      "field": "mca_program_type",
-      "in": [
-       "mdap",
-       "acat_ii"
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "mca"
+       },
+       {
+        "field": "mca_program_type",
+        "in": [
+         "mdap",
+         "mais",
+         "acat_ii"
+        ]
+       },
+       {
+        "field": "contract_value",
+        "gt": 50000000
+       }
       ]
      },
      {
-      "field": "contract_value",
-      "gt": 50000000
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "mta"
+       },
+       {
+        "field": "mta_size",
+        "in": [
+         "major",
+         "exceeds_mdap"
+        ]
+       },
+       {
+        "field": "contract_value",
+        "gt": 20000000
+       }
+      ]
      }
     ]
    },
-   "applies_when": "ACAT I and II programs: contracts over $50M (then-year). Between $20M and $50M, at the CSDR plan authority's discretion for high-risk, high-interest or software contracts.",
-   "rule_basis": "AAFDID CSDR thresholds (then-year dollars)",
+   "applies_when": "ACAT I and II programs: contracts over $50M, or $20M to $50M at the CSDR plan authority's discretion. MTA programs over $100M: contracts over $20M. IS programs over $100M, including DBS: contracts over $50M. All then-year dollars.",
+   "rule_basis": "AAFDID CSDR table: its scope covers ACAT I-II programs, IS programs over $100M (DBS and software programs count as IS) and MTA programs over $100M",
+   "tool_note": "Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.",
    "notes": "Acat i ii programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including FMS and programs in sustainment, regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for current and former ACAT I – II programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Information system programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Middle tier acquisition programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. Other programs gt 100m: May be required at the discretion of the CSDR approval authority for all high interest or high-risk contracts, subcontracts, or government-performed efforts. Not required: Contracts on programs with anticipated acquisition expenditures less than $100 million, then-year dollars. Contracts priced below $20 million, then-year dollars. PM requests and obtains approval from the DDCA for a reporting waiver (e.g., procurement of commercial systems).",
    "provenance": {
     "source": "sources/aafdid-capture/mca_csdr.json",
@@ -5502,60 +5720,120 @@
     "check": "matched live"
    },
    "conditional_if": {
-    "all": [
+    "any": [
      {
-      "field": "mca_program_type",
-      "in": [
-       "mdap",
-       "acat_ii"
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "mca"
+       },
+       {
+        "field": "mca_program_type",
+        "in": [
+         "mdap",
+         "mais",
+         "acat_ii"
+        ]
+       },
+       {
+        "field": "contract_value",
+        "gt": 20000000
+       },
+       {
+        "field": "contract_value",
+        "lte": 50000000
+       }
       ]
      },
      {
-      "field": "contract_value",
-      "gt": 20000000
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "mta"
+       },
+       {
+        "field": "mta_size",
+        "eq": "non_major"
+       },
+       {
+        "field": "contract_value",
+        "gt": 20000000
+       }
+      ]
      },
      {
-      "field": "contract_value",
-      "lte": 50000000
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "dbs"
+       },
+       {
+        "field": "contract_value",
+        "gt": 20000000
+       }
+      ]
      }
     ]
    },
    "note_has_conditions": true,
-   "table_name": "Cost Data Reporting Requirements",
+   "table_name": "Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs",
    "url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements"
   },
   {
-   "id": "mca.csdr.maintenance-and-repair-parts-data-report",
-   "code": "MCA-D03",
+   "id": "csdr.maintenance-and-repair-parts-data-report",
+   "code": "CSDR-03",
    "pathways": [
-    "mca"
+    "mca",
+    "dbs"
    ],
    "table": "csdr",
    "name": "Maintenance and Repair Parts Data Report",
    "kind": "conditional",
    "type": "regulatory",
-   "type_text": "DoDI 5000.73",
+   "type_text": "",
    "source": "DoDI 5000.73",
-   "approval": "CSDR plan approval authority",
+   "approval": "",
    "when": [],
    "due_text": "Per the approved CSDR plan.",
    "applies_if": {
-    "all": [
+    "any": [
      {
-      "field": "mca_program_type",
-      "in": [
-       "mdap",
-       "acat_ii"
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "mca"
+       },
+       {
+        "field": "mca_program_type",
+        "in": [
+         "mdap",
+         "mais",
+         "acat_ii"
+        ]
+       },
+       {
+        "field": "contract_value",
+        "gt": 50000000
+       }
       ]
      },
      {
-      "field": "contract_value",
-      "gt": 50000000
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "dbs"
+       },
+       {
+        "field": "contract_value",
+        "gt": 50000000
+       }
+      ]
      }
     ]
    },
-   "applies_when": "Sustainment contracts over $50M for ACAT I and II programs, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.",
-   "rule_basis": "AAFDID CSDR thresholds (then-year dollars)",
+   "applies_when": "Sustainment contracts over $50M for ACAT I and II programs and IS programs over $100M, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.",
+   "rule_basis": "AAFDID CSDR table: its scope covers ACAT I-II programs, IS programs over $100M (DBS and software programs count as IS) and MTA programs over $100M",
+   "tool_note": "Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.",
    "notes": "All sustainment contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed ACAT I-II level thresholds and IS programs that are anticipated to exceed $100 million, then-year dollars, when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_csdr.json",
@@ -5565,12 +5843,12 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "table_name": "Cost Data Reporting Requirements",
+   "table_name": "Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs",
    "url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements"
   },
   {
-   "id": "mca.csdr.program-resource-distribution-table",
-   "code": "MCA-D04",
+   "id": "csdr.program-resource-distribution-table",
+   "code": "CSDR-04",
    "pathways": [
     "mca"
    ],
@@ -5578,9 +5856,9 @@
    "name": "Program Resource Distribution Table",
    "kind": "contract",
    "type": "regulatory",
-   "type_text": "DoDI 5000.73",
+   "type_text": "",
    "source": "DoDI 5000.73",
-   "approval": "CSDR plan approval authority",
+   "approval": "",
    "when": [],
    "due_text": "Per the approved CSDR plan.",
    "applies_if": {
@@ -5589,6 +5867,7 @@
       "field": "mca_program_type",
       "in": [
        "mdap",
+       "mais",
        "acat_ii"
       ]
      },
@@ -5598,8 +5877,9 @@
      }
     ]
    },
-   "applies_when": "ACAT I and II programs: contracts over $50M (then-year). Between $20M and $50M, at the CSDR plan authority's discretion.",
-   "rule_basis": "AAFDID CSDR thresholds (then-year dollars)",
+   "applies_when": "ACAT I and II programs: contracts over $50M then-year, or $20M to $50M at the CSDR plan authority's discretion.",
+   "rule_basis": "AAFDID CSDR table: its scope covers ACAT I-II programs, IS programs over $100M (DBS and software programs count as IS) and MTA programs over $100M",
+   "tool_note": "Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.",
    "notes": "ACAT I-II Level Programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including foreign military sales (FMS) and programs in sustainment, regardless of acquisition phase and contract type, including non-Federal Acquisition Regulation (FAR) agreements, valued at more than $50 million, then-year dollars, for ACAT I-II level programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_csdr.json",
@@ -5614,6 +5894,7 @@
       "field": "mca_program_type",
       "in": [
        "mdap",
+       "mais",
        "acat_ii"
       ]
      },
@@ -5628,41 +5909,77 @@
     ]
    },
    "note_has_conditions": false,
-   "table_name": "Cost Data Reporting Requirements",
+   "table_name": "Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs",
    "url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements"
   },
   {
-   "id": "mca.csdr.software-resources-data-report",
-   "code": "MCA-D05",
+   "id": "csdr.software-resources-data-report",
+   "code": "CSDR-05",
    "pathways": [
-    "mca"
+    "mca",
+    "mta",
+    "dbs"
    ],
    "table": "csdr",
    "name": "Software Resources Data Report",
    "kind": "conditional",
    "type": "regulatory",
-   "type_text": "DoDI 5000.73",
+   "type_text": "",
    "source": "DoDI 5000.73",
-   "approval": "CSDR plan approval authority",
+   "approval": "",
    "when": [],
    "due_text": "Per the approved CSDR plan.",
    "applies_if": {
-    "all": [
+    "any": [
      {
-      "field": "mca_program_type",
-      "in": [
-       "mdap",
-       "acat_ii"
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "mca"
+       },
+       {
+        "field": "mca_program_type",
+        "in": [
+         "mdap",
+         "mais",
+         "acat_ii"
+        ]
+       },
+       {
+        "field": "contract_value",
+        "gt": 20000000
+       }
       ]
      },
      {
-      "field": "contract_value",
-      "gt": 20000000
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "mta"
+       },
+       {
+        "field": "contract_value",
+        "gt": 20000000
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "dbs"
+       },
+       {
+        "field": "contract_value",
+        "gt": 20000000
+       }
+      ]
      }
     ]
    },
-   "applies_when": "Software development or production efforts over $20M (then-year) for ACAT I and II programs.",
-   "rule_basis": "AAFDID CSDR thresholds (then-year dollars)",
+   "applies_when": "Software development, production or maintenance efforts over $20M then-year for ACAT I and II programs, IS programs over $100M (including DBS) and MTA programs over $100M.",
+   "rule_basis": "AAFDID CSDR table: its scope covers ACAT I-II programs, IS programs over $100M (DBS and software programs count as IS) and MTA programs over $100M",
+   "tool_note": "Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.",
    "notes": "Development and erp efforts: All contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for developing and/or producing software valued at more than $20 million, then-year dollars, for: Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest software efforts estimated below $20 million, then-year dollars, as determined by the CSDR plan approval authority, if the overall effort inclusive of non-software efforts exceeds $20 million, then-year dollars. Maintenance efforts: For all contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for: Programs with previous SRDR development or enterprise resource planning requirements or software maintenance efforts of more than $20 million, then-year dollars. Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_csdr.json",
@@ -5672,41 +5989,64 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "table_name": "Cost Data Reporting Requirements",
+   "table_name": "Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs",
    "url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements"
   },
   {
-   "id": "mca.csdr.technical-data-report",
-   "code": "MCA-D06",
+   "id": "csdr.technical-data-report",
+   "code": "CSDR-06",
    "pathways": [
-    "mca"
+    "mca",
+    "dbs"
    ],
    "table": "csdr",
    "name": "Technical Data Report",
    "kind": "conditional",
    "type": "regulatory",
-   "type_text": "DoDI 5000.73",
+   "type_text": "",
    "source": "DoDI 5000.73",
-   "approval": "CSDR plan approval authority",
+   "approval": "",
    "when": [],
    "due_text": "Per the approved CSDR plan.",
    "applies_if": {
-    "all": [
+    "any": [
      {
-      "field": "mca_program_type",
-      "in": [
-       "mdap",
-       "acat_ii"
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "mca"
+       },
+       {
+        "field": "mca_program_type",
+        "in": [
+         "mdap",
+         "mais",
+         "acat_ii"
+        ]
+       },
+       {
+        "field": "contract_value",
+        "gt": 50000000
+       }
       ]
      },
      {
-      "field": "contract_value",
-      "gt": 50000000
+      "all": [
+       {
+        "field": "pathway",
+        "eq": "dbs"
+       },
+       {
+        "field": "contract_value",
+        "gt": 50000000
+       }
+      ]
      }
     ]
    },
-   "applies_when": "Contracts over $50M for ACAT I and II programs, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.",
-   "rule_basis": "AAFDID CSDR thresholds (then-year dollars)",
+   "applies_when": "Contracts over $50M for ACAT I and II programs and IS programs over $100M, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.",
+   "rule_basis": "AAFDID CSDR table: its scope covers ACAT I-II programs, IS programs over $100M (DBS and software programs count as IS) and MTA programs over $100M",
+   "tool_note": "Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.",
    "notes": "All contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed the ACAT I and II level threshold and IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.",
    "provenance": {
     "source": "sources/aafdid-capture/mca_csdr.json",
@@ -5716,7 +6056,7 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "table_name": "Cost Data Reporting Requirements",
+   "table_name": "Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs",
    "url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements"
   },
   {
@@ -5730,8 +6070,8 @@
    "kind": "reference",
    "type": "unspecified",
    "type_text": "",
-   "source": "DoDI 5000.85",
-   "approval": "MDA",
+   "source": "",
+   "approval": "",
    "when": [],
    "applies_if": {
     "field": "mca_program_type",
@@ -5769,8 +6109,8 @@
    "kind": "reference",
    "type": "unspecified",
    "type_text": "",
-   "source": "DoDI 5000.85",
-   "approval": "MDA",
+   "source": "",
+   "approval": "",
    "when": [],
    "applies_if": {
     "field": "mca_program_type",
@@ -5805,8 +6145,8 @@
    "kind": "reference",
    "type": "unspecified",
    "type_text": "",
-   "source": "DoDI 5000.85",
-   "approval": "MDA",
+   "source": "",
+   "approval": "",
    "when": [],
    "applies_if": {
     "field": "mca_program_type",
@@ -5842,7 +6182,7 @@
    "type": "unspecified",
    "type_text": "",
    "source": "10 U.S.C. 4203",
-   "approval": "MDA",
+   "approval": "",
    "when": [],
    "applies_if": {
     "field": "mca_program_type",
@@ -5894,7 +6234,7 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
+   "note_has_conditions": true,
    "applies_when": "For MDAPs.",
    "table_name": "Statutory Program Breach Definitions",
    "url": "https://www.waru.edu/aafdid/Statutory-Program-Breach-Definitions"
@@ -5983,7 +6323,8 @@
    "name": "EVMS on contract, < $20M: EVMS not required; may be applied at PM discretion based on risk to the Government",
    "kind": "conditional",
    "type": "regulatory",
-   "type_text": "FAR/DFARS and DoDI 5000.85",
+   "type_text": "",
+   "tool_note": "Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.",
    "source": "Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)",
    "approval": "",
    "when": [],
@@ -6030,7 +6371,8 @@
    "name": "EVMS on contract, ≥ $20M &<$100M: EVMS Required; Contractor is required to have an EVMS that complies with the guidelines in EIA-748.*",
    "kind": "contract",
    "type": "regulatory",
-   "type_text": "FAR/DFARS and DoDI 5000.85",
+   "type_text": "",
+   "tool_note": "Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.",
    "source": "Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)",
    "approval": "",
    "when": [],
@@ -6081,7 +6423,8 @@
    "name": "EVMS on contract, ≥ $100M: EVMS Required; Contractor is required to have an EVMS that has been determined to be in compliance with the guidelines in EIA-748.*",
    "kind": "contract",
    "type": "regulatory",
-   "type_text": "FAR/DFARS and DoDI 5000.85",
+   "type_text": "",
+   "tool_note": "Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.",
    "source": "Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)",
    "approval": "",
    "when": [],
@@ -6128,7 +6471,8 @@
    "name": "IPMDAR (DI-MGMT-81861), < $20M: Not required",
    "kind": "conditional",
    "type": "regulatory",
-   "type_text": "DoDI 5000.85; DI-MGMT-81861",
+   "type_text": "",
+   "tool_note": "Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).",
    "source": "Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861",
    "approval": "",
    "when": [],
@@ -6168,7 +6512,8 @@
    "name": "IPMDAR (DI-MGMT-81861), ≥ $20M & < $100M: Required monthly when EVMS requirement is on contract",
    "kind": "contract",
    "type": "regulatory",
-   "type_text": "DoDI 5000.85; DI-MGMT-81861",
+   "type_text": "",
+   "tool_note": "Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).",
    "source": "Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861",
    "approval": "",
    "when": [],
@@ -6220,7 +6565,8 @@
    "name": "IPMDAR (DI-MGMT-81861), ≥ $100M: Required monthly when EVMS requirement is on contract",
    "kind": "contract",
    "type": "regulatory",
-   "type_text": "DoDI 5000.85; DI-MGMT-81861",
+   "type_text": "",
+   "tool_note": "Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).",
    "source": "Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861",
    "approval": "",
    "when": [],
@@ -6256,7 +6602,7 @@
   },
   {
    "id": "mta.osd.acquisition-strategy-to-include-security-schedule-techni",
-   "code": "MTA-O01",
+   "code": "MTA-T01",
    "pathways": [
     "mta"
    ],
@@ -6302,7 +6648,7 @@
   },
   {
    "id": "mta.osd.adm-signed-by-the-da",
-   "code": "MTA-O02",
+   "code": "MTA-T02",
    "pathways": [
     "mta"
    ],
@@ -6320,12 +6666,7 @@
     }
    ],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID Table 1 marks (non-major, major, exceeds MDAP threshold)",
    "notes": "",
@@ -6338,13 +6679,13 @@
     "check": "corrected: TYPE column (Regulatory) and footnotes taken from the live page"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "Program Information Requirements (Table 1: submissions to OSD for all MTA programs)",
    "url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements"
   },
   {
    "id": "mta.osd.approved-requirement",
-   "code": "MTA-O03",
+   "code": "MTA-T03",
    "pathways": [
     "mta"
    ],
@@ -6388,7 +6729,7 @@
   },
   {
    "id": "mta.osd.cost-estimate",
-   "code": "MTA-O04",
+   "code": "MTA-T04",
    "pathways": [
     "mta"
    ],
@@ -6431,7 +6772,7 @@
   },
   {
    "id": "mta.osd.initial-pid-entry",
-   "code": "MTA-O05",
+   "code": "MTA-T05",
    "pathways": [
     "mta"
    ],
@@ -6449,12 +6790,7 @@
     }
    ],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID Table 1 marks (non-major, major, exceeds MDAP threshold)",
    "notes": "",
@@ -6467,13 +6803,13 @@
     "check": "corrected: TYPE column (Regulatory) and footnotes taken from the live page"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "Program Information Requirements (Table 1: submissions to OSD for all MTA programs)",
    "url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements"
   },
   {
    "id": "mta.osd.lifecycle-sustainment-plan",
-   "code": "MTA-O06",
+   "code": "MTA-T06",
    "pathways": [
     "mta"
    ],
@@ -6537,7 +6873,7 @@
   },
   {
    "id": "mta.osd.written-decision-by-usd-a-s",
-   "code": "MTA-O07",
+   "code": "MTA-T07",
    "pathways": [
     "mta"
    ],
@@ -6580,7 +6916,7 @@
   },
   {
    "id": "mta.osd.updated-pid-entry",
-   "code": "MTA-O08",
+   "code": "MTA-T08",
    "pathways": [
     "mta"
    ],
@@ -6598,12 +6934,7 @@
     }
    ],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID Table 1 marks (non-major, major, exceeds MDAP threshold)",
    "notes": "",
@@ -6616,13 +6947,13 @@
     "check": "corrected: TYPE column (Regulatory) and footnotes taken from the live page"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "Program Information Requirements (Table 1: submissions to OSD for all MTA programs)",
    "url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements"
   },
   {
    "id": "mta.osd.an-assessment-of-test-results",
-   "code": "MTA-O09",
+   "code": "MTA-T09",
    "pathways": [
     "mta"
    ],
@@ -6640,12 +6971,7 @@
     }
    ],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID Table 1 marks (non-major, major, exceeds MDAP threshold)",
    "notes": "",
@@ -6658,13 +6984,13 @@
     "check": "corrected: TYPE column (Regulatory) and footnotes taken from the live page"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "Program Information Requirements (Table 1: submissions to OSD for all MTA programs)",
    "url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements"
   },
   {
    "id": "mta.osd.final-pid-capturing-updated-entries-to-include-the-outco",
-   "code": "MTA-O10",
+   "code": "MTA-T10",
    "pathways": [
     "mta"
    ],
@@ -6682,12 +7008,7 @@
     }
    ],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID Table 1 marks (non-major, major, exceeds MDAP threshold)",
    "notes": "",
@@ -6700,13 +7021,13 @@
     "check": "corrected: TYPE column (Regulatory) and footnotes taken from the live page"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "Program Information Requirements (Table 1: submissions to OSD for all MTA programs)",
    "url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements"
   },
   {
    "id": "mta.osd.outcome-determination-adm-signed-by-the-da",
-   "code": "MTA-O11",
+   "code": "MTA-T11",
    "pathways": [
     "mta"
    ],
@@ -6724,12 +7045,7 @@
     }
    ],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID Table 1 marks (non-major, major, exceeds MDAP threshold)",
    "notes": "",
@@ -6742,7 +7058,7 @@
     "check": "corrected: TYPE column (Regulatory) and footnotes taken from the live page"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway.",
    "currency": [
     "mta-change1-2024"
    ],
@@ -6764,12 +7080,7 @@
    "approval": "Decision Authority (DA)",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. Documents MDA decisions and direction. Per new policy update dated Oct 20, 2022 - After approval of the program for use of the MTA pathway, the DA will sign their program ADM. The ADM signature will then start the MTA clock.",
@@ -6781,7 +7092,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "currency": [
     "mta-change1-2024"
    ],
@@ -6789,6 +7100,17 @@
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
   {
+   "type_rule": {
+    "if": {
+     "field": "mta_size",
+     "in": [
+      "major",
+      "exceeds_mdap"
+     ]
+    },
+    "then": "statutory",
+    "else": "regulatory"
+   },
    "id": "mta.sr.acquisition-strategy",
    "code": "MTA-S02",
    "pathways": [
@@ -6803,23 +7125,19 @@
    "approval": "DA",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
-   "rule_basis": "AAFDID major and non-major system marks",
+   "rule_basis": "AAFDID major and non-major system marks. Type from the note: STATUTORY for major systems; Regulatory for non-major systems.",
    "notes": "STATUTORY for Major systems. Regulatory for Non-major systems. The Acquisition Strategy includes STATUTORY and Regulatory information. Major changes to the plan reflected in the Acquisition Strategy require DA approval. The DA must review and approve the strategy when there has been a significant change to the cost, schedule, or performance of the program (or system) or there has been a critical change to the cost of the program (or system). The strategy may also be reviewed and approved at any time considered relevant by the DA. The following requirements will be satisfied in the Acquisition Strategy: ACQUISITION APPROACH BENEFIT ANALYSIS AND DETERMINATION, applies to bundled acquisitions only; BUSINESS STRATEGY; CONTRACTING STRATEGY, to include CONTRACT-TYPE DETERMINATION, satisfied when the DA approves the Acquisition Strategy with specified contract types, and Termination Liability Estimate; COOPERATIVE OPPORTUNITIES; GENERAL EQUIPMENT VALUATION; Industrial Base Capabilities Considerations; INTELLECTUAL PROPERTY (IP) STRATEGY, for major weapon systems and subsystems; MARKET RESEARCH; Modular Open Systems Approach (MOSA); MULTI-YEAR PROCUREMENT; PRODUCT SUPPORT, including sustainment, logistics and maintenance; RELIABILITY AND MAINTAINABILITY; RISK MANAGEMENT, including security, schedule, technical, and production risks; SMALL BUSINESS; INNOVATION RESEARCH (SBIR)/SMALL BUSINESS TECHNOLOGY TRANSFER (STTR) PROGRAM TECHNOLOGIES; Test Strategy / Assessment of Test Results; Transition Plan – within 2 years after MTA program start.",
    "provenance": {
     "source": "sources/aafdid-capture/mta.json",
     "row": 2,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
-    "check": "matched live"
+    "check": "corrected: non-major mark taken from the live page"
    },
    "note_has_conditions": true,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "currency": [
     "mta-change1-2024"
    ],
@@ -6857,7 +7175,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -6891,8 +7209,8 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "note_has_conditions": true,
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -6927,7 +7245,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -6962,7 +7280,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -6997,7 +7315,7 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7032,7 +7350,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7051,12 +7369,7 @@
    "approval": "Decision Authority (DA)",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "STATUTORY for Major systems and subsystems; Regulatory for Non-major systems. The IP Strategy must be updated as appropriate to support and account for evolving IP considerations associated with the award and administration of all contracts throughout the program life cycle. Becomes part of the Product Support Strategy (PSS) during Operations and Support (O&S).",
@@ -7068,11 +7381,12 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
   {
+   "applies_when": "AAFDID marks no size column for this row. Its note ties it to the statutory requirement to consider cooperative opportunities, which applies to every program; DoDI 5000.80 Change 1 adds exportability when international partners are involved.",
    "id": "mta.sr.international-involvement-part-of-acquisition-strategy",
    "code": "MTA-S10",
    "pathways": [
@@ -7087,10 +7401,9 @@
    "approval": "DA",
    "when": [],
    "applies_if": {
-    "field": "international",
-    "eq": true
+    "const": true
    },
-   "rule_basis": "AAFDID marks neither column; this tool applies it when international partners are involved",
+   "rule_basis": "AAFDID marks neither column; its note says it satisfies the statutory requirement to consider cooperative opportunities, which every program must do",
    "notes": "Regulatory. Satisfies the Statutory requirement to consider Cooperative Opportunities. IAW 5000.80 Not all programs are appropriate for the MTA pathway. Major systems intended to satisfy requirements that are critical to a major interagency requirement, are primarily focused on technology development, or have significant international partner involvement are discouraged from using the MTA pathway.",
    "provenance": {
     "source": "sources/aafdid-capture/mta.json",
@@ -7100,7 +7413,6 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "When international partners are involved.",
    "currency": [
     "mta-change1-2024"
    ],
@@ -7138,7 +7450,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7173,7 +7485,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7208,7 +7520,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7243,7 +7555,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7262,12 +7574,7 @@
    "approval": "DA",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "STATUTORY. For Major systems, the PM must, as part of the ACQUISITION STRATEGY: Include measurable requirements for engineering activities and design specifications for R&M; otherwise justify in writing the determination to exclude engineering activities and design specifications for reliability or maintainability. Indicate if sustainment factors, including R&M, are included in the process for source selection; Describe incentive fees and penalties (as appropriate) to incentivize achievement of design specification requirements for R&M. The DA will notify the congressional defense committees upon entering into an EMD or Production contract that includes incentive fees or penalties. DoDI 5000.88, Section 3.b.1 For all defense acquisition programs, the LSE (lead systems engineer), working for the PM, will integrate R&M engineering as an integral part of the overall engineering process and the digital representation of the system being developed. The live AAFDID note also cites the January 31, 2019 USD(A&S) policy memo on implementing 10 U.S.C. 2443 (sustainment factors).",
@@ -7279,7 +7586,7 @@
     "check": "matched live; note addendum from the live page"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7314,7 +7621,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7333,12 +7640,7 @@
    "approval": "DA",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. DoD Components will develop a process for demonstrating performance and evaluating for current operational purposes the proposed products and technologies. This process will result in a test strategy or an assessment of test results documenting the evaluation of the demonstrated operational performance, to include validation of required cybersecurity and interoperability as applicable. The operational demonstration assessment will support the initial production decision by the DA. Programs on the DOT&E oversight list will follow applicable procedures.",
@@ -7350,7 +7652,7 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "currency": [
     "mta-change1-2024"
    ],
@@ -7372,12 +7674,7 @@
    "approval": "DA",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. For each MTA program, DoD Components will develop a process for transitioning successful prototypes to new or existing acquisition programs for production, fielding, and operations and sustainment under the rapid fielding pathway or other acquisition pathway. This process will result in a transition plan, included in the acquisition strategy, which provides a timeline for completion within 2 years of all necessary documentation required for transition, as determined by the DA, after MTA program start. This applies to both major and non-major programs. MTA Transition Plan Template",
@@ -7389,7 +7686,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "currency": [
     "mta-change1-2024"
    ],
@@ -7411,12 +7708,7 @@
    "approval": "DA and Component CIO or designee",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "STATUTORY for all programs that acquire information technology (IT); Regulatory for other programs. See DoDI 5000.82 for amplifying regulatory guidance. A summary of required actions is in the CCA Compliance Table. The PM will report CCA compliance to the DA and the Component CIO or designee. For IT programs employing an incremental development model, the program manager will report CCA compliance at each Limited Deployment Decision Point.",
@@ -7428,7 +7720,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7447,12 +7739,7 @@
    "approval": "Component CIO",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "STATUTORY for mission critical and mission essential information technology programs and regulatory for all programs requiring an Authority to Operate (ATO). The Cybersecurity Strategy can serve as the System Security Plan during the Risk Management Framework process. See DoDI 8510.01 and DoDI 5000.82. The CYBERSECURITY STRATEGY is a stand-alone appendix to the Program Protection Plan (PPP). The CYBERSECURITY STRATEGY will be updated prior to receiving an ATO. The Component CIO is the approval authority.",
@@ -7464,7 +7751,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7483,12 +7770,7 @@
    "approval": "DoD Component",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. See the direction in DoDI 5000.80 and DoDI 5000.73. The DoD Component will determine the cost estimating requirements for Major systems and below.",
@@ -7500,7 +7782,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7519,12 +7801,7 @@
    "approval": "DA",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. Exit criteria are specific events and accomplishments that must be achieved before a program can proceed; documented in the ADM.",
@@ -7536,7 +7813,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7555,12 +7832,7 @@
    "approval": "National Telecommunications and Information Administration (NTIA)",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "STATUTORY for all systems/equipment that use the electromagnetic spectrum while operating in the United States and its possessions. The DD Form 1494, Application for Equipment Frequency https://www.esd.whs.mil/Directives/forms/dd1000_1499/ Allocation, is available from The Title 47 STATUTORY requirement is satisfied when the NTIA has authorized national spectrum certification(s) for the program at Stage 1, 2, 3 or 4, as applicable, in response to submitted DD Form(s) 1494 by the program manager.",
@@ -7572,7 +7844,7 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7591,12 +7863,7 @@
    "approval": "DA",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. See DoDI 5000.73 for details, including coordination requirements.",
@@ -7608,7 +7875,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7627,12 +7894,7 @@
    "approval": "DCAPE",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. DoDI 5000.73 provides detailed instructions. (1) Rapid Prototyping Programs. CAPE will conduct an estimate of life-cycle costs for programs likely to exceed acquisition category (ACAT) I threshold pursued using the MTA rapid prototyping pathway. CAPE may, in its discretion, delegate the authority for the conduct of the cost estimate to the SCA. Estimates for rapid prototyping programs that do not exceed the ACAT I threshold must be conducted in accordance with guidance issued by the relevant SCA. (2) Rapid Fielding Programs. CAPE will conduct an estimate of life-cycle costs for programs likely to exceed ACAT I or II thresholds pursued using the MTA rapid fielding pathway. CAPE may, in its discretion, delegate the authority for the conduct of the cost estimate to the SCA. DoD Components must conduct life-cycle cost estimates for rapid fielding programs that do not exceed the ACAT II threshold in accordance with guidance issued by the relevant SCA.",
@@ -7644,7 +7906,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7663,12 +7925,7 @@
    "approval": "DoD Component or as delegated",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. Applicable to all IT, including NSS. An updated ISP of record may be required during O&S. Enter data on-line at https://gtg.csd.disa.mil/ (requires an account and login with CAC).",
@@ -7680,7 +7937,7 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7699,12 +7956,7 @@
    "approval": "JITC or DoD Component",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. Applicable to all IT, including NSS. Testing completed before or during OT&E. The Joint Interoperability Test Command (JITC) certifies interoperability of IT with joint, multinational, and/or interagency interoperability requirements. DoD Components certify all other IT. Certification must occur prior to deployment.",
@@ -7716,7 +7968,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7735,12 +7987,7 @@
    "approval": "CAE or designee",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "STATUTORY for “covered systems” before a decision to enter into system development and demonstration. The LCSP/PSS satisfies the statutory requirements of Section 4324 of Title 10 U.S.C. See DoDI 5000.91 for details about the LCSP/PSS . The PSM will support the PM in developing and implementing the LCSP/PSS (or a tailored LCSP for non-covered systems). The LCSP/PSS has required annexes that are reflective of the program's latest planned and completed activities tied to a program's life-cycle sustainment that correlate with statute. The following requirements will be satisfied in the LCSP/PSS: PRODUCT SUPPORT BUSINESS CASE ANALYSIS—The BCA and the cost-benefit analyses (CBA) satisfies statutory requirement to conduct appropriate cost, risk, and trades analyses to validate the product support strategy. CORE LOGISTICS DETERMINATION IP STRATEGY—prepared for the acquisition strategy. PRESERVATION AND STORAGE OF UNIQUE TOOLING PLAN PROGRAMMATIC, ENVIRONMENT, SAFETY, AND OCCUPATIONAL HEALTH (ESOH) (PESHE) REPLACED SYSTEM SUSTAINMENT PLAN SOFTWARE PRODUCT SUPPORT STRATEGY System Disposal Plan",
@@ -7752,7 +7999,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7771,12 +8018,7 @@
    "approval": "DA or designee",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "STATUTORY. The Programmatic Environment, Safety, and Occupational Health Evaluation (PESHE) and National Environmental Policy Act (NEPA) / Executive Order (E.O.) 12114 Compliance Schedule is approved by the DA or designee. Related design considerations must be included in the SEP; related operations or sustainment considerations will be included in the PSS.",
@@ -7788,7 +8030,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7807,12 +8049,7 @@
    "approval": "CAE or designee",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. If applicable, after the Full Rate Production or Full Deployment decision, the PPP will transition to the PM responsible for system sustainment and disposal. The PPP includes appropriate appendixes or links to required information. The official designated by the DoD Component head will be the approval authority.",
@@ -7824,7 +8061,7 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7843,12 +8080,7 @@
    "approval": "DA is release authority",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "Regulatory. RFPs are issued as necessary; they include specifications, deliverable lists, and statement of work. See also Defense Federal Acquisition Regulation Supplement (DFARS) subpart 201.170 and Class Deviation 2019-O00010, dated August 20, 2019, for peer review requirements. For acquisitions where government property will be provided to a contractor for the performance of a contract, a business case analysis must be performed, demonstrating it is in the government's best interest to provide government property, otherwise the contract could not be performed. In addition, the solicitation and ensuing contract must have the appropriate government property clause and mandatory clauses incorporated. SOURCE: FAR 45.102.b and DFARS 245.103-70.",
@@ -7860,7 +8092,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7894,8 +8126,8 @@
     "checked": "2026-09-30",
     "check": "matched live"
    },
-   "note_has_conditions": false,
-   "applies_when": "For major systems and programs above MDAP thresholds.",
+   "note_has_conditions": true,
+   "applies_when": "For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7914,12 +8146,7 @@
    "approval": "DA or designee",
    "when": [],
    "applies_if": {
-    "field": "mta_size",
-    "in": [
-     "non_major",
-     "major",
-     "exceeds_mdap"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID major and non-major system marks",
    "notes": "",
@@ -7931,7 +8158,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all MTA programs.",
+   "applies_when": "For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.",
    "table_name": "Statutory and Regulatory Requirements that may be applicable",
    "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"
   },
@@ -7959,11 +8186,7 @@
     }
    ],
    "applies_if": {
-    "field": "uca_acat",
-    "in": [
-     "acat_ii",
-     "acat_iii"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID ACAT and event marks",
    "notes": "STATUTORY; only required for programs responding to urgent capability acquisitions. - For programs under DOT&E oversight, operational and live fire test plans will be submitted to DOT&E for approval at the Development Milestone; post-deployment assessment plans will be submitted to DOT&E for approval at the Production and Deployment Milestone. DOT&E will ensure that testing is rigorous enough to rapidly evaluate critical operational issues. Test Plans submitted for DOT&E approval are required to be delivered 60 days before the start of testing. - Programs not under DOT&E oversight are approved at the Service level; the program may require a rapid and focused operational assessment and live fire testing (if applicable) prior to deploying an urgent need solution. The Acquisition Approach will identify any requirements to evaluate health, safety, operational effectiveness, suitability, environmental factors, supportability and survivability.",
@@ -7975,7 +8198,7 @@
     "check": "matched live"
    },
    "note_has_conditions": true,
-   "applies_when": "For all UCA programs.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "UCA Unique Information Requirements",
    "url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements"
   },
@@ -7999,11 +8222,7 @@
     }
    ],
    "applies_if": {
-    "field": "uca_acat",
-    "in": [
-     "acat_ii",
-     "acat_iii"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID ACAT and event marks",
    "notes": "STATUTORY; replaces and serves as the Analysis of Alternatives. Approved by the MDA. For JUONs, JEONs, critical warfighter issues identified by the Warfighter SIG, and SecDef or DepSecDef RAA determinations, a copy is due to the Executive Director, JRAC, within 3 business days of MDA approval.",
@@ -8015,7 +8234,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all UCA programs.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "UCA Unique Information Requirements",
    "url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements"
   },
@@ -8039,14 +8258,10 @@
     }
    ],
    "applies_if": {
-    "field": "uca_acat",
-    "in": [
-     "acat_ii",
-     "acat_iii"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID ACAT and event marks",
-   "notes": "Regulatory. Based on the disposition official’s recommendation in the Disposition Analysis, the Component Head will determine and document the disposition of the initiative and process it in accordance with applicable Component and requirements authority procedures. INFORMATION ACAT SOURCE TYPE REQUIREMENT DEVELOPMENT PRODUCTION OTHER II ≤ III",
+   "notes": "Regulatory. Based on the disposition official’s recommendation in the Disposition Analysis, the Component Head will determine and document the disposition of the initiative and process it in accordance with applicable Component and requirements authority procedures.",
    "provenance": {
     "source": "sources/aafdid-capture/uca.json",
     "row": 3,
@@ -8055,7 +8270,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all UCA programs.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "UCA Unique Information Requirements",
    "url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements"
   },
@@ -8079,11 +8294,7 @@
     }
    ],
    "applies_if": {
-    "field": "uca_acat",
-    "in": [
-     "acat_ii",
-     "acat_iii"
-    ]
+    "const": true
    },
    "rule_basis": "AAFDID ACAT and event marks",
    "notes": "STATUTORY. Optional request to the SecDef or DepSecDef for RAA. Considered as part of the development of the Acquisition Strategy. MDA approves the decision to request RAA at the Development Milestone.",
@@ -8095,7 +8306,7 @@
     "check": "matched live"
    },
    "note_has_conditions": false,
-   "applies_when": "For all UCA programs.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "UCA Unique Information Requirements",
    "url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements"
   },
@@ -8508,7 +8719,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 11,
+    "row": 10,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8544,7 +8755,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 12,
+    "row": 11,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "corrected from the live page"
@@ -8580,7 +8791,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 13,
+    "row": 12,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8602,7 +8813,7 @@
    "type": "regulatory",
    "type_text": "CAPE ICE for programs > ACAT II unless delegated",
    "source": "DoDI 5000.87 DoDI 5000.73",
-   "approval": "CAPE prepares the ICE above ACAT II unless it delegates",
+   "approval": "",
    "when": [
     {
      "event": "execution_entry",
@@ -8616,11 +8827,12 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 14,
+    "row": 13,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
    },
+   "tool_note": "AAFDID's TYPE cell reads 'CAPE ICE for programs > ACAT II unless delegated'. This tool classifies the row as regulatory (DoDI 5000.87, 5000.73).",
    "note_has_conditions": false,
    "applies_when": "For every program on this pathway.",
    "table_name": "Application and Embedded Software Information Requirements",
@@ -8652,7 +8864,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 15,
+    "row": 14,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8688,7 +8900,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 16,
+    "row": 15,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8724,7 +8936,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 17,
+    "row": 16,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8760,7 +8972,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 18,
+    "row": 17,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8797,7 +9009,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 19,
+    "row": 18,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8834,7 +9046,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 20,
+    "row": 19,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8867,11 +9079,11 @@
     "field": "dote_oversight",
     "eq": true
    },
-   "rule_basis": "AAFDID TYPE: statutory for programs on the DOT&E oversight list",
+   "rule_basis": "AAFDID TYPE: statutory for programs on the DOT&E oversight list; DOT&E reports on IOT&E only for oversight programs",
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 21,
+    "row": 20,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8907,7 +9119,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 22,
+    "row": 21,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -8937,20 +9149,28 @@
     }
    ],
    "applies_if": {
-    "field": "dote_oversight",
-    "eq": true
+    "const": true
    },
-   "rule_basis": "AAFDID TYPE: statutory for programs on the DOT&E oversight list",
+   "rule_basis": "AAFDID TYPE: statutory for programs on the DOT&E oversight list. AAFDID's MCA note says an OTP is mandatory for all programs, so it applies to every program",
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 23,
+    "row": 22,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
    },
+   "type_rule": {
+    "if": {
+     "field": "dote_oversight",
+     "eq": true
+    },
+    "then": "statutory",
+    "else": "regulatory",
+    "unknown": "depends"
+   },
    "note_has_conditions": false,
-   "applies_when": "When it is on the DOT&E oversight list.",
+   "applies_when": "For every program on this pathway.",
    "table_name": "Application and Embedded Software Information Requirements",
    "url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements"
   },
@@ -8980,7 +9200,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 24,
+    "row": 23,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9016,7 +9236,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 25,
+    "row": 24,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9052,7 +9272,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 26,
+    "row": 25,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9088,7 +9308,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 27,
+    "row": 26,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9124,7 +9344,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 28,
+    "row": 27,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9160,7 +9380,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 29,
+    "row": 28,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9196,7 +9416,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 30,
+    "row": 29,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9232,7 +9452,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 31,
+    "row": 30,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9268,7 +9488,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 32,
+    "row": 31,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9304,7 +9524,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 33,
+    "row": 32,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9340,7 +9560,7 @@
    "notes": "",
    "provenance": {
     "source": "sources/aafdid-capture/swa.json",
-    "row": 34,
+    "row": 33,
     "captured": "2026-08-22",
     "checked": "2026-09-30",
     "check": "matched live"
@@ -9360,7 +9580,8 @@
    "name": "CCA: Conduct an analysis of alternatives",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9392,7 +9613,8 @@
    "name": "CCA: Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS programs, conduct a life-cycle cost estimate.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9424,7 +9646,8 @@
    "name": "CCA: Determination that the acquisition supports core, priority functions of the DoD.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9456,7 +9679,8 @@
    "name": "CCA: Determine that no private sector or government source can better support the function",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9488,7 +9712,8 @@
    "name": "CCA: Develop clearly established measures and accountability for program progress.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9520,7 +9745,8 @@
    "name": "CCA: Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, to include relevant standards.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9552,7 +9778,8 @@
    "name": "CCA: Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant standards.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9584,7 +9811,8 @@
    "name": "CCA: Ensure, to the maximum extent practicable, (1) modular contracting has been used, and (2) the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent of....",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9616,7 +9844,8 @@
    "name": "CCA: Establish outcome-based performance measures linked to strategic goals",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9648,7 +9877,8 @@
    "name": "CCA: Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of commercial off-the-shelf technology.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9680,7 +9910,8 @@
    "name": "CCA: Register Mission-Critical and Mission-Essential systems with the DoD CIO.",
    "kind": "compliance",
    "type": "statutory",
-   "type_text": "Clinger-Cohen Act (40 U.S.C. Subtitle III)",
+   "type_text": "",
+   "tool_note": "Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.",
    "source": "Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82",
    "approval": "",
    "when": [],
@@ -9824,7 +10055,7 @@
    ],
    "table": "sr",
    "name": "CMO Certification",
-   "kind": "event",
+   "kind": "conditional",
    "type": "statutory",
    "type_text": "Statutory",
    "source": "10 USC 2222",
@@ -9839,7 +10070,7 @@
    "applies_if": {
     "const": true
    },
-   "rule_basis": "AAFDID lists it for defense business systems",
+   "rule_basis": "AAFDID lists it as statutory, but its own table note says the CMO position was repealed and the transfer of duties is pending, so this tool shows it as may apply",
    "notes": "",
    "footnotes": [
     "CMO certification can occur during prior phases, but must occur before the Acquisition ATP is approved.",
@@ -10557,7 +10788,7 @@
    "kind": "event",
    "type": "statutory",
    "type_text": "Statutory",
-   "source": "DoDI 5000.74, paras 1.2.c and 4.3.g(8); 10 U.S.C. 2330a(e) as cited; FAR 7.503(e); DFARS 207.503",
+   "source": "DoDI 5000.74, paras 1.2.c and 4.3.g(8); 10 U.S.C. 2330a(e) as cited (now 10 U.S.C. 4505, per AAFDID's Title 10 crosswalk); FAR 7.503(e); DFARS 207.503",
    "approval": "Not stated",
    "when": [
     {

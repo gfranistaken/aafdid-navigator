@@ -2,18 +2,18 @@
  "profile": {
   "program": "Prototype sensor pod (example)",
   "pathway": "mta",
-  "event": "entrance",
   "mta_path": "rp",
   "mta_size": "major",
-  "international": true,
   "contract_value": 120000000,
-  "contract_cost_type": true
+  "contract_cost_type": true,
+  "event": "entrance"
  },
  "pathway": "mta",
  "focus_event": "entrance",
  "counts": {
-  "required": 11,
-  "conditional": 34,
+  "required": 12,
+  "conditional": 35,
+  "review": 0,
   "triggered": 0,
   "undetermined": 0,
   "reference": 0,
@@ -26,59 +26,66 @@
   "evms-2026",
   "mta-change1-2024"
  ],
+ "unrecognized": [],
  "items": [
   [
-   "MTA-O01",
+   "MTA-T01",
    "required",
    "at_focus",
    "regulatory"
   ],
   [
-   "MTA-O02",
+   "MTA-T02",
    "required",
    "at_focus",
    "regulatory"
   ],
   [
-   "MTA-O03",
+   "MTA-T03",
    "required",
    "at_focus",
    "regulatory"
   ],
   [
-   "MTA-O04",
+   "MTA-T04",
    "required",
    "at_focus",
    "regulatory"
   ],
   [
-   "MTA-O05",
+   "MTA-T05",
    "required",
    "at_focus",
    "regulatory"
   ],
   [
-   "MTA-O08",
+   "MTA-T08",
    "required",
    "later",
    "regulatory"
   ],
   [
-   "MTA-O09",
+   "MTA-T09",
    "required",
    "later",
    "regulatory"
   ],
   [
-   "MTA-O10",
+   "MTA-T10",
    "required",
    "later",
    "regulatory"
   ],
   [
-   "MTA-O11",
+   "MTA-T11",
    "required",
    "later",
+   "regulatory"
+  ],
+  [
+   "CSDR-02",
+   "required",
+   "ongoing",
    "regulatory"
   ],
   [
@@ -94,7 +101,13 @@
    "regulatory"
   ],
   [
-   "MTA-O06",
+   "MTA-T06",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-05",
    "conditional",
    "conditional",
    "regulatory"
@@ -109,7 +122,7 @@
    "MTA-S02",
    "conditional",
    "conditional",
-   "both"
+   "statutory"
   ],
   [
    "MTA-S03",
@@ -298,7 +311,7 @@
    "regulatory"
   ],
   [
-   "MTA-O07",
+   "MTA-T07",
    "not_applicable",
    "not_applicable",
    "regulatory"

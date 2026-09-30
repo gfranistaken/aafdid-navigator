@@ -2,28 +2,32 @@
  "profile": {
   "program": "F3 replacement actuator (example)",
   "pathway": "mca",
-  "event": "ms_c",
   "mca_program_type": "acat_iii",
   "it_type": "embedded_it",
   "contract_value": 30000000,
-  "contract_cost_type": false
+  "contract_cost_type": false,
+  "event": "ms_c"
  },
  "pathway": "mca",
  "focus_event": "ms_c",
  "counts": {
-  "required": 63,
+  "required": 61,
   "conditional": 0,
-  "triggered": 8,
-  "undetermined": 0,
+  "review": 0,
+  "triggered": 5,
+  "undetermined": 5,
   "reference": 3,
   "not_applicable": 61
  },
  "derived": {},
- "questions_needed": [],
+ "questions_needed": [
+  "dote_oversight"
+ ],
  "currency_notes": [
   "thresholds-2025",
   "jcids-2025"
  ],
+ "unrecognized": [],
  "items": [
   [
    "MCA-M05",
@@ -53,19 +57,19 @@
    "MCA-M04",
    "required",
    "at_focus",
-   "statutory"
+   "regulatory"
   ],
   [
    "MCA-M07",
    "required",
    "at_focus",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M09",
    "required",
    "at_focus",
-   "statutory"
+   "regulatory"
   ],
   [
    "MCA-M12",
@@ -89,7 +93,7 @@
    "MCA-M15",
    "required",
    "at_focus",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M16",
@@ -125,13 +129,13 @@
    "MCA-M39",
    "required",
    "at_focus",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M43",
    "required",
    "at_focus",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M44",
@@ -161,7 +165,7 @@
    "MCA-M52",
    "required",
    "at_focus",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M53",
@@ -185,7 +189,7 @@
    "MCA-M62",
    "required",
    "at_focus",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M65",
@@ -239,13 +243,13 @@
    "MCA-M06",
    "required",
    "at_focus",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M11",
    "required",
    "at_focus",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M20",
@@ -281,18 +285,6 @@
    "MCA-M35",
    "required",
    "at_focus",
-   "statutory"
-  ],
-  [
-   "MCA-M28",
-   "required",
-   "later",
-   "regulatory"
-  ],
-  [
-   "MCA-M29",
-   "required",
-   "later",
    "statutory"
   ],
   [
@@ -401,13 +393,7 @@
    "MCA-M48",
    "required",
    "earlier",
-   "both"
-  ],
-  [
-   "MCA-X01",
-   "triggered",
-   "triggered",
-   "statutory"
+   "regulatory"
   ],
   [
    "MCA-X03",
@@ -428,12 +414,6 @@
    "statutory"
   ],
   [
-   "MCA-X16",
-   "triggered",
-   "triggered",
-   "statutory"
-  ],
-  [
    "MCA-X17",
    "triggered",
    "triggered",
@@ -446,9 +426,33 @@
    "regulatory"
   ],
   [
+   "MCA-M28",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "MCA-M29",
+   "undetermined",
+   "undetermined",
+   "statutory"
+  ],
+  [
+   "MCA-X01",
+   "undetermined",
+   "undetermined",
+   "statutory"
+  ],
+  [
+   "MCA-X16",
+   "undetermined",
+   "undetermined",
+   "statutory"
+  ],
+  [
    "MCA-X22",
-   "triggered",
-   "triggered",
+   "undetermined",
+   "undetermined",
    "statutory"
   ],
   [
@@ -608,6 +612,42 @@
    "statutory"
   ],
   [
+   "CSDR-01",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "CSDR-02",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "CSDR-03",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "CSDR-04",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "CSDR-05",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "CSDR-06",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
    "EVM-01",
    "not_applicable",
    "not_applicable",
@@ -666,42 +706,6 @@
    "not_applicable",
    "not_applicable",
    "statutory"
-  ],
-  [
-   "MCA-D01",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D02",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D03",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D04",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D05",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D06",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
   ],
   [
    "MCA-M22",

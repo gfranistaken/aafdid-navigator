@@ -23,18 +23,20 @@ The profile is the program's answers. Read it when pasted, and print it exactly 
 AAFDID PROFILE v1
 program: <name>
 pathway: <mca|mta|uca|swa|dbs|aos>
-event: <event id from the pathway file, or omit>
+event: <the next event's id from the pathway file, or omit>
 <field>: <value>
 unknown: <comma-separated fields not answered yet>
 ```
 
 Only fields asked for the pathway appear (see 01-intake.md). Booleans are `yes` or `no`, and dollar amounts are plain numbers.
 
+When reading a pasted profile, match values to the options in 01-intake.md, including the listed synonyms ("ACAT IC" is `mdap`; "Milestone B" is `ms_b`). If a field is not an intake field for the pathway, or a value matches no option, say which ones you could not use and treat those fields as unknown.
+
 ## Pathway finder
 
 Answer in order. The first yes points to a pathway. The decision authority approves the choice, and programs may combine pathways (DoDI 5000.02, para 4.1.a). Ask in this order and stop at the first yes.
 
-1. Are you buying services, meaning work performed by a contractor, rather than a product, system or software? Yes: AOS. No: next question.
+1. Are you buying services, meaning work performed by a contractor, rather than a product, system or software? Yes: AoS. No: next question.
    - Services at or above the simplified acquisition threshold follow DoDI 5000.74. Services managed as part of another pathway's program stay with that program. (DoDI 5000.02, para 4.2.f; DoDI 5000.74, paras 1.1.b and 1.2.a)
 2. Is it a business system that supports business operations such as finance, contracting, logistics, budgeting, installations or human resources? Yes: DBS. No: next question.
    - Covered defense business system software uses the DBS pathway, though it may use the software pathway for custom-built parts (DoDI 5000.87, para 1.2.b). (DoDI 5000.02, para 4.2.e)
@@ -50,21 +52,24 @@ Answer in order. The first yes points to a pathway. The decision authority appro
 1. Confirm the pathway. If the profile has none, run the pathway finder.
 2. Note the next event (`event`). If it is missing, list requirements by event instead of splitting them.
 3. Open the pathway's knowledge file. Use only records whose Pathway line names that pathway. The one exception is UCA, which also reviews some MCA rows (see 12-uca.md).
-4. For each record, test its Condition code against the profile. A field the profile does not answer is unknown. `AND` is false if any part is false, and unknown if any part is unknown. `OR` is true if any part is true, and unknown if any part is unknown.
+4. For each record, test its Condition code against the profile. `always` holds for every program on the pathway. A field the profile does not answer is unknown. `AND` is false if any part is false, and unknown if any part is unknown. `OR` is true if any part is true, and unknown if any part is unknown.
 5. Assign a status:
    - The condition holds: use the record's "Status when the condition holds". Required, May apply, Only if triggered, or Reference rule.
    - The condition is false but the "May apply instead when" code holds: May apply.
-   - The condition is unknown: Needs an answer. Name the missing field and ask its question from 01-intake.md.
-   - The condition is false: Not applicable. Give the Applies-when text as the reason.
-6. Work out the type. If the record gives a type rule (Statutory if ..., otherwise ...), apply it to the profile. If its field is unknown, say the type depends on that answer.
-7. Group the Required items:
-   - Due at the next event: the When-due line includes the next event.
+   - The condition, or the "May apply instead when" code, is unknown: Needs an answer. Name only the fields that keep it unknown (skip parts of an `OR` that are already false), and ask their questions from 01-intake.md.
+   - Otherwise: Not applicable. Give the Applies-when text as the reason.
+6. Work out the type. If the record gives a type rule (Statutory if ..., otherwise ...), apply it to the profile. If its field is unknown, use the type the record gives for that case, or say the type depends on that answer, and ask the question. A "Type by event" rule gives each event its own type: show it beside each event (for example `MS B (update, statutory)`), and give the record the type at the next event when it is due there, otherwise Statutory and regulatory if its events differ.
+7. Group the Required items when a next event is given:
+   - Due at the next event: the When-due line includes the next event. SWA records due at "Each decision point" are due at every decision point, so they always go here.
    - Due at later events: it includes an event after the next one.
-   - From earlier events: all its events come before the next one. It should already exist; check for updates.
    - Ongoing: no event, such as recurring reports, contract-level items and compliance actions.
-8. Then list, in this order: May apply, Also review (UCA only), Only if triggered, Needs an answer, Reference rules, then Not applicable.
-9. After the lists, add any "Changed since AAFDID" notes attached to listed records, and the notes in 20-changes-since-aafdid.md that change the answer.
-10. End with the questions that would settle the Needs-an-answer items, then the caveat below.
+   - As required: its only events are AAFDID's "Other" column, not a numbered decision point.
+   - From earlier events: all its numbered events come before the next one (it may also be due at Other). It should already exist; check for updates.
+   Without a next event, list Required items under Due by event (with their events) and Ongoing.
+   When the next event is Other, list the items due at Other first (Due at Other), then the rest under Due by event.
+8. Then list, in this order: May apply, Also review (UCA only, see 12-uca.md), Only if triggered, Needs an answer, Reference rules, then Not applicable.
+9. After the lists, add the questions that would settle more of the list: the ones behind Needs-an-answer items, types that depend on an answer, and for UCA the ACAT question.
+10. Then add the "Changed since AAFDID" notes attached to listed records, and the notes in 20-changes-since-aafdid.md that change the answer. Then Not applicable, then the caveat below.
 
 ## Output format
 
@@ -74,20 +79,25 @@ Use this layout. Code, name, type, when, approval and source come from the recor
 # AAFDID requirements: <program name>
 - Pathway: <name> (<code>), <instruction>
 - Next event: <event name, or 'not given; all events listed'>
-- Counts: <n> required, <n> may apply, <n> triggered, <n> need an answer, <n> not applicable
+- Counts: <n> required, <n> may apply, <n> also review, <n> triggered, <n> need an answer, <n> not applicable
+  (leave out "also review" when there are none)
 
 ## Due at <event name> (<n>)
 | Code | Requirement | Type | When | Approval | Source |
 ...
+## Due by event (<n>)  (when no next event is given, or the next event is Other)
 ## Due at later events (<n>)
 ## Ongoing, contract-level and compliance items (<n>)
+## As required (<n>)
 ## From earlier events (<n>)
 ## May apply: check the condition (<n>)
 | Code | Requirement | Type | Condition | Source |
+## Also review: MCA entries AAFDID points UCA programs to (<n>)  (UCA only)
 ## Only if triggered (<n>)
 ## Needs an answer (<n>)
 | Code | Requirement | Missing answer |
-## Questions that would settle the undetermined items
+## Reference rules (<n>)
+## Questions that would settle more of the list
 ## Changes since AAFDID that affect this list
 ## Not applicable (<n>)  (list codes and reasons; may be shortened if asked)
 
@@ -106,7 +116,7 @@ Unofficial. AAFDID is an overview: comply with its tabular notes and the full te
 - Never add a requirement that is not a record in the knowledge files. If the user asks about one, say it is not in the AAFDID knowledge files.
 - Never treat unknown as no. Unknown means Needs an answer.
 - Keep dollar thresholds as written, with their dollar basis. Do not convert them.
-- Cite by code and name, for example `MCA-M05 ACQUISITION PROGRAM BASELINE (APB)`.
+- Cite by code and name, for example `MCA-M06 ACQUISITION PROGRAM BASELINE (APB)`.
 - Record codes belong to this rules release. Record ids in the JSON (`rules/aafdid-rules.json`) stay stable across releases.
 
 ## Worked example
@@ -120,7 +130,6 @@ pathway: mta
 event: entrance
 mta_path: rf
 mta_size: non_major
-international: no
 contract_value: 45000000
 contract_cost_type: no
 ```
@@ -131,48 +140,52 @@ Correct result (the not-applicable list is left out):
 
 - Pathway: Middle Tier of Acquisition (MTA), DoDI 5000.80 (Change 1, November 2024); 10 U.S.C. 3602
 - Next event: Program entrance: the ADM starts the MTA clock
-- Counts: 6 required, 19 conditional, 0 triggered, 0 undetermined, 25 not applicable
+- Counts: 6 required, 23 may apply, 0 triggered, 0 need an answer, 23 not applicable
 - Rules 1.0.0: AAFDID capture 2026-08-22, checked live 2026-09-30
 
 ## Due at Program entrance: the ADM starts the MTA clock (2)
 
 | Code | Requirement | Type | When | Approval | Source |
 | --- | --- | --- | --- | --- | --- |
-| MTA-O02 | ADM signed by the DA | Regulatory | Entrance |  | DoDI 5000.80 |
-| MTA-O05 | Initial PID Entry | Regulatory | Entrance |  | DoDI 5000.80 |
+| MTA-T02 | ADM signed by the DA | Regulatory | Entrance |  | DoDI 5000.80 |
+| MTA-T05 | Initial PID Entry | Regulatory | Entrance |  | DoDI 5000.80 |
 
 ## Due at later events (4)
 
 | Code | Requirement | Type | When | Approval | Source |
 | --- | --- | --- | --- | --- | --- |
-| MTA-O08 | Updated PID Entry | Regulatory | Execution |  | DoDI 5000.80 |
-| MTA-O09 | An assessment of test results | Regulatory | Exit |  | DoDI 5000.80 |
-| MTA-O10 | Final PID capturing updated entries, to include the outcome, sustainment, and final budget of the MTA program | Regulatory | Exit |  | DoDI 5000.80 |
-| MTA-O11 | Outcome determination ADM signed by the DA | Regulatory | Exit |  | DoDI 5000.80 |
+| MTA-T08 | Updated PID Entry | Regulatory | Execution |  | DoDI 5000.80 |
+| MTA-T09 | An assessment of test results | Regulatory | Exit |  | DoDI 5000.80 |
+| MTA-T10 | Final PID capturing updated entries, to include the outcome, sustainment, and final budget of the MTA program | Regulatory | Exit |  | DoDI 5000.80 |
+| MTA-T11 | Outcome determination ADM signed by the DA | Regulatory | Exit |  | DoDI 5000.80 |
 
-## May apply: check the condition (19)
+## May apply: check the condition (23)
 
 | Code | Requirement | Type | Condition or trigger | Source |
 | --- | --- | --- | --- | --- |
-| MTA-S01 | Acquisition Decision Memorandum (ADM) | Regulatory | For all MTA programs. | DoDI 5000.80 |
-| MTA-S09 | INTELLECTUAL PROPERTY (IP) STRATEGY (Part of Acquisition Strategy) | Statutory and regulatory | For all MTA programs. | DoDI 5010.44 10 U.S.C. 3771- 3775 {formerly 2320} 10 U.S.C. 4211 {formerly 2431a} |
-| MTA-S15 | RELIABILITY AND MAINTAINABILITY (Part of Acquisition Strategy) | Statutory and regulatory | For all MTA programs. | 10 U.S.C. 4328 {formerly 2443} January 31, 2019 USD(A&S) Policy Memo, "Implementation of Title 10, United States Code, Section 2443, Sustainment Factors in Weapon System Design." DoDI 5000.88 |
-| MTA-S17 | Test Strategy/Assessment of Test results (Part of Acquisition Strategy) | Regulatory | For all MTA programs. | DoDI 5000.80 DoDI 5000.89 |
-| MTA-S18 | Transition Plan (Part of Acquisition Strategy) | Regulatory | For all MTA programs. | DoDI 5000.80 |
-| MTA-S19 | CLINGER-COHEN ACT (CCA) COMPLIANCE | Statutory and regulatory | For all MTA programs. | DoDi 5000.82 SUBTITLE III, TITLE 40 §811, P.L. 106-398 |
-| MTA-S20 | CYBERSECURITY STRATEGY | Statutory and regulatory | For all MTA programs. | DoDi 8500.01 DoDi 5000.82 §811, P.L. 106-398 40 U.S.C. 11313 |
-| MTA-S21 | DoD Component Cost Estimate | Regulatory | For all MTA programs. | DoDI 5000.73 DoDI 5000.80 |
-| MTA-S22 | Exit Criteria | Regulatory | For all MTA programs. | This Table |
-| MTA-S23 | FREQUENCY ALLOCATION APPLICATION (DD FORM 1494) | Statutory | For all MTA programs. | §104, P.L. 102-538 47 U.S.C. 305, 901-904 |
-| MTA-S24 | Full Funding Certification Memorandum | Regulatory | For all MTA programs. | DoDI 5000.73 |
-| MTA-S25 | Independent Cost Estimate (ICE) | Statutory and regulatory | For all MTA programs. | 10 U.S.C. 4323 {formerly 2441} DoDI 5000.73 |
-| MTA-S26 | Information Support Plan (ISP) | Regulatory | For all MTA programs. | DoDI 8330.01 DoDI 8320.02 DoDI 8410.03 |
-| MTA-S27 | Information Technology and National Security System Interoperability Certification | Regulatory | For all MTA programs. | DoDI 5000.80 DoDI 8330.01 |
-| MTA-S28 | LIFECYCLE SUSTAINMENT PLAN (LCSP)/PRODUCT SUPPORT STRATEGY (PSS) | Statutory and regulatory | For all MTA programs. | 10 U.S.C 4324 {formerly 2337} DoDI 5000.80 DoDI 5000.91 |
-| MTA-S29 | PESHE AND NEPA/E.O. 12114 COMPLIANCE SCHEDULE (Part of LCSP/PSS) | Statutory | For all MTA programs. | 42 U.S.C. 4321-4347 E.O. 12114 |
-| MTA-S30 | Program Protection Plan (PPP) | Regulatory | For all MTA programs. | DoDI 5200.39 DoDI 5200.44 |
-| MTA-S31 | Request for Proposal (RFP) | Regulatory | For all MTA programs. | Federal Acquisition Regulation (FAR) Subpart 15.203 |
-| MTA-S33 | Systems Engineering Plan (SEP) | Regulatory | For all MTA programs. | DoDI 5000.88 This Table |
+| CSDR-02 | Contractor Cost Data Report | Regulatory | ACAT I and II programs: contracts over $50M, or $20M to $50M at the CSDR plan authority's discretion. MTA programs over $100M: contracts over $20M. IS programs over $100M, including DBS: contracts over $50M. All then-year dollars. | DoDI 5000.73 |
+| CSDR-05 | Software Resources Data Report | Regulatory | Software development, production or maintenance efforts over $20M then-year for ACAT I and II programs, IS programs over $100M (including DBS) and MTA programs over $100M. | DoDI 5000.73 |
+| MTA-S01 | Acquisition Decision Memorandum (ADM) | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 5000.80 |
+| MTA-S02 | ACQUISITION STRATEGY | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDi 5000.80 10 U.S.C. 4211 {formerly 2431a} |
+| MTA-S09 | INTELLECTUAL PROPERTY (IP) STRATEGY (Part of Acquisition Strategy) | Statutory and regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 5010.44 10 U.S.C. 3771- 3775 {formerly 2320} 10 U.S.C. 4211 {formerly 2431a} |
+| MTA-S10 | International Involvement (Part of Acquisition Strategy) | Regulatory | AAFDID marks no size column for this row. Its note ties it to the statutory requirement to consider cooperative opportunities, which applies to every program; DoDI 5000.80 Change 1 adds exportability when international partners are involved. | DoDI 5000.80 |
+| MTA-S15 | RELIABILITY AND MAINTAINABILITY (Part of Acquisition Strategy) | Statutory and regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | 10 U.S.C. 4328 {formerly 2443} January 31, 2019 USD(A&S) Policy Memo, "Implementation of Title 10, United States Code, Section 2443, Sustainment Factors in Weapon System Design." DoDI 5000.88 |
+| MTA-S17 | Test Strategy/Assessment of Test results (Part of Acquisition Strategy) | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 5000.80 DoDI 5000.89 |
+| MTA-S18 | Transition Plan (Part of Acquisition Strategy) | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 5000.80 |
+| MTA-S19 | CLINGER-COHEN ACT (CCA) COMPLIANCE | Statutory and regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDi 5000.82 SUBTITLE III, TITLE 40 §811, P.L. 106-398 |
+| MTA-S20 | CYBERSECURITY STRATEGY | Statutory and regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDi 8500.01 DoDi 5000.82 §811, P.L. 106-398 40 U.S.C. 11313 |
+| MTA-S21 | DoD Component Cost Estimate | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 5000.73 DoDI 5000.80 |
+| MTA-S22 | Exit Criteria | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | This Table |
+| MTA-S23 | FREQUENCY ALLOCATION APPLICATION (DD FORM 1494) | Statutory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | §104, P.L. 102-538 47 U.S.C. 305, 901-904 |
+| MTA-S24 | Full Funding Certification Memorandum | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 5000.73 |
+| MTA-S25 | Independent Cost Estimate (ICE) | Statutory and regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | 10 U.S.C. 4323 {formerly 2441} DoDI 5000.73 |
+| MTA-S26 | Information Support Plan (ISP) | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 8330.01 DoDI 8320.02 DoDI 8410.03 |
+| MTA-S27 | Information Technology and National Security System Interoperability Certification | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 5000.80 DoDI 8330.01 |
+| MTA-S28 | LIFECYCLE SUSTAINMENT PLAN (LCSP)/PRODUCT SUPPORT STRATEGY (PSS) | Statutory and regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | 10 U.S.C 4324 {formerly 2337} DoDI 5000.80 DoDI 5000.91 |
+| MTA-S29 | PESHE AND NEPA/E.O. 12114 COMPLIANCE SCHEDULE (Part of LCSP/PSS) | Statutory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | 42 U.S.C. 4321-4347 E.O. 12114 |
+| MTA-S30 | Program Protection Plan (PPP) | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 5200.39 DoDI 5200.44 |
+| MTA-S31 | Request for Proposal (RFP) | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | Federal Acquisition Regulation (FAR) Subpart 15.203 |
+| MTA-S33 | Systems Engineering Plan (SEP) | Regulatory | For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items. | DoDI 5000.88 This Table |
 
 ## Changes since AAFDID that affect this list
 
@@ -197,25 +210,30 @@ Ask the questions for the program's pathway in the order below, one per message.
 1. `pathway`: Which acquisition pathway is the program on?
    - Answer `mca` for this section.
    - Why it matters: Every requirement belongs to a pathway, so this answer scopes everything else.
+   - Affects: CSDR-01, CSDR-02, CSDR-03, CSDR-05, CSDR-06
 2. `event`: Which decision point or phase comes next?
-   - Values: `mdd` = Materiel Development Decision; `ms_a` = Milestone A; `cdd_val` = Capability Development Document validation; `dev_rfp_rel` = Development RFP Release Decision; `ms_b` = Milestone B; `ms_c` = Milestone C; `frp_dec` = Full-Rate Production or Full Deployment Decision; `other` = Other, as required. Leave blank to list every event.
+   - Values: `mdd` = Materiel Development Decision; `ms_a` = Milestone A; `cdd_val` = Capability Development Document validation (also: CDD Validation, CDD); `dev_rfp_rel` = Development RFP Release Decision (also: Dev RFP Release, Development RFP Release, Development RFP Release Decision Point, DRFPRD, RFP Release); `ms_b` = Milestone B; `ms_c` = Milestone C; `frp_dec` = Full-Rate Production or Full Deployment Decision (also: FRP, FD, FRP Decision, FDD, Full-Rate Production, Full Deployment, Full-Rate Production Decision, Full Deployment Decision); `other` = Other, as required. Leave blank to list every event.
    - Why it matters: Requirements due at that event are listed first, then later ones, then recurring and triggered items.
 3. `mca_program_type`: What is the program's acquisition category?
-   - Values: `mdap` = ACAT IB, IC or ID (MDAP); `mais` = ACAT IAM or IAC (MAIS), legacy; `acat_ii` = ACAT II (major system); `acat_iii` = ACAT III and below
+   - Values: `mdap` = ACAT IB, IC or ID (MDAP) (also: MDAP, ACAT I, ACAT IB, ACAT IC, ACAT ID, ACAT IC or ID, ACAT IC or ID (MDAP)); `mais` = ACAT IAM or IAC (MAIS), legacy (also: MAIS, ACAT IAM, ACAT IAC, ACAT IAM or IAC); `acat_ii` = ACAT II (major system) (also: ACAT II, II, major system); `acat_iii` = ACAT III and below (also: ACAT III, III, ACAT III and below, ACAT III or below, ACAT IV)
      - `mdap`: AAFDID label: ACAT IC or ID (MDAP). The statutory MDAP threshold is more than $1.0B RDT&E or $4.5B procurement in FY2024 dollars (10 U.S.C. 4201, amended December 2025). DoDI 5000.85 Table 1 still shows $525M and $3.065B in FY2020 dollars.
      - `mais`: Only two AAFDID rows still list MAIS: the Systems Engineering Plan and the Operational Test Plan.
      - `acat_ii`: The statutory major system threshold is more than $275M RDT&E or $1.3B procurement in FY2024 dollars (10 U.S.C. 3041(c), amended December 2025). DoDI 5000.85 Table 1 still shows $200M and $920M in FY2020 dollars.
    - Why it matters: AAFDID's MCA tables mark each requirement by program type.
-   - Affects: MCA-B01, MCA-B02, MCA-B03, MCA-B04, MCA-D01, MCA-D02, MCA-D03, MCA-D04, MCA-D05, MCA-D06, MCA-M01, MCA-M02, MCA-M03, MCA-M04, MCA-M05, MCA-M06, MCA-M07, MCA-M08, MCA-M09, MCA-M10, MCA-M11, MCA-M12, MCA-M13, MCA-M14, MCA-M15, MCA-M16, MCA-M17, MCA-M18, MCA-M19, MCA-M20, MCA-M21, MCA-M22, MCA-M23, MCA-M24, MCA-M25, MCA-M26, MCA-M27, MCA-M28, MCA-M29, MCA-M30, MCA-M31, MCA-M32, MCA-M33, MCA-M34, MCA-M35, MCA-M36, MCA-M37, MCA-M38, MCA-M39, MCA-M40, MCA-M41, MCA-M42, MCA-M43, MCA-M44, MCA-M45, MCA-M46, MCA-M47, MCA-M48, MCA-M49, MCA-M50, MCA-M51, MCA-M52, MCA-M53, MCA-M54, MCA-M55, MCA-M56, MCA-M57, MCA-M58, MCA-M59, MCA-M60, MCA-M61, MCA-M62, MCA-M63, MCA-M64, MCA-M65, MCA-M66, MCA-M67, MCA-M68, MCA-M69, MCA-M70, MCA-M71, MCA-M72, MCA-M73, MCA-M74, MCA-M75, MCA-M76, MCA-M77, MCA-M78, MCA-M79, MCA-M80, MCA-N01, MCA-N02, MCA-N03, MCA-R01, MCA-R02, MCA-R03, MCA-X01, MCA-X02, MCA-X03, MCA-X04, MCA-X05, MCA-X06, MCA-X07, MCA-X08, MCA-X09, MCA-X10, MCA-X11, MCA-X12, MCA-X13, MCA-X14, MCA-X15, MCA-X16, MCA-X17, MCA-X18, MCA-X19, MCA-X20, MCA-X21, MCA-X22
-4. `it_type`: Does the system include information technology?
-   - Values: `it_system` = Yes, it is an IT system, including a national security system; `embedded_it` = Only IT embedded in a weapon system, or a command and control system that is not itself IT; `none` = No IT
+   - Affects: CSDR-01, CSDR-02, CSDR-03, CSDR-04, CSDR-05, CSDR-06, MCA-B01, MCA-B02, MCA-B03, MCA-B04, MCA-M01, MCA-M02, MCA-M03, MCA-M04, MCA-M05, MCA-M06, MCA-M07, MCA-M08, MCA-M09, MCA-M10, MCA-M11, MCA-M12, MCA-M13, MCA-M14, MCA-M15, MCA-M16, MCA-M17, MCA-M18, MCA-M19, MCA-M20, MCA-M21, MCA-M22, MCA-M23, MCA-M24, MCA-M25, MCA-M26, MCA-M27, MCA-M28, MCA-M29, MCA-M30, MCA-M31, MCA-M32, MCA-M33, MCA-M34, MCA-M35, MCA-M36, MCA-M37, MCA-M38, MCA-M39, MCA-M40, MCA-M41, MCA-M42, MCA-M43, MCA-M44, MCA-M45, MCA-M46, MCA-M47, MCA-M48, MCA-M49, MCA-M50, MCA-M51, MCA-M52, MCA-M53, MCA-M54, MCA-M55, MCA-M57, MCA-M58, MCA-M59, MCA-M60, MCA-M61, MCA-M62, MCA-M63, MCA-M64, MCA-M65, MCA-M66, MCA-M67, MCA-M68, MCA-M69, MCA-M70, MCA-M71, MCA-M72, MCA-M73, MCA-M75, MCA-M76, MCA-M77, MCA-M78, MCA-M79, MCA-M80, MCA-N01, MCA-N02, MCA-N03, MCA-R01, MCA-R02, MCA-R03, MCA-X01, MCA-X02, MCA-X03, MCA-X04, MCA-X05, MCA-X06, MCA-X07, MCA-X08, MCA-X09, MCA-X10, MCA-X11, MCA-X12, MCA-X13, MCA-X14, MCA-X15, MCA-X16, MCA-X17, MCA-X18, MCA-X19, MCA-X20, MCA-X21, MCA-X22
+4. `dote_oversight`: Is the program on the DOT&E oversight list (including LFT&E oversight)?
+   - Values: `yes`, `no`, or leave blank if not sure.
+   - Why it matters: IOT&E reports, live fire reports and waivers apply only to oversight programs, and DOT&E approval of the operational test plan is statutory for them.
+   - Affects: MCA-M28, MCA-M29, MCA-M56, MCA-X01, MCA-X16, MCA-X22
+5. `it_type`: Does the system include information technology?
+   - Values: `it_system` = Yes, it is an IT system, including a national security system (also: IT, IT system, NSS, national security system, yes); `embedded_it` = Only IT embedded in a weapon system, or a command and control system that is not itself IT (also: embedded, embedded IT, weapon system); `none` = No IT (also: no IT, no)
    - Why it matters: Decides the Clinger-Cohen Act entries. AAFDID presumes the first three CCA actions are satisfied for weapon systems with embedded IT.
    - Affects: MCA-C01, MCA-C02, MCA-C03, MCA-C04, MCA-C05, MCA-C06, MCA-C07, MCA-C08, MCA-C09, MCA-C10, MCA-C11, MCA-M15
-5. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
+6. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
    - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
-   - Affects: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06, MCA-D02, MCA-D03, MCA-D04, MCA-D05, MCA-D06
-6. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
+   - Affects: CSDR-02, CSDR-03, CSDR-04, CSDR-05, CSDR-06, EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
+7. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
    - Values: `yes`, `no`, or leave blank if not sure.
    - Why it matters: AAFDID applies EVMS to cost-reimbursable or incentive contracts of 18 months or more.
    - Affects: EVM-01, EVM-02, EVM-03, EVM-05, EVM-06
@@ -225,28 +243,25 @@ Ask the questions for the program's pathway in the order below, one per message.
 1. `pathway`: Which acquisition pathway is the program on?
    - Answer `mta` for this section.
    - Why it matters: Every requirement belongs to a pathway, so this answer scopes everything else.
+   - Affects: CSDR-02, CSDR-05
 2. `event`: Which decision point or phase comes next?
-   - Values: `entrance` = Program entrance: the ADM starts the MTA clock; `execution` = Throughout program execution; `exit` = Program exit: the outcome ADM. Leave blank to list every event.
+   - Values: `entrance` = Program entrance: the ADM starts the MTA clock (also: program start, start, program entrance, entry, MTA start); `execution` = Throughout program execution (also: during execution, throughout execution); `exit` = Program exit: the outcome ADM (also: program exit, outcome, completion, transition). Leave blank to list every event.
    - Why it matters: Requirements due at that event are listed first, then later ones, then recurring and triggered items.
 3. `mta_path`: Is it Rapid Prototyping or Rapid Fielding?
-   - Values: `rp` = Rapid Prototyping; `rf` = Rapid Fielding
+   - Values: `rp` = Rapid Prototyping (also: RP, rapid prototyping, prototyping); `rf` = Rapid Fielding (also: RF, rapid fielding, fielding)
    - Why it matters: AAFDID's tables do not split the two paths, but CAPE's cost-estimate threshold differs, and DoDI 5000.80 asks for a lifecycle sustainment plan for Rapid Fielding.
-   - Affects: MTA-O06
+   - Affects: MTA-T06
 4. `mta_size`: Where does the program sit against the major system and MDAP thresholds?
-   - Values: `non_major` = Not a major system; `major` = Major system, below MDAP thresholds; `exceeds_mdap` = Above MDAP thresholds
+   - Values: `non_major` = Not a major system (also: non-major, nonmajor, non major, not major, not a major system); `major` = Major system, below MDAP thresholds (also: major, major system); `exceeds_mdap` = Above MDAP thresholds (also: exceeds MDAP, above MDAP, MDAP, above MDAP thresholds, exceeds MDAP threshold)
      - `non_major`: At or below 10 U.S.C. 3041(c): $275M RDT&E or $1.3B procurement in FY2024 dollars.
      - `exceeds_mdap`: More than $1.0B RDT&E or $4.5B procurement in FY2024 dollars (10 U.S.C. 4201). Needs USD(A&S) written approval to use MTA.
    - Why it matters: AAFDID's MTA tables mark each requirement for major systems, non-major systems, or programs above MDAP thresholds.
-   - Affects: MTA-O01, MTA-O02, MTA-O03, MTA-O04, MTA-O05, MTA-O06, MTA-O07, MTA-O08, MTA-O09, MTA-O10, MTA-O11, MTA-S01, MTA-S02, MTA-S03, MTA-S04, MTA-S05, MTA-S06, MTA-S07, MTA-S08, MTA-S09, MTA-S11, MTA-S12, MTA-S13, MTA-S14, MTA-S15, MTA-S16, MTA-S17, MTA-S18, MTA-S19, MTA-S20, MTA-S21, MTA-S22, MTA-S23, MTA-S24, MTA-S25, MTA-S26, MTA-S27, MTA-S28, MTA-S29, MTA-S30, MTA-S31, MTA-S32, MTA-S33
-5. `international`: Will international partners be involved?
-   - Values: `yes`, `no`, or leave blank if not sure.
-   - Why it matters: Decides whether the MTA International Involvement entry applies. DoDI 5000.80 Change 1 ties exportability to international partner involvement.
-   - Affects: MTA-S10
-6. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
+   - Affects: CSDR-02, MTA-S02, MTA-S03, MTA-S04, MTA-S05, MTA-S06, MTA-S07, MTA-S08, MTA-S11, MTA-S12, MTA-S13, MTA-S14, MTA-S16, MTA-S32, MTA-T01, MTA-T03, MTA-T04, MTA-T06, MTA-T07
+5. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
    - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
-   - Affects: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
-7. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
+   - Affects: CSDR-02, CSDR-05, EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
+6. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
    - Values: `yes`, `no`, or leave blank if not sure.
    - Why it matters: AAFDID applies EVMS to cost-reimbursable or incentive contracts of 18 months or more.
    - Affects: EVM-01, EVM-02, EVM-03, EVM-05, EVM-06
@@ -256,21 +271,28 @@ Ask the questions for the program's pathway in the order below, one per message.
 1. `pathway`: Which acquisition pathway is the program on?
    - Answer `uca` for this section.
    - Why it matters: Every requirement belongs to a pathway, so this answer scopes everything else.
+   - Also affects these MCA entries to review (12-uca.md): CSDR-01, CSDR-02, CSDR-03, CSDR-05, CSDR-06
 2. `event`: Which decision point or phase comes next?
-   - Values: `development` = Development Milestone; `production` = Production and Deployment Milestone; `other` = Other, including disposition. Leave blank to list every event.
+   - Values: `development` = Development Milestone (also: dev); `production` = Production and Deployment Milestone (also: production and deployment); `other` = Other, including disposition (also: disposition). Leave blank to list every event.
    - Why it matters: Requirements due at that event are listed first, then later ones, then recurring and triggered items.
 3. `uca_acat`: What ACAT level would the program be?
-   - Values: `acat_ii` = ACAT II; `acat_iii` = ACAT III or below
+   - Values: `acat_ii` = ACAT II (also: ACAT II, II); `acat_iii` = ACAT III or below (also: ACAT III, III, ACAT III and below, ACAT III or below)
    - Why it matters: The UCA table, and the MCA entries AAFDID points UCA programs to, are marked by ACAT level.
-   - Affects: UCA-01, UCA-02, UCA-03, UCA-04
-4. `it_type`: Does the system include information technology?
-   - Values: `it_system` = Yes, it is an IT system, including a national security system; `embedded_it` = Only IT embedded in a weapon system, or a command and control system that is not itself IT; `none` = No IT
+   - Also affects these MCA entries to review (12-uca.md): MCA-M04, MCA-M05, MCA-M06, MCA-M07, MCA-M08, MCA-M09, MCA-M10, MCA-M11, MCA-M12, MCA-M13, MCA-M14, MCA-M15, MCA-M16, MCA-M18, MCA-M19, MCA-M20, MCA-M23, MCA-M24, MCA-M28, MCA-M29, MCA-M32, MCA-M33, MCA-M35, MCA-M39, MCA-M40, MCA-M41, MCA-M42, MCA-M43, MCA-M44, MCA-M45, MCA-M46, MCA-M47, MCA-M48, MCA-M49, MCA-M51, MCA-M52, MCA-M53, MCA-M54, MCA-M55, MCA-M56, MCA-M57, MCA-M58, MCA-M61, MCA-M62, MCA-M65, MCA-M66, MCA-M68, MCA-M69, MCA-M70, MCA-M71, MCA-M72, MCA-M74, MCA-M76, MCA-M78, MCA-M79, MCA-M80, MCA-X01, MCA-X03, MCA-X05, MCA-X06, MCA-X10, MCA-X11, MCA-X15, MCA-X16, MCA-X17, MCA-X20, MCA-X22
+4. `dote_oversight`: Is the program on the DOT&E oversight list (including LFT&E oversight)?
+   - Values: `yes`, `no`, or leave blank if not sure.
+   - Why it matters: IOT&E reports, live fire reports and waivers apply only to oversight programs, and DOT&E approval of the operational test plan is statutory for them.
+   - Also affects these MCA entries to review (12-uca.md): DBS-14, DBS-15, DBS-16, MCA-M28, MCA-M29, MCA-M56, MCA-X01, MCA-X16, MCA-X22, SWA-21, SWA-23
+5. `it_type`: Does the system include information technology?
+   - Values: `it_system` = Yes, it is an IT system, including a national security system (also: IT, IT system, NSS, national security system, yes); `embedded_it` = Only IT embedded in a weapon system, or a command and control system that is not itself IT (also: embedded, embedded IT, weapon system); `none` = No IT (also: no IT, no)
    - Why it matters: Decides the Clinger-Cohen Act entries. AAFDID presumes the first three CCA actions are satisfied for weapon systems with embedded IT.
-5. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
+   - Also affects these MCA entries to review (12-uca.md): MCA-C01, MCA-C02, MCA-C03, MCA-C04, MCA-C05, MCA-C06, MCA-C07, MCA-C08, MCA-C09, MCA-C10, MCA-C11, MCA-M15
+6. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
    - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
-6. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
+   - Also affects these MCA entries to review (12-uca.md): CSDR-02, CSDR-03, CSDR-04, CSDR-05, CSDR-06, SWA-19
+7. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
    - Values: `yes`, `no`, or leave blank if not sure.
    - Why it matters: AAFDID applies EVMS to cost-reimbursable or incentive contracts of 18 months or more.
    - Affects: EVM-01, EVM-02, EVM-03, EVM-05, EVM-06
@@ -281,7 +303,7 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Answer `swa` for this section.
    - Why it matters: Every requirement belongs to a pathway, so this answer scopes everything else.
 2. `event`: Which decision point or phase comes next?
-   - Values: `planning` = Entering the planning phase; `execution_entry` = Entering the execution phase; `execution` = During the execution phase; `each_decision` = Each decision point. Leave blank to list every event.
+   - Values: `planning` = Entering the planning phase (also: planning phase, entering planning); `execution_entry` = Entering the execution phase (also: entering execution, execution phase entry); `execution` = During the execution phase (also: during execution). Leave blank to list every event.
    - Why it matters: Requirements due at that event are listed first, then later ones, then recurring and triggered items.
 3. `swa_above_acat_ii`: Would the program's cost exceed the ACAT II thresholds?
    - Values: `yes`, `no`, or leave blank if not sure.
@@ -291,9 +313,9 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Values: `yes`, `no`, or leave blank if not sure.
    - Why it matters: The cybersecurity strategy is statutory for mission-critical and mission-essential IT (40 U.S.C. 11313).
    - Affects: SWA-09
-5. `dote_oversight`: Is the program on the DOT&E oversight list?
+5. `dote_oversight`: Is the program on the DOT&E oversight list (including LFT&E oversight)?
    - Values: `yes`, `no`, or leave blank if not sure.
-   - Why it matters: The IOT&E report, operational test plan and TEMP entries apply to oversight programs.
+   - Why it matters: IOT&E reports, live fire reports and waivers apply only to oversight programs, and DOT&E approval of the operational test plan is statutory for them.
    - Affects: SWA-21, SWA-23
 6. `software_maintenance`: Will the program need government software maintenance that counts toward core logistics?
    - Values: `yes`, `no`, or leave blank if not sure.
@@ -313,33 +335,34 @@ Ask the questions for the program's pathway in the order below, one per message.
 1. `pathway`: Which acquisition pathway is the program on?
    - Answer `dbs` for this section.
    - Why it matters: Every requirement belongs to a pathway, so this answer scopes everything else.
+   - Affects: CSDR-01, CSDR-02, CSDR-03, CSDR-05, CSDR-06
 2. `event`: Which decision point or phase comes next?
-   - Values: `solution_analysis_atp` = Solution Analysis ATP; `functional_requirements_atp` = Functional Requirements ATP; `acquisition_atp` = Acquisition ATP; `contract_award` = Contract award; `limited_deployment_atp` = Limited Deployment ATP(s); `full_deployment_atp` = Full Deployment ATP; `capability_support_atp` = Capability Support ATP. Leave blank to list every event.
+   - Values: `solution_analysis_atp` = Solution Analysis ATP (also: solution analysis); `functional_requirements_atp` = Functional Requirements ATP (also: functional requirements); `acquisition_atp` = Acquisition ATP (also: acquisition); `contract_award` = Contract award; `limited_deployment_atp` = Limited Deployment ATP(s) (also: limited deployment); `full_deployment_atp` = Full Deployment ATP (also: full deployment); `capability_support_atp` = Capability Support ATP (also: capability support). Leave blank to list every event.
    - Why it matters: Requirements due at that event are listed first, then later ones, then recurring and triggered items.
 3. `mission_critical_it`: Is it mission-critical or mission-essential IT?
    - Values: `yes`, `no`, or leave blank if not sure.
    - Why it matters: The cybersecurity strategy is statutory for mission-critical and mission-essential IT (40 U.S.C. 11313).
    - Affects: DBS-06
-4. `dote_oversight`: Is the program on the DOT&E oversight list?
+4. `dote_oversight`: Is the program on the DOT&E oversight list (including LFT&E oversight)?
    - Values: `yes`, `no`, or leave blank if not sure.
-   - Why it matters: The IOT&E report, operational test plan and TEMP entries apply to oversight programs.
+   - Why it matters: IOT&E reports, live fire reports and waivers apply only to oversight programs, and DOT&E approval of the operational test plan is statutory for them.
    - Affects: DBS-14, DBS-15, DBS-16
 5. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
    - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
-   - Affects: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
+   - Affects: CSDR-02, CSDR-03, CSDR-05, CSDR-06, EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
 6. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
    - Values: `yes`, `no`, or leave blank if not sure.
    - Why it matters: AAFDID applies EVMS to cost-reimbursable or incentive contracts of 18 months or more.
    - Affects: EVM-01, EVM-02, EVM-03, EVM-05, EVM-06
 
-## AOS: Acquisition of Services
+## AoS: Acquisition of Services
 
 1. `pathway`: Which acquisition pathway is the program on?
    - Answer `aos` for this section.
    - Why it matters: Every requirement belongs to a pathway, so this answer scopes everything else.
 2. `event`: Which decision point or phase comes next?
-   - Values: `plan` = Plan: form the team, review the current strategy, market research; `develop` = Develop: define requirements, SRRB, acquisition strategy; `execute` = Execute: award and manage performance. Leave blank to list every event.
+   - Values: `plan` = Plan: form the team, review the current strategy, market research (also: planning, plan phase); `develop` = Develop: define requirements, SRRB, acquisition strategy (also: development, develop phase); `execute` = Execute: award and manage performance (also: execution, execute phase). Leave blank to list every event.
    - Why it matters: Requirements due at that event are listed first, then later ones, then recurring and triggered items.
 3. `svc_total_value`: What is the total estimated value, from the independent government cost estimate, in current-year dollars?
    - Value: a dollar amount such as `45000000`, `45M` or `1.2B`.
@@ -353,7 +376,7 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Values: `yes`, `no`, or leave blank if not sure.
    - Why it matters: Makes USD(A&S) or designee the decision authority.
 6. `svc_vehicle`: How will the services be bought?
-   - Values: `standalone` = A standalone contract, or a single-award IDIQ; `idiq_base` = The base award of a multiple-award IDIQ; `task_order` = A task order under an IDIQ (enter the order's value above)
+   - Values: `standalone` = A standalone contract, or a single-award IDIQ (also: standalone, contract, single-award IDIQ, single award); `idiq_base` = The base award of a multiple-award IDIQ (also: IDIQ base, MA-IDIQ base, MAC base, multiple-award IDIQ, base award); `task_order` = A task order under an IDIQ (enter the order's value above) (also: task order, TO, order, delivery order)
    - Why it matters: A Services Acquisition Workshop is not required for a multiple-award IDIQ base, but it is required for any task order of $100M or more (DoDI 5000.74, para 4.2.d).
    - Affects: AOS-08
 7. `svc_overlap`: Could it significantly overlap an existing contract, a DoD or government-wide vehicle, or a best-in-class contract?
@@ -382,7 +405,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 ## Lookup matrix: Milestone and Phase Information Requirements
 
-● = applies to that program type. I = initial submission at that event; U = update. Read the program type column and the next-event column together. Rows marked (IT only) also need `it_type` = it_system or embedded_it.
+● = applies to that program type. I = initial submission at that event; U = update. Read the program type column and the next-event column together. A row marked (DOT&E oversight only) also needs `dote_oversight` = yes; the record's Condition code is the full rule.
 
 | Code | Requirement | MDAP | MAIS | II | III | MDD | MS A | CDD Val | Dev RFP Rel | MS B | MS C | FRP/FD | Other |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -400,7 +423,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 | MCA-M12 | BENEFITS ANALYSIS AND DETERMINATION (Part of Acquisition Strategy) | ● |  | ● | ● |  | I |  | I | U | U |  |  |
 | MCA-M13 | BUSINESS STRATEGY (Part of Acquisition Strategy) | ● |  | ● | ● |  | I |  | I | U | U | U |  |
 | MCA-M14 | Capability Development Document (CDD) | ● |  | ● | ● |  | I | U | U |  | U |  | U |
-| MCA-M15 | CLINGER-COHEN ACT (CCA) COMPLIANCE (IT only) | ● |  | ● | ● |  | I |  |  | I | I | I | I |
+| MCA-M15 | CLINGER-COHEN ACT (CCA) COMPLIANCE | ● |  | ● | ● |  | I |  |  | I | I | I | I |
 | MCA-M16 | Concept of Operations/Operational Mode Summary/Mission Profile (CONOPS/OMS/MP) | ● |  | ● | ● |  | I |  | U |  | U |  |  |
 | MCA-M17 | CONTRACT-TYPE DETERMINATION (Part of Acquisition Strategy) | ● |  |  |  |  |  |  | I | I | I |  |  |
 | MCA-M18 | CONTRACTING STRATEGY (Part of Acquisition Strategy) | ● |  | ● | ● |  | I |  | I | U | U | U |  |
@@ -413,8 +436,8 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 | MCA-M25 | Development RFP Release Cost Assessment | ● |  |  |  |  |  |  | I |  |  |  |  |
 | MCA-M26 | DoD Component Cost Estimate | ● |  |  |  |  | I |  |  | I | I | I | I |
 | MCA-M27 | DoD Component Cost Position | ● |  |  |  |  | I |  |  | I | I | I | I |
-| MCA-M28 | DoD Component Live Fire Test and Evaluation (LFT&E) Report | ● |  | ● | ● |  |  |  |  |  |  | I | I |
-| MCA-M29 | DOT&E REPORT ON INITIAL OPERATIONAL TEST AND EVALUATION (IOT&E) | ● |  | ● | ● |  |  |  |  |  |  | I |  |
+| MCA-M28 | DoD Component Live Fire Test and Evaluation (LFT&E) Report (DOT&E oversight only) | ● |  | ● | ● |  |  |  |  |  |  | I | I |
+| MCA-M29 | DOT&E REPORT ON INITIAL OPERATIONAL TEST AND EVALUATION (IOT&E) (DOT&E oversight only) | ● |  | ● | ● |  |  |  |  |  |  | I |  |
 | MCA-M30 | DT&E Program Assessment | ● |  |  |  |  |  |  | I | U | U |  | U |
 | MCA-M31 | DT&E SUFFICIENCY ASSESSMENT | ● |  |  |  |  |  |  |  | I | I |  |  |
 | MCA-M32 | Exit Criteria | ● |  | ● | ● |  | I |  | I | U | I |  |  |
@@ -515,7 +538,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Milestone A (initial); Development RFP Release Decision (initial); Milestone B (update); Milestone C (update); Full-Rate Production or Full Deployment Decision (update)
-- Type: Statutory. AAFDID TYPE: Statutory
+- Type: Statutory if `mca_program_type is one of {mdap, acat_ii}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory
 - Approval: MDA
 - Source: 10 U.S.C. 4211 15 U.S.C. 631, et seq. 10 U.S.C. 4820
 - AAFDID note: STATUTORY for MDAPs and major systems. Describe the top-level business and technical management approach in sufficient detail to allow the MDA to assess (1) the viability of the approach; (2) the method of implementing laws and policies; and (3) program objectives. Provide a clear explanation of how the strategy is designed to be implemented within the available resources of time, funding, and management capacity. Discuss the tailoring that will address program requirements and constraints. Where appropriate, the strategy should consider the delivery of required capability in increments, each dependent on available, mature technology, and recognizing up front the need for future capability improvements. 10 U.S.C. 4211 explicitly requires the Acquisition Approach to address industrial base considerations in accordance with 10 U.S.C. 4820.
@@ -541,7 +564,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Development RFP Release Decision (initial); Milestone B (update); Milestone C (update); Full-Rate Production or Full Deployment Decision (update); Other, as required (update)
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type by event: if `mca_program_type is one of {mdap}`, Statutory at Milestone B, Milestone C, Full-Rate Production or Full Deployment Decision, and Regulatory at its other events. Otherwise Regulatory. If that is unknown: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: MDA
 - Source: 10 U.S.C. 4214 10 U.S.C. 4377
 - AAFDID note: STATUTORY for MDAPs at Milestones B and C and the FRP decision; a Regulatory requirement at all other Program Type/Event combinations, including the required draft at Development RFP Release. For the APB, the draft due at RFP Release does not require CAE approval. The APB is not approved by the MDA until Milestone B. See the introductory text for the Acquisition Program Baselines Table and the Statutory Program Breach Definitions Table for reporting requirements at other than the identified decision points.
@@ -554,7 +577,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Milestone A (initial); Development RFP Release Decision (initial); Milestone B (update); Milestone C (update); Full-Rate Production or Full Deployment Decision (update)
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `mca_program_type is one of {mdap, acat_ii}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Regulatory, Statutory
 - Approval: MDA
 - Source: 10 U.S.C. 4211 DoDI 5000.85
 - AAFDID note: STATUTORY for MDAPs and major systems (including AIS programs that exceed the dollar thresholds for a "major system," as identified in DoDI 5000.85, Appendix 3A); Regulatory for other programs. 10 U.S.C. 4211 provides a comprehensive/detailed list of required strategy content; required content may be extended with regulatory requirements. Major changes to the program planning reflected in the Acquisition Strategy require MDA approval. 1. If the MDA revises the strategy for an MDAP or major defense subprogram because of a significant or critical change to the cost of the program or system, or a significant change to the schedule or performance of the program or system, the MDA must notify the congressional defense committees consistent with the Exceptions, Waivers, and Alternative Management and Reporting Requirements Table. 2. The MDA must review and re-approve the strategy upon a significant change to the schedule or performance of the program (or system), or if there has been a significant or critical change to the cost of the program (or system). 3. The strategy may also be reviewed and approved at any other time considered relevant by the MDA. A summary of the Product Support Strategy in the Acquisition Strategy is a regulatory requirement for all programs at all milestones and the FRP decision. Many of the acquisition strategy information requirements have a respective entry in this Table.
@@ -580,7 +603,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Milestone A (initial); Development RFP Release Decision (update); Milestone C (update); Other, as required (update)
-- Type: Statutory. AAFDID TYPE: Statutory
+- Type by event: if `mca_program_type is one of {mdap}`, Statutory at Milestone A, Capability Development Document validation, Development RFP Release Decision, Milestone B, and Regulatory at its other events. Otherwise Regulatory. If that is unknown: Statutory and regulatory. AAFDID TYPE: Statutory
 - Approval: MDA (DCAPE evaluates and assesses AoAs for all ACAT I programs)
 - Source: 40 U.S.C. 11312 §811, P.L. 106-398 10 U.S.C. 4251 10 U.S.C. 4252 DoDD 5105.84
 - AAFDID note: STATUTORY for MDAPs at Milestone A through Milestone B. The DoD Component is responsible for performing the AoA consistent with the study guidance developed by the Director, Cost Assessment and Program Evaluation (DCAPE) and the study plan approved by DCAPE. DoDD 5105.84 details the responsibility of DCAPE for AoAs. 10 U.S.C. 4251, as amended by Section 802 of the FY2025 NDAA, allows for the conduct of early experimentation with a combatant commander to satisfy the statutory requirement for an AoA.
@@ -606,7 +629,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Development RFP Release Decision (initial); Milestone B (update); Milestone C (update)
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `mca_program_type is one of {mdap, acat_ii}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Regulatory, Statutory
 - Approval: DoD CIO
 - Source: §1047, P.L. 110- 417 This Table
 - AAFDID note: STATUTORY for MDAPs and major weapon systems; Regulatory for all other programs. Bandwidth requirements data will be documented in the Information Support Plan (ISP). If the ISP is waived for a program, conformance with bandwidth review will be based on data provided in the Capability Development Document (CDD), consistent with the Net-Ready guidance in Enclosure C to Chairman of the Joint Chiefs of Staff Instruction (CJCSI) 5123.01I, Charter of The Joint Requirements Oversight Council and Implementation of the Joint Capabilities Integration and Development System.
@@ -657,10 +680,10 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MCA (Major Capability Acquisition). Table: Milestone and Phase Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: For MDAPs, ACAT II and ACAT III and below; for IT systems (including national security systems) and weapon or C2 systems with embedded IT.
-- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii} AND it_type is one of {it_system, embedded_it}`
+- Applies when: For MDAPs, ACAT II and ACAT III and below.
+- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Milestone A (initial); Milestone B (initial); Milestone C (initial); Full-Rate Production or Full Deployment Decision (initial); Other, as required (initial)
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `it_type is one of {it_system, embedded_it}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Regulatory, Statutory
 - Approval: MDA and Component CIO or designee
 - Source: U.S.C. Title 40, Subtitle III, Chapters 111, 113, 115 §811, P.L. 106-398 DoDI 5000.82
 - AAFDID note: STATUTORY for all programs that acquire information technology (IT); Regulatory for other programs. See DoDI 5000.82 for amplifying regulatory policy. A summary of required actions is in the CCA Compliance Table. The PM will report CCA compliance to the MDA and the Component CIO or designee. For IT within an MCA program employing an incremental development model, the program manager will report CCA compliance at each Milestone and/or Limited Deployment Decision Point for the IT.
@@ -827,8 +850,8 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MCA (Major Capability Acquisition). Table: Milestone and Phase Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: For MDAPs, ACAT II and ACAT III and below.
-- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
+- Applies when: For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.
+- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii} AND dote_oversight = yes`
 - When due: Full-Rate Production or Full Deployment Decision (initial); Other, as required (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: CAE
@@ -840,8 +863,8 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MCA (Major Capability Acquisition). Table: Milestone and Phase Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: For MDAPs, ACAT II and ACAT III and below.
-- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
+- Applies when: For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.
+- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii} AND dote_oversight = yes`
 - When due: Full-Rate Production or Full Deployment Decision (initial)
 - Type: Statutory. AAFDID TYPE: Statutory
 - Approval: DOT&E
@@ -973,7 +996,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Milestone A (initial); Development RFP Release Decision (initial); Milestone B (update); Milestone C (update); Full-Rate Production or Full Deployment Decision (update)
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `mca_program_type is one of {mdap}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Regulatory, Statutory
 - Approval: MDA
 - Source: 10 U.S.C. 4211 10 U.S.C. 4820 DoDI 5000.60
 - AAFDID note: STATUTORY for MDAPs; Regulatory for others. Summarizes the results of the industrial base capabilities' analysis. The OSD Office of Industrial Base Policy hosts a number of resources providing detailed manufacturing and industrial base policy and guidance.
@@ -1026,7 +1049,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Milestone A (initial); Development RFP Release Decision (initial); Milestone B (update); Milestone C (update); Full-Rate Production or Full Deployment Decision (update)
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `mca_program_type is one of {mdap, acat_ii}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Regulatory, Statutory
 - Approval: MDA
 - Source: 10 U.S.C. 3771, 3772 and 3774 10 U.S.C. 4211 DoDI 5010.44
 - AAFDID note: STATUTORY for major weapon systems and subsystems; Regulatory for other program types. The IP Strategy must be updated as appropriate to support and account for evolving IP considerations associated with the award and administration of all contracts throughout the program life cycle. Becomes part of the Product Support Strategy (PSS) during Operations and Support (O&S). Title 10, Chapter 275, provides statute regarding the management of proprietary data and data rights.
@@ -1091,7 +1114,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Development RFP Release Decision (initial); Milestone B (update)
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `mca_program_type is one of {mdap, acat_ii}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Regulatory, Statutory
 - Approval: MDA
 - Source: 10 U.S.C. 4231 DoDI 5000.85
 - AAFDID note: STATUTORY for MDAPs and ACAT II programs; Regulatory for other programs. A preliminary quantity is determined at the Development RFP Release Decision Point; the final LRIP quantity is determined at Milestone B. The LRIP quantity will be documented in the ADM. For programs on the DOT&E Oversight List, LRIP quantities must equal or exceed the numbers required for testing as identified in the approved Test and Evaluation Master Plan (TEMP). Additional compliance details are provided in the cited section of U.S.C.
@@ -1143,7 +1166,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Milestone A (initial); Development RFP Release Decision (initial); Milestone B (update); Milestone C (update); Full-Rate Production or Full Deployment Decision (update)
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `mca_program_type is one of {mdap}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Regulatory, Statutory
 - Approval: MDA
 - Source: 10 U.S.C. 4401 10 U.S.C. 4402 DoDI 5000.85
 - AAFDID note: STATUTORY for MDAPs; Regulatory for other programs. Describe how a MOSA will or will not be used to evolve system capability, improve interoperability, reduce cost or schedule, and refresh technology. Planning will be consistent with the discussion in DoDI 5000.85, Para. 3C.3.a.(5).
@@ -1192,10 +1215,10 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MCA (Major Capability Acquisition). Table: Milestone and Phase Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: For all MCA program types.
-- Condition code: `mca_program_type is one of {mdap, mais, acat_ii, acat_iii}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Full-Rate Production or Full Deployment Decision (initial); Other, as required (initial)
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `dote_oversight = yes`, otherwise Regulatory. If that is unknown: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: DOT&E or Component equivalent
 - Source: 10 U.S.C. 4171 DoDI 5000.89
 - AAFDID note: STATUTORY/Regulatory. An OTP, approved before the start of OT&E, is mandatory for all programs. Approval by DOT&E is a STATUTORY requirement for programs on the DOT&E Oversight list. DoD Component-equivalent approval is a Regulatory requirement for all other programs.
@@ -1273,7 +1296,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For MDAPs, ACAT II and ACAT III and below.
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Milestone A (initial); Development RFP Release Decision (update); Milestone B (update); Milestone C (update); Full-Rate Production or Full Deployment Decision (update); Other, as required (update)
-- Type: Statutory and regulatory. AAFDID TYPE: Statutory, Regulatory
+- Type: Statutory if `mca_program_type is one of {mdap}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory, Regulatory
 - Approval: USD(A&S) or designee, CAE or designee
 - Source: 10 U.S.C 4324 OMB Circular A- 94 DoDI 5000.91
 - AAFDID note: STATUTORY for MDAPs; regulatory for other program. A draft[^4] update is due for the Development RFP Release; approved at Milestone B. The PSS is part of the Life Cycle Sustainment Plan and satisfies the statutory product support strategy requirement of 10 U.S.C. 4324. USD(A&S), or designee, will approve the PSS for ACAT ID programs and USD(A&S)-designated business system or special interest programs. The CAE, or designee, will approve the PSS for an ACAT IB, or IC or below program. See DoDI 5000.91 for PSS details. The PSS has the following annexes: Core Logistics Analysis (row above); IP Strategy (row above); Preservation and Storage of Unique Tooling Plan (row above); Product Support Business Case Analysis (10 U.S.C. 4324 and DoDI 5000.91); Programmatic, Environment, Safety, and Occupational Health (ESOH) (PESHE) (row below); Replaced System sustainment Plan (row below); and System Disposal Plan (10 U.S.C. 4252, DoDI 4160.28, DoD 4160.21-M, DoD 4160.28-M and DoDI 5000.91).
@@ -1426,8 +1449,8 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MCA (Major Capability Acquisition). Table: Milestone and Phase Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: For all MCA program types.
-- Condition code: `mca_program_type is one of {mdap, mais, acat_ii, acat_iii}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Milestone A (initial); Development RFP Release Decision (update); Milestone B (update); Milestone C (update); Full-Rate Production or Full Deployment Decision (update)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: USD(R&E) (for ACAT ID) or MDA or designee
@@ -1539,7 +1562,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: Submitted by PM to CAE, USD(A&S) Submitted by USD(A&S) to Congress
 - Source: 10 U.S.C. 4351 - 4355 10 U.S.C. 4371 - 4375 10 U.S.C. 4201 10 U.S.C. 4202 10 U.S.C. 4204
-- AAFDID note: ACAT REQUIREMENT DUE SOURCE TYPE REQUIREMENT PROCEDURE MDAP II ≤III STATUTORY. Provides the status of total program cost, schedule, and performance to Congress; provides program unit cost and unit cost breach information for a specific program. The first MSAR after the MDA's 10 U.S.C. 4252 CERTIFICATION AND DETERMINATION (a row in the Milestone and Phase Information Requirements Table) will include the certification and determination. For each MDAP that receives Milestone B approval after January 1, 2019, include a brief summary description of the key elements of the modular open systems approach or, if a modular open systems approach was not used, the rationale for not using such an approach. Every MSAR must include certification by the Secretary of the Military Department and the Chief of the armed force that program requirements are stable and funding is adequate to meet program cost, schedule, and performance objectives, and the Secretary and Chief must identify and report in the MSAR any increased program risk since the last report.
+- AAFDID note: STATUTORY. Provides the status of total program cost, schedule, and performance to Congress; provides program unit cost and unit cost breach information for a specific program. The first MSAR after the MDA's 10 U.S.C. 4252 CERTIFICATION AND DETERMINATION (a row in the Milestone and Phase Information Requirements Table) will include the certification and determination. For each MDAP that receives Milestone B approval after January 1, 2019, include a brief summary description of the key elements of the modular open systems approach or, if a modular open systems approach was not used, the rationale for not using such an approach. Every MSAR must include certification by the Secretary of the Military Department and the Chief of the armed force that program requirements are stable and funding is adequate to meet program cost, schedule, and performance objectives, and the Secretary and Chief must identify and report in the MSAR any increased program risk since the last report.
 - Page: https://www.waru.edu/aafdid/Recurring-Reporting-Requirements
 
 ### MCA-R03 · UNIT COST REPORT (UCR)
@@ -1561,8 +1584,8 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MCA (Major Capability Acquisition). Table: Exceptions, Waivers, and Alternative Management and Reporting Requirements.
 - Status when the condition holds: Only if triggered.
-- Applies when: For MDAPs, ACAT II and ACAT III and below.
-- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
+- Applies when: For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.
+- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii} AND dote_oversight = yes`
 - When due: A DoD Component- approved final draft plan is due 45 calendar days prior to the Development RFP Release decision. The final plan is required at Milestone B or as soon as practicable after program initiation.
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: PM to DOT&E
@@ -1580,7 +1603,6 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: PM to USD(A&S) to Congress
 - Source: §904, P.L. 112-239
-- AAFDID note: ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X03 · CONGRESSIONAL NOTIFICATION OF CORE LOGISTICS COMMERCIAL ITEM EXCEPTION
@@ -1619,7 +1641,6 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: MDA to Congress; Copy USD(A&S), USD(R&E)
 - Source: 10 U.S.C. 4328
-- AAFDID note: ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X06 · CONGRESSIONAL NOTIFICATION OF MDA REVISION OF THE ACQUISITION STRATEGY
@@ -1632,7 +1653,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: MDA to Congress (copy DAE)
 - Source: 10 U.S.C. 4211
-- AAFDID note: STATUTORY. Each level of change for dollars is defined in section 4211 with a cross reference to section 4371. A significant change in schedule is defined as a delay greater than six months. A significant change in performance is not defined in statute. ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III
+- AAFDID note: STATUTORY. Each level of change for dollars is defined in section 4211 with a cross reference to section 4371. A significant change in schedule is defined as a delay greater than six months. A significant change in performance is not defined in statute.
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X07 · CONGRESSIONAL NOTIFICATION OF MDAP SUBPROGRAM DESIGNATION(S)
@@ -1671,7 +1692,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: Service Secretary to Congress
 - Source: 10 U.S.C. 4371-4375
-- AAFDID note: STATUTORY. Due within 45 calendar days of a Program Deviation Report. Reporting under Chapter 325-Cost Growth-Unit Cost Reports (Nunn-McCurdy) does not apply if a program has received a limited reporting waiver under 10 U.S.C. 4351, subsection (h). ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III
+- AAFDID note: STATUTORY. Due within 45 calendar days of a Program Deviation Report. Reporting under Chapter 325-Cost Growth-Unit Cost Reports (Nunn-McCurdy) does not apply if a program has received a limited reporting waiver under 10 U.S.C. 4351, subsection (h).
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X10 · CONGRESSIONAL NOTIFICATION OF WAIVER OF PROHIBITION ON USING COVERED TELECOMMUNICATIONS EQUIPMENT OR SERVICES FOR NUCLEAR COMMAND, CONTROL, AND COMMUNICATIONS SYSTEMS
@@ -1697,7 +1718,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: Agency head to Congress; Copy to USD(A&S), USD(R&E), DoD CIO
 - Source: §889, P.L. 115-232 DFARS Subpart 204.2100
-- AAFDID note: The cited section of the law fully details the prohibition as well as the condition for the waivers. ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III
+- AAFDID note: The cited section of the law fully details the prohibition as well as the condition for the waivers.
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X12 · COST-TYPE DEVELOPMENT CONTRACT DETERMINATION
@@ -1719,11 +1740,11 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Status when the condition holds: Only if triggered.
 - Applies when: For MDAPs.
 - Condition code: `mca_program_type is one of {mdap}`
-- When due: Applicable to contracts for the production of MDAPs: Entered October which The granted the using contract production. prohibition USD(A&S) a cost-type into, 1, an for 2014, exception MDAP on, has against and or after for to
+- When due: Applicable to contracts for the production of MDAPs: entered into, on, or after October 1, 2014, and for which the USD(A&S) has granted an exception to the prohibition against using a cost-type contract for MDAP production.
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: USD(A&S) to Congress
 - Source: §811, P.L. 112- 239
-- AAFDID note: STATUTORY. The USD(A&S) may only grant the exception: (1) in the case of a particular cost-type contract if the USD(A&S) provides written certification to the congressional defense committees that a cost-type contract is ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III needed to provide a required capability in a timely and cost-effective manner; (2) the USD(A&S) takes affirmative steps to make sure that the use of cost-type pricing is limited to only those line items or portions of the contract where such pricing is needed to achieve the purposes of the exception; and, (3) an explanation of the steps identified under clause (2), accompanies the written certification under clause (1).
+- AAFDID note: STATUTORY. The USD(A&S) may only grant the exception: (1) in the case of a particular cost-type contract if the USD(A&S) provides written certification to the congressional defense committees that a cost-type contract is needed to provide a required capability in a timely and cost-effective manner; (2) the USD(A&S) takes affirmative steps to make sure that the use of cost-type pricing is limited to only those line items or portions of the contract where such pricing is needed to achieve the purposes of the exception; and, (3) an explanation of the steps identified under clause (2), accompanies the written certification under clause (1).
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X14 · DT&E EXCEPTION REPORTING
@@ -1736,7 +1757,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: PM to USD(R&E) to Congress
 - Source: §904, P.L. 112-239
-- AAFDID note: STATUTORY The report due for Case 1 must include a description of the specific aspects of the DT&E plan determined to be inadequate; an explanation of why the program disregarded the DASD(DT&E)'s recommendations; and identification of the steps taken to address the concerns of the DASD(DT&E). The report due for Case 2 must include an explanation of why the program proceeded to IOT&E despite the DASD(DT&E) findings; a description of the aspects of the TEMP that had to be set aside to enable the program to proceed to IOT&E; a description of how the program addressed the specific areas of concern raised in the assessment of operational test readiness; and a ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III statement of whether IOT&E identified any significant shortcomings in the program. The USD(R&E) will compile all such exception reports and annually, not later than 60 days after the end of each fiscal year through 2018, submit a report on each case to the congressional defense committees. The D(DT&E) replaced the DASD(DT&E) during the OSD re-organization pursuant to Section 901 of P.L. 114-328.
+- AAFDID note: STATUTORY The report due for Case 1 must include a description of the specific aspects of the DT&E plan determined to be inadequate; an explanation of why the program disregarded the DASD(DT&E)'s recommendations; and identification of the steps taken to address the concerns of the DASD(DT&E). The report due for Case 2 must include an explanation of why the program proceeded to IOT&E despite the DASD(DT&E) findings; a description of the aspects of the TEMP that had to be set aside to enable the program to proceed to IOT&E; a description of how the program addressed the specific areas of concern raised in the assessment of operational test readiness; and a statement of whether IOT&E identified any significant shortcomings in the program. The USD(R&E) will compile all such exception reports and annually, not later than 60 days after the end of each fiscal year through 2018, submit a report on each case to the congressional defense committees. The D(DT&E) replaced the DASD(DT&E) during the OSD re-organization pursuant to Section 901 of P.L. 114-328.
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X15 · LEAD SYSTEM INTEGRATOR EXCEPTION CERTIFICATION
@@ -1756,8 +1777,8 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MCA (Major Capability Acquisition). Table: Exceptions, Waivers, and Alternative Management and Reporting Requirements.
 - Status when the condition holds: Only if triggered.
-- Applies when: For MDAPs, ACAT II and ACAT III and below.
-- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
+- Applies when: For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.
+- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii} AND dote_oversight = yes`
 - When due: Due at Milestone B or as soon as practicable after program initiation.
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: DAE to Congress
@@ -1775,7 +1796,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Procedure: None
 - Source: MoA.
-- AAFDID note: ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III Joint DoD and DNI oversight of wholly and majority National Intelligence Program-funded acquisition programs will be conducted in accordance with Intelligence Community Policy Guidance 801.1 and the Memorandum of Agreement (MoA) between the DNI and the Secretary of Defense.
+- AAFDID note: Joint DoD and DNI oversight of wholly and majority National Intelligence Program-funded acquisition programs will be conducted in accordance with Intelligence Community Policy Guidance 801.1 and the Memorandum of Agreement (MoA) between the DNI and the Secretary of Defense.
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X18 · MDA RESPONSE TO A CONGRESSIONAL MILESTONE APPROVAL INQUIRY
@@ -1801,7 +1822,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: USD(A&S)
 - Source: 10 U.S.C. 4376-4377
-- AAFDID note: ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III STATUTORY. The remedial actions required when a program or subprogram experiences critical cost growth. 10 U.S.C. 4376 identifies the required elements of the certification. 10 U.S.C. 4377 identifies required actions if the deficient program is not terminated.
+- AAFDID note: STATUTORY. The remedial actions required when a program or subprogram experiences critical cost growth. 10 U.S.C. 4376 identifies the required elements of the certification. 10 U.S.C. 4377 identifies required actions if the deficient program is not terminated.
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X20 · Program Deviation Report
@@ -1827,15 +1848,14 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: SecDef, D, CAPE, in Consultation with the JROC
 - Source: 10 U.S.C. 4273 10 U.S.C. 4371-4377
-- AAFDID note: ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III
 - Page: https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements
 
 ### MCA-X22 · SURVIVABILITY AND LIVE FIRE TESTING STATUS REPORT
 
 - Pathway: MCA (Major Capability Acquisition). Table: Exceptions, Waivers, and Alternative Management and Reporting Requirements.
 - Status when the condition holds: Only if triggered.
-- Applies when: For MDAPs, ACAT II and ACAT III and below.
-- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
+- Applies when: For MDAPs, ACAT II and ACAT III and below; when it is on the DOT&E oversight list.
+- Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii} AND dote_oversight = yes`
 - When due: Due as soon as practicable after a decision to proceed to operational use or to make procurement funds available for a covered system is made prior to Milestone C approval.
 - Type: Statutory. AAFDID TYPE: Statutory
 - Procedure: DOT&E to Congress
@@ -1852,10 +1872,11 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: IT systems, including national security systems. Presumed satisfied for weapon systems with embedded IT and for command and control systems that are not themselves IT (AAFDID footnote 3).
 - Condition code: `it_type = it_system`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: ICD, Information Systems (IS) ICD, or urgent need requirements documents.
 - Footnote: These requirements are presumed to be satisfied for weapons systems with embedded IT and for command and control systems that are not themselves IT systems.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Changed since AAFDID (JCIDS disestablished): see 20-changes-since-aafdid.md, note jcids-2025.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
@@ -1866,11 +1887,13 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: IT systems, including national security systems. Presumed satisfied for weapon systems with embedded IT and for command and control systems that are not themselves IT (AAFDID footnote 3).
 - Condition code: `it_type = it_system`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: ICD, IS ICD, CDD, AoA, APB.
 - Footnote: These requirements are presumed to be satisfied for weapons systems with embedded IT and for command and control systems that are not themselves IT systems.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
+- Footnote: The APB and TEMP may be submitted in draft to expedite program assessment.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Changed since AAFDID (JCIDS disestablished): see 20-changes-since-aafdid.md, note jcids-2025.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
@@ -1881,11 +1904,12 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: IT systems, including national security systems. Presumed satisfied for weapon systems with embedded IT and for command and control systems that are not themselves IT (AAFDID footnote 3).
 - Condition code: `it_type = it_system`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: ICD, IS ICD, Concept of Operations, AoA, Business Process Reengineering.
 - Footnote: These requirements are presumed to be satisfied for weapons systems with embedded IT and for command and control systems that are not themselves IT systems.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Changed since AAFDID (JCIDS disestablished): see 20-changes-since-aafdid.md, note jcids-2025.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
@@ -1896,11 +1920,12 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Programs that acquire IT, including national security systems and IT embedded in weapon systems.
 - Condition code: `it_type is one of {it_system, embedded_it}`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy, AoA.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
 - Footnote: For national security systems, these requirements apply to the extent practicable (40 U.S.C. 11103).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
 ### MCA-C05 · CCA action 5: Conduct an analysis of alternatives.
@@ -1910,11 +1935,12 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Programs that acquire IT, including national security systems and IT embedded in weapon systems.
 - Condition code: `it_type is one of {it_system, embedded_it}`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: AoA.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
 - Footnote: For national security systems, these requirements apply to the extent practicable (40 U.S.C. 11103).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
 ### MCA-C06 · CCA action 6: Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS programs, conduct a life-cycle cost estimate.
@@ -1924,11 +1950,12 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Programs that acquire IT, including national security systems and IT embedded in weapon systems.
 - Condition code: `it_type is one of {it_system, embedded_it}`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Component Cost Estimate, Component Cost Position.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
 - Footnote: For national security systems, these requirements apply to the extent practicable (40 U.S.C. 11103).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
 ### MCA-C07 · CCA action 7: Develop clearly established measures and accountability for program progress.
@@ -1938,10 +1965,12 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Programs that acquire IT, including national security systems and IT embedded in weapon systems.
 - Condition code: `it_type is one of {it_system, embedded_it}`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy, APB, TEMP.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
+- Footnote: The APB and TEMP may be submitted in draft to expedite program assessment.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
 ### MCA-C08 · CCA action 8: Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, as described in DoDI 5000.82.
@@ -1951,10 +1980,11 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Programs that acquire IT, including national security systems and IT embedded in weapon systems.
 - Condition code: `it_type is one of {it_system, embedded_it}`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: CDD NR-KPP, ISP, Applicable JIE Reference Architectures.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Changed since AAFDID (JCIDS disestablished): see 20-changes-since-aafdid.md, note jcids-2025.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
@@ -1965,10 +1995,11 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Programs that acquire IT, including national security systems and IT embedded in weapon systems.
 - Condition code: `it_type is one of {it_system, embedded_it}`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Cybersecurity Strategy, Program Protection Plan, Risk Management Framework Security Plan.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
 ### MCA-C10 · CCA action 10: Ensure, to the maximum extent practicable, (1) modular contracting has been used, and (2) the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent of future increments.
@@ -1978,10 +2009,11 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Programs that acquire IT, including national security systems and IT embedded in weapon systems.
 - Condition code: `it_type is one of {it_system, embedded_it}`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
 ### MCA-C11 · CCA action 11: Register Mission-Critical and Mission-Essential systems with the DoD CIO.
@@ -1991,93 +2023,94 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Programs that acquire IT, including national security systems and IT embedded in weapon systems.
 - Condition code: `it_type is one of {it_system, embedded_it}`
 - When due: Report compliance at the events in the CLINGER-COHEN ACT (CCA) COMPLIANCE row of the milestone table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: DoD Information Technology Portfolio Repository.
 - Footnote: These actions are also required to comply with section 811 of Pub. L. 106-398.
 - Footnote: Mission-critical and mission-essential information system definitions are on the source page.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/CCA-Compliance
 
-## Cost Data Reporting Requirements
+## Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs
 
-### MCA-D01 · Contractor Business Data Report
+### CSDR-01 · Contractor Business Data Report
 
-- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements.
+- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
 - Status when the condition holds: May apply.
-- Applies when: ACAT I and II programs whose contractor business unit holds CSDR contracts expected to exceed $250M (then-year).
-- Condition code: `mca_program_type is one of {mdap, acat_ii}`
+- Applies when: ACAT I and II programs and IS programs (including DBS) whose contractor business unit holds CSDR contracts expected to exceed $250M then-year. Not for business units whose only CSDR contracts are MTA contracts.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii}) OR pathway = dbs`
 - When due: Per the approved CSDR plan.
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.73
-- Approval: CSDR plan approval authority
+- Type: Regulatory.
 - Source: DoDI 5000.73
 - AAFDID note: Required for contractor business entities (e.g., plant, site, or business unit) responsible for contracts or subcontracts with CSDR requirements that are expected to exceed $250 million, then-year dollars. Not required for business units based solely on CSDR requirement Middle Tier Acquisition Program contracts.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
 - Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
 
-### MCA-D02 · Contractor Cost Data Report
+### CSDR-02 · Contractor Cost Data Report
 
-- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements.
+- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
 - Status when the condition holds: Required (contract-level).
-- Applies when: ACAT I and II programs: contracts over $50M (then-year). Between $20M and $50M, at the CSDR plan authority's discretion for high-risk, high-interest or software contracts.
-- Condition code: `mca_program_type is one of {mdap, acat_ii} AND contract_value > 50,000,000`
-- May apply instead when: `mca_program_type is one of {mdap, acat_ii} AND contract_value > 20,000,000 AND contract_value <= 50,000,000`
+- Applies when: ACAT I and II programs: contracts over $50M, or $20M to $50M at the CSDR plan authority's discretion. MTA programs over $100M: contracts over $20M. IS programs over $100M, including DBS: contracts over $50M. All then-year dollars.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = mta AND mta_size is one of {major, exceeds_mdap} AND contract_value > 20,000,000)`
+- May apply instead when: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000 AND contract_value <= 50,000,000) OR (pathway = mta AND mta_size = non_major AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
 - When due: Per the approved CSDR plan.
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.73
-- Approval: CSDR plan approval authority
+- Type: Regulatory.
 - Source: DoDI 5000.73
 - AAFDID note: Acat i ii programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including FMS and programs in sustainment, regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for current and former ACAT I – II programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Information system programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Middle tier acquisition programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. Other programs gt 100m: May be required at the discretion of the CSDR approval authority for all high interest or high-risk contracts, subcontracts, or government-performed efforts. Not required: Contracts on programs with anticipated acquisition expenditures less than $100 million, then-year dollars. Contracts priced below $20 million, then-year dollars. PM requests and obtains approval from the DDCA for a reporting waiver (e.g., procurement of commercial systems).
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
 - Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
 
-### MCA-D03 · Maintenance and Repair Parts Data Report
+### CSDR-03 · Maintenance and Repair Parts Data Report
 
-- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements.
+- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
 - Status when the condition holds: May apply.
-- Applies when: Sustainment contracts over $50M for ACAT I and II programs, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.
-- Condition code: `mca_program_type is one of {mdap, acat_ii} AND contract_value > 50,000,000`
+- Applies when: Sustainment contracts over $50M for ACAT I and II programs and IS programs over $100M, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = dbs AND contract_value > 50,000,000)`
 - When due: Per the approved CSDR plan.
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.73
-- Approval: CSDR plan approval authority
+- Type: Regulatory.
 - Source: DoDI 5000.73
 - AAFDID note: All sustainment contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed ACAT I-II level thresholds and IS programs that are anticipated to exceed $100 million, then-year dollars, when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
 - Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
 
-### MCA-D04 · Program Resource Distribution Table
+### CSDR-04 · Program Resource Distribution Table
 
-- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements.
+- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
 - Status when the condition holds: Required (contract-level).
-- Applies when: ACAT I and II programs: contracts over $50M (then-year). Between $20M and $50M, at the CSDR plan authority's discretion.
-- Condition code: `mca_program_type is one of {mdap, acat_ii} AND contract_value > 50,000,000`
-- May apply instead when: `mca_program_type is one of {mdap, acat_ii} AND contract_value > 20,000,000 AND contract_value <= 50,000,000`
+- Applies when: ACAT I and II programs: contracts over $50M then-year, or $20M to $50M at the CSDR plan authority's discretion.
+- Condition code: `mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000`
+- May apply instead when: `mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000 AND contract_value <= 50,000,000`
 - When due: Per the approved CSDR plan.
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.73
-- Approval: CSDR plan approval authority
+- Type: Regulatory.
 - Source: DoDI 5000.73
 - AAFDID note: ACAT I-II Level Programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including foreign military sales (FMS) and programs in sustainment, regardless of acquisition phase and contract type, including non-Federal Acquisition Regulation (FAR) agreements, valued at more than $50 million, then-year dollars, for ACAT I-II level programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
 - Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
 
-### MCA-D05 · Software Resources Data Report
+### CSDR-05 · Software Resources Data Report
 
-- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements.
+- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
 - Status when the condition holds: May apply.
-- Applies when: Software development or production efforts over $20M (then-year) for ACAT I and II programs.
-- Condition code: `mca_program_type is one of {mdap, acat_ii} AND contract_value > 20,000,000`
+- Applies when: Software development, production or maintenance efforts over $20M then-year for ACAT I and II programs, IS programs over $100M (including DBS) and MTA programs over $100M.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000) OR (pathway = mta AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
 - When due: Per the approved CSDR plan.
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.73
-- Approval: CSDR plan approval authority
+- Type: Regulatory.
 - Source: DoDI 5000.73
 - AAFDID note: Development and erp efforts: All contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for developing and/or producing software valued at more than $20 million, then-year dollars, for: Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest software efforts estimated below $20 million, then-year dollars, as determined by the CSDR plan approval authority, if the overall effort inclusive of non-software efforts exceeds $20 million, then-year dollars. Maintenance efforts: For all contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for: Programs with previous SRDR development or enterprise resource planning requirements or software maintenance efforts of more than $20 million, then-year dollars. Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
 - Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
 
-### MCA-D06 · Technical Data Report
+### CSDR-06 · Technical Data Report
 
-- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements.
+- Pathway: MCA (Major Capability Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
 - Status when the condition holds: May apply.
-- Applies when: Contracts over $50M for ACAT I and II programs, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.
-- Condition code: `mca_program_type is one of {mdap, acat_ii} AND contract_value > 50,000,000`
+- Applies when: Contracts over $50M for ACAT I and II programs and IS programs over $100M, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = dbs AND contract_value > 50,000,000)`
 - When due: Per the approved CSDR plan.
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.73
-- Approval: CSDR plan approval authority
+- Type: Regulatory.
 - Source: DoDI 5000.73
 - AAFDID note: All contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed the ACAT I and II level threshold and IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
 - Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
 
 ## Acquisition Program Baselines
@@ -2090,8 +2123,6 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Not tied to one event
 - Type: Not stated.
-- Approval: MDA
-- Source: DoDI 5000.85
 - AAFDID note: For all programs: The first APB is approved by the MDA prior to a program entering Engineering and Manufacturing Development, or at program initiation, whichever occurs later. Serves as the current baseline description until a revised APB is approved. Incorporates the KPPs from the CDD. For MDAPs: The cost/unit cost estimate parameters may be revised under 10 U.S.C. 4214 only if a breach occurs that exceeds the critical cost growth threshold for the program under 10 U.S.C. 4371.
 - Changed since AAFDID (JCIDS disestablished): see 20-changes-since-aafdid.md, note jcids-2025.
 - Page: https://www.waru.edu/aafdid/Acquisition-Program-Baselines
@@ -2104,8 +2135,6 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Not tied to one event
 - Type: Not stated.
-- Approval: MDA
-- Source: DoDI 5000.85
 - AAFDID note: May be revised only: At milestone and FRP decisions; As a result of a major program restructure that is fully funded and approved by the MDA; As a result of a program deviation (breach); or At the MDA's discretion, if fact of life program changes are so significant that managing to the existing baseline is not practical. Circumstances authorizing changes are limited; revisions to the current baseline estimate/APB are not automatically authorized for program changes to cost, schedule, or performance parameters. Revisions to the current APB will not be authorized unless there is a significant change in program parameters. A revision to the current APB will not be authorized if proposed merely to avoid a reportable breach. The MDA determines whether to revise the APB.
 - Page: https://www.waru.edu/aafdid/Acquisition-Program-Baselines
 
@@ -2117,8 +2146,6 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Condition code: `mca_program_type is one of {mdap, acat_ii, acat_iii}`
 - When due: Not tied to one event
 - Type: Not stated.
-- Approval: MDA
-- Source: DoDI 5000.85
 - AAFDID note: The PM will immediately notify the MDA when the PM becomes aware of an impending deviation from any parameter (cost, schedule, performance, etc.). Within 30 business days of occurrence of the deviation, the PM will submit a Program Deviation Report that informs the MDA of the reason for the deviation and planned actions. Within 90 business days of occurrence of the deviation: The PM will bring the program back within APB parameters; or The PM will submit information to the Overarching Integrated Product Team (OIPT) (for ACAT ID), or to an equivalent Component-level review team (for ACAT IB or IC programs), to inform a recommendation to the MDA on whether it is appropriate to approve a revision to an APB. The MDA will decide, after considering the recommendation resulting from the OIPT or equivalent Component-level review, whether it is appropriate to approve a revision to an APB.
 - Page: https://www.waru.edu/aafdid/Acquisition-Program-Baselines
 
@@ -2130,7 +2157,6 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Condition code: `mca_program_type is one of {mdap}`
 - When due: Not tied to one event
 - Type: Not stated.
-- Approval: MDA
 - Source: 10 U.S.C. 4203
 - AAFDID note: When an MDAP requires the delivery of two or more categories of end items that differ significantly in form and function, or delivery in two or more increments or blocks, subprograms may be established for the purpose of acquisition reporting. Once one subprogram is designated, all remaining elements (increments or components) of the program will also be appropriately organized into one or more other subprograms. If a major subprogram is designated, Selected Acquisition Reports, Unit Cost Reports, and program baselines shall reflect cost; schedule and performance information for the MDAP as a whole and for each major subprogram of the MDAP so designated.
 - Page: https://www.waru.edu/aafdid/Acquisition-Program-Baselines
@@ -2182,9 +2208,10 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued < $20M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: Requires business case analysis and MDA approval.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2195,9 +2222,10 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $20M &<$100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Government reserves the right to review a contractor’s EVMS when deemed necessary to verify compliance.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2208,9 +2236,10 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Contractor will provide access to all pertinent records and data requested by the Contracting Officer or duly authorized representative as necessary to permit initial and ongoing Government compliance reviews to ensure that the EVMS complies, and continues to comply, with the guidelines in EIA-748.*
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2221,9 +2250,10 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Contracts under $20M: not required. The PMO may request IPMDAR cost or schedule reporting.
 - Condition code: `contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: Integrated Program Management Data and Analysis Report (IPMDAR) may be used if cost and/or schedule reporting is requested by the program management office.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2234,9 +2264,10 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($20M to under $100M).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: All IPMDAR datasets/files must be included in the CDRL. Tailoring in accordance with DI-MGMT-81861 and Implementation Guide is allowed.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2247,9 +2278,10 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($100M or more).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: IPMDAR is required. All files are required.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2268,9 +2300,38 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Note: AAFDID's MTA tables do not separate Rapid Prototyping from Rapid Fielding. The difference shows only in the cost-estimate notes.
 - AAFDID page: https://www.waru.edu/aafdid/mta
 
+## Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs
+
+### CSDR-02 · Contractor Cost Data Report
+
+- Pathway: MTA (Middle Tier of Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: Required (contract-level).
+- Applies when: ACAT I and II programs: contracts over $50M, or $20M to $50M at the CSDR plan authority's discretion. MTA programs over $100M: contracts over $20M. IS programs over $100M, including DBS: contracts over $50M. All then-year dollars.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = mta AND mta_size is one of {major, exceeds_mdap} AND contract_value > 20,000,000)`
+- May apply instead when: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000 AND contract_value <= 50,000,000) OR (pathway = mta AND mta_size = non_major AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Acat i ii programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including FMS and programs in sustainment, regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for current and former ACAT I – II programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Information system programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Middle tier acquisition programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. Other programs gt 100m: May be required at the discretion of the CSDR approval authority for all high interest or high-risk contracts, subcontracts, or government-performed efforts. Not required: Contracts on programs with anticipated acquisition expenditures less than $100 million, then-year dollars. Contracts priced below $20 million, then-year dollars. PM requests and obtains approval from the DDCA for a reporting waiver (e.g., procurement of commercial systems).
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-05 · Software Resources Data Report
+
+- Pathway: MTA (Middle Tier of Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: Software development, production or maintenance efforts over $20M then-year for ACAT I and II programs, IS programs over $100M (including DBS) and MTA programs over $100M.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000) OR (pathway = mta AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Development and erp efforts: All contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for developing and/or producing software valued at more than $20 million, then-year dollars, for: Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest software efforts estimated below $20 million, then-year dollars, as determined by the CSDR plan approval authority, if the overall effort inclusive of non-software efforts exceeds $20 million, then-year dollars. Maintenance efforts: For all contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for: Programs with previous SRDR development or enterprise resource planning requirements or software maintenance efforts of more than $20 million, then-year dollars. Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
 ## Program Information Requirements (Table 1: submissions to OSD for all MTA programs)
 
-### MTA-O01 · Acquisition Strategy, to include security, schedule, technical, and production risks; a test strategy or an assessment of test results with validation of required cybersecurity and interoperability as applicable; and a transition plan
+### MTA-T01 · Acquisition Strategy, to include security, schedule, technical, and production risks; a test strategy or an assessment of test results with validation of required cybersecurity and interoperability as applicable; and a transition plan
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -2283,18 +2344,18 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Changed since AAFDID (DoDI 5000.80 Change 1 and 10 U.S.C. 3602): see 20-changes-since-aafdid.md, note mta-change1-2024.
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O02 · ADM signed by the DA
+### MTA-T02 · ADM signed by the DA
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program entrance: the ADM starts the MTA clock (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O03 · Approved Requirement
+### MTA-T03 · Approved Requirement
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -2306,7 +2367,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Changed since AAFDID (DoDI 5000.80 Change 1 and 10 U.S.C. 3602): see 20-changes-since-aafdid.md, note mta-change1-2024.
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O04 · Cost Estimate
+### MTA-T04 · Cost Estimate
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -2318,18 +2379,18 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Footnote: Per DoDI 5000.73, CAPE estimates life-cycle costs for Rapid Prototyping programs likely to exceed the ACAT I threshold, and for Rapid Fielding programs likely to exceed the ACAT I or II thresholds.
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O05 · Initial PID Entry
+### MTA-T05 · Initial PID Entry
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program entrance: the ADM starts the MTA clock (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O06 · Lifecycle Sustainment Plan
+### MTA-T06 · Lifecycle Sustainment Plan
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -2341,7 +2402,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Source: DoDI 5000.80; 5000.91
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O07 · Written decision by USD(A&S)
+### MTA-T07 · Written decision by USD(A&S)
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -2353,45 +2414,45 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Changed since AAFDID (MDAP and major system thresholds raised): see 20-changes-since-aafdid.md, note thresholds-2025.
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O08 · Updated PID Entry
+### MTA-T08 · Updated PID Entry
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Throughout program execution (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O09 · An assessment of test results
+### MTA-T09 · An assessment of test results
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program exit: the outcome ADM (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O10 · Final PID capturing updated entries, to include the outcome, sustainment, and final budget of the MTA program
+### MTA-T10 · Final PID capturing updated entries, to include the outcome, sustainment, and final budget of the MTA program
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program exit: the outcome ADM (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O11 · Outcome determination ADM signed by the DA
+### MTA-T11 · Outcome determination ADM signed by the DA
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program exit: the outcome ADM (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
@@ -2404,8 +2465,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: Decision Authority (DA)
@@ -2418,10 +2479,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
-- Condition code: `mta_size is one of {major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `mta_size is one of {major, exceeds_mdap}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Regulatory, Statutory
 - Approval: DA
 - Source: DoDi 5000.80 10 U.S.C. 4211 {formerly 2431a}
 - AAFDID note: STATUTORY for Major systems. Regulatory for Non-major systems. The Acquisition Strategy includes STATUTORY and Regulatory information. Major changes to the plan reflected in the Acquisition Strategy require DA approval. The DA must review and approve the strategy when there has been a significant change to the cost, schedule, or performance of the program (or system) or there has been a critical change to the cost of the program (or system). The strategy may also be reviewed and approved at any time considered relevant by the DA. The following requirements will be satisfied in the Acquisition Strategy: ACQUISITION APPROACH BENEFIT ANALYSIS AND DETERMINATION, applies to bundled acquisitions only; BUSINESS STRATEGY; CONTRACTING STRATEGY, to include CONTRACT-TYPE DETERMINATION, satisfied when the DA approves the Acquisition Strategy with specified contract types, and Termination Liability Estimate; COOPERATIVE OPPORTUNITIES; GENERAL EQUIPMENT VALUATION; Industrial Base Capabilities Considerations; INTELLECTUAL PROPERTY (IP) STRATEGY, for major weapon systems and subsystems; MARKET RESEARCH; Modular Open Systems Approach (MOSA); MULTI-YEAR PROCUREMENT; PRODUCT SUPPORT, including sustainment, logistics and maintenance; RELIABILITY AND MAINTAINABILITY; RISK MANAGEMENT, including security, schedule, technical, and production risks; SMALL BUSINESS; INNOVATION RESEARCH (SBIR)/SMALL BUSINESS TECHNOLOGY TRANSFER (STTR) PROGRAM TECHNOLOGIES; Test Strategy / Assessment of Test Results; Transition Plan – within 2 years after MTA program start.
@@ -2432,7 +2493,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -2445,7 +2506,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -2458,7 +2519,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -2471,7 +2532,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -2484,7 +2545,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -2497,7 +2558,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
@@ -2510,8 +2571,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: Decision Authority (DA)
@@ -2523,8 +2584,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: When international partners are involved.
-- Condition code: `international = yes`
+- Applies when: AAFDID marks no size column for this row. Its note ties it to the statutory requirement to consider cooperative opportunities, which applies to every program; DoDI 5000.80 Change 1 adds exportability when international partners are involved.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -2537,7 +2598,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -2550,7 +2611,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
@@ -2563,7 +2624,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -2576,7 +2637,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
@@ -2589,8 +2650,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: DA
@@ -2602,7 +2663,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
@@ -2615,8 +2676,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -2629,8 +2690,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -2643,8 +2704,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: DA and Component CIO or designee
@@ -2656,8 +2717,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: Component CIO
@@ -2669,8 +2730,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DoD Component
@@ -2682,8 +2743,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -2695,8 +2756,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
 - Approval: National Telecommunications and Information Administration (NTIA)
@@ -2708,8 +2769,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -2721,8 +2782,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: DCAPE
@@ -2734,8 +2795,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DoD Component or as delegated
@@ -2747,8 +2808,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: JITC or DoD Component
@@ -2760,8 +2821,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: CAE or designee
@@ -2773,8 +2834,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
 - Approval: DA or designee
@@ -2786,8 +2847,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: CAE or designee
@@ -2799,8 +2860,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA is release authority
@@ -2812,7 +2873,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -2825,8 +2886,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA or designee
@@ -2842,9 +2903,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued < $20M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: Requires business case analysis and MDA approval.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2855,9 +2917,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $20M &<$100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Government reserves the right to review a contractor’s EVMS when deemed necessary to verify compliance.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2868,9 +2931,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Contractor will provide access to all pertinent records and data requested by the Contracting Officer or duly authorized representative as necessary to permit initial and ongoing Government compliance reviews to ensure that the EVMS complies, and continues to comply, with the guidelines in EIA-748.*
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2881,9 +2945,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Contracts under $20M: not required. The PMO may request IPMDAR cost or schedule reporting.
 - Condition code: `contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: Integrated Program Management Data and Analysis Report (IPMDAR) may be used if cost and/or schedule reporting is requested by the program management office.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2894,9 +2959,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($20M to under $100M).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: All IPMDAR datasets/files must be included in the CDRL. Tailoring in accordance with DI-MGMT-81861 and Implementation Guide is allowed.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2907,9 +2973,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($100M or more).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: IPMDAR is required. All files are required.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -2930,7 +2997,15 @@ Knowledge file 12 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 ## Also review MCA entries
 
-AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as well, with applicability set by DoDI 5000.81. For a UCA program, take the MCA Milestone and Phase rows and the MCA Exceptions rows from 10-mca.md whose program type includes the program's `uca_acat` value (`acat_ii` means ACAT II, `acat_iii` means ACAT III and below). List them under "Also review" with status May apply. Do not list MCA rows marked only for MDAPs.
+AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as well, with applicability set by DoDI 5000.81.
+
+For a UCA program, go through the MCA records in 10-mca.md from tables `ms` and `exc` (codes MCA-M.. and MCA-X..):
+
+1. If `uca_acat` is unknown, list none of them. Ask the ACAT question first, because it decides which MCA entries apply.
+2. Otherwise test each record's Condition code with `mca_program_type` set to the program's `uca_acat` value (`acat_ii` stays `acat_ii`; `acat_iii` stays `acat_iii`) and every other field from the profile.
+3. False: leave the record out. MDAP-only rows always drop out this way.
+4. Unknown: list it under Needs an answer, naming the missing field (for example `dote_oversight`).
+5. True: list it under "Also review: MCA entries AAFDID points UCA programs to", with status Also review, its MCA code, and its MCA events.
 
 ## UCA Unique Information Requirements
 
@@ -2938,8 +3013,8 @@ AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as w
 
 - Pathway: UCA (Urgent Capability Acquisition). Table: UCA Unique Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: For all UCA programs.
-- Condition code: `uca_acat is one of {acat_ii, acat_iii}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Development Milestone (initial); Production and Deployment Milestone (initial)
 - Type: Statutory. AAFDID TYPE: Statutory
 - Source: Section 4172 of Title 10 U.S.C. {formerly 2366} (see DoDI 5000.02); Section 4171 of Title 10 U.S.C. {formerly 2399} (see DoDI 5000.02)
@@ -2950,8 +3025,8 @@ AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as w
 
 - Pathway: UCA (Urgent Capability Acquisition). Table: UCA Unique Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: For all UCA programs.
-- Condition code: `uca_acat is one of {acat_ii, acat_iii}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Development Milestone (initial)
 - Type: Statutory. AAFDID TYPE: Statutory
 - Source: Meets the assessment requirements of Subtitle III of Title 40, U.S.C.
@@ -2962,20 +3037,20 @@ AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as w
 
 - Pathway: UCA (Urgent Capability Acquisition). Table: UCA Unique Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: For all UCA programs.
-- Condition code: `uca_acat is one of {acat_ii, acat_iii}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Other, including disposition (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: Para. 4.5.e. of DoDI 5000.81
-- AAFDID note: Regulatory. Based on the disposition official’s recommendation in the Disposition Analysis, the Component Head will determine and document the disposition of the initiative and process it in accordance with applicable Component and requirements authority procedures. INFORMATION ACAT SOURCE TYPE REQUIREMENT DEVELOPMENT PRODUCTION OTHER II ≤ III
+- AAFDID note: Regulatory. Based on the disposition official’s recommendation in the Disposition Analysis, the Component Head will determine and document the disposition of the initiative and process it in accordance with applicable Component and requirements authority procedures.
 - Page: https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements
 
 ### UCA-04 · Rapid Acquisition Authority (RAA) Recommendation
 
 - Pathway: UCA (Urgent Capability Acquisition). Table: UCA Unique Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: For all UCA programs.
-- Condition code: `uca_acat is one of {acat_ii, acat_iii}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Other, including disposition (initial)
 - Type: Statutory. AAFDID TYPE: Statutory
 - Source: Section 806(c) of Public Law (PL) 107- 314
@@ -2991,9 +3066,10 @@ AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as w
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued < $20M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: Requires business case analysis and MDA approval.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3004,9 +3080,10 @@ AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as w
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $20M &<$100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Government reserves the right to review a contractor’s EVMS when deemed necessary to verify compliance.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3017,9 +3094,10 @@ AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as w
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Contractor will provide access to all pertinent records and data requested by the Contracting Officer or duly authorized representative as necessary to permit initial and ongoing Government compliance reviews to ensure that the EVMS complies, and continues to comply, with the guidelines in EIA-748.*
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3030,9 +3108,10 @@ AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as w
 - Applies when: Contracts under $20M: not required. The PMO may request IPMDAR cost or schedule reporting.
 - Condition code: `contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: Integrated Program Management Data and Analysis Report (IPMDAR) may be used if cost and/or schedule reporting is requested by the program management office.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3043,9 +3122,10 @@ AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as w
 - Applies when: Monthly when an EVMS requirement is on contract ($20M to under $100M).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: All IPMDAR datasets/files must be included in the CDRL. Tailoring in accordance with DI-MGMT-81861 and Implementation Guide is allowed.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3056,9 +3136,10 @@ AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as w
 - Applies when: Monthly when an EVMS requirement is on contract ($100M or more).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: IPMDAR is required. All files are required.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3072,7 +3153,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Governing instruction: DoDI 5000.87; 10 U.S.C. 3603
 - Summary: Application and embedded software paths with a planning phase and an execution phase of iterative releases. Programs are not treated as MDAPs, and viability must be shown within 1 year of first obligating funds.
 - Decision authority: The component acquisition executive unless USD(A&S) designates a special interest program or delegates otherwise (DoDI 5000.87, para 2.7.c).
-- Events, in order: `planning` = Entering the planning phase; `execution_entry` = Entering the execution phase; `execution` = During the execution phase; `each_decision` = Each decision point
+- Events, in order: `planning` = Entering the planning phase; `execution_entry` = Entering the execution phase; `execution` = During the execution phase; `each_decision` = Each decision point (due at every one) (not a next event)
 - Note: AAFDID calls its SWA table a draft first pass at statute tied to DoDI 5000.87. It does not separate application and embedded programs.
 - AAFDID page: https://www.waru.edu/aafdid/swa
 
@@ -3084,7 +3165,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
-- When due: Each decision point (initial)
+- When due: Each decision point (due at every one) (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.83
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
@@ -3118,7 +3199,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Entering the execution phase (initial)
-- Type: Statutory if `swa_above_acat_ii = yes`, otherwise Regulatory. AAFDID TYPE: Statutory for major programs (> ACAT II) Regulatory for others
+- Type: Statutory if `swa_above_acat_ii = yes`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory for major programs (> ACAT II) Regulatory for others
 - Source: 10 USC 4211 {formerly 2431a} DoDI 5000.87
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
@@ -3129,7 +3210,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Entering the execution phase (initial)
-- Type: Statutory if `swa_above_acat_ii = yes`, otherwise Regulatory. AAFDID TYPE: Statutory for programs (> ACAT II) Regulatory for Others
+- Type: Statutory if `swa_above_acat_ii = yes`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory for programs (> ACAT II) Regulatory for Others
 - Source: §1047, P.L. 110-417
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
@@ -3173,7 +3254,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Entering the execution phase (initial)
-- Type: Statutory if `mission_critical_it = yes`, otherwise Regulatory. AAFDID TYPE: Statutory for Mission Critical and Mission Essential IT programs, Regulatory for others
+- Type: Statutory if `mission_critical_it = yes`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory for Mission Critical and Mission Essential IT programs, Regulatory for others
 - Source: 40 USC 11313, DoDI 5000.87, DoDI 8500.01, DoDI 5000.82
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
@@ -3229,8 +3310,8 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Condition code: `always (every program on this pathway)`
 - When due: Entering the execution phase (initial)
 - Type: Regulatory. AAFDID TYPE: CAPE ICE for programs > ACAT II unless delegated
-- Approval: CAPE prepares the ICE above ACAT II unless it delegates
 - Source: DoDI 5000.87 DoDI 5000.73
+- Tool note: AAFDID's TYPE cell reads 'CAPE ICE for programs > ACAT II unless delegated'. This tool classifies the row as regulatory (DoDI 5000.87, 5000.73).
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
 ### SWA-15 · Test Strategy (may be part of Acquisition Strategy)
@@ -3325,10 +3406,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: SWA (Software Acquisition). Table: Application and Embedded Software Information Requirements.
 - Status when the condition holds: Required.
-- Applies when: When it is on the DOT&E oversight list.
-- Condition code: `dote_oversight = yes`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: During the execution phase (initial)
-- Type: Statutory. AAFDID TYPE: Statutory for programs on the DOT&E Oversight List
+- Type: Statutory if `dote_oversight = yes`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Statutory for programs on the DOT&E Oversight List
 - Source: 10 USC 4171 {formerly 2399}
 - Page: https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements
 
@@ -3462,9 +3543,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy (Business Strategy section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C02 · CCA: Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS programs, conduct a life-cycle cost estimate.
@@ -3474,9 +3556,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Component Cost Estimate, Component Cost Position.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C03 · CCA: Determination that the acquisition supports core, priority functions of the DoD.
@@ -3486,9 +3569,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Capability Needs Statement (Capabilities section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C04 · CCA: Determine that no private sector or government source can better support the function
@@ -3498,9 +3582,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C05 · CCA: Develop clearly established measures and accountability for program progress.
@@ -3510,9 +3595,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy (Program Metrics, Value Assessment).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C06 · CCA: Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, to include relevant standards.
@@ -3522,9 +3608,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: System Architecture.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C07 · CCA: Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant standards.
@@ -3534,9 +3621,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Cybersecurity Strategy.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C08 · CCA: Ensure, to the maximum extent practicable, (1) modular contracting has been used, and (2) the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent of....
@@ -3546,9 +3634,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Acquisition Strategy (Contracting Strategy section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C09 · CCA: Establish outcome-based performance measures linked to strategic goals
@@ -3558,9 +3647,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Capability Needs Statement (Performance Attributes section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C10 · CCA: Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of commercial off-the-shelf technology.
@@ -3570,9 +3660,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: Capability Needs Statement (Program Summary section).
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ### SWA-C11 · CCA: Register Mission-Critical and Mission-Essential systems with the DoD CIO.
@@ -3582,9 +3673,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Report with the CCA compliance entries in the SWA table.
-- Type: Statutory. AAFDID TYPE: Clinger-Cohen Act (40 U.S.C. Subtitle III)
+- Type: Statutory.
 - Source: Clinger-Cohen Act, 40 U.S.C. Subtitle III; DoDI 5000.82
 - AAFDID note: Evidenced by: DoD Information Technology Portfolio Repository.
+- Tool note: Classified as statutory by this tool: the actions implement the Clinger-Cohen Act (40 U.S.C. Subtitle III). AAFDID's SWA CCA table has no TYPE column.
 - Page: https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance
 
 ## EVMS Application and Reporting Requirements (AAFDID: not specific to any one pathway)
@@ -3596,9 +3688,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued < $20M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: Requires business case analysis and MDA approval.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3609,9 +3702,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $20M &<$100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Government reserves the right to review a contractor’s EVMS when deemed necessary to verify compliance.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3622,9 +3716,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Contractor will provide access to all pertinent records and data requested by the Contracting Officer or duly authorized representative as necessary to permit initial and ongoing Government compliance reviews to ensure that the EVMS complies, and continues to comply, with the guidelines in EIA-748.*
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3635,9 +3730,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Contracts under $20M: not required. The PMO may request IPMDAR cost or schedule reporting.
 - Condition code: `contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: Integrated Program Management Data and Analysis Report (IPMDAR) may be used if cost and/or schedule reporting is requested by the program management office.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3648,9 +3744,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($20M to under $100M).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: All IPMDAR datasets/files must be included in the CDRL. Tailoring in accordance with DI-MGMT-81861 and Implementation Guide is allowed.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3661,9 +3758,10 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($100M or more).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: IPMDAR is required. All files are required.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3681,6 +3779,74 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Note: AAFDID's DBS overview: information supporting requirements validation and the annual investment certification cannot be tailored.
 - Note: AAFDID prints the Limited and Full Deployment ATPs under the Functional Requirements and Acquisition Planning phase. This tool keeps AAFDID's wording.
 - AAFDID page: https://www.waru.edu/aafdid/dbs
+
+## Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs
+
+### CSDR-01 · Contractor Business Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: ACAT I and II programs and IS programs (including DBS) whose contractor business unit holds CSDR contracts expected to exceed $250M then-year. Not for business units whose only CSDR contracts are MTA contracts.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii}) OR pathway = dbs`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Required for contractor business entities (e.g., plant, site, or business unit) responsible for contracts or subcontracts with CSDR requirements that are expected to exceed $250 million, then-year dollars. Not required for business units based solely on CSDR requirement Middle Tier Acquisition Program contracts.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-02 · Contractor Cost Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: Required (contract-level).
+- Applies when: ACAT I and II programs: contracts over $50M, or $20M to $50M at the CSDR plan authority's discretion. MTA programs over $100M: contracts over $20M. IS programs over $100M, including DBS: contracts over $50M. All then-year dollars.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = mta AND mta_size is one of {major, exceeds_mdap} AND contract_value > 20,000,000)`
+- May apply instead when: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000 AND contract_value <= 50,000,000) OR (pathway = mta AND mta_size = non_major AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Acat i ii programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including FMS and programs in sustainment, regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for current and former ACAT I – II programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Information system programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Middle tier acquisition programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. Other programs gt 100m: May be required at the discretion of the CSDR approval authority for all high interest or high-risk contracts, subcontracts, or government-performed efforts. Not required: Contracts on programs with anticipated acquisition expenditures less than $100 million, then-year dollars. Contracts priced below $20 million, then-year dollars. PM requests and obtains approval from the DDCA for a reporting waiver (e.g., procurement of commercial systems).
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-03 · Maintenance and Repair Parts Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: Sustainment contracts over $50M for ACAT I and II programs and IS programs over $100M, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = dbs AND contract_value > 50,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: All sustainment contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed ACAT I-II level thresholds and IS programs that are anticipated to exceed $100 million, then-year dollars, when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-05 · Software Resources Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: Software development, production or maintenance efforts over $20M then-year for ACAT I and II programs, IS programs over $100M (including DBS) and MTA programs over $100M.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000) OR (pathway = mta AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Development and erp efforts: All contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for developing and/or producing software valued at more than $20 million, then-year dollars, for: Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest software efforts estimated below $20 million, then-year dollars, as determined by the CSDR plan approval authority, if the overall effort inclusive of non-software efforts exceeds $20 million, then-year dollars. Maintenance efforts: For all contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for: Programs with previous SRDR development or enterprise resource planning requirements or software maintenance efforts of more than $20 million, then-year dollars. Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-06 · Technical Data Report
+
+- Pathway: DBS (Defense Business Systems). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: Contracts over $50M for ACAT I and II programs and IS programs over $100M, when the PM cannot provide equivalent data, at the CSDR plan authority's discretion.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = dbs AND contract_value > 50,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: All contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed the ACAT I and II level threshold and IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
 
 ## DBS Statutory Requirements
 
@@ -3720,7 +3886,7 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 ### DBS-04 · CMO Certification
 
 - Pathway: DBS (Defense Business Systems). Table: DBS Statutory Requirements.
-- Status when the condition holds: Required.
+- Status when the condition holds: May apply.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
 - When due: Acquisition ATP (initial)
@@ -3876,9 +4042,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued < $20M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: Requires business case analysis and MDA approval.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3889,9 +4056,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $20M &<$100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Government reserves the right to review a contractor’s EVMS when deemed necessary to verify compliance.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3902,9 +4070,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Contractor will provide access to all pertinent records and data requested by the Contracting Officer or duly authorized representative as necessary to permit initial and ongoing Government compliance reviews to ensure that the EVMS complies, and continues to comply, with the guidelines in EIA-748.*
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3915,9 +4084,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Contracts under $20M: not required. The PMO may request IPMDAR cost or schedule reporting.
 - Condition code: `contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: Integrated Program Management Data and Analysis Report (IPMDAR) may be used if cost and/or schedule reporting is requested by the program management office.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3928,9 +4098,10 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($20M to under $100M).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: All IPMDAR datasets/files must be included in the CDRL. Tailoring in accordance with DI-MGMT-81861 and Implementation Guide is allowed.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -3941,18 +4112,19 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($100M or more).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: IPMDAR is required. All files are required.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
 
 ---
 
-# AOS requirements: Acquisition of Services
+# AoS requirements: Acquisition of Services
 
-Knowledge file 15 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the AOS pathway only.
+Knowledge file 15 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the AoS pathway only.
 
 - Governing instruction: DoDI 5000.74 (Change 1, June 2021)
 - Summary: Services at or above the simplified acquisition threshold, managed in three phases (Plan, Develop, Execute) and seven steps. The services category (S-CAT) sets the decision authority.
@@ -3979,7 +4151,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-01 · Independent Government Cost Estimate (IGCE)
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -3992,7 +4164,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-02 · Functional Services Manager (FSM) designation and multi-functional team
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4005,7 +4177,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-03 · Market research, documented
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4018,7 +4190,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-04 · Requirement cost analysis
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4031,7 +4203,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-05 · Services Requirements Review Board (SRRB) validation and approval
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Total estimated value of $10M or more. For IDIQs, the base contract and any task order of $10M or more.
 - Condition code: `svc_total_value >= 10,000,000`
@@ -4044,7 +4216,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-06 · Workforce analysis: insource or outsource
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Reviewed at the SRRB: total estimated value of $10M or more.
 - Condition code: `svc_total_value >= 10,000,000`
@@ -4057,20 +4229,20 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-07 · Review and justification of critical functions and functions closely associated with inherently governmental functions
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Contractors will perform critical functions or functions closely associated with inherently governmental functions.
 - Condition code: `svc_sensitive_functions = yes`
 - When due: Develop: define requirements, SRRB, acquisition strategy (initial)
 - Type: Statutory. AAFDID TYPE: Statutory
 - Approval: Not stated
-- Source: DoDI 5000.74, paras 1.2.c and 4.3.g(8); 10 U.S.C. 2330a(e) as cited; FAR 7.503(e); DFARS 207.503
+- Source: DoDI 5000.74, paras 1.2.c and 4.3.g(8); 10 U.S.C. 2330a(e) as cited (now 10 U.S.C. 4505, per AAFDID's Title 10 crosswalk); FAR 7.503(e); DFARS 207.503
 - AAFDID note: Reliance on contractors for these functions must be reviewed, justified, and reduced to the maximum extent practicable.
 - Page: https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/500074p.pdf
 
 ### AOS-08 · Services Acquisition Workshop (SAW)
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Total value of $500M or more, or $250M or more in a year. For a multiple-award IDIQ, not the base award, but any task order of $100M or more.
 - Condition code: `(svc_vehicle = standalone AND (svc_total_value >= 500,000,000 OR svc_annual_value >= 250,000,000)) OR (svc_vehicle = task_order AND svc_total_value >= 100,000,000)`
@@ -4083,7 +4255,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-09 · Business case analysis for requirements that overlap existing vehicles
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: $50M or more, with potential significant overlap with an existing contract, a DoD or government-wide vehicle, or a best-in-class contract.
 - Condition code: `svc_total_value >= 50,000,000 AND svc_overlap = yes`
@@ -4095,7 +4267,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-10 · Acquisition strategy as a written acquisition plan
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Total cost of all contracts of $50M or more, or $25M or more in any fiscal year (DFARS 207.103(d)(i)(B)).
 - Condition code: `svc_total_value >= 50,000,000 OR svc_annual_value >= 25,000,000`
@@ -4108,7 +4280,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-11 · Acquisition strategy in streamlined documentation
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Below the written acquisition plan threshold: under $50M total and under $25M in every fiscal year.
 - Condition code: `svc_total_value < 50,000,000 AND svc_annual_value < 25,000,000`
@@ -4121,7 +4293,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-12 · Small business participation opportunities
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4134,7 +4306,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-13 · Performance-based approach and contract type rationale
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4147,7 +4319,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-14 · Intellectual property management mechanisms
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4160,7 +4332,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-15 · Rationale and authority for other than full and open competition
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: May apply.
 - Applies when: Only if other than full and open competition is planned.
 - Condition code: `always (every program on this pathway)`
@@ -4172,7 +4344,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-16 · Consolidation or bundling summary, coordinated with the Office of Small Business Programs
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: May apply.
 - Applies when: Only if the requirement is consolidated or bundled.
 - Condition code: `always (every program on this pathway)`
@@ -4184,7 +4356,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-17 · Contract line items with Product or Service Codes
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4197,7 +4369,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-18 · Performance management metrics
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4210,7 +4382,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-19 · FSM cost and metrics tracking, with deviation notice
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4223,7 +4395,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-20 · Trained and qualified contracting officer's representative (COR)
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: For every program on this pathway.
 - Condition code: `always (every program on this pathway)`
@@ -4235,7 +4407,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-21 · SRRB validation before exercising an option
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Acquisitions under SRRB review: $10M or more.
 - Condition code: `svc_total_value >= 10,000,000`
@@ -4247,7 +4419,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-22 · Independent management reviews (post-award)
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Required.
 - Applies when: Post-award contracts with a total value of $100M or more, and others the component chooses.
 - Condition code: `svc_total_value >= 100,000,000`
@@ -4260,7 +4432,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-23 · Review of contracts where a contractor oversees other contractors
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: May apply.
 - Applies when: Only if one contractor oversees services performed by other contractors.
 - Condition code: `always (every program on this pathway)`
@@ -4273,7 +4445,7 @@ Source: DoDI 5000.74, para 3.5.a and Table 1; thresholds use the IGCE in current
 
 ### AOS-24 · Bridge contract status update and notifications
 
-- Pathway: AOS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
+- Pathway: AoS (Acquisition of Services). Table: Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table).
 - Status when the condition holds: Only if triggered.
 - Applies when: A bridge contract is used because of inadequate planning, as the S-CAT decision authority determines. Contingency, humanitarian and disaster-response actions are excluded.
 - Condition code: `always (every program on this pathway)`
@@ -4299,7 +4471,7 @@ The FY2026 NDAA (Pub. L. 119-60, sec. 1804) raised the statutory MDAP threshold 
 
 - Source: 10 U.S.C. 4201 (MDAP definition): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section4201&num=0&edition=prelim
 - Source: 10 U.S.C. 3041 (major system definition): https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section3041&num=0&edition=prelim
-- Attached to: MTA-O07
+- Attached to: MTA-T07
 - Also matters for the intake questions: mca_program_type, mta_size, swa_above_acat_ii, uca_acat
 
 ## jcids-2025: JCIDS disestablished (2025-08-20)
@@ -4316,11 +4488,12 @@ The November 7, 2025 memo renamed the Defense Acquisition System the Warfighting
 
 - Source: Memo, Transforming the Defense Acquisition System into the Warfighting Acquisition System, Nov 7, 2025: https://static.carahsoft.com/concrete/files/4917/6702/9385/Memorandum_Transforming_the_Defense_Acquisition_System_into_the_Warfighting_Acquisition_System.pdf
 
-## evms-2026: EVMS thresholds changed by class deviation (2026)
+## evms-2026: EVMS thresholds changed by class deviation (2026-02-01)
 
-DFARS Class Deviation 2026-O0011 (DFARS 234.201) sets $50M as the threshold for an EIA-748-compliant EVMS and $100M for a Government-validated EVMS on cost and incentive contracts. EVMS on a firm-fixed-price contract needs a waiver. AAFDID still shows $20M and $100M. Confirm the thresholds on contract with your contracting officer.
+DFARS Class Deviation 2026-O0011 (DFARS 234.201, clauses 252.234-7998 and -7999), effective February 1, 2026, sets $50M as the threshold for an EIA-748-compliant EVMS and $100M for a Government-validated EVMS on cost and incentive contracts. EVMS on a firm-fixed-price contract needs a waiver. AAFDID still shows $20M and $100M. Confirm the thresholds on contract with your contracting officer.
 
-- Source: DoD class deviations (DPCAP): https://www.acq.osd.mil/dpap/dars/class_deviations.html
+- Source: Class Deviation 2026-O0011 memo (DPCAP): https://www.acq.osd.mil/dpap/dars/classdev/DFARS_RFO/Part-234/2026-O0011_TAB_A_Deviation_Memo_DFARS_234.pdf
+- Source: Humphreys & Associates: EVMS thresholds class deviation memo: https://www.humphreys-assoc.com/earned-value-management-system-thresholds-class-deviation-memo/
 - Attached to: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
 
 ## mta-change1-2024: DoDI 5000.80 Change 1 and 10 U.S.C. 3602 (2024-11-25)
@@ -4337,7 +4510,7 @@ DoDI 5000.80 Change 1 changed several MTA rules:
 
 - Source: DoDI 5000.80 Original vs Change 1 briefing (Feb 2025): https://www.waru.edu/sites/default/files/2025-02/DODI%205000_80%20Original%20vs%20Change1%20Webinar%20202502%20no%20notes.pdf
 - Source: 10 U.S.C. 3602: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section3602&num=0&edition=prelim
-- Attached to: MTA-O01, MTA-O03, MTA-O11, MTA-S01, MTA-S02, MTA-S10, MTA-S17, MTA-S18
+- Attached to: MTA-S01, MTA-S02, MTA-S10, MTA-S17, MTA-S18, MTA-T01, MTA-T03, MTA-T11
 
 ## cmo-2021: Chief Management Officer repealed (2021-01-01)
 

@@ -17,7 +17,7 @@
     event: 'required', recurring: 'required', contract: 'required', compliance: 'required',
     conditional: 'conditional', triggered: 'triggered', reference: 'reference'
   };
-  var STATUS_ORDER = ['required', 'conditional', 'triggered', 'undetermined', 'reference', 'not_applicable'];
+  var STATUS_ORDER = ['required', 'conditional', 'review', 'triggered', 'undetermined', 'reference', 'not_applicable'];
   var UNORDERED_EVENTS = { other: true };
 
   function isUnknown(v) { return v === undefined || v === null || v === ''; }
@@ -27,12 +27,12 @@
     if (!c || c['const'] === true) return true;
     if (c['const'] === false) return false;
     var i, r, unk;
-    if (c.all) {
+    if (Array.isArray(c.all)) {
       unk = false;
       for (i = 0; i < c.all.length; i++) { r = test(c.all[i], p); if (r === false) return false; if (r === null) unk = true; }
       return unk ? null : true;
     }
-    if (c.any) {
+    if (Array.isArray(c.any)) {
       unk = false;
       for (i = 0; i < c.any.length; i++) { r = test(c.any[i], p); if (r === true) return true; if (r === null) unk = true; }
       return unk ? null : false;
@@ -60,21 +60,42 @@
     return acc;
   }
 
+  // Fields whose missing answers keep a condition unknown. Branches already settled
+  // (a false part of an "any", say) are skipped, so only the questions that matter are named.
+  function unknownFields(c, p, acc) {
+    acc = acc || [];
+    if (!c || typeof c !== 'object' || test(c, p) !== null) return acc;
+    if (Array.isArray(c.all)) c.all.forEach(function (x) { unknownFields(x, p, acc); });
+    if (Array.isArray(c.any)) c.any.forEach(function (x) { unknownFields(x, p, acc); });
+    if (c.not) unknownFields(c.not, p, acc);
+    if (c.field && isUnknown(p[c.field]) && acc.indexOf(c.field) === -1) acc.push(c.field);
+    return acc;
+  }
+
   // ---------------------------------------------------------------- answers
   var UNKNOWN_WORDS = ['unknown', '?', 'n/a', 'na', 'tbd', 'not sure', 'none given', 'unsure', "don't know", 'dont know'];
 
+  // Whole dollars when the value is whole (float noise removed), otherwise cents.
+  function roundMoney(n) {
+    var r = Math.round(n);
+    return Math.abs(n - r) < 1e-6 ? r : Math.round(n * 100) / 100;
+  }
+
   function parseMoney(v) {
-    if (typeof v === 'number') return isFinite(v) ? v : null;
-    var s = String(v).trim().toLowerCase().replace(/[, $]/g, '');
+    if (typeof v === 'number') return isFinite(v) ? roundMoney(v) : null;
+    if (typeof v === 'boolean') return null;
+    var s = String(v).trim().toLowerCase()
+      .replace(/\b(usd|dollars?|then-?year|current-?year|ty|cy|about|approx(imately)?)\b/g, '')
+      .replace(/[,\s$~]/g, '');
     if (!s) return null;
-    var m = s.match(/^(\d+(?:\.\d+)?)(k|thousand|m|mm|mil|million|b|bn|billion)?$/);
+    var m = s.match(/^(\d*\.?\d+(?:e[+-]?\d+)?)(k|thousand|m|mm|mil|million|b|bn|billion)?$/);
     if (!m) return null;
     var n = parseFloat(m[1]);
     var u = m[2] || '';
     if (u === 'k' || u === 'thousand') n *= 1e3;
     else if (u === 'm' || u === 'mm' || u === 'mil' || u === 'million') n *= 1e6;
     else if (u === 'b' || u === 'bn' || u === 'billion') n *= 1e9;
-    return Math.round(n);
+    return isFinite(n) ? roundMoney(n) : null;
   }
 
   function parseBool(v) {
@@ -85,40 +106,65 @@
     return null;
   }
 
-  function normalize(bundle, input) {
-    var qs = bundle.questions.questions;
-    var out = {};
-    input = input || {};
-    if (input.program) out.program = String(input.program).trim();
-    qs.forEach(function (q) {
-      var v = input[q.id];
-      if (isUnknown(v)) return;
-      if (typeof v === 'string' && UNKNOWN_WORDS.indexOf(v.trim().toLowerCase()) !== -1) return;
-      if (q.type === 'boolean') { v = parseBool(v); }
-      else if (q.type === 'money') { v = parseMoney(v); }
-      else if (q.type === 'choice') {
-        var s = String(v).trim().toLowerCase();
-        var hit = null;
-        q.options.forEach(function (o) {
-          if (o.value.toLowerCase() === s || o.label.toLowerCase() === s) hit = o.value;
-        });
-        v = hit;
-      } else if (q.type === 'event') {
-        v = String(v).trim();
-      }
-      if (!isUnknown(v)) out[q.id] = v;
+  function canon(s) { return String(s).toLowerCase().replace(/[^a-z0-9]/g, ''); }
+
+  function matchChoice(q, v) {
+    var c = canon(v), hit = null;
+    q.options.forEach(function (o) { if (!hit && canon(o.value) === c) hit = o.value; });
+    q.options.forEach(function (o) {
+      if (hit) return;
+      if (canon(o.label) === c || (o.aliases || []).some(function (a) { return canon(a) === c; })) hit = o.value;
     });
-    if (out.event) {
-      var pw = pathwayById(bundle, out.pathway);
-      var evId = null;
-      if (pw) pw.events.forEach(function (e) {
-        var s = out.event.toLowerCase();
-        if (e.id === out.event || e.short.toLowerCase() === s || e.name.toLowerCase() === s) evId = e.id;
-      });
-      if (evId) out.event = evId; else delete out.event;
-    }
-    return out;
+    return hit;
   }
+
+  function matchEvent(pw, v) {
+    if (!pw) return null;
+    var c = canon(v), hit = null;
+    var usable = pw.events.filter(function (e) { return !e.every; });
+    usable.forEach(function (e) { if (!hit && canon(e.id) === c) hit = e.id; });
+    usable.forEach(function (e) {
+      if (hit) return;
+      if (canon(e.short) === c || canon(e.name) === c || (e.aliases || []).some(function (a) { return canon(a) === c; })) hit = e.id;
+    });
+    return hit;
+  }
+
+  // Returns {profile, unrecognized: [{field, value, reason}]}
+  function normalizeDetailed(bundle, input) {
+    var qs = bundle.questions.questions;
+    var out = {}, bad = [];
+    if (!input || typeof input !== 'object' || Array.isArray(input)) input = {};
+    var known = Object.create(null);
+    known.program = true;
+    qs.forEach(function (q) { known[q.id] = true; });
+    Object.keys(input).forEach(function (k) {
+      if (!known[k] && !isUnknown(input[k])) bad.push({ field: k, value: String(input[k]), reason: 'not a profile field' });
+    });
+    if (input.program) {
+      var pg = String(input.program).replace(/\s+/g, ' ').trim();
+      if (pg) out.program = pg;
+    }
+    qs.forEach(function (q) {
+      var raw = input[q.id], v = raw;
+      if (isUnknown(v) || q.type === 'event') return;
+      if (typeof v === 'string' && UNKNOWN_WORDS.indexOf(v.trim().toLowerCase()) !== -1) return;
+      if (q.type === 'boolean') v = parseBool(v);
+      else if (q.type === 'money') v = parseMoney(v);
+      else if (q.type === 'choice') v = matchChoice(q, v);
+      if (isUnknown(v)) bad.push({ field: q.id, value: String(raw), reason: 'value not recognized' });
+      else out[q.id] = v;
+    });
+    var ev = input.event;
+    if (!isUnknown(ev) && !(typeof ev === 'string' && UNKNOWN_WORDS.indexOf(ev.trim().toLowerCase()) !== -1)) {
+      var id = matchEvent(pathwayById(bundle, out.pathway), ev);
+      if (id) out.event = id;
+      else bad.push({ field: 'event', value: String(ev), reason: out.pathway ? 'not an event of this pathway' : 'pathway missing' });
+    }
+    return { profile: out, unrecognized: bad };
+  }
+
+  function normalize(bundle, input) { return normalizeDetailed(bundle, input).profile; }
 
   function pathwayById(bundle, id) {
     for (var i = 0; i < bundle.pathways.length; i++) if (bundle.pathways[i].id === id) return bundle.pathways[i];
@@ -146,12 +192,16 @@
     var id = null, note = '';
     var t = p.svc_total_value, a = p.svc_annual_value;
     if (p.svc_special_interest === true) id = 'special_interest';
+    else if (!isUnknown(a) && a > 3e8) {
+      id = 'I';
+      if (isUnknown(p.svc_special_interest)) note = 'Unless ASD(A) designates it Special Interest.';
+    }
     else if (!isUnknown(t)) {
       if (t >= 1e9 || (!isUnknown(a) && a > 3e8)) id = 'I';
       else if (t >= 2.5e8) { id = 'II'; if (isUnknown(a) && t > 3e8) note = 'S-CAT I instead if more than $300M falls in any one year.'; }
       else if (t >= 1e8) id = 'III';
       else if (t >= 1e7) id = 'IV';
-      else id = 'V';
+      else { id = 'V'; note = 'Only if above the simplified acquisition threshold; below it, DoDI 5000.74 does not apply.'; }
       if (isUnknown(p.svc_special_interest)) note = (note ? note + ' ' : '') + 'Unless ASD(A) designates it Special Interest.';
     }
     if (!id) return { id: null, label: 'Undetermined', decision_authority: null, note: 'Enter the total estimated value.', cite: bundle.scat_cite };
@@ -162,7 +212,9 @@
   // ---------------------------------------------------------------- evaluation
   function eventInfo(pw) {
     var idx = {}, order = 0;
-    pw.events.forEach(function (e) { idx[e.id] = UNORDERED_EVENTS[e.id] ? null : order++; });
+    pw.events.forEach(function (e) { idx[e.id] = (UNORDERED_EVENTS[e.id] || e.every) ? null : order++; });
+    idx.__every = {};
+    pw.events.forEach(function (e) { if (e.every) idx.__every[e.id] = true; });
     return idx;
   }
 
@@ -176,6 +228,7 @@
     var ordered = evs.filter(function (e) { return idx[e] !== null && idx[e] !== undefined; });
     if (!evs.length) return 'ongoing';
     if (!focus) return 'by_event';
+    if (evs.some(function (e) { return idx.__every[e]; })) return 'at_focus';
     if (evs.indexOf(focus) !== -1) return 'at_focus';
     if (idx[focus] === null) return ordered.length ? 'by_event' : 'as_required';
     var later = ordered.some(function (e) { return idx[e] > idx[focus]; });
@@ -191,27 +244,46 @@
       status = STATUS_BY_KIND[req.kind] || 'required';
     } else if (r === null) {
       status = 'undetermined';
-      missing = fieldsOf(req.applies_if).filter(function (f) { return isUnknown(profile[f]); });
+      missing = unknownFields(req.applies_if, profile);
     } else {
       var c2 = req.conditional_if ? test(req.conditional_if, profile) : false;
       if (c2 === true) status = 'conditional';
-      else if (c2 === null) { status = 'undetermined'; missing = fieldsOf(req.conditional_if).filter(function (f) { return isUnknown(profile[f]); }); }
+      else if (c2 === null) { status = 'undetermined'; missing = unknownFields(req.conditional_if, profile); }
       else { status = 'not_applicable'; reason = 'Applies when: ' + req.applies_when; }
     }
     if (override && status !== 'not_applicable' && status !== 'undetermined') status = override.status;
-    var type = req.type, typeDepends = [];
-    if (req.type_rule) {
-      var tr = test(req.type_rule['if'], profile);
-      if (tr === true) type = req.type_rule.then;
-      else if (tr === false) type = req.type_rule['else'];
-      else { type = 'depends'; typeDepends = fieldsOf(req.type_rule['if']).filter(function (f) { return isUnknown(profile[f]); }); }
+    var type = req.type, typeDepends = [], evType = null;
+    var rule = req.type_rule;
+    if (rule) {
+      var tr = test(rule['if'], profile);
+      if (tr === true && rule.events) {
+        // The type differs by event: rule.then at the listed events, rule.else at the others.
+        // The item's type is the one at the next event when it is due there, otherwise the mix.
+        evType = Object.create(null);
+        var kinds = [];
+        (req.when || []).forEach(function (w) {
+          var k = rule.events.indexOf(w.event) !== -1 ? rule.then : rule['else'];
+          evType[w.event] = k;
+          if (kinds.indexOf(k) === -1) kinds.push(k);
+        });
+        if (focus && evType[focus]) type = evType[focus];
+        else type = kinds.length === 1 ? kinds[0] : (kinds.length ? 'both' : rule.then);
+      }
+      else if (tr === true) type = rule.then;
+      else if (tr === false) type = rule['else'];
+      else {
+        type = rule.unknown && rule.unknown !== 'depends' ? rule.unknown : 'depends';
+        typeDepends = unknownFields(rule['if'], profile);
+      }
     }
     var evMap = {};
     var srcPw = override ? pathwayById(bundle, req.pathways[0]) : pw;
     srcPw.events.forEach(function (e) { evMap[e.id] = e; });
     var when = (req.when || []).map(function (w) {
       var e = evMap[w.event] || { short: w.event, name: w.event };
-      return { event: w.event, short: e.short, name: e.name, submission: w.submission };
+      var o = { event: w.event, short: e.short, name: e.name, submission: w.submission };
+      if (evType) o.type = evType[w.event];
+      return o;
     });
     var group = override ? (status === 'undetermined' ? 'undetermined' : 'review') : groupFor(req, status, focus, idx);
     var item = {
@@ -221,6 +293,7 @@
       table: req.table_name, url: req.url, rule_basis: req.rule_basis || '', kind: req.kind
     };
     if (req.procedure) item.procedure = req.procedure;
+    if (req.tool_note) item.tool_note = req.tool_note;
     if (req.footnotes && req.footnotes.length) item.footnotes = req.footnotes;
     if (req.note_has_conditions) item.note_has_conditions = true;
     if (req.currency && req.currency.length) item.currency = req.currency.slice();
@@ -233,12 +306,13 @@
   }
 
   function evaluate(bundle, input) {
-    var profile = normalize(bundle, input);
+    var nd = normalizeDetailed(bundle, input);
+    var profile = nd.profile;
     var result = {
       engine: 'aafdid-navigator', engine_version: ENGINE_VERSION, rules_version: bundle.meta.version,
       aafdid_capture: bundle.meta.aafdid_capture, live_check: bundle.meta.live_check,
       profile: profile, pathway: null, focus_event: null, derived: {}, counts: {}, items: [],
-      questions_needed: [], currency_notes: [], disclaimer: bundle.meta.disclaimer
+      questions_needed: [], currency_notes: [], unrecognized: nd.unrecognized, disclaimer: bundle.meta.disclaimer
     };
     var pw = pathwayById(bundle, profile.pathway);
     if (!pw) {
@@ -255,6 +329,9 @@
       if (req.pathways.indexOf(pw.id) === -1) return;
       items.push(assess(bundle, req, profile, pw, focus, idx, null));
     });
+    // Entries of another pathway's tables that AAFDID says to review too (UCA -> MCA ACAT II/III).
+    // Until the mapped answer is given they are not listed; the question counts them instead.
+    var reviewPending = 0;
     if (pw.also_review) {
       var ar = pw.also_review;
       var mapped = {};
@@ -262,8 +339,18 @@
       mapped[ar.map_field.to] = profile[ar.map_field.from];
       bundle.requirements.forEach(function (req) {
         if (req.pathways.indexOf(ar.pathway) === -1 || ar.tables.indexOf(req.table) === -1) return;
-        if (isUnknown(mapped[ar.map_field.to])) return;
         if (test(req.applies_if, mapped) === false) return;
+        if (isUnknown(mapped[ar.map_field.to])) {
+          // Count the entry if some answer to the question could bring it in.
+          var q = questionById(bundle, ar.map_field.from);
+          var could = ((q && q.options) || []).some(function (o) {
+            var m2 = {}; Object.keys(mapped).forEach(function (k) { m2[k] = mapped[k]; });
+            m2[ar.map_field.to] = o.value;
+            return test(req.applies_if, m2) !== false;
+          });
+          if (could) reviewPending++;
+          return;
+        }
         var srcPw = pathwayById(bundle, ar.pathway);
         items.push(assess(bundle, req, mapped, srcPw, null, eventInfo(srcPw), { status: ar.status, reason: ar.reason }));
       });
@@ -295,6 +382,7 @@
     items.forEach(function (it) {
       (it.missing || []).concat(it.type_depends_on || []).forEach(function (f) { need[f] = (need[f] || 0) + 1; });
     });
+    if (reviewPending) need[pw.also_review.map_field.from] = (need[pw.also_review.map_field.from] || 0) + reviewPending;
     visibleQuestions(bundle, profile).forEach(function (q) {
       if (need[q.id]) result.questions_needed.push({ id: q.id, text: q.text, affects: need[q.id] });
     });
@@ -334,15 +422,22 @@
   }
 
   function parseProfileBlock(text) {
-    var out = {};
-    String(text || '').split(/\r?\n/).forEach(function (line) {
-      var m = line.match(/^\s*[-*]?\s*([A-Za-z_]+)\s*:\s*(.*?)\s*$/);
+    var out = Object.create(null);
+    String(text || '').replace(/^\ufeff/, '').split(/\r\n|\r|\n/).forEach(function (line) {
+      var clean = line.replace(/\*\*|__|`/g, '');
+      var m = clean.match(/^\s*[-*]?\s*([A-Za-z_]+)\s*:\s*(.*?)\s*$/);
       if (!m) return;
       var k = m[1].toLowerCase(), v = m[2];
       if (k === 'unknown') return;
       out[k] = v;
     });
     return out;
+  }
+
+  // A profile from text: JSON if it parses as JSON, otherwise a profile block.
+  function parseInput(text) {
+    text = String(text === null || text === undefined ? '' : text).replace(/^\ufeff/, '');
+    try { return JSON.parse(text); } catch (e) { return parseProfileBlock(text); }
   }
 
   // ---------------------------------------------------------------- markdown report
@@ -354,13 +449,26 @@
     triggered: 'Only if triggered', undetermined: 'Needs an answer', reference: 'Reference rules', not_applicable: 'Not applicable'
   };
 
+  var COUNT_WORDS = [['required', 'required'], ['conditional', 'may apply'], ['review', 'also review'], ['triggered', 'triggered'], ['undetermined', 'need an answer'], ['not_applicable', 'not applicable']];
+
   function esc(s) { return String(s || '').replace(/\|/g, '\\|').replace(/\s+/g, ' ').trim(); }
+
+  function whenBits(w) {
+    var b = [];
+    if (w.submission === 'update') b.push('update');
+    if (w.type) b.push(w.type);
+    return b.length ? ' (' + b.join(', ') + ')' : '';
+  }
 
   function whenText(it) {
     if (it.when && it.when.length) {
-      return it.when.map(function (w) { return w.short + (w.submission === 'update' ? ' (update)' : ''); }).join(', ');
+      return it.when.map(function (w) { return w.short + whenBits(w); }).join(', ');
     }
     return it.due_text || '';
+  }
+
+  function ignoredText(result) {
+    return (result.unrecognized || []).map(function (u) { return u.field + ' = ' + u.value + ' (' + u.reason + ')'; }).join('; ');
   }
 
   function toMarkdown(result, opts) {
@@ -370,6 +478,7 @@
       L.push('# AAFDID requirements');
       L.push('');
       L.push('Pick a pathway first. Ask: ' + result.questions_needed[0].text);
+      if (result.unrecognized && result.unrecognized.length) { L.push(''); L.push('Ignored input: ' + ignoredText(result)); }
       return L.join('\n');
     }
     var p = result.pathway;
@@ -381,7 +490,8 @@
       var sc = result.derived.services_category;
       L.push('- Services category: ' + sc.label + (sc.decision_authority ? '; decision authority: ' + sc.decision_authority : '') + (sc.note ? ' (' + sc.note + ')' : ''));
     }
-    L.push('- Counts: ' + ['required', 'conditional', 'triggered', 'undetermined', 'not_applicable'].map(function (s) { return result.counts[s] + ' ' + s.replace('_', ' '); }).join(', '));
+    L.push('- Counts: ' + COUNT_WORDS.filter(function (c) { return c[0] !== 'review' || result.counts.review; }).map(function (c) { return result.counts[c[0]] + ' ' + c[1]; }).join(', '));
+    if (result.unrecognized && result.unrecognized.length) L.push('- Ignored input: ' + ignoredText(result));
     L.push('- Rules ' + result.rules_version + ': AAFDID capture ' + result.aafdid_capture.split(' ')[0] + ', checked live ' + result.live_check.split(':')[0]);
     L.push('');
     var groups = {};
@@ -415,7 +525,7 @@
       L.push('');
     });
     if (result.questions_needed.length) {
-      L.push('## Questions that would settle the undetermined items');
+      L.push('## Questions that would settle more of the list');
       L.push('');
       result.questions_needed.forEach(function (q) { L.push('- ' + q.text + ' (' + q.id + '; affects ' + q.affects + ')'); });
       L.push('');
@@ -437,22 +547,24 @@
     return L.join('\n');
   }
 
+  var CHECK_TAG = { conditional: 'may apply', review: 'also review', triggered: 'if triggered' };
+
   function toChecklist(result) {
     var L = [];
     if (!result.pathway) return '';
     L.push('AAFDID checklist: ' + (result.profile.program || result.pathway.name));
     result.items.forEach(function (it) {
-      if (['required', 'conditional', 'triggered'].indexOf(it.status) === -1) return;
-      var tag = it.status === 'required' ? '' : ' [' + (it.status === 'conditional' ? 'may apply' : 'if triggered') + ']';
+      if (['required', 'conditional', 'review', 'triggered'].indexOf(it.status) === -1) return;
+      var tag = it.status === 'required' ? '' : ' [' + CHECK_TAG[it.status] + ']';
       L.push('- [ ] ' + it.code + ' ' + it.name + tag + (whenText(it) ? ' (' + whenText(it) + ')' : ''));
     });
     return L.join('\n');
   }
 
   return {
-    version: ENGINE_VERSION, test: test, fieldsOf: fieldsOf, normalize: normalize, evaluate: evaluate,
+    version: ENGINE_VERSION, test: test, fieldsOf: fieldsOf, unknownFields: unknownFields, normalize: normalize, normalizeDetailed: normalizeDetailed, evaluate: evaluate,
     visibleQuestions: visibleQuestions, servicesCategory: servicesCategory, toProfileBlock: toProfileBlock,
-    parseProfileBlock: parseProfileBlock, toMarkdown: toMarkdown, toChecklist: toChecklist,
-    parseMoney: parseMoney, TYPE_LABEL: TYPE_LABEL, GROUP_TITLE: GROUP_TITLE
+    parseProfileBlock: parseProfileBlock, parseInput: parseInput, toMarkdown: toMarkdown, toChecklist: toChecklist,
+    parseMoney: parseMoney, whenBits: whenBits, TYPE_LABEL: TYPE_LABEL, GROUP_TITLE: GROUP_TITLE
   };
 }));

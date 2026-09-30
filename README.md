@@ -37,10 +37,12 @@ The web page and the agent follow the same five steps.
 
    | Status | Meaning |
    | --- | --- |
-   | Required | The AAFDID marks match this program. Items are grouped as due at the next event, due at later events, ongoing, or from earlier events. |
+   | Required | The AAFDID marks match this program. Items are grouped as due at the next event, due at later events, ongoing, as required ("Other" column), or from earlier events. |
    | May apply | The item depends on a condition in its note, or on someone's discretion. The MTA "may be applicable" table and the CSDR plan authority's choices land here. |
+   | Also review | UCA only: the MCA milestone and exception entries for the program's ACAT level, which AAFDID's UCA page says to use too. |
    | Only if triggered | Breaches, waivers, deviations, congressional inquiries, bridge contracts. |
    | Needs an answer | A profile answer is missing, so the question that settles it is shown. Unknown is never treated as no. |
+   | Reference | APB rules that govern the baseline rather than documents to submit. |
    | Not applicable | The reason is given. |
 
 4. **Tailor and approve.** Statutory items stay unless the statute allows a waiver. The decision authority may tailor regulatory items and records the decision, usually in the ADM.
@@ -51,13 +53,13 @@ The web page and the agent follow the same five steps.
 | Pathway | Records | Source tables |
 | --- | --- | --- |
 | MCA | 135 | Milestone and Phase (80), Recurring (3), Exceptions and Waivers (22), CCA (11), CSDR (6), APB rules (4), Breach definitions (3), plus EVMS (6) |
-| MTA | 50 | Table 1 submissions to OSD (11), Statutory and Regulatory "may be applicable" (33), plus EVMS |
+| MTA | 52 | Table 1 submissions to OSD (11), Statutory and Regulatory "may be applicable" (33), plus EVMS (6) and the two CSDR reports that cover MTA programs |
 | UCA | 10 | UCA Unique (4), plus EVMS; also reviews the ACAT II and III entries of the MCA tables, as AAFDID directs |
 | SWA | 51 | Application and Embedded SW (34), SWA CCA (11), plus EVMS |
-| DBS | 22 | DBS Statutory (16), plus EVMS |
+| DBS | 27 | DBS Statutory (16), plus EVMS (6) and the five CSDR reports that cover IS programs |
 | AoS | 24 | DoDI 5000.74 (Change 1, 2021) and DFARS 207.103 |
 
-The six EVMS rows are shared by every pathway except AoS, because AAFDID notes that EVM is not specific to any one pathway.
+The six EVMS rows are shared by every pathway except AoS, because AAFDID notes that EVM is not specific to any one pathway. The six CSDR rows (`CSDR-01` to `CSDR-06`) carry their own pathway branches, because AAFDID's CSDR table covers ACAT I and II programs, IS programs (including DBS) and MTA programs over $100M.
 
 ## Changes since AAFDID's tables
 
@@ -80,9 +82,10 @@ rules/        pathways.json, questions.json, currency.json (hand-written)
 sources/      aafdid-capture/ (AAFDID tables as captured), corrections-2026-09-30.json,
               aos-dodi-5000-74.json
 engine/       aafdid.js (browser and Node), aafdid.py (Python port), cli.js
-web/          template.html -> index.html (self-contained page)
+web/          template.html -> index.html (full page) and artifact.html (the same page as a
+              fragment, for hosts that add their own document skeleton)
 agent/        AGENT_INSTRUCTIONS.md, knowledge/, knowledge-combined/, tests/
-tests/        scenarios/ (16 profiles), expected/ (snapshots), run_tests.py
+tests/        scenarios/ (30 profiles), expected/ (snapshots), run_tests.py
 tools/        build_rules.py, build_web.py, build_agent.py, build_all.sh
 docs/         RULES.md (schema and condition language), PROVENANCE.md
 ```
@@ -93,18 +96,19 @@ Python 3.9 or later and Node 18 or later. No packages to install.
 
 ```
 tools/build_all.sh           # rules -> tests -> web page -> agent pack
-python3 tests/run_tests.py   # both engines, all scenarios, byte-for-byte parity
+python3 tests/run_tests.py   # both engines, all scenarios: identical JSON, Markdown, checklist and profile block
 ```
 
 `tests/run_tests.py --update` rewrites the snapshots after an intended rule change. Review the diff before you commit it.
 
 ## Publish the web page with GitHub Pages
 
-The workflow in `.github/workflows/pages.yml` deploys `web/` on every push to `main`. To turn it on once, go to Settings > Pages > Build and deployment and set Source to GitHub Actions. The page then lives at `https://gfranistaken.github.io/aafdid-navigator/`.
+The workflow in `.github/workflows/pages.yml` publishes `web/index.html` and the rules bundle on every push to `main`. To turn it on once, go to Settings > Pages > Build and deployment and set Source to GitHub Actions. The page then lives at `https://gfranistaken.github.io/aafdid-navigator/`, and the bundle at `.../aafdid-rules.json`.
 
 ## Limits worth knowing
 
-- **Row-level applicability is automated; note-level conditions are not.** Program type, system size, event and contract value are evaluated. Many AAFDID notes add their own conditions, for example "only required for programs on the DOT&E oversight list". Those rows are flagged "Conditions in note", and the note is shown verbatim.
+- **Row-level applicability is automated; most note-level conditions are not.** Program type, system size, event, contract value, IT type and DOT&E oversight are evaluated; the DOT&E oversight gates come from AAFDID's own notes. Other notes add conditions this tool does not ask about, for example "if the program has international partners". Those rows are flagged "Conditions in note", and the note is shown verbatim.
+- **Unrecognized input is reported, not guessed.** A field the rules don't use, or a value that matches no option, is listed as ignored and the field stays unknown.
 - **Dollar thresholds stay as AAFDID prints them.** Where law or policy has since changed a threshold, a "Changed since" note says so rather than silently rewriting AAFDID.
 - **AoS records come from DoDI 5000.74, not AAFDID,** and cite their paragraphs.
 - **Requirement codes such as `MCA-M06` are tied to a release.** The `id` fields in the JSON stay stable across releases.

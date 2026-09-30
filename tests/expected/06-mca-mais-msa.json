@@ -2,22 +2,24 @@
  "profile": {
   "program": "Legacy MAIS program (example)",
   "pathway": "mca",
-  "event": "ms_a",
   "mca_program_type": "mais",
-  "it_type": "it_system"
+  "it_type": "it_system",
+  "event": "ms_a"
  },
  "pathway": "mca",
  "focus_event": "ms_a",
  "counts": {
   "required": 13,
-  "conditional": 0,
+  "conditional": 1,
+  "review": 0,
   "triggered": 0,
-  "undetermined": 6,
+  "undetermined": 11,
   "reference": 0,
-  "not_applicable": 116
+  "not_applicable": 110
  },
  "derived": {},
  "questions_needed": [
+  "dote_oversight",
   "contract_value",
   "contract_cost_type"
  ],
@@ -26,6 +28,7 @@
   "jcids-2025",
   "evms-2026"
  ],
+ "unrecognized": [],
  "items": [
   [
    "MCA-M74",
@@ -104,6 +107,42 @@
    "required",
    "ongoing",
    "statutory"
+  ],
+  [
+   "CSDR-01",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "CSDR-02",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "CSDR-03",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "CSDR-04",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "CSDR-05",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "CSDR-06",
+   "undetermined",
+   "undetermined",
+   "regulatory"
   ],
   [
    "EVM-01",
@@ -193,19 +232,19 @@
    "MCA-M04",
    "not_applicable",
    "not_applicable",
-   "statutory"
+   "regulatory"
   ],
   [
    "MCA-M07",
    "not_applicable",
    "not_applicable",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M09",
    "not_applicable",
    "not_applicable",
-   "statutory"
+   "regulatory"
   ],
   [
    "MCA-M12",
@@ -229,7 +268,7 @@
    "MCA-M15",
    "not_applicable",
    "not_applicable",
-   "both"
+   "statutory"
   ],
   [
    "MCA-M16",
@@ -295,13 +334,13 @@
    "MCA-M39",
    "not_applicable",
    "not_applicable",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M43",
    "not_applicable",
    "not_applicable",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M44",
@@ -337,7 +376,7 @@
    "MCA-M52",
    "not_applicable",
    "not_applicable",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M53",
@@ -361,7 +400,7 @@
    "MCA-M62",
    "not_applicable",
    "not_applicable",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M63",
@@ -439,13 +478,13 @@
    "MCA-M06",
    "not_applicable",
    "not_applicable",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M11",
    "not_applicable",
    "not_applicable",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M17",
@@ -481,7 +520,7 @@
    "MCA-M48",
    "not_applicable",
    "not_applicable",
-   "both"
+   "regulatory"
   ],
   [
    "MCA-M64",
@@ -614,42 +653,6 @@
    "not_applicable",
    "not_applicable",
    "unspecified"
-  ],
-  [
-   "MCA-D01",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D02",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D03",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D04",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D05",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
-  ],
-  [
-   "MCA-D06",
-   "not_applicable",
-   "not_applicable",
-   "regulatory"
   ],
   [
    "MCA-M22",

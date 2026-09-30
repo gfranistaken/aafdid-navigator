@@ -20,8 +20,7 @@ if (!file) {
 }
 const bundle = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'rules', 'aafdid-rules.json'), 'utf8'));
 const text = file === '-' ? fs.readFileSync(0, 'utf8') : fs.readFileSync(file, 'utf8');
-let input;
-try { input = JSON.parse(text); } catch (e) { input = A.parseProfileBlock(text); }
+const input = A.parseInput(text);
 const result = A.evaluate(bundle, input);
 if (args.includes('--json')) console.log(JSON.stringify(result, null, 2));
 else if (args.includes('--block')) console.log(A.toProfileBlock(bundle, input));

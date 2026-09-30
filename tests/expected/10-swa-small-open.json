@@ -9,12 +9,13 @@
  "pathway": "swa",
  "focus_event": null,
  "counts": {
-  "required": 37,
+  "required": 38,
   "conditional": 4,
+  "review": 0,
   "triggered": 0,
   "undetermined": 8,
   "reference": 0,
-  "not_applicable": 2
+  "not_applicable": 1
  },
  "derived": {},
  "questions_needed": [
@@ -26,6 +27,7 @@
   "thresholds-2025",
   "evms-2026"
  ],
+ "unrecognized": [],
  "items": [
   [
    "SWA-02",
@@ -122,6 +124,12 @@
    "required",
    "by_event",
    "statutory"
+  ],
+  [
+   "SWA-23",
+   "required",
+   "by_event",
+   "regulatory"
   ],
   [
    "SWA-24",
@@ -323,12 +331,6 @@
   ],
   [
    "SWA-21",
-   "not_applicable",
-   "not_applicable",
-   "statutory"
-  ],
-  [
-   "SWA-23",
    "not_applicable",
    "not_applicable",
    "statutory"

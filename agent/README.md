@@ -6,13 +6,13 @@ This folder turns any capable LLM into an AAFDID assistant. The assistant can do
 - Print the program profile.
 - List the information requirements that apply, grouped by decision point, with the same codes the web navigator shows.
 
-Every file here is generated from `rules/aafdid-rules.json` by `tools/build_agent.py`. Edit the rules, not these files.
+Everything in this folder except this README is generated from `rules/aafdid-rules.json` by `tools/build_agent.py`. Edit the rules, not the generated files.
 
 ## What to load
 
 | File | Where it goes | Size |
 | --- | --- | --- |
-| `AGENT_INSTRUCTIONS.md` | The agent's instructions or system prompt | about 2.4K characters |
+| `AGENT_INSTRUCTIONS.md` | The agent's instructions or system prompt | about 2.5K characters |
 | `knowledge/00-procedure.md` | Knowledge | procedure, profile format, pathway finder, output format, worked example |
 | `knowledge/01-intake.md` | Knowledge | intake questions per pathway |
 | `knowledge/10-mca.md` | Knowledge | MCA records plus a lookup matrix by program type and event |
@@ -60,7 +60,6 @@ pathway: mta
 event: entrance
 mta_path: rf
 mta_size: non_major
-international: no
 contract_value: 45000000
 contract_cost_type: no
 ```
@@ -71,9 +70,10 @@ The web navigator prints this block in step 5, and agents print it when you say 
 
 A good answer has these properties:
 
-- Every code in the scenario's Required and May-apply lines appears.
-- None of the codes in the Must-not-list line appear as required or may apply.
+- Every code in the scenario's Required, May-apply and Also-review lines appears.
+- None of the codes in the Must-not-list line appear as required, may apply or also review.
 - Unknown answers become "Needs an answer" with a question, never a silent exclusion.
+- Input it cannot use (scenario 23) is named, not silently dropped or guessed.
 - It ends with the unofficial-overview caveat.
 
 When an agent keeps missing records, move more of the work into code (the engine) or split the knowledge further.

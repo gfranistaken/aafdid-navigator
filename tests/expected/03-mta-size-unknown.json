@@ -7,17 +7,17 @@
  "pathway": "mta",
  "focus_event": null,
  "counts": {
-  "required": 0,
-  "conditional": 0,
+  "required": 6,
+  "conditional": 21,
+  "review": 0,
   "triggered": 0,
-  "undetermined": 50,
+  "undetermined": 25,
   "reference": 0,
   "not_applicable": 0
  },
  "derived": {},
  "questions_needed": [
   "mta_size",
-  "international",
   "contract_value",
   "contract_cost_type"
  ],
@@ -26,69 +26,208 @@
   "evms-2026",
   "mta-change1-2024"
  ],
+ "unrecognized": [],
  "items": [
   [
-   "MTA-O01",
+   "MTA-T02",
+   "required",
+   "by_event",
+   "regulatory"
+  ],
+  [
+   "MTA-T05",
+   "required",
+   "by_event",
+   "regulatory"
+  ],
+  [
+   "MTA-T08",
+   "required",
+   "by_event",
+   "regulatory"
+  ],
+  [
+   "MTA-T09",
+   "required",
+   "by_event",
+   "regulatory"
+  ],
+  [
+   "MTA-T10",
+   "required",
+   "by_event",
+   "regulatory"
+  ],
+  [
+   "MTA-T11",
+   "required",
+   "by_event",
+   "regulatory"
+  ],
+  [
+   "MTA-S01",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S02",
+   "conditional",
+   "conditional",
+   "depends"
+  ],
+  [
+   "MTA-S09",
+   "conditional",
+   "conditional",
+   "both"
+  ],
+  [
+   "MTA-S10",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S15",
+   "conditional",
+   "conditional",
+   "both"
+  ],
+  [
+   "MTA-S17",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S18",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S19",
+   "conditional",
+   "conditional",
+   "both"
+  ],
+  [
+   "MTA-S20",
+   "conditional",
+   "conditional",
+   "both"
+  ],
+  [
+   "MTA-S21",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S22",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S23",
+   "conditional",
+   "conditional",
+   "statutory"
+  ],
+  [
+   "MTA-S24",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S25",
+   "conditional",
+   "conditional",
+   "both"
+  ],
+  [
+   "MTA-S26",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S27",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S28",
+   "conditional",
+   "conditional",
+   "both"
+  ],
+  [
+   "MTA-S29",
+   "conditional",
+   "conditional",
+   "statutory"
+  ],
+  [
+   "MTA-S30",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S31",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-S33",
+   "conditional",
+   "conditional",
+   "regulatory"
+  ],
+  [
+   "MTA-T01",
    "undetermined",
    "undetermined",
    "regulatory"
   ],
   [
-   "MTA-O02",
+   "MTA-T03",
    "undetermined",
    "undetermined",
    "regulatory"
   ],
   [
-   "MTA-O03",
+   "MTA-T04",
    "undetermined",
    "undetermined",
    "regulatory"
   ],
   [
-   "MTA-O04",
+   "MTA-T06",
    "undetermined",
    "undetermined",
    "regulatory"
   ],
   [
-   "MTA-O05",
+   "MTA-T07",
    "undetermined",
    "undetermined",
    "regulatory"
   ],
   [
-   "MTA-O06",
+   "CSDR-02",
    "undetermined",
    "undetermined",
    "regulatory"
   ],
   [
-   "MTA-O07",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-O08",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-O09",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-O10",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-O11",
+   "CSDR-05",
    "undetermined",
    "undetermined",
    "regulatory"
@@ -130,18 +269,6 @@
    "regulatory"
   ],
   [
-   "MTA-S01",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-S02",
-   "undetermined",
-   "undetermined",
-   "both"
-  ],
-  [
    "MTA-S03",
    "undetermined",
    "undetermined",
@@ -178,18 +305,6 @@
    "both"
   ],
   [
-   "MTA-S09",
-   "undetermined",
-   "undetermined",
-   "both"
-  ],
-  [
-   "MTA-S10",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
    "MTA-S11",
    "undetermined",
    "undetermined",
@@ -214,118 +329,16 @@
    "both"
   ],
   [
-   "MTA-S15",
-   "undetermined",
-   "undetermined",
-   "both"
-  ],
-  [
    "MTA-S16",
    "undetermined",
    "undetermined",
    "both"
   ],
   [
-   "MTA-S17",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-S18",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-S19",
-   "undetermined",
-   "undetermined",
-   "both"
-  ],
-  [
-   "MTA-S20",
-   "undetermined",
-   "undetermined",
-   "both"
-  ],
-  [
-   "MTA-S21",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-S22",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-S23",
-   "undetermined",
-   "undetermined",
-   "statutory"
-  ],
-  [
-   "MTA-S24",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-S25",
-   "undetermined",
-   "undetermined",
-   "both"
-  ],
-  [
-   "MTA-S26",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-S27",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-S28",
-   "undetermined",
-   "undetermined",
-   "both"
-  ],
-  [
-   "MTA-S29",
-   "undetermined",
-   "undetermined",
-   "statutory"
-  ],
-  [
-   "MTA-S30",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
-   "MTA-S31",
-   "undetermined",
-   "undetermined",
-   "regulatory"
-  ],
-  [
    "MTA-S32",
    "undetermined",
    "undetermined",
    "statutory"
-  ],
-  [
-   "MTA-S33",
-   "undetermined",
-   "undetermined",
-   "regulatory"
   ]
  ]
 }

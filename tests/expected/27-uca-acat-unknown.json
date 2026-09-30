@@ -1,0 +1,91 @@
+{
+ "profile": {
+  "program": "Urgent need, ACAT not yet known (example)",
+  "pathway": "uca",
+  "event": "development"
+ },
+ "pathway": "uca",
+ "focus_event": "development",
+ "counts": {
+  "required": 4,
+  "conditional": 0,
+  "review": 0,
+  "triggered": 0,
+  "undetermined": 6,
+  "reference": 0,
+  "not_applicable": 0
+ },
+ "derived": {},
+ "questions_needed": [
+  "uca_acat",
+  "contract_value",
+  "contract_cost_type"
+ ],
+ "currency_notes": [
+  "thresholds-2025",
+  "evms-2026"
+ ],
+ "unrecognized": [],
+ "items": [
+  [
+   "UCA-01",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "UCA-02",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "UCA-03",
+   "required",
+   "as_required",
+   "regulatory"
+  ],
+  [
+   "UCA-04",
+   "required",
+   "as_required",
+   "statutory"
+  ],
+  [
+   "EVM-01",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "EVM-02",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "EVM-03",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "EVM-04",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "EVM-05",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ],
+  [
+   "EVM-06",
+   "undetermined",
+   "undetermined",
+   "regulatory"
+  ]
+ ]
+}

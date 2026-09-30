@@ -150,6 +150,8 @@ textarea { max-width: 100%; font: 13px/1.5 var(--font-mono); min-height: 120px; 
 .count.required .num { color: var(--accent); }
 .count.conditional .num { color: var(--may); }
 .count.triggered .num { color: var(--trig); }
+.count.review .num { color: var(--both); }
+.count.reference .num { color: var(--ink-2); }
 .count.undetermined .num { color: var(--und); }
 .count.not_applicable .num { color: var(--na); }
 .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 8px; }
@@ -187,8 +189,13 @@ details.req[open] > summary { background: var(--shade); }
 .req-body ul { margin: 0; padding-left: 18px; }
 .muted { color: var(--ink-3); }
 .empty { padding: 14px; color: var(--ink-3); font-size: 14px; }
-.need { display: grid; gap: 6px; }
-.need button { justify-self: start; }
+.need { display: grid; gap: 8px; margin-bottom: 14px; border-left: 3px solid var(--und); }
+.need h3 { margin: 0; }
+.need p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
+.need .btnrow { gap: 6px; }
+.need button { text-align: left; font-weight: 500; }
+.notice { font-size: 13.5px; border: 1px solid var(--rule); border-left: 3px solid var(--gold); background: var(--gold-2); border-radius: var(--radius); padding: 8px 12px; margin-top: 10px; }
+.notice ul { margin: 4px 0 0; padding-left: 18px; }
 details.na > summary { cursor: pointer; font-weight: 600; font-size: 15px; padding: 6px 0; }
 details.na .reqs { margin-top: 6px; }
 
@@ -226,7 +233,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
   .step-lede { grid-column: 1 / -1; }
 }
 </style>
-
+<!--BODY-->
 <header class="masthead">
   <div class="masthead-in">
     <div class="eyebrow">Adaptive Acquisition Framework · Document Identification</div>
@@ -317,6 +324,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
             <button class="btn" type="button" id="load">Load profile</button>
             <button class="btn ghost" type="button" id="clear">Start a blank profile</button>
           </div>
+          <div id="ignored" aria-live="polite"></div>
           <h3 style="margin-top:18px">Using an AI agent</h3>
           <ol class="agent-steps">
             <li>Build the agent from the <a href="https://github.com/gfranistaken/aafdid-navigator/tree/main/agent" target="_blank" rel="noopener">agent pack</a>. It includes short instructions, one knowledge file per pathway, and test scenarios for checking the agent's answers.</li>
@@ -346,10 +354,11 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
   var Q = B.questions.questions;
   var PW = {}; B.pathways.forEach(function (p) { PW[p.id] = p; });
   var CUR = {}; B.currency.notes.forEach(function (n) { CUR[n.id] = n; });
+  var EVERY = {}; B.pathways.forEach(function (p) { p.events.forEach(function (e) { if (e.every) EVERY[e.id] = true; }); });
   var STORE = 'aafdid-navigator-profile-v1';
-  var EXAMPLE = { program: 'F3 replacement power supply', pathway: 'mta', event: 'entrance', mta_path: 'rf', mta_size: 'non_major', international: false, contract_value: 45000000, contract_cost_type: false };
+  var EXAMPLE = { program: 'F3 replacement power supply', pathway: 'mta', event: 'entrance', mta_path: 'rf', mta_size: 'non_major', contract_value: 45000000, contract_cost_type: false };
 
-  var state = { profile: {}, example: false, finderPath: [], finderAt: B.finder.start, typeFilter: 'all', search: '' };
+  var state = { profile: {}, example: false, finderPath: [], finderAt: B.finder.start, typeFilter: 'all', search: '', ignored: [] };
 
   function $(id) { return document.getElementById(id); }
   function el(tag, attrs, kids) {
@@ -370,6 +379,11 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     if (n >= 1e9) return '$' + (+(n / 1e9).toFixed(3)) + 'B';
     if (n >= 1e6) return '$' + (+(n / 1e6).toFixed(3)) + 'M';
     return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function niceDate(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    if (!m) return iso || '';
+    return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+m[2] - 1] + ' ' + (+m[3]) + ', ' + m[1];
   }
   function toast(msg) { var t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.h); toast.h = setTimeout(function () { t.classList.remove('show'); }, 1800); }
   function copy(text, label) {
@@ -394,7 +408,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
   function renderMeta() {
     var m = B.meta;
     $('meta').innerHTML = '';
-    [['Rules', m.version], ['AAFDID capture', 'Aug 22, 2026'], ['Checked against live AAFDID', 'Sep 30, 2026'], ['Requirements', String(m.requirements)]].forEach(function (x) {
+    [['Rules', m.version], ['AAFDID capture', niceDate(m.capture_date)], ['Checked against live AAFDID', niceDate(m.checked_date)], ['Requirements', String(m.requirements)]].forEach(function (x) {
       $('meta').appendChild(el('span', null, [x[0] + ': ', el('b', { text: x[1] })]));
     });
     var ch = $('changes'); ch.innerHTML = '';
@@ -476,9 +490,9 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     }
   }
   function setPathway(id, fromFinder) {
-    var keep = { program: state.profile.program };
-    if (state.profile.pathway === id) return scrollTo('profile');
-    state.profile = keep; state.profile.pathway = id; state.example = false;
+    if (state.profile.pathway === id && !state.example) return scrollTo('profile');
+    var keep = state.example || !state.profile.program ? {} : { program: state.profile.program };
+    state.profile = keep; state.profile.pathway = id; state.example = false; state.ignored = [];
     update();
     if (fromFinder) scrollTo('profile');
   }
@@ -506,12 +520,15 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
       var ol = el('ol');
       var allBtn = el('button', { type: 'button', 'aria-pressed': state.profile.event ? 'false' : 'true', onclick: function () { setAnswer('event', null); }, title: 'List every event' }, [el('span', { 'class': 'dia', style: 'border-style:dashed' }), el('span', { 'class': 'ev-all', text: 'All events' })]);
       ol.appendChild(el('li', null, [allBtn]));
+      var every = [];
       p.events.forEach(function (e) {
+        if (e.every) { every.push(e); return; }
         ol.appendChild(el('li', null, [el('button', { type: 'button', 'aria-pressed': state.profile.event === e.id ? 'true' : 'false', title: e.name, onclick: function () { setAnswer('event', e.id); } }, [el('span', { 'class': 'dia' }), el('span', { 'class': 'ev-short', text: e.short })])]));
       });
       tl.appendChild(ol);
       var cur = null; p.events.forEach(function (e) { if (e.id === state.profile.event) cur = e; });
-      $('ev-name').textContent = cur ? 'Next: ' + cur.name + (cur.phase ? ' (phase: ' + cur.phase + ')' : '') : 'Showing requirements for every event.';
+      $('ev-name').textContent = (cur ? 'Next: ' + cur.name + (cur.phase ? ' (phase: ' + cur.phase + ')' : '') + '.' : 'Showing requirements for every event.') +
+        (every.length ? ' Items AAFDID lists for ' + every.map(function (e) { return e.name.replace(/\s*\(.*\)$/, '').toLowerCase(); }).join(' and ') + ' are due at every one, so they count as due at the next event.' : '');
     }
     var box = $('questions'); box.innerHTML = '';
     A.visibleQuestions(B, state.profile).forEach(function (q) {
@@ -554,13 +571,14 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     review: 'AAFDID’s UCA page says to use the ACAT II and III entries of the MCA tables too, with applicability set by DoDI 5000.81.',
     triggered: 'Nothing is due unless the event happens: a breach, a waiver, a deviation, a congressional inquiry, or a bridge contract.',
     earlier: 'These were due at earlier events. They should already exist; check whether they need an update.',
+    as_required: 'Due at AAFDID’s "Other" column: as required, not at a numbered decision point.',
     reference: 'Rules that govern the baseline rather than documents to submit.',
     ongoing: 'Recurring reports, contract-level reporting and compliance actions that are not tied to one event.'
   };
   function typeChip(t) { return el('span', { 'class': 'chip t-' + t, text: A.TYPE_LABEL[t] }); }
   function reqRow(it, focus) {
     var chips = el('span', { 'class': 'chips' }, [typeChip(it.type)]);
-    it.when.forEach(function (w) { chips.appendChild(el('span', { 'class': 'chip w' + (focus && w.event === focus ? ' focus' : '') + (w.submission === 'update' ? ' upd' : ''), title: w.name + (w.submission === 'update' ? ' (update)' : ' (initial)'), text: w.short + (w.submission === 'update' ? ' upd' : '') })); });
+    it.when.forEach(function (w) { chips.appendChild(el('span', { 'class': 'chip w' + (focus && w.event === focus ? ' focus' : '') + (w.submission === 'update' ? ' upd' : ''), title: w.name + (w.submission === 'update' ? ' (update' : ' (initial') + (w.type ? ', ' + w.type : '') + ')', text: w.short + (w.submission === 'update' ? ' upd' : '') })); });
     if (it.note_has_conditions && it.status !== 'not_applicable') chips.appendChild(el('span', { 'class': 'chip flag', text: 'Conditions in note' }));
     if (it.currency && it.currency.length) chips.appendChild(el('span', { 'class': 'chip flag', text: 'Changed since' }));
     var d = el('details', { 'class': 'req', 'data-status': it.status }, [el('summary', null, [el('span', { 'class': 'code', text: it.code }), el('span', { 'class': 'rname', text: it.name }), chips])]);
@@ -570,7 +588,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     if (it.reason && it.status === 'not_applicable') row('Why not', it.reason.replace('Applies when: ', 'It applies when: '));
     if (it.missing) row('Needs', it.missing.map(function (f) { var q = null; Q.forEach(function (x) { if (x.id === f) q = x; }); return q ? q.text : f; }).join(' '));
     if (it.review_reason) row('Why listed', it.review_reason);
-    row('When', it.when.length ? it.when.map(function (w) { return w.name + (w.submission === 'update' ? ' (update)' : ''); }).join('; ') : '');
+    row('When', it.when.length ? it.when.map(function (w) { return w.name + A.whenBits(w); }).join('; ') : '');
     row('Due', it.due_text);
     if (it.phase) row('Phase', it.phase);
     row('Type in AAFDID', it.type_text);
@@ -582,6 +600,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     if (it.footnotes) row('Footnotes', el('dd', null, [el('ul', null, it.footnotes.map(function (f) { return el('li', { text: f }); }))]));
     if (it.currency) row('Changed since', el('dd', { 'class': 'cur' }, it.currency.map(function (c) { var n = CUR[c]; return el('p', { style: 'margin:0 0 6px' }, [el('b', { text: n.title + '. ' }), n.text.split('\n')[0]]); })));
     row('Rule basis', it.rule_basis);
+    row('Tool note', it.tool_note);
     row('Table', el('dd', null, [el('a', { href: it.url, target: '_blank', rel: 'noopener', text: it.table })]));
     d.appendChild(el('div', { 'class': 'req-body' }, [dl]));
     return d;
@@ -589,9 +608,23 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
   function renderResults(r) {
     var box = $('results'); box.innerHTML = '';
     if (!r.pathway) { box.appendChild(el('div', { 'class': 'card empty', text: 'Choose a pathway in step 1 to see its requirements.' })); return; }
+    if (r.questions_needed.length) {
+      var affected = r.counts.undetermined || 0;
+      var need = el('div', { 'class': 'card need' }, [
+        el('h3', { text: r.questions_needed.length === 1 ? 'One answer would settle more of the list' : r.questions_needed.length + ' answers would settle more of the list' }),
+        el('p', { text: (affected ? affected + ' requirement' + (affected === 1 ? '' : 's') + ' can’t be placed yet' : 'Every requirement is placed') + (r.items.some(function (it) { return it.type_depends_on; }) ? ', and some types (statutory or regulatory) depend on an answer.' : '.') + ' Select a question to answer it in step 2.' })
+      ]);
+      var qrow = el('div', { 'class': 'btnrow' });
+      r.questions_needed.forEach(function (q) {
+        qrow.appendChild(el('button', { 'class': 'btn', type: 'button', onclick: function () { var t = $('q-' + q.id); if (t) { t.scrollIntoView({ block: 'center' }); t.classList.remove('flash'); void t.offsetWidth; t.classList.add('flash'); var b = t.querySelector('button, input'); if (b) b.focus({ preventScroll: true }); } } }, [q.text + ' (affects ' + q.affects + ')']));
+      });
+      need.appendChild(qrow);
+      box.appendChild(need);
+    }
     var counts = el('div', { 'class': 'counts' });
-    [['required', 'Required'], ['conditional', 'May apply'], ['triggered', 'If triggered'], ['undetermined', 'Needs an answer'], ['not_applicable', 'Not applicable']].forEach(function (c) {
-      counts.appendChild(el('button', { 'class': 'count ' + c[0], type: 'button', onclick: function () { var t = document.querySelector('[data-first="' + c[0] + '"]'); if (t) { if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView({ block: 'start' }); } } }, [el('span', { 'class': 'num', text: String(r.counts[c[0]] || 0) }), el('span', { 'class': 'lab', text: c[1] })]));
+    [['required', 'Required'], ['conditional', 'May apply'], ['review', 'Also review'], ['triggered', 'If triggered'], ['undetermined', 'Needs an answer'], ['reference', 'Reference'], ['not_applicable', 'Not applicable']].forEach(function (c) {
+      if ((c[0] === 'review' || c[0] === 'reference') && !r.counts[c[0]]) return;
+      counts.appendChild(el('button', { 'class': 'count ' + c[0], type: 'button', onclick: function () { var t = document.querySelector('[data-first="' + c[0] + '"]'); if (t) { if (t.tagName === 'DETAILS') t.open = true; t.scrollIntoView({ block: 'start' }); } else if (state.search || state.typeFilter !== 'all') toast('Hidden by the filter.'); } }, [el('span', { 'class': 'num', text: String(r.counts[c[0]] || 0) }), el('span', { 'class': 'lab', text: c[1] })]));
     });
     box.appendChild(counts);
     if (r.derived.services_category) {
@@ -609,8 +642,8 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     renderGroups(r);
   }
   function passes(it) {
-    if (state.typeFilter === 'statutory' && ['statutory', 'both'].indexOf(it.type) === -1) return false;
-    if (state.typeFilter === 'regulatory' && ['regulatory', 'both'].indexOf(it.type) === -1) return false;
+    if (state.typeFilter === 'statutory' && ['statutory', 'both', 'depends'].indexOf(it.type) === -1) return false;
+    if (state.typeFilter === 'regulatory' && ['regulatory', 'both', 'depends'].indexOf(it.type) === -1) return false;
     var s = state.search.trim().toLowerCase();
     if (s && (it.code + ' ' + it.name + ' ' + it.source + ' ' + it.notes).toLowerCase().indexOf(s) === -1) return false;
     return true;
@@ -627,18 +660,14 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
       var list = groups[g]; if (!list || !list.length) return; any = true;
       var title = A.GROUP_TITLE[g];
       if (g === 'at_focus' && r.focus_event) title = 'Due at ' + r.focus_event.name;
-      var sec = el('div', { 'class': 'group' }, [el('h3', null, [title, el('span', { 'class': 'gcount', text: String(list.length) })])]);
-      if (GROUP_NOTE[g]) sec.appendChild(el('p', { 'class': 'gnote', text: GROUP_NOTE[g] }));
-      if (g === 'undetermined') {
-        var need = el('div', { 'class': 'card need' }, [el('p', { style: 'margin:0', text: 'Answer these in step 2 to settle the items below:' })]);
-        r.questions_needed.forEach(function (q) {
-          need.appendChild(el('button', { 'class': 'btn', type: 'button', onclick: function () { var t = $('q-' + q.id); if (t) { t.scrollIntoView({ block: 'center' }); t.classList.remove('flash'); void t.offsetWidth; t.classList.add('flash'); } } }, [q.text + ' (' + q.affects + ')']));
-        });
-        sec.appendChild(need);
-        sec.appendChild(el('div', { style: 'height:8px' }));
-      }
+      var sec = el('div', { 'class': 'group', id: 'g-' + g }, [el('h3', null, [title, el('span', { 'class': 'gcount', text: String(list.length) })])]);
+      list.forEach(function (it) { if (!firstSeen[it.status]) { firstSeen[it.status] = 1; sec.setAttribute('data-first', it.status); } });
+      var note = GROUP_NOTE[g] || '';
+      if (g === 'at_focus' && list.some(function (it) { return it.when.some(function (w) { return EVERY[w.event]; }); })) note = 'Includes the items AAFDID lists for every decision point.';
+      if (g === 'undetermined') note = 'Answer the questions above to place these.';
+      if (note) sec.appendChild(el('p', { 'class': 'gnote', text: note }));
       var reqs = el('div', { 'class': 'reqs' });
-      list.forEach(function (it) { var row = reqRow(it, focus); if (!firstSeen[it.status]) { firstSeen[it.status] = 1; row.setAttribute('data-first', it.status); } reqs.appendChild(row); });
+      list.forEach(function (it) { reqs.appendChild(reqRow(it, focus)); });
       sec.appendChild(reqs);
       host.appendChild(sec);
     });
@@ -673,9 +702,18 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
       notes.appendChild(el('ul', null, (PW[p.id].notes || []).map(function (n) { return el('li', { text: n }); })));
     }
   }
+  function renderIgnored() {
+    var box = $('ignored'); box.innerHTML = '';
+    if (!state.ignored.length) return;
+    box.appendChild(el('div', { 'class': 'notice' }, [
+      el('b', { text: 'Ignored from the pasted profile. ' }), 'Fix these and load again, or answer them in step 2:',
+      el('ul', null, state.ignored.map(function (u) { return el('li', null, [el('span', { 'class': 'mono', text: u.field + ': ' + u.value }), ' (' + u.reason + ')']); }))
+    ]));
+  }
   function renderHandoff(r) {
+    renderIgnored();
     $('profile-block').textContent = A.toProfileBlock(B, state.profile);
-    var done = { pathway: !!state.profile.pathway, profile: !!state.profile.pathway && r.counts.undetermined === 0, requirements: !!state.profile.pathway };
+    var done = { pathway: !!state.profile.pathway, profile: !!state.profile.pathway && r.questions_needed.length === 0, requirements: !!state.profile.pathway };
     ['pathway', 'profile', 'requirements'].forEach(function (k) { $('nav-' + k).classList.toggle('done', done[k]); });
   }
 
@@ -686,7 +724,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     last = A.evaluate(B, state.profile);
     renderPathways(); renderProfile(); renderResults(last); renderTailor(last); renderHandoff(last);
   }
-  function clearAll() { state.profile = {}; state.example = false; state.search = ''; restartFinder(); update(); }
+  function clearAll() { state.profile = {}; state.example = false; state.search = ''; state.ignored = []; restartFinder(); update(); }
 
   $('program-name').addEventListener('input', function (e) { if (e.target.value.trim()) state.profile.program = e.target.value; else delete state.profile.program; state.example = false; save(); $('profile-block').textContent = A.toProfileBlock(B, state.profile); });
   $('program-name').addEventListener('change', function () { update(); });
@@ -696,10 +734,14 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
   $('copy-json').addEventListener('click', function () { copy(JSON.stringify(last, null, 2), 'JSON'); });
   $('load').addEventListener('click', function () {
     var t = $('paste').value; if (!t.trim()) { toast('Paste a profile first.'); return; }
-    var input; try { input = JSON.parse(t); if (input && input.profile) input = input.profile; } catch (e) { input = A.parseProfileBlock(t); }
-    var n = A.normalize(B, input);
-    if (!n.pathway) { toast('No pathway found in that profile.'); return; }
-    state.profile = n; state.example = false; update(); toast('Profile loaded'); scrollTo('requirements');
+    var input = A.parseInput(t);
+    if (input && typeof input === 'object' && input.profile && typeof input.profile === 'object') input = input.profile;
+    var nd = A.normalizeDetailed(B, input);
+    state.ignored = nd.unrecognized;
+    if (!nd.profile.pathway) { renderIgnored(); toast('No pathway found in that profile.'); return; }
+    state.profile = nd.profile; state.example = false; update();
+    toast(nd.unrecognized.length ? 'Profile loaded; ' + nd.unrecognized.length + ' line' + (nd.unrecognized.length === 1 ? '' : 's') + ' ignored' : 'Profile loaded');
+    scrollTo(nd.unrecognized.length ? 'handoff' : 'requirements');
   });
   $('clear').addEventListener('click', clearAll);
 

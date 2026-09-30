@@ -1,0 +1,1 @@
+{"program": "MTA above MDAP thresholds (example)", "pathway": "mta", "event": "execution", "mta_path": "rp", "mta_size": "exceeds MDAP", "contract_value": "300M", "contract_cost_type": "yes"}

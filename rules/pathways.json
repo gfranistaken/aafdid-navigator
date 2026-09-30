@@ -24,12 +24,23 @@
         {
           "id": "cdd_val",
           "short": "CDD Val",
-          "name": "Capability Development Document validation"
+          "name": "Capability Development Document validation",
+          "aliases": [
+            "CDD Validation",
+            "CDD"
+          ]
         },
         {
           "id": "dev_rfp_rel",
           "short": "Dev RFP Rel",
-          "name": "Development RFP Release Decision"
+          "name": "Development RFP Release Decision",
+          "aliases": [
+            "Dev RFP Release",
+            "Development RFP Release",
+            "Development RFP Release Decision Point",
+            "DRFPRD",
+            "RFP Release"
+          ]
         },
         {
           "id": "ms_b",
@@ -44,7 +55,17 @@
         {
           "id": "frp_dec",
           "short": "FRP/FD",
-          "name": "Full-Rate Production or Full Deployment Decision"
+          "name": "Full-Rate Production or Full Deployment Decision",
+          "aliases": [
+            "FRP",
+            "FD",
+            "FRP Decision",
+            "FDD",
+            "Full-Rate Production",
+            "Full Deployment",
+            "Full-Rate Production Decision",
+            "Full Deployment Decision"
+          ]
         },
         {
           "id": "other",
@@ -107,17 +128,34 @@
         {
           "id": "entrance",
           "short": "Entrance",
-          "name": "Program entrance: the ADM starts the MTA clock"
+          "name": "Program entrance: the ADM starts the MTA clock",
+          "aliases": [
+            "program start",
+            "start",
+            "program entrance",
+            "entry",
+            "MTA start"
+          ]
         },
         {
           "id": "execution",
           "short": "Execution",
-          "name": "Throughout program execution"
+          "name": "Throughout program execution",
+          "aliases": [
+            "during execution",
+            "throughout execution"
+          ]
         },
         {
           "id": "exit",
           "short": "Exit",
-          "name": "Program exit: the outcome ADM"
+          "name": "Program exit: the outcome ADM",
+          "aliases": [
+            "program exit",
+            "outcome",
+            "completion",
+            "transition"
+          ]
         }
       ],
       "tables": [
@@ -150,17 +188,26 @@
         {
           "id": "development",
           "short": "Development",
-          "name": "Development Milestone"
+          "name": "Development Milestone",
+          "aliases": [
+            "dev"
+          ]
         },
         {
           "id": "production",
           "short": "P&D",
-          "name": "Production and Deployment Milestone"
+          "name": "Production and Deployment Milestone",
+          "aliases": [
+            "production and deployment"
+          ]
         },
         {
           "id": "other",
           "short": "Other",
-          "name": "Other, including disposition"
+          "name": "Other, including disposition",
+          "aliases": [
+            "disposition"
+          ]
         }
       ],
       "tables": [
@@ -180,7 +227,7 @@
           "from": "uca_acat",
           "to": "mca_program_type"
         },
-        "status": "conditional",
+        "status": "review",
         "reason": "AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as well, with applicability set by DoDI 5000.81."
       },
       "notes": [
@@ -201,22 +248,34 @@
         {
           "id": "planning",
           "short": "Planning",
-          "name": "Entering the planning phase"
+          "name": "Entering the planning phase",
+          "aliases": [
+            "planning phase",
+            "entering planning"
+          ]
         },
         {
           "id": "execution_entry",
           "short": "Execution entry",
-          "name": "Entering the execution phase"
+          "name": "Entering the execution phase",
+          "aliases": [
+            "entering execution",
+            "execution phase entry"
+          ]
         },
         {
           "id": "execution",
           "short": "Execution",
-          "name": "During the execution phase"
+          "name": "During the execution phase",
+          "aliases": [
+            "during execution"
+          ]
         },
         {
           "id": "each_decision",
           "short": "Each DP",
-          "name": "Each decision point"
+          "name": "Each decision point (due at every one)",
+          "every": true
         }
       ],
       "tables": [
@@ -249,19 +308,28 @@
           "id": "solution_analysis_atp",
           "short": "SA ATP",
           "name": "Solution Analysis ATP",
-          "phase": "Capability Need Identification"
+          "phase": "Capability Need Identification",
+          "aliases": [
+            "solution analysis"
+          ]
         },
         {
           "id": "functional_requirements_atp",
           "short": "FR ATP",
           "name": "Functional Requirements ATP",
-          "phase": "Solution Analysis"
+          "phase": "Solution Analysis",
+          "aliases": [
+            "functional requirements"
+          ]
         },
         {
           "id": "acquisition_atp",
           "short": "Acq ATP",
           "name": "Acquisition ATP",
-          "phase": "Functional Requirements and Acquisition Planning"
+          "phase": "Functional Requirements and Acquisition Planning",
+          "aliases": [
+            "acquisition"
+          ]
         },
         {
           "id": "contract_award",
@@ -273,19 +341,28 @@
           "id": "limited_deployment_atp",
           "short": "LD ATP",
           "name": "Limited Deployment ATP(s)",
-          "phase": "Functional Requirements and Acquisition Planning (as AAFDID prints it)"
+          "phase": "Functional Requirements and Acquisition Planning (as AAFDID prints it)",
+          "aliases": [
+            "limited deployment"
+          ]
         },
         {
           "id": "full_deployment_atp",
           "short": "FD ATP",
           "name": "Full Deployment ATP",
-          "phase": "Functional Requirements and Acquisition Planning (as AAFDID prints it)"
+          "phase": "Functional Requirements and Acquisition Planning (as AAFDID prints it)",
+          "aliases": [
+            "full deployment"
+          ]
         },
         {
           "id": "capability_support_atp",
           "short": "CS ATP",
           "name": "Capability Support ATP",
-          "phase": "Acquisition, Testing and Deployment"
+          "phase": "Acquisition, Testing and Deployment",
+          "aliases": [
+            "capability support"
+          ]
         }
       ],
       "tables": [
@@ -302,7 +379,7 @@
     },
     {
       "id": "aos",
-      "code": "AOS",
+      "code": "AoS",
       "name": "Acquisition of Services",
       "instruction": "DoDI 5000.74 (Change 1, June 2021)",
       "summary": "Services at or above the simplified acquisition threshold, managed in three phases (Plan, Develop, Execute) and seven steps. The services category (S-CAT) sets the decision authority.",
@@ -313,17 +390,29 @@
         {
           "id": "plan",
           "short": "Plan",
-          "name": "Plan: form the team, review the current strategy, market research"
+          "name": "Plan: form the team, review the current strategy, market research",
+          "aliases": [
+            "planning",
+            "plan phase"
+          ]
         },
         {
           "id": "develop",
           "short": "Develop",
-          "name": "Develop: define requirements, SRRB, acquisition strategy"
+          "name": "Develop: define requirements, SRRB, acquisition strategy",
+          "aliases": [
+            "development",
+            "develop phase"
+          ]
         },
         {
           "id": "execute",
           "short": "Execute",
-          "name": "Execute: award and manage performance"
+          "name": "Execute: award and manage performance",
+          "aliases": [
+            "execution",
+            "execute phase"
+          ]
         }
       ],
       "tables": [

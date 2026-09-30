@@ -1,0 +1,7 @@
+**AAFDID PROFILE v1**
+- **program:** Services block pasted from a chat (example)
+- **pathway:** `aos`
+- **event:** Execute
+- **svc_total_value:** $1.5B
+- **svc_annual_value:** unknown
+- **svc_vehicle:** IDIQ base

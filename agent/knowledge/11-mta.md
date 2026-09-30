@@ -10,9 +10,38 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Note: AAFDID's MTA tables do not separate Rapid Prototyping from Rapid Fielding. The difference shows only in the cost-estimate notes.
 - AAFDID page: https://www.waru.edu/aafdid/mta
 
+## Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs
+
+### CSDR-02 · Contractor Cost Data Report
+
+- Pathway: MTA (Middle Tier of Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: Required (contract-level).
+- Applies when: ACAT I and II programs: contracts over $50M, or $20M to $50M at the CSDR plan authority's discretion. MTA programs over $100M: contracts over $20M. IS programs over $100M, including DBS: contracts over $50M. All then-year dollars.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 50,000,000) OR (pathway = mta AND mta_size is one of {major, exceeds_mdap} AND contract_value > 20,000,000)`
+- May apply instead when: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000 AND contract_value <= 50,000,000) OR (pathway = mta AND mta_size = non_major AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Acat i ii programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including FMS and programs in sustainment, regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for current and former ACAT I – II programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Information system programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars. Middle tier acquisition programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. Other programs gt 100m: May be required at the discretion of the CSDR approval authority for all high interest or high-risk contracts, subcontracts, or government-performed efforts. Not required: Contracts on programs with anticipated acquisition expenditures less than $100 million, then-year dollars. Contracts priced below $20 million, then-year dollars. PM requests and obtains approval from the DDCA for a reporting waiver (e.g., procurement of commercial systems).
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
+### CSDR-05 · Software Resources Data Report
+
+- Pathway: MTA (Middle Tier of Acquisition). Table: Cost Data Reporting Requirements (CSDR): ACAT I-II, IS and MTA programs.
+- Status when the condition holds: May apply.
+- Applies when: Software development, production or maintenance efforts over $20M then-year for ACAT I and II programs, IS programs over $100M (including DBS) and MTA programs over $100M.
+- Condition code: `(pathway = mca AND mca_program_type is one of {mdap, mais, acat_ii} AND contract_value > 20,000,000) OR (pathway = mta AND contract_value > 20,000,000) OR (pathway = dbs AND contract_value > 20,000,000)`
+- When due: Per the approved CSDR plan.
+- Type: Regulatory.
+- Source: DoDI 5000.73
+- AAFDID note: Development and erp efforts: All contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for developing and/or producing software valued at more than $20 million, then-year dollars, for: Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest software efforts estimated below $20 million, then-year dollars, as determined by the CSDR plan approval authority, if the overall effort inclusive of non-software efforts exceeds $20 million, then-year dollars. Maintenance efforts: For all contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for: Programs with previous SRDR development or enterprise resource planning requirements or software maintenance efforts of more than $20 million, then-year dollars. Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.73). Program value above $100M is not asked, so IS and non-major MTA programs show these as may apply.
+- Page: https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements
+
 ## Program Information Requirements (Table 1: submissions to OSD for all MTA programs)
 
-### MTA-O01 · Acquisition Strategy, to include security, schedule, technical, and production risks; a test strategy or an assessment of test results with validation of required cybersecurity and interoperability as applicable; and a transition plan
+### MTA-T01 · Acquisition Strategy, to include security, schedule, technical, and production risks; a test strategy or an assessment of test results with validation of required cybersecurity and interoperability as applicable; and a transition plan
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -25,18 +54,18 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Changed since AAFDID (DoDI 5000.80 Change 1 and 10 U.S.C. 3602): see 20-changes-since-aafdid.md, note mta-change1-2024.
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O02 · ADM signed by the DA
+### MTA-T02 · ADM signed by the DA
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program entrance: the ADM starts the MTA clock (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O03 · Approved Requirement
+### MTA-T03 · Approved Requirement
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -48,7 +77,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Changed since AAFDID (DoDI 5000.80 Change 1 and 10 U.S.C. 3602): see 20-changes-since-aafdid.md, note mta-change1-2024.
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O04 · Cost Estimate
+### MTA-T04 · Cost Estimate
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -60,18 +89,18 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Footnote: Per DoDI 5000.73, CAPE estimates life-cycle costs for Rapid Prototyping programs likely to exceed the ACAT I threshold, and for Rapid Fielding programs likely to exceed the ACAT I or II thresholds.
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O05 · Initial PID Entry
+### MTA-T05 · Initial PID Entry
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program entrance: the ADM starts the MTA clock (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O06 · Lifecycle Sustainment Plan
+### MTA-T06 · Lifecycle Sustainment Plan
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -83,7 +112,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Source: DoDI 5000.80; 5000.91
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O07 · Written decision by USD(A&S)
+### MTA-T07 · Written decision by USD(A&S)
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
@@ -95,45 +124,45 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Changed since AAFDID (MDAP and major system thresholds raised): see 20-changes-since-aafdid.md, note thresholds-2025.
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O08 · Updated PID Entry
+### MTA-T08 · Updated PID Entry
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Throughout program execution (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O09 · An assessment of test results
+### MTA-T09 · An assessment of test results
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program exit: the outcome ADM (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O10 · Final PID capturing updated entries, to include the outcome, sustainment, and final budget of the MTA program
+### MTA-T10 · Final PID capturing updated entries, to include the outcome, sustainment, and final budget of the MTA program
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program exit: the outcome ADM (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
 - Page: https://www.waru.edu/aafdid/MTA-Program-Information-Requirements
 
-### MTA-O11 · Outcome determination ADM signed by the DA
+### MTA-T11 · Outcome determination ADM signed by the DA
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Program Information Requirements (Table 1: submissions to OSD for all MTA programs).
 - Status when the condition holds: Required.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway.
+- Condition code: `always (every program on this pathway)`
 - When due: Program exit: the outcome ADM (initial)
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Source: DoDI 5000.80
@@ -146,8 +175,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: Decision Authority (DA)
@@ -160,10 +189,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
-- Condition code: `mta_size is one of {major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
-- Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
+- Type: Statutory if `mta_size is one of {major, exceeds_mdap}`, otherwise Regulatory. If that is unknown, the type depends on the answer. AAFDID TYPE: Regulatory, Statutory
 - Approval: DA
 - Source: DoDi 5000.80 10 U.S.C. 4211 {formerly 2431a}
 - AAFDID note: STATUTORY for Major systems. Regulatory for Non-major systems. The Acquisition Strategy includes STATUTORY and Regulatory information. Major changes to the plan reflected in the Acquisition Strategy require DA approval. The DA must review and approve the strategy when there has been a significant change to the cost, schedule, or performance of the program (or system) or there has been a critical change to the cost of the program (or system). The strategy may also be reviewed and approved at any time considered relevant by the DA. The following requirements will be satisfied in the Acquisition Strategy: ACQUISITION APPROACH BENEFIT ANALYSIS AND DETERMINATION, applies to bundled acquisitions only; BUSINESS STRATEGY; CONTRACTING STRATEGY, to include CONTRACT-TYPE DETERMINATION, satisfied when the DA approves the Acquisition Strategy with specified contract types, and Termination Liability Estimate; COOPERATIVE OPPORTUNITIES; GENERAL EQUIPMENT VALUATION; Industrial Base Capabilities Considerations; INTELLECTUAL PROPERTY (IP) STRATEGY, for major weapon systems and subsystems; MARKET RESEARCH; Modular Open Systems Approach (MOSA); MULTI-YEAR PROCUREMENT; PRODUCT SUPPORT, including sustainment, logistics and maintenance; RELIABILITY AND MAINTAINABILITY; RISK MANAGEMENT, including security, schedule, technical, and production risks; SMALL BUSINESS; INNOVATION RESEARCH (SBIR)/SMALL BUSINESS TECHNOLOGY TRANSFER (STTR) PROGRAM TECHNOLOGIES; Test Strategy / Assessment of Test Results; Transition Plan – within 2 years after MTA program start.
@@ -174,7 +203,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -187,7 +216,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -200,7 +229,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -213,7 +242,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -226,7 +255,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -239,7 +268,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
@@ -252,8 +281,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: Decision Authority (DA)
@@ -265,8 +294,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: When international partners are involved.
-- Condition code: `international = yes`
+- Applies when: AAFDID marks no size column for this row. Its note ties it to the statutory requirement to consider cooperative opportunities, which applies to every program; DoDI 5000.80 Change 1 adds exportability when international partners are involved.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -279,7 +308,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -292,7 +321,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
@@ -305,7 +334,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -318,7 +347,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
@@ -331,8 +360,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: DA
@@ -344,7 +373,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
@@ -357,8 +386,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -371,8 +400,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -385,8 +414,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: DA and Component CIO or designee
@@ -398,8 +427,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: Component CIO
@@ -411,8 +440,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DoD Component
@@ -424,8 +453,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -437,8 +466,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
 - Approval: National Telecommunications and Information Administration (NTIA)
@@ -450,8 +479,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA
@@ -463,8 +492,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: DCAPE
@@ -476,8 +505,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DoD Component or as delegated
@@ -489,8 +518,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: JITC or DoD Component
@@ -502,8 +531,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory and regulatory. AAFDID TYPE: Regulatory, Statutory
 - Approval: CAE or designee
@@ -515,8 +544,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
 - Approval: DA or designee
@@ -528,8 +557,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: CAE or designee
@@ -541,8 +570,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA is release authority
@@ -554,7 +583,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For major systems and programs above MDAP thresholds.
+- Applies when: For major systems and programs above MDAP thresholds. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
 - Condition code: `mta_size is one of {major, exceeds_mdap}`
 - When due: Not tied to one event
 - Type: Statutory. AAFDID TYPE: Statutory
@@ -567,8 +596,8 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 - Pathway: MTA (Middle Tier of Acquisition). Table: Statutory and Regulatory Requirements that may be applicable.
 - Status when the condition holds: May apply.
-- Applies when: For all MTA programs.
-- Condition code: `mta_size is one of {non_major, major, exceeds_mdap}`
+- Applies when: For every program on this pathway. AAFDID lists this among requirements that may be applicable; check the note, and the decision authority decides regulatory items.
+- Condition code: `always (every program on this pathway)`
 - When due: Not tied to one event
 - Type: Regulatory. AAFDID TYPE: Regulatory
 - Approval: DA or designee
@@ -584,9 +613,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued < $20M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: Requires business case analysis and MDA approval.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -597,9 +627,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $20M &<$100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Government reserves the right to review a contractor’s EVMS when deemed necessary to verify compliance.
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -610,9 +641,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Cost-reimbursable or incentive contract of 18 months or more, valued ≥ $100M (then-year dollars, including options).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: FAR/DFARS and DoDI 5000.85
+- Type: Regulatory.
 - Source: Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)
 - AAFDID note: The Contractor will provide access to all pertinent records and data requested by the Contracting Officer or duly authorized representative as necessary to permit initial and ongoing Government compliance reviews to ensure that the EVMS complies, and continues to comply, with the guidelines in EIA-748.*
+- Tool note: Classified as regulatory by this tool: the row cites OMB Circular A-11, the FAR, the DFARS and DoDI 5000.85.
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -623,9 +655,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Contracts under $20M: not required. The PMO may request IPMDAR cost or schedule reporting.
 - Condition code: `contract_value < 20,000,000`
 - When due: Not tied to one event
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: Integrated Program Management Data and Analysis Report (IPMDAR) may be used if cost and/or schedule reporting is requested by the program management office.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -636,9 +669,10 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($20M to under $100M).
 - Condition code: `contract_cost_type = yes AND contract_value >= 20,000,000 AND contract_value < 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: All IPMDAR datasets/files must be included in the CDRL. Tailoring in accordance with DI-MGMT-81861 and Implementation Guide is allowed.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements
 
@@ -649,8 +683,9 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 - Applies when: Monthly when an EVMS requirement is on contract ($100M or more).
 - Condition code: `contract_cost_type = yes AND contract_value >= 100,000,000`
 - When due: Monthly
-- Type: Regulatory. AAFDID TYPE: DoDI 5000.85; DI-MGMT-81861
+- Type: Regulatory.
 - Source: Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861
 - AAFDID note: IPMDAR is required. All files are required.
+- Tool note: Classified as regulatory by this tool (DoDI 5000.85; DI-MGMT-81861).
 - Changed since AAFDID (EVMS thresholds changed by class deviation): see 20-changes-since-aafdid.md, note evms-2026.
 - Page: https://www.waru.edu/aafdid/EVMS-Application-Requirements

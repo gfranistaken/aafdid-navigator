@@ -18,16 +18,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Wrap the page in a document skeleton
+      - name: Collect the site
         run: |
           mkdir -p _site
-          {
-            printf '%s\n' '<!doctype html>' '<html lang="en">' '<head>' '<meta charset="utf-8">' \
-              '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">' \
-              '<style>[hidden]{display:none!important}</style>' '</head>' '<body>'
-            cat web/index.html
-            printf '%s\n' '</body>' '</html>'
-          } > _site/index.html
+          cp web/index.html _site/index.html
           cp rules/aafdid-rules.json _site/aafdid-rules.json
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

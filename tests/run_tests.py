@@ -22,8 +22,7 @@ const fs = require('fs'); const A = require(process.argv[1] + '/engine/aafdid.js
 const bundle = JSON.parse(fs.readFileSync(process.argv[1] + '/rules/aafdid-rules.json', 'utf8'));
 const out = {};
 for (const f of JSON.parse(process.argv[2])) {
-  const text = fs.readFileSync(f, 'utf8');
-  let input; try { input = JSON.parse(text); } catch (e) { input = A.parseProfileBlock(text); }
+  const input = A.parseInput(fs.readFileSync(f, 'utf8'));
   const r = A.evaluate(bundle, input);
   out[f] = { result: r, md: A.toMarkdown(r), block: A.toProfileBlock(bundle, input), checklist: A.toChecklist(r) };
 }
@@ -40,6 +39,7 @@ def summary(r):
         "derived": r["derived"],
         "questions_needed": [q["id"] for q in r["questions_needed"]],
         "currency_notes": [n["id"] for n in r["currency_notes"] if n["applies_here"]],
+        "unrecognized": r["unrecognized"],
         "items": [[i["code"], i["status"], i["group"], i["type"]] for i in r["items"]],
     }
 
@@ -51,11 +51,7 @@ def main():
     bundle = A.load_bundle()
     failures = 0
     for f in files:
-        text = Path(f).read_text()
-        try:
-            inp = json.loads(text)
-        except ValueError:
-            inp = A.parse_profile_block(text)
+        inp = A.parse_input(Path(f).read_bytes().decode("utf-8", errors="replace"))
         py = A.evaluate(bundle, inp)
         name = Path(f).stem
         j = js[f]
@@ -76,10 +72,13 @@ def main():
         elif json.loads(snap.read_text()) != summary(j["result"]):
             problems.append("result differs from the snapshot")
         status = "ok" if not problems else "FAIL: " + "; ".join(problems)
+        tag = "ok" if not problems else "FAIL"
         if problems:
             failures += 1
         c = j["result"]["counts"]
-        print(f"{name:32s} {status:6s}  required {c.get('required', 0):3d}  may apply {c.get('conditional', 0):3d}  triggered {c.get('triggered', 0):3d}  undetermined {c.get('undetermined', 0):3d}  n/a {c.get('not_applicable', 0):3d}")
+        print(f"{name:30s} {tag:4s}  req {c.get('required', 0):3d}  may {c.get('conditional', 0):3d}  review {c.get('review', 0):3d}  trig {c.get('triggered', 0):3d}  undet {c.get('undetermined', 0):3d}  n/a {c.get('not_applicable', 0):3d}")
+        if problems:
+            print("   " + status)
     print(f"\n{len(files) - failures} of {len(files)} scenarios passed" + (" (snapshots updated)" if update else ""))
     return 1 if failures else 0
 
