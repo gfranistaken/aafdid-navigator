@@ -1,0 +1,206 @@
+{
+  "pathway": "mca",
+  "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+  "row_count": 11,
+  "rows": [
+    {
+      "name": "1. Determine that the acquisition supports core, 3 priority functions of the DoD.",
+      "columns": {
+        "action": "1. Determine that the acquisition supports core, 3 priority functions of the DoD.",
+        "documentation": "ICD, Information Systems (IS) ICD, or urgent need requirements documents"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.1-determine-that-the-acquisition-supports-core-3-priority-fu"
+    },
+    {
+      "name": "2. Establish outcome-based performance measures 3, 4 linked to strategic goals.",
+      "columns": {
+        "action": "2. Establish outcome-based performance measures 3, 4 linked to strategic goals.",
+        "documentation": "7 ICD, IS ICD, CDD, AoA, APB"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.2-establish-outcome-based-performance-measures-3-4-linked-to"
+    },
+    {
+      "name": "3. Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize 3, 4 the use of commercial off-the-shelf technology.",
+      "columns": {
+        "action": "3. Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize 3, 4 the use of commercial off-the-shelf technology.",
+        "documentation": "ICD, IS ICD, Concept of Operations, AoA, Business Process Reengineering"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.3-redesign-the-processes-that-the-system-supports-to-reduce-"
+    },
+    {
+      "name": "4. Determine that no private sector or government 4, 5 source can better support the function.",
+      "columns": {
+        "action": "4. Determine that no private sector or government 4, 5 source can better support the function.",
+        "documentation": "Acquisition Strategy, AoA"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.4-determine-that-no-private-sector-or-government-4-5-source-"
+    },
+    {
+      "name": "4, 5 5. Conduct an analysis of alternatives.",
+      "columns": {
+        "action": "4, 5 5. Conduct an analysis of alternatives.",
+        "documentation": "AoA"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.4-5-5-conduct-an-analysis-of-alternatives"
+    },
+    {
+      "name": "6. Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS",
+      "columns": {
+        "action": "6. Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS",
+        "documentation": "Component Cost Estimate, Component Cost Position"
+      },
+      "marks": {},
+      "notes": "(Subtitle III of title 40 of U.S. Code) Documentation",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.6-conduct-an-economic-analysis-that-includes-a-calculation-o"
+    },
+    {
+      "name": "7. Develop clearly established measures and 4 accountability for program progress.",
+      "columns": {
+        "action": "7. Develop clearly established measures and 4 accountability for program progress.",
+        "documentation": "Acquisition Strategy, APB 7 TEMP 7 ,"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 2,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.7-develop-clearly-established-measures-and-4-accountability-"
+    },
+    {
+      "name": "8. Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, 4 as described in DoDI 5000.82 .",
+      "columns": {
+        "action": "8. Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, 4 as described in DoDI 5000.82 .",
+        "documentation": "CDD NR-KPP, ISP, Applicable JIE Reference Architectures"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 2,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.8-ensure-that-the-acquisition-is-consistent-with-the-dod-inf"
+    },
+    {
+      "name": "9. Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant 4 standards.",
+      "columns": {
+        "action": "9. Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant 4 standards.",
+        "documentation": "Cybersecurity Strategy, Program Protection Plan, Risk Management Framework Security Plan"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 2,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.9-ensure-that-the-program-has-a-cybersecurity-strategy-that-"
+    },
+    {
+      "name": "10. Ensure, to the maximum extent practicable, (2) modular contracting has been used, and the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent 4 of future increments.",
+      "columns": {
+        "action": "10. Ensure, to the maximum extent practicable, (2) modular contracting has been used, and the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent 4 of future increments.",
+        "documentation": "Acquisition Strategy"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 2,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [
+        "(1)"
+      ],
+      "authority_type": "unspecified",
+      "id": "mca.10-ensure-to-the-maximum-extent-practicable-2-modular-contra"
+    },
+    {
+      "name": "11. Register Mission-Critical and Mission-Essential 4, 6 systems with the DoD CIO.",
+      "columns": {
+        "action": "11. Register Mission-Critical and Mission-Essential 4, 6 systems with the DoD CIO.",
+        "documentation": "DoD Information Technology Portfolio Repository"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/CCA-Compliance",
+        "pdf_page": 2,
+        "pdf_sha256": "b946f3930e3a01a8"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.11-register-mission-critical-and-mission-essential-4-6-syste"
+    }
+  ],
+  "table_notes": [
+    "The Milestone and Phase Information Requirements table indicates when the PM must report CCA compliance.",
+    "The system documents/information cited are examples of the most likely but not the only references for the required information. If other references are more appropriate, they may be used in addition to or instead of those cited. Include page(s) and paragraph(s), where appropriate. Urgent needs may cite the associated urgent needs documentation to demonstrate CCA compliance, e.g., the Course of Action and/or the network connection documentation.",
+    "These requirements are presumed to be satisfied for weapons systems with embedded IT and for Command and Control Systems that are not themselves IT systems.",
+    "These actions are also required to comply with §811 of P.L. 106-398.",
+    "For NSS, these requirements apply to the extent practicable (40 U.S.C. 11103 discusses NSS).",
+    "Mission-Critical Information System / Mission-Essential Information System definitions (see source page).",
+    "The APB and TEMP may be submitted in draft to expedite program assessment."
+  ],
+  "intro": "The CCA Compliance table summarizes the requirements levied on all programs that acquire IT, including NSS, at any ACAT level. Amplifying guidance for CCA compliance is detailed in DoDI 5000.82."
+}

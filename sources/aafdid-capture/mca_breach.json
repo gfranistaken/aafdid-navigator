@@ -1,0 +1,53 @@
+{
+  "pathway": "mca",
+  "table": "Statutory Program Breach Definitions",
+  "source_url": "https://www.waru.edu/aafdid/Statutory-Program-Breach-Definitions",
+  "intro": "The APB represents the formal commitment of the Component and the acquisition chain of command to the MDA. Deviations from the approved APB will be immediately reported to the MDA. Deviations are specified default thresholds for schedule and cost of: Objective schedule value plus 6 months. Objective cost value plus ten percent. This table provides the statutory breach definitions for programs requiring APBs. The MDAP definitions for significant and critical unit cost breaches are based on unit cost growth as defined in 10 U.S.C. 4371-4375. The reporting requirements associated with breaches are detailed in the Exceptions, Waivers, and Alternative Management and Reporting Requirements Table.",
+  "rows": [
+    {
+      "id": "mca.breach.significant-nunn-mccurdy",
+      "name": "Significant Nunn-McCurdy Unit Cost Breach",
+      "source": "10 U.S.C. 4371-4377",
+      "definition": "The cost growth threshold, as it relates to the current APB, is defined to be an increase of at least 15 percent over the program acquisition unit cost (PAUC) or average procurement unit cost (APUC) for the current program as shown in the current Baseline Estimate. The cost growth threshold, as it relates to the original APB, is defined to be an increase of at least 30 percent over the PAUC or APUC for the original program as shown in the original Baseline Estimate. Only the current APB will be revised.",
+      "thresholds": {
+        "current_apb_pct": 15,
+        "original_apb_pct": 30
+      },
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Statutory-Program-Breach-Definitions",
+        "pdf_page": 1,
+        "pdf_sha256": "2728762a108a6798",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.breach.critical-nunn-mccurdy",
+      "name": "Critical Nunn-McCurdy Unit Cost Breaches",
+      "source": "10 U.S.C. 4371-4375",
+      "definition": "The cost growth threshold, as it relates to the current APB, is defined to be an increase of at least 25 percent over the PAUC or APUC for the program or subprogram as shown in the current Baseline Estimate/APB. The cost growth threshold, as it relates to the original APB, is defined to be an increase of at least 50 percent over the PAUC or APUC for the program or subprogram as shown in the original Baseline Estimate/APB for the program or subprogram. If the program or subprogram is certified rather than terminated, the most recent major milestone must be rescinded and a new milestone is required after certification. The program establishes a revised original Baseline Estimate/APB that reflects MDA certification and approval.",
+      "thresholds": {
+        "current_apb_pct": 25,
+        "original_apb_pct": 50
+      },
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Statutory-Program-Breach-Definitions",
+        "pdf_page": 2,
+        "pdf_sha256": "2728762a108a6798",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.breach.4252-certified-program-change-notification",
+      "name": "Cost or Schedule Growth Notification for a 10 U.S.C. 4252 Certified Program",
+      "source": "10 U.S.C. 4252",
+      "definition": "The PM for an MDAP that has received Milestone B certification will immediately notify the MDA of any changes to the program or a designated major subprogram of such program that alter the substantive basis for the certification of the milestone decision.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Statutory-Program-Breach-Definitions",
+        "pdf_page": 2,
+        "pdf_sha256": "2728762a108a6798",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    }
+  ],
+  "table_notes": "N/A"
+}

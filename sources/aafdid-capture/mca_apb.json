@@ -1,0 +1,58 @@
+{
+  "pathway": "mca",
+  "table": "Acquisition Program Baselines",
+  "source_url": "https://www.waru.edu/aafdid/Acquisition-Program-Baselines",
+  "intro": "The APB will describe the approved program. The APB represents the formal commitment of the Component and the acquisition chain of command to the MDA. Deviations from the approved APB will be immediately reported to the MDA. Deviations are specified default thresholds for schedule and cost of: Objective schedule value plus 6 months. Objective cost value plus ten percent. The Acquisition Program Baselines table provides acquisition program baseline policy addressing Original Baselines, Current Baselines, Baseline Deviations, and Subprograms.",
+  "rows": [
+    {
+      "id": "mca.apb.original-baseline",
+      "name": "Original Baseline Description or Original APB",
+      "definition": "For all programs: The first APB is approved by the MDA prior to a program entering Engineering and Manufacturing Development, or at program initiation, whichever occurs later. Serves as the current baseline description until a revised APB is approved. Incorporates the KPPs from the CDD. For MDAPs: The cost/unit cost estimate parameters may be revised under 10 U.S.C. 4214 only if a breach occurs that exceeds the critical cost growth threshold for the program under 10 U.S.C. 4371.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Acquisition-Program-Baselines",
+        "pdf_page": 1,
+        "pdf_sha256": "4084a7668312c355",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.apb.current-baseline",
+      "name": "Current Baseline Description or Current APB",
+      "definition": "May be revised only: At milestone and FRP decisions; As a result of a major program restructure that is fully funded and approved by the MDA; As a result of a program deviation (breach); or At the MDA's discretion, if fact of life program changes are so significant that managing to the existing baseline is not practical. Circumstances authorizing changes are limited; revisions to the current baseline estimate/APB are not automatically authorized for program changes to cost, schedule, or performance parameters. Revisions to the current APB will not be authorized unless there is a significant change in program parameters. A revision to the current APB will not be authorized if proposed merely to avoid a reportable breach. The MDA determines whether to revise the APB.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Acquisition-Program-Baselines",
+        "pdf_page": 2,
+        "pdf_sha256": "4084a7668312c355",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.apb.deviations",
+      "name": "Deviations",
+      "definition": "The PM will immediately notify the MDA when the PM becomes aware of an impending deviation from any parameter (cost, schedule, performance, etc.). Within 30 business days of occurrence of the deviation, the PM will submit a Program Deviation Report that informs the MDA of the reason for the deviation and planned actions. Within 90 business days of occurrence of the deviation: The PM will bring the program back within APB parameters; or The PM will submit information to the Overarching Integrated Product Team (OIPT) (for ACAT ID), or to an equivalent Component-level review team (for ACAT IB or IC programs), to inform a recommendation to the MDA on whether it is appropriate to approve a revision to an APB. The MDA will decide, after considering the recommendation resulting from the OIPT or equivalent Component-level review, whether it is appropriate to approve a revision to an APB.",
+      "timelines": {
+        "program_deviation_report_business_days": 30,
+        "resolution_business_days": 90
+      },
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Acquisition-Program-Baselines",
+        "pdf_page": 2,
+        "pdf_sha256": "4084a7668312c355",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.apb.subprograms",
+      "name": "Subprograms (10 U.S.C. 4203)",
+      "source": "10 U.S.C. 4203",
+      "definition": "When an MDAP requires the delivery of two or more categories of end items that differ significantly in form and function, or delivery in two or more increments or blocks, subprograms may be established for the purpose of acquisition reporting. Once one subprogram is designated, all remaining elements (increments or components) of the program will also be appropriately organized into one or more other subprograms. If a major subprogram is designated, Selected Acquisition Reports, Unit Cost Reports, and program baselines shall reflect cost; schedule and performance information for the MDAP as a whole and for each major subprogram of the MDAP so designated.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Acquisition-Program-Baselines",
+        "pdf_page": 3,
+        "pdf_sha256": "4084a7668312c355",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    }
+  ],
+  "table_notes": "N/A"
+}

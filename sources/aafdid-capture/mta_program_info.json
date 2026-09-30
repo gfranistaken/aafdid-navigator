@@ -1,0 +1,269 @@
+{
+  "pathway": "mta",
+  "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+  "row_count": 12,
+  "rows": [
+    {
+      "name": "Acquisition Strategy, to include – security, schedule, technical, and production risks; a test strategy or an assessment of test results with validation of required cybersecurity and interoperability as 4 applicable ; and a transition plan...",
+      "columns": {
+        "name": "Acquisition Strategy, to include – security, schedule, technical, and production risks; a test strategy or an assessment of test results with validation of required cybersecurity and interoperability as 4 applicable ; and a transition plan...",
+        "non_major": "",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Entrance",
+        "source": "DoDI 5000.80; 5010.44"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.acquisition-strategy-to-include-security-schedule-technical-"
+    },
+    {
+      "name": "ADM signed by the DA",
+      "columns": {
+        "name": "ADM signed by the DA",
+        "non_major": "x",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Entrance",
+        "source": "DoDI 5000.80"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.adm-signed-by-the-da"
+    },
+    {
+      "name": "Approved Requirement",
+      "columns": {
+        "name": "Approved Requirement",
+        "non_major": "",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Entrance",
+        "source": "DoDI 5000.80"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.approved-requirement"
+    },
+    {
+      "name": "Cost Estimate",
+      "columns": {
+        "name": "Cost Estimate",
+        "non_major": "",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Entrance",
+        "source": "DoDI 5000.80; 5000.73"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [
+        "5"
+      ],
+      "authority_type": "unspecified",
+      "id": "mta.cost-estimate"
+    },
+    {
+      "name": "Initial PID Entry",
+      "columns": {
+        "name": "Initial PID Entry",
+        "non_major": "x",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Entrance",
+        "source": "DoDI 5000.80"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.initial-pid-entry"
+    },
+    {
+      "name": "Lifecycle Sustainment Plan",
+      "columns": {
+        "name": "Lifecycle Sustainment Plan",
+        "non_major": "",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Entrance",
+        "source": "DoDI 5000.80; 5000.91"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.lifecycle-sustainment-plan"
+    },
+    {
+      "name": "Written decision by USD(A&S)",
+      "columns": {
+        "name": "Written decision by USD(A&S)",
+        "non_major": "",
+        "major": "",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Entrance",
+        "source": "DoDI 5000.80"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.written-decision-by-usd-a-s"
+    },
+    {
+      "name": "Updated PID Entry",
+      "columns": {
+        "name": "Updated PID Entry",
+        "non_major": "x",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "Throughout MTA Program Execution",
+        "source": "DoDI 5000.80"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.updated-pid-entry"
+    },
+    {
+      "name": "REQUIREMENT",
+      "columns": {
+        "name": "REQUIREMENT",
+        "non_major": "NON-MAJOR SYSTEMS[^1]",
+        "major": "MAJOR SYSTEMS[^2]",
+        "exceeds_mdap": "EXCEEDS MDAP THRESHHOLD[^3]",
+        "due": "SUBMISSION DUE",
+        "source": "SOURCE"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.requirement"
+    },
+    {
+      "name": "An assessment of test results",
+      "columns": {
+        "name": "An assessment of test results",
+        "non_major": "x",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Exit",
+        "source": "DoDI 5000.80"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.an-assessment-of-test-results"
+    },
+    {
+      "name": "Final PID capturing updated entries, to include the outcome, sustainment, and final budget of the MTA program",
+      "columns": {
+        "name": "Final PID capturing updated entries, to include the outcome, sustainment, and final budget of the MTA program",
+        "non_major": "x",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Exit",
+        "source": "DoDI 5000.80"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.final-pid-capturing-updated-entries-to-include-the-outcome-s"
+    },
+    {
+      "name": "Outcome determination ADM signed by the DA",
+      "columns": {
+        "name": "Outcome determination ADM signed by the DA",
+        "non_major": "x",
+        "major": "x",
+        "exceeds_mdap": "x",
+        "due": "At MTA Program Exit",
+        "source": "DoDI 5000.80"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "33bf610bec6302f2"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mta.outcome-determination-adm-signed-by-the-da"
+    }
+  ],
+  "table_notes": [
+    "Equal to or below threshold as defined in Section 3041(c) and 4202(b) {formerly 2302d} of Title 10, U.S.C.",
+    "Above threshold as defined in Section 3041(c) and 4202(b) {formerly 2302d} of Title 10, U.S.C.",
+    "Defined in Section 4201 and 4202 {formerly 2430} of Title 10, U.S.C.",
+    "For initial submission, can use test strategy in lieu of assessment of test results if testing is not complete. For programs that are on the DOT&E oversight list, additional documentation may be required.",
+    "Per 5000.73: CAPE will conduct an estimate of life-cycle costs for programs likely to exceed ACAT I threshold pursued using the MTA rapid prototyping pathway. CAPE will conduct an estimate of life-cycle costs for programs likely to exceed ACAT I or II thresholds pursued using the MTA rapid fielding pathway."
+  ],
+  "intro": "Table 1. Information Requirements that must be submitted to OSD for ALL Programs using the MTA Pathway"
+}

@@ -1,0 +1,1679 @@
+{
+  "pathway": "crosswalk",
+  "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+  "row_count": 88,
+  "rows": [
+    {
+      "name": "10 USC 139",
+      "columns": {
+        "old_section": "10 USC 139",
+        "old_title": "Director of Operational Test and Evaluation",
+        "new_section": "10 USC 0139",
+        "new_title": "Director of Operational Test and Evaluation"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 1,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-139"
+    },
+    {
+      "name": "10 USC 1722a",
+      "columns": {
+        "old_section": "10 USC 1722a",
+        "old_title": "Special requirements for military personnel in the acquisition field",
+        "new_section": "10 USC 1722a",
+        "new_title": "Special requirements for military personnel in the acquisition field"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 1,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-1722a"
+    },
+    {
+      "name": "10 USC 2222",
+      "columns": {
+        "old_section": "10 USC 2222",
+        "old_title": "DBS: business process reengineering; enterprise architecture; management",
+        "new_section": "10 USC 2222",
+        "new_title": "DBS: business process reengineering; enterprise architecture; management"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 1,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2222"
+    },
+    {
+      "name": "10 USC 2350a",
+      "columns": {
+        "old_section": "10 USC 2350a",
+        "old_title": "Cooperative research and development agreements: NATO organizations; allied",
+        "new_section": "10 USC 2350a",
+        "new_title": "Cooperative research and development agreements: NATO organizations; allied and friendly foreign countries"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 1,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2350a"
+    },
+    {
+      "name": "10 USC 2357",
+      "columns": {
+        "old_section": "10 USC 2357",
+        "old_title": "Technology protection features activities",
+        "new_section": "10 USC 2350a",
+        "new_title": "Technology protection features activities"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2357"
+    },
+    {
+      "name": "10 USC 2457",
+      "columns": {
+        "old_section": "10 USC 2457",
+        "old_title": "Standardization of equipment with North Atlantic Treaty Organization members",
+        "new_section": "10 USC 2457",
+        "new_title": "Standardization of equipment with North Atlantic Treaty Organization members"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2457"
+    },
+    {
+      "name": "10 USC 2461",
+      "columns": {
+        "old_section": "10 USC 2461",
+        "old_title": "Public-private competition required before conversion to contractor performance",
+        "new_section": "10 USC 2461",
+        "new_title": "Public-private competition required before conversion to contractor performance"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2461"
+    },
+    {
+      "name": "10 USC 2463",
+      "columns": {
+        "old_section": "10 USC 2463",
+        "old_title": "Guidelines and procedures for use of civilian employees to perform Department of Defense functions",
+        "new_section": "10 USC 2463",
+        "new_title": "Guidelines and procedures for use of civilian employees to perform Department of Defense functions"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2463"
+    },
+    {
+      "name": "10 USC 2464",
+      "columns": {
+        "old_section": "10 USC 2464",
+        "old_title": "Core logistics capabilities",
+        "new_section": "10 USC 2464",
+        "new_title": "Core logistics capabilities"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2464"
+    },
+    {
+      "name": "10 USC 2466",
+      "columns": {
+        "old_section": "10 USC 2466",
+        "old_title": "Limitations on the performance of depot- level maintenance of materiel",
+        "new_section": "10 USC 2466",
+        "new_title": "Limitations on the performance of depot- level maintenance of materiel"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2466"
+    },
+    {
+      "name": "10 USC 2302",
+      "columns": {
+        "old_section": "10 USC 2302",
+        "old_title": "Definitions",
+        "new_section": "10 USC 3004",
+        "new_title": "Head of an agency"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2302"
+    },
+    {
+      "name": "10 USC 2302d",
+      "columns": {
+        "old_section": "10 USC 2302d",
+        "old_title": "Major system: definitional threshold amounts",
+        "new_section": "10 USC 3041(c)",
+        "new_title": "Major system"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2302d"
+    },
+    {
+      "name": "10 USC 2546a",
+      "columns": {
+        "old_section": "10 USC 2546a",
+        "old_title": "Customer-oriented acquisition system",
+        "new_section": "10 USC 3102",
+        "new_title": "Customer-oriented acquisition system"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2546a"
+    },
+    {
+      "name": "10 USC 2546",
+      "columns": {
+        "old_section": "10 USC 2546",
+        "old_title": "Civilian management of the defense",
+        "new_section": "10 USC 3103",
+        "new_title": "Civilian management of the defense acquisition"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 2,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2546"
+    },
+    {
+      "name": "10 USC 2547",
+      "columns": {
+        "old_section": "10 USC 2547",
+        "old_title": "Acquisition-related functions of chiefs of the armed forces",
+        "new_section": "10 USC 3104",
+        "new_title": "Acquisition-related functions of chiefs of the armed forces"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2547"
+    },
+    {
+      "name": "10 USC 2548",
+      "columns": {
+        "old_section": "10 USC 2548",
+        "old_title": "Performance assessments of the defense acquisition system",
+        "new_section": "10 USC 3105",
+        "new_title": "Elements of the defense acquisition system: performance assessments"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2548"
+    },
+    {
+      "name": "10 USC 2548",
+      "columns": {
+        "old_section": "10 USC 2548",
+        "old_title": "Performance assessments of the defense acquisition system",
+        "new_section": "10 USC 3106",
+        "new_title": "Elements of the defense acquisition system: performance goals"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2548"
+    },
+    {
+      "name": "10 USC 2304",
+      "columns": {
+        "old_section": "10 USC 2304",
+        "old_title": "Contracts: competition requirements",
+        "new_section": "10 USC 3201",
+        "new_title": "Full and open competition"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2304"
+    },
+    {
+      "name": "10 USC 2304",
+      "columns": {
+        "old_section": "10 USC 2304",
+        "old_title": "Contracts: competition requirements",
+        "new_section": "10 USC 3203",
+        "new_title": "Exclusion of particular source or restriction of solicitation to small business concerns"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2304"
+    },
+    {
+      "name": "10 USC 2304",
+      "columns": {
+        "old_section": "10 USC 2304",
+        "old_title": "Contracts: competition requirements",
+        "new_section": "10 USC 3204",
+        "new_title": "Use of procedures other than competitive procedures"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2304"
+    },
+    {
+      "name": "10 USC 2304",
+      "columns": {
+        "old_section": "10 USC 2304",
+        "old_title": "Contracts: competition requirements",
+        "new_section": "10 USC 3205",
+        "new_title": "Simplified procedures for small purchases"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2304"
+    },
+    {
+      "name": "10 USC 2334",
+      "columns": {
+        "old_section": "10 USC 2334",
+        "old_title": "Independent cost estimation and cost analysis",
+        "new_section": "10 USC 3221",
+        "new_title": "Director of Cost Assessment and Program Evaluation"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2334"
+    },
+    {
+      "name": "10 USC 2334",
+      "columns": {
+        "old_section": "10 USC 2334",
+        "old_title": "Independent cost estimation and cost analysis",
+        "new_section": "10 USC 3222",
+        "new_title": "Independent cost estimate required before approval"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2334"
+    },
+    {
+      "name": "10 USC 2334",
+      "columns": {
+        "old_section": "10 USC 2334",
+        "old_title": "Independent cost estimation and cost analysis",
+        "new_section": "10 USC 3223",
+        "new_title": "Director: review of cost estimates, cost analyses, and records of the military departments and Defense Agencies"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 3,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2334"
+    },
+    {
+      "name": "10 USC 2334",
+      "columns": {
+        "old_section": "10 USC 2334",
+        "old_title": "Independent cost estimation and cost analysis",
+        "new_section": "10 USC 3224",
+        "new_title": "Director: participation, concurrence, and approval in cost estimation"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2334"
+    },
+    {
+      "name": "10 USC 2334",
+      "columns": {
+        "old_section": "10 USC 2334",
+        "old_title": "Independent cost estimation and cost analysis",
+        "new_section": "10 USC 3225",
+        "new_title": "Discussion of risk in cost estimates"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2334"
+    },
+    {
+      "name": "10 USC 2334",
+      "columns": {
+        "old_section": "10 USC 2334",
+        "old_title": "Independent cost estimation and cost analysis",
+        "new_section": "10 USC 3226",
+        "new_title": "Estimates for program baseline and analyses and targets for contract negotiation purposes"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2334"
+    },
+    {
+      "name": "10 USC 2334",
+      "columns": {
+        "old_section": "10 USC 2334",
+        "old_title": "Independent cost estimation and cost analysis",
+        "new_section": "10 USC 3227",
+        "new_title": "Guidelines and collection method for acquisition of cost data"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2334"
+    },
+    {
+      "name": "10 USC 2377",
+      "columns": {
+        "old_section": "10 USC 2377",
+        "old_title": "Preference for commercial products and commercial services",
+        "new_section": "10 USC 3453",
+        "new_title": "Preference for commercial products and commercial services"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2377"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3501",
+        "new_title": "Multiyear contracts for acquisition of property: authority; definitions"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3502",
+        "new_title": "Multiyear contracts for acquisition of property: regulations"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3503",
+        "new_title": "Multiyear contracts for acquisition of property: contract cancellation or termination"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3504",
+        "new_title": "Multiyear contracts for acquisition of property: participation by subcontractors, vendors, and suppliers"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3505",
+        "new_title": "Multiyear contracts for acquisition of property: protection of existing authority"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 4,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3506",
+        "new_title": "Department of defense contracts: acquisition of weapon systems"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3507",
+        "new_title": "Department of defense contracts: defense acquisitions specifically authorized by law"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3508",
+        "new_title": "Department of defense contracts: notice to congressional committees before taking certain actions"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3509",
+        "new_title": "Department of defense contracts: multiyear contracts with value in excess of $500,000,000"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3510",
+        "new_title": "Department of defense contracts: additional matters with respect to multiyear defense contracts"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2306b",
+      "columns": {
+        "old_section": "10 USC 2306b",
+        "old_title": "Multiyear contracts: acquisition of property",
+        "new_section": "10 USC 3511",
+        "new_title": "Increased funding and reprogramming requests"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2306b"
+    },
+    {
+      "name": "10 USC 2302a",
+      "columns": {
+        "old_section": "10 USC 2302a",
+        "old_title": "Simplified acquisition threshold",
+        "new_section": "10 USC 3571",
+        "new_title": "Simplified acquisition threshold"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2302a"
+    },
+    {
+      "name": "10 USC 2320",
+      "columns": {
+        "old_section": "10 USC 2320",
+        "old_title": "Rights in technical data",
+        "new_section": "10 USC 3771",
+        "new_title": "Rights in technical data: regulations"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2320"
+    },
+    {
+      "name": "10 USC 2320",
+      "columns": {
+        "old_section": "10 USC 2320",
+        "old_title": "Rights in technical data",
+        "new_section": "10 USC 3772",
+        "new_title": "Rights in technical data: provisions required in contracts"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2320"
+    },
+    {
+      "name": "10 USC 2320",
+      "columns": {
+        "old_section": "10 USC 2320",
+        "old_title": "Rights in technical data",
+        "new_section": "10 USC 3774",
+        "new_title": "Major weapon systems and subsystems: long-term technical data needs"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 5,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2320"
+    },
+    {
+      "name": "10 USC 2368",
+      "columns": {
+        "old_section": "10 USC 2368",
+        "old_title": "Centers for Science, Technology, and Engineering Partnership",
+        "new_section": "10 USC 4146",
+        "new_title": "Centers for Science, Technology, and Engineering Partnership"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2368"
+    },
+    {
+      "name": "10 USC 2399",
+      "columns": {
+        "old_section": "10 USC 2399",
+        "old_title": "Operational test and evaluation of defense acquisition programs",
+        "new_section": "10 USC 4171",
+        "new_title": "Operational test and evaluation of defense acquisition programs"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2399"
+    },
+    {
+      "name": "10 USC 2366",
+      "columns": {
+        "old_section": "10 USC 2366",
+        "old_title": "Major systems and munitions programs: survivability testing and lethality testing required before full- scale production",
+        "new_section": "10 USC 4172",
+        "new_title": "Major systems and munitions programs: survivability testing and lethality testing required before full-scale production"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2366"
+    },
+    {
+      "name": "10 USC 196",
+      "columns": {
+        "old_section": "10 USC 196",
+        "old_title": "Department of Defense Test Resource Management Center",
+        "new_section": "10 USC 4173",
+        "new_title": "Test and Evaluation"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-196"
+    },
+    {
+      "name": "10 USC 2430",
+      "columns": {
+        "old_section": "10 USC 2430",
+        "old_title": "Major defense acquisition program defined",
+        "new_section": "10 USC 4201",
+        "new_title": "Major defense acquisition programs: definition; exceptions"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2430"
+    },
+    {
+      "name": "10 USC 2430",
+      "columns": {
+        "old_section": "10 USC 2430",
+        "old_title": "Major defense acquisition program defined",
+        "new_section": "10 USC 4202",
+        "new_title": "Authority to increase definitional threshold amounts: major defense acquisition programs; major systems"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2430"
+    },
+    {
+      "name": "10 USC 2302d",
+      "columns": {
+        "old_section": "10 USC 2302d",
+        "old_title": "Major system: definitional threshold amounts",
+        "new_section": "10 USC 4202(b)",
+        "new_title": "Authority to increase definitional threshold amounts: major defense acquisition programs; major systems"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2302d"
+    },
+    {
+      "name": "10 USC 2430a",
+      "columns": {
+        "old_section": "10 USC 2430a",
+        "old_title": "Major subprograms",
+        "new_section": "10 USC 4203",
+        "new_title": "Major subprograms"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2430a"
+    },
+    {
+      "name": "10 USC 2430",
+      "columns": {
+        "old_section": "10 USC 2430",
+        "old_title": "Major defense acquisition program defined",
+        "new_section": "10 USC 4204",
+        "new_title": "Milestone decision authority"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2430"
+    },
+    {
+      "name": "10 USC 2431",
+      "columns": {
+        "old_section": "10 USC 2431",
+        "old_title": "Weapons development and procurement schedules",
+        "new_section": "10 USC 4205",
+        "new_title": "Weapon systems for which procurement funding requested in budget:"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 6,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2431"
+    },
+    {
+      "name": "10 USC 2431a",
+      "columns": {
+        "old_section": "10 USC 2431a",
+        "old_title": "Acquisition strategy",
+        "new_section": "10 USC 4211",
+        "new_title": "Acquisition strategy"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 7,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2431a"
+    },
+    {
+      "name": "10 USC 2440",
+      "columns": {
+        "old_section": "10 USC 2440",
+        "old_title": "National technology and industrial base plans, policy, and guidance",
+        "new_section": "10 USC 4211",
+        "new_title": "Acquisition strategy"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 7,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2440"
+    },
+    {
+      "name": "10 USC 2431b",
+      "columns": {
+        "old_section": "10 USC 2431b",
+        "old_title": "Risk management and mitigation in major defense acquisition programs and major systems",
+        "new_section": "10 USC 4212",
+        "new_title": "Risk management and mitigation in major defense acquisition programs and major systems"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 7,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2431b"
+    },
+    {
+      "name": "10 USC 2435",
+      "columns": {
+        "old_section": "10 USC 2435",
+        "old_title": "Baseline description",
+        "new_section": "10 USC 4214",
+        "new_title": "Baseline description"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 7,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2435"
+    },
+    {
+      "name": "10 USC 2400",
+      "columns": {
+        "old_section": "10 USC 2400",
+        "old_title": "Low-rate initial production of new systems",
+        "new_section": "10 USC 4231",
+        "new_title": "Major systems: determination of quantity for low-rate initial production"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 7,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2400"
+    },
+    {
+      "name": "10 USC 2366a",
+      "columns": {
+        "old_section": "10 USC 2366a",
+        "old_title": "Major defense acquisition programs: determination required before Milestone A approval",
+        "new_section": "10 USC 4251",
+        "new_title": "Major defense acquisition programs: determination required before Milestone A approval"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 7,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2366a"
+    },
+    {
+      "name": "10 USC 2366b",
+      "columns": {
+        "old_section": "10 USC 2366b",
+        "old_title": "Major defense acquisition programs: certification required before Milestone B approval",
+        "new_section": "10 USC 4252",
+        "new_title": "Major defense acquisition programs: certification required before Milestone B approval"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 7,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2366b"
+    },
+    {
+      "name": "10 USC 2366c",
+      "columns": {
+        "old_section": "10 USC 2366c",
+        "old_title": "Major defense acquisition programs: submissions to Congress on Milestone C",
+        "new_section": "10 USC 4253",
+        "new_title": "Major defense acquisition programs: submissions to Congress on Milestone C"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 7,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2366c"
+    },
+    {
+      "name": "10 USC 2448a",
+      "columns": {
+        "old_section": "10 USC 2448a",
+        "old_title": "Program cost, fielding, and performance goals in planning major defense acquisition programs",
+        "new_section": "10 USC 4271",
+        "new_title": "Program cost, fielding, and performance goals in planning major defense acquisition programs"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2448a"
+    },
+    {
+      "name": "10 USC 2448b",
+      "columns": {
+        "old_section": "10 USC 2448b",
+        "old_title": "Independent technical risk assessments",
+        "new_section": "10 USC 4272",
+        "new_title": "Independent technical risk assessments"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2448b"
+    },
+    {
+      "name": "10 USC 2437",
+      "columns": {
+        "old_section": "10 USC 2437",
+        "old_title": "Development of major defense acquisition programs: sustainment of system to be replaced",
+        "new_section": "10 USC 4321",
+        "new_title": "Development of major defense acquisition programs: sustainment of system to be replaced"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2437"
+    },
+    {
+      "name": "10 USC 2441",
+      "columns": {
+        "old_section": "10 USC 2441",
+        "old_title": "Sustainment reviews",
+        "new_section": "10 USC 4323",
+        "new_title": "Sustainment reviews"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2441"
+    },
+    {
+      "name": "10 USC 2337",
+      "columns": {
+        "old_section": "10 USC 2337",
+        "old_title": "Life-cycle management and product support",
+        "new_section": "10 USC 4324",
+        "new_title": "Life-cycle management and product support"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2337"
+    },
+    {
+      "name": "10 USC 2337a",
+      "columns": {
+        "old_section": "10 USC 2337a",
+        "old_title": "Assessment, management, and control of operating and support costs for major weapon systems",
+        "new_section": "10 USC 4325",
+        "new_title": "Major weapon systems: assessment, management, and control of operating and support costs"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2337a"
+    },
+    {
+      "name": "10 USC 2443",
+      "columns": {
+        "old_section": "10 USC 2443",
+        "old_title": "Sustainment factors in weapon system design",
+        "new_section": "10 USC 4328",
+        "new_title": "Weapon system design: sustainment factors"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2443"
+    },
+    {
+      "name": "10 USC 2432",
+      "columns": {
+        "old_section": "10 USC 2432",
+        "old_title": "Selected Acquisition Reports",
+        "new_section": "10 USC 4351",
+        "new_title": "Selected acquisition reports: definitions"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2432"
+    },
+    {
+      "name": "10 USC 2432",
+      "columns": {
+        "old_section": "10 USC 2432",
+        "old_title": "Selected Acquisition Reports",
+        "new_section": "10 USC 4352",
+        "new_title": "Selected acquisition reports: requirement for quarterly reports"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2432"
+    },
+    {
+      "name": "10 USC 2432",
+      "columns": {
+        "old_section": "10 USC 2432",
+        "old_title": "Selected Acquisition Reports",
+        "new_section": "10 USC 4353",
+        "new_title": "Selected acquisition reports for 1st quarter of a fiscal year: comprehensive annual report"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 8,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2432"
+    },
+    {
+      "name": "10 USC 2432",
+      "columns": {
+        "old_section": "10 USC 2432",
+        "old_title": "Selected Acquisition Reports",
+        "new_section": "10 USC 4354",
+        "new_title": "Selected acquisition reports for 2d, 3d, and 4th quarters"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 9,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2432"
+    },
+    {
+      "name": "10 USC 2432",
+      "columns": {
+        "old_section": "10 USC 2432",
+        "old_title": "Selected Acquisition Reports",
+        "new_section": "10 USC 4355",
+        "new_title": "Selected acquisition reports: quarterly SAR report content"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 9,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2432"
+    },
+    {
+      "name": "10 USC 2433",
+      "columns": {
+        "old_section": "10 USC 2433",
+        "old_title": "Unit Cost Reports",
+        "new_section": "10 USC 4371",
+        "new_title": "Cost growth definitions; applicability of reporting requirements; constant base year dollars"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 9,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2433"
+    },
+    {
+      "name": "10 USC 2433",
+      "columns": {
+        "old_section": "10 USC 2433",
+        "old_title": "Unit Cost Reports",
+        "new_section": "10 USC 4372",
+        "new_title": "Unit cost reports: quarterly report from program manager to service acquisition executive"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 9,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2433"
+    },
+    {
+      "name": "10 USC 2433",
+      "columns": {
+        "old_section": "10 USC 2433",
+        "old_title": "Unit Cost Reports",
+        "new_section": "10 USC 4373",
+        "new_title": "Unit cost reports: immediate report from program manager to service acquisition executive upon breach of significant cost growth threshold"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 9,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2433"
+    },
+    {
+      "name": "10 USC 2433",
+      "columns": {
+        "old_section": "10 USC 2433",
+        "old_title": "Unit Cost Reports",
+        "new_section": "10 USC 4374",
+        "new_title": "Unit cost reports: determinations by service acquisition executive and secretary concerned of breach of significant cost growth threshold or critical cost growth threshold; reports to Congress"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 9,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2433"
+    },
+    {
+      "name": "10 USC 2433",
+      "columns": {
+        "old_section": "10 USC 2433",
+        "old_title": "Unit Cost Reports",
+        "new_section": "10 USC 4375",
+        "new_title": "Breach of significant cost growth threshold or critical cost growth threshold: required action"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 9,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2433"
+    },
+    {
+      "name": "10 USC 2433a",
+      "columns": {
+        "old_section": "10 USC 2433a",
+        "old_title": "Critical cost growth in major defense acquisition programs",
+        "new_section": "10 USC 4376",
+        "new_title": "Breach of critical cost growth threshold: reassessment of program;"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 9,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2433a"
+    },
+    {
+      "name": "10 USC 2433a",
+      "columns": {
+        "old_section": "10 USC 2433a",
+        "old_title": "Critical cost growth in major defense acquisition programs",
+        "new_section": "10 USC 4377",
+        "new_title": "Breach of critical cost growth threshold: actions if program not terminated"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 10,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2433a"
+    },
+    {
+      "name": "10 USC 2446a",
+      "columns": {
+        "old_section": "10 USC 2446a",
+        "old_title": "Requirement for modular open system approach in major defense acquisition programs; definitions",
+        "new_section": "10 USC 4401",
+        "new_title": "Requirement for modular open system approach in major defense acquisition programs; definitions"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 10,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2446a"
+    },
+    {
+      "name": "10 USC 2446b",
+      "columns": {
+        "old_section": "10 USC 2446b",
+        "old_title": "Requirement to address modular open system approach in program capabilities development and acquisition weapon system design",
+        "new_section": "10 USC 4402",
+        "new_title": "Requirement to address modular open system approach in program capabilities development and acquisition weapon system design"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 10,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2446b"
+    },
+    {
+      "name": "10 USC 2446c",
+      "columns": {
+        "old_section": "10 USC 2446c",
+        "old_title": "Requirements relating to availability of major system interfaces and support for modular open system approach",
+        "new_section": "10 USC 4403",
+        "new_title": "Requirements relating to availability of major system interfaces and support for modular open system approach"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 10,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2446c"
+    },
+    {
+      "name": "10 USC 2330",
+      "columns": {
+        "old_section": "10 USC 2330",
+        "old_title": "Procurement of contract services: management structure",
+        "new_section": "10 USC 4501",
+        "new_title": "Procurement of contract services: management structure"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 10,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2330"
+    },
+    {
+      "name": "10 USC 2330a",
+      "columns": {
+        "old_section": "10 USC 2330a",
+        "old_title": "Procurement of services: tracking of purchases",
+        "new_section": "10 USC 4505",
+        "new_title": "Procurement of services: tracking of purchases"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 10,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2330a"
+    },
+    {
+      "name": "10 USC 2383",
+      "columns": {
+        "old_section": "10 USC 2383",
+        "old_title": "Contractor performance of acquisition functions closely associated with inherently governmental functions",
+        "new_section": "10 USC 4508",
+        "new_title": "Contractor performance of acquisition functions closely associated with inherently governmental functions"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 10,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2383"
+    },
+    {
+      "name": "10 USC 2223a",
+      "columns": {
+        "old_section": "10 USC 2223a",
+        "old_title": "Information technology acquisition planning and oversight requirements",
+        "new_section": "10 USC 4571",
+        "new_title": "Information technology acquisition planning and oversight requirements"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/title-10-changes",
+        "pdf_page": 11,
+        "pdf_sha256": "9cc69608008f5c6c"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "crosswalk.10-usc-2223a"
+    }
+  ]
+}

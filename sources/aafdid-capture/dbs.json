@@ -1,0 +1,354 @@
+{
+  "pathway": "dbs",
+  "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+  "row_count": 17,
+  "rows": [
+    {
+      "name": "Business Enterprise Architecture",
+      "columns": {
+        "name": "Business Enterprise Architecture",
+        "execution_phase": "Capability Need Identification",
+        "decision_point": "Solution Analysis ATP",
+        "source": "10 USC 2222(g) (B)",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.business-enterprise-architecture"
+    },
+    {
+      "name": "Capability Requirements",
+      "columns": {
+        "name": "Capability Requirements",
+        "execution_phase": "Capability Need Identification",
+        "decision_point": "Solution Analysis ATP",
+        "source": "10 USC 2222(d) (2)",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.capability-requirements"
+    },
+    {
+      "name": "Business Process Reengineering",
+      "columns": {
+        "name": "Business Process Reengineering",
+        "execution_phase": "Solution Analysis",
+        "decision_point": "Functional Requirements ATP",
+        "source": "10 USC 2222(g) (A)",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.business-process-reengineering"
+    },
+    {
+      "name": "CMO Certification",
+      "columns": {
+        "name": "CMO Certification",
+        "execution_phase": "Functional Requirements & Acquisition Planning",
+        "decision_point": "Acquisition ATP",
+        "source": "10 USC 2222",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [
+        "1,2"
+      ],
+      "authority_type": "statutory",
+      "id": "dbs.cmo-certification"
+    },
+    {
+      "name": "Solution Approach (fulfills market research, analysis of alternatives, economic analysis)",
+      "columns": {
+        "name": "Solution Approach (fulfills market research, analysis of alternatives, economic analysis)",
+        "execution_phase": "Functional Requirements & Acquisition Planning",
+        "decision_point": "Acquisition ATP",
+        "source": "10 USC 2222(g) (C) for market research",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.solution-approach-fulfills-market-research-analysis-of-alter"
+    },
+    {
+      "name": "Cybersecurity Strategy (for mission essential and mission critical IT)",
+      "columns": {
+        "name": "Cybersecurity Strategy (for mission essential and mission critical IT)",
+        "execution_phase": "Functional Requirements & Acquisition Planning",
+        "decision_point": "Acquisition ATP",
+        "source": "Federal Information Security Modernization Act",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.cybersecurity-strategy-for-mission-essential-and-mission-cri"
+    },
+    {
+      "name": "Acquisition Strategy",
+      "columns": {
+        "name": "Acquisition Strategy",
+        "execution_phase": "Functional Requirements & Acquisition Planning",
+        "decision_point": "Acquisition ATP",
+        "source": "10 USC 2222(g) (1)(D)",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.acquisition-strategy"
+    },
+    {
+      "name": "Clinger-Cohen Act Compliance - Information Technology Management",
+      "columns": {
+        "name": "Clinger-Cohen Act Compliance - Information Technology Management",
+        "execution_phase": "Functional Requirements & Acquisition Planning",
+        "decision_point": "Acquisition ATP",
+        "source": "Title 40, Subtitle III (Division D, E)",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.clinger-cohen-act-compliance-information-technology-manageme"
+    },
+    {
+      "name": "Auditability Compliance",
+      "columns": {
+        "name": "Auditability Compliance",
+        "execution_phase": "Functional Requirements & Acquisition Planning",
+        "decision_point": "Acquisition ATP",
+        "source": "10 USC 2222(g) (1)(E) 10 USC Chapter 9A",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.auditability-compliance"
+    },
+    {
+      "name": "Clinger-Cohen Act Compliance",
+      "columns": {
+        "name": "Clinger-Cohen Act Compliance",
+        "execution_phase": "Functional Requirements & Acquisition Planning",
+        "decision_point": "Contract Award",
+        "source": "Title 40, Subtitle III (Division D, E)",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.clinger-cohen-act-compliance"
+    },
+    {
+      "name": "Full CCA compliance at first Limited Deployment 3 ATP ; confirmation of compliance at additional ATPs",
+      "columns": {
+        "name": "Full CCA compliance at first Limited Deployment 3 ATP ; confirmation of compliance at additional ATPs",
+        "execution_phase": "Functional Requirements & Acquisition Planning",
+        "decision_point": "Limited Deployment ATP(s)",
+        "source": "Title 40, Subtitle III (Division D, E)",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.full-cca-compliance-at-first-limited-deployment-3-atp-confir"
+    },
+    {
+      "name": "Confirmation of CCA compliance Initial Operational Test and Evaluation Report (for business systems on the DOT&E oversight list)",
+      "columns": {
+        "name": "Confirmation of CCA compliance Initial Operational Test and Evaluation Report (for business systems on the DOT&E oversight list)",
+        "execution_phase": "Functional Requirements & Acquisition Planning",
+        "decision_point": "Full Deployment ATP",
+        "source": "Title 40, Subtitle III (Division D, E)",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.confirmation-of-cca-compliance-initial-operational-test-and-"
+    },
+    {
+      "name": "Capability Support Plan",
+      "columns": {
+        "name": "Capability Support Plan",
+        "execution_phase": "Acquisition Testing & Deployment",
+        "decision_point": "Capability Support ATP",
+        "source": "10 USC 2222(b) (4) sustainment strategy",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.capability-support-plan"
+    },
+    {
+      "name": "DOT&E Report on IOT&E (for programs on DOT&E oversight list)",
+      "columns": {
+        "name": "DOT&E Report on IOT&E (for programs on DOT&E oversight list)",
+        "execution_phase": "Acquisition Testing & Deployment",
+        "decision_point": "Capability Support ATP",
+        "source": "10 USC 139",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.dot-e-report-on-iot-e-for-programs-on-dot-e-oversight-list"
+    },
+    {
+      "name": "Test and Evaluation Master Plan (for programs on DOT&E oversight list)",
+      "columns": {
+        "name": "Test and Evaluation Master Plan (for programs on DOT&E oversight list)",
+        "execution_phase": "Acquisition Testing & Deployment",
+        "decision_point": "Capability Support ATP",
+        "source": "10 USC 139",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.test-and-evaluation-master-plan-for-programs-on-dot-e-oversi"
+    },
+    {
+      "name": "Operational Test Plan (for programs on DOT&E oversight list)",
+      "columns": {
+        "name": "Operational Test Plan (for programs on DOT&E oversight list)",
+        "execution_phase": "Acquisition Testing & Deployment",
+        "decision_point": "Capability Support ATP",
+        "source": "10 USC 139",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "dbs.operational-test-plan-for-programs-on-dot-e-oversight-list"
+    },
+    {
+      "name": "None",
+      "columns": {
+        "name": "None",
+        "execution_phase": "Capability Support",
+        "decision_point": "N/A",
+        "source": "None",
+        "type": "None"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "d345209378319e2f"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "dbs.none"
+    }
+  ],
+  "table_notes": [
+    "CMO certification can occur during prior phases, but must occur before the Acquisition ATP is approved.",
+    "SEC 901 of the 2021 NDAA repealed the CMO position; awaiting the decision on the transfer of the CMO duties and responsibilities.",
+    "Full CCA compliance can occur during prior ATP decisions points, but must occur no later than the first Limited Deployment ATP. Separate documentation should not be needed to confirm CCA compliance."
+  ]
+}

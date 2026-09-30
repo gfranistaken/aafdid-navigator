@@ -1,0 +1,16 @@
+{
+  "pathway": "swa",
+  "page": "overview",
+  "source_url": "https://www.waru.edu/aafdid/swa",
+  "governing_dodi": "DoDI 5000.87",
+  "statutory_authority": "FY20 NDAA Section 800",
+  "overview_text": "DoDI 5000.87 Overview. The Software Acquisition Pathway (SWP) is authorized pursuant to FY20 National Defense Authorization Act (NDAA) Section 800 that directs SWP programs are not to be treated as MDAPs, and is intended to balance speed with rigor: (3) TREATMENT NOT AS MAJOR DEFENSE ACQUISITION PROGRAM.— Software acquired or developed using the authority under this section shall not be treated as a major defense acquisition program for purposes of section 2430 of title 10, United States Code, or Department of Defense Directive 5000.01 without the specific direction of the Under Secretary of Defense for Acquisition and Sustainment or a Senior Acquisition Executive. SWP values working software over comprehensive documentation but requires proper planning and coordination of strategies and designs commensurate with size and risk. Documentation isn't developed for compliance purposes to pass the next milestone (as there are none in the SWP), but rather to proceed with managed risk and continuous improvement throughout development.",
+  "statutory_text": "DoDI 5000.87 Statutory Requirements. The Software Pathway intent is to reduce bureaucracy to maximize taxpayer investment and accelerate capability to our Warfighters. In turn, the desire approached is to reduce the documentation requirements and focus the program's efforts on planning and producing working software to enable rapid and continuous delivery. It is recognized that there are some statutory and regulatory information requirements that must be met such as a Component cost position, cybersecurity strategy, or bandwidth requirements review. (Note: a hybrid pathway adoption may require statutory requirements for associated hardware of the parent program). However, we take the view that many of the statutory requirements are information requirements that can be included in the Acquisition Strategy and not as stand-alone documents. (The team has not assessed the distinction between application and embedded software acquisition/pathway use wherein certain safety requirements may apply; e.g., nuclear surety.)",
+  "regulatory_text": "DoDI 5000.87 Regulatory Requirements. Regulatory documents should be developed only if deemed essential to program execution. Some document content will be combined. Many regulatory information requirements are covered in the CNS, User Agreement, Acquisition Strategy, and Cost Estimates. Some regulatory information may still be required on a case by case basis, based on capabilities being delivered (e.g., waveform assessment if delivering new or modified signal formats). Decision Authorities as have discretion in the regulatory arena on what to require and when to require it.",
+  "provenance": {
+    "source_url": "https://www.waru.edu/aafdid/swa",
+    "pdf_page": 1,
+    "pdf_sha256": "52b0b253194449df",
+    "extraction_method": "manual_transcription_from_pdf_text"
+  }
+}

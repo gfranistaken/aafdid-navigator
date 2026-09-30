@@ -1,0 +1,76 @@
+{
+  "schema": "aafdid-navigator/currency@1",
+  "checked": "2026-09-30",
+  "aafdid_status": "AAFDID's What's New page lists one entry (February 2023, the MTA review redline). Its Excel exports are filed under January 2025, and no table page shows a last-updated date. The changes below came later and are not reflected in AAFDID's tables.",
+  "notes": [
+    {
+      "id": "thresholds-2025",
+      "date": "2025-12-18",
+      "title": "MDAP and major system thresholds raised",
+      "text": "The FY2026 NDAA (Pub. L. 119-60, sec. 1804) raised the statutory MDAP threshold to more than $1.0B RDT&E or $4.5B procurement, and the major system threshold to more than $275M RDT&E or $1.3B procurement, both in FY2024 constant dollars. DoDI 5000.85 Table 1 and AAFDID still use the older FY2020 figures ($525M / $3.065B and $200M / $920M). Confirm your program's category against the current statute and your component's direction.",
+      "sources": [
+        {"title": "10 U.S.C. 4201 (MDAP definition)", "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section4201&num=0&edition=prelim"},
+        {"title": "10 U.S.C. 3041 (major system definition)", "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section3041&num=0&edition=prelim"}
+      ],
+      "banner": true,
+      "attach": {"codes": ["MTA-O07"], "questions": ["mca_program_type", "mta_size", "swa_above_acat_ii", "uca_acat"]}
+    },
+    {
+      "id": "jcids-2025",
+      "date": "2025-08-20",
+      "title": "JCIDS disestablished",
+      "text": "The August 20, 2025 memo \"Reforming the Joint Requirements Process\" disestablished JCIDS. Each military service now validates its own requirements, the JROC identifies and ranks key operational problems, and a Requirements and Resourcing Alignment Board sets joint priorities. AAFDID entries that name JCIDS documents or JROC validation (ICD, CDD, KPPs) predate this change. Use your component's current requirements process.",
+      "sources": [
+        {"title": "Federal News Network, Aug 2025: DoD dismantles JCIDS", "url": "https://federalnewsnetwork.com/defense-news/2025/08/dod-dismantles-decades-old-jcids-in-joint-requirements-process-overhaul/"},
+        {"title": "Memo, Reforming Joint Requirements, signed 20 Aug 2025 (WARU library)", "url": "https://www.waru.edu/artifact/memo-osd-reforming-joint-requirements-signed-20-aug-2025"}
+      ],
+      "banner": true,
+      "attach": {"match": "\\b(ICD|CDD|JCIDS|JROC|KPPs?|Initial Capabilities Document|Capability Development Document|CAPABILITY DEVELOPMENT DOCUMENT|INITIAL CAPABILITIES DOCUMENT)\\b", "pathways": ["mca", "uca"], "events": ["cdd_val"]}
+    },
+    {
+      "id": "was-2025",
+      "date": "2025-11-07",
+      "title": "Warfighting Acquisition System",
+      "text": "The November 7, 2025 memo renamed the Defense Acquisition System the Warfighting Acquisition System. It converts PEOs into Portfolio Acquisition Executives, makes commercial solutions the first choice and the software pathway the preferred path for software, and says the 5000-series will be revised to cut documentation and consolidate milestones. The FY2026 NDAA (sec. 1802) also creates Portfolio Acquisition Executives. No pathway's entry criteria changed as of this check.",
+      "sources": [
+        {"title": "Memo, Transforming the Defense Acquisition System into the Warfighting Acquisition System, Nov 7, 2025", "url": "https://static.carahsoft.com/concrete/files/4917/6702/9385/Memorandum_Transforming_the_Defense_Acquisition_System_into_the_Warfighting_Acquisition_System.pdf"}
+      ],
+      "banner": true,
+      "attach": {}
+    },
+    {
+      "id": "evms-2026",
+      "date": "2026",
+      "title": "EVMS thresholds changed by class deviation",
+      "text": "DFARS Class Deviation 2026-O0011 (DFARS 234.201) sets $50M as the threshold for an EIA-748-compliant EVMS and $100M for a Government-validated EVMS on cost and incentive contracts. EVMS on a firm-fixed-price contract needs a waiver. AAFDID still shows $20M and $100M. Confirm the thresholds on contract with your contracting officer.",
+      "sources": [
+        {"title": "DoD class deviations (DPCAP)", "url": "https://www.acq.osd.mil/dpap/dars/class_deviations.html"}
+      ],
+      "banner": false,
+      "attach": {"tables": ["evm"]}
+    },
+    {
+      "id": "mta-change1-2024",
+      "date": "2024-11-25",
+      "title": "DoDI 5000.80 Change 1 and 10 U.S.C. 3602",
+      "text": "DoDI 5000.80 Change 1 changed several MTA rules:\n- The transition plan goes to OUSD(A&S) through AIR within 2 years of program start.\n- Transition documentation must be complete 3 months before completion.\n- A termination is reported to OUSD(A&S) within 7 days and to Congress within 30 days.\n- Requirement approval may be delegated no lower than the PM.\n- Test strategies cover non-kinetic threats.\n- Exportability applies when international partners are involved.\n\n10 U.S.C. 3602 (December 2024) codified MTA, and lets the service acquisition executive permit further 5-year periods. AAFDID's MTA notes cite the October 2022 policy update.",
+      "sources": [
+        {"title": "DoDI 5000.80 Original vs Change 1 briefing (Feb 2025)", "url": "https://www.waru.edu/sites/default/files/2025-02/DODI%205000_80%20Original%20vs%20Change1%20Webinar%20202502%20no%20notes.pdf"},
+        {"title": "10 U.S.C. 3602", "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title10-section3602&num=0&edition=prelim"}
+      ],
+      "banner": false,
+      "attach": {"codes": ["MTA-S01", "MTA-S02", "MTA-S17", "MTA-S18", "MTA-S10", "MTA-O01", "MTA-O03", "MTA-O11"]}
+    },
+    {
+      "id": "cmo-2021",
+      "date": "2021-01-01",
+      "title": "Chief Management Officer repealed",
+      "text": "Section 901 of the FY2021 NDAA repealed the Chief Management Officer position. AAFDID's own DBS note says the transfer of CMO duties is still pending. Ask your component who now performs the certification.",
+      "sources": [
+        {"title": "AAFDID DBS Statutory Requirements, table notes", "url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements"}
+      ],
+      "banner": false,
+      "attach": {"codes": ["DBS-04"]}
+    }
+  ]
+}

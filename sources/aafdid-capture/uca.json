@@ -1,0 +1,121 @@
+{
+  "pathway": "uca",
+  "source_url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements",
+  "row_count": 4,
+  "rows": [
+    {
+      "name": "Assessment Approach",
+      "columns": {
+        "name": "Assessment Approach",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "development": "",
+        "production": "",
+        "other": "",
+        "source": "Section 4172 of Title 10 U.S.C. {formerly 2366} (see DoDI 5000.02); Section 4171 of Title 10 U.S.C. {formerly 2399} (see DoDI 5000.02)",
+        "type": "Statutory"
+      },
+      "marks": {
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "development": "initial",
+        "production": "initial"
+      },
+      "notes": "STATUTORY; only required for programs responding to urgent capability acquisitions. - For programs under DOT&E oversight, operational and live fire test plans will be submitted to DOT&E for approval at the Development Milestone; post-deployment assessment plans will be submitted to DOT&E for approval at the Production and Deployment Milestone. DOT&E will ensure that testing is rigorous enough to rapidly evaluate critical operational issues. Test Plans submitted for DOT&E approval are required to be delivered 60 days before the start of testing. - Programs not under DOT&E oversight are approved at the Service level; the program may require a rapid and focused operational assessment and live fire testing (if applicable) prior to deploying an urgent need solution. The Acquisition Approach will identify any requirements to evaluate health, safety, operational effectiveness, suitability, environmental factors, supportability and survivability.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "dcfa6da65d71b3b7"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "uca.assessment-approach"
+    },
+    {
+      "name": "Course of Action Analysis",
+      "columns": {
+        "name": "Course of Action Analysis",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "development": "",
+        "production": "",
+        "other": "",
+        "source": "Meets the assessment requirements of Subtitle III of Title 40, U.S.C.",
+        "type": "Statutory"
+      },
+      "marks": {
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "development": "initial"
+      },
+      "notes": "STATUTORY; replaces and serves as the Analysis of Alternatives. Approved by the MDA. For JUONs, JEONs, critical warfighter issues identified by the Warfighter SIG, and SecDef or DepSecDef RAA determinations, a copy is due to the Executive Director, JRAC, within 3 business days of MDA approval.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "dcfa6da65d71b3b7"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "uca.course-of-action-analysis"
+    },
+    {
+      "name": "Disposition Authority's Report to the DoD Component Head",
+      "columns": {
+        "name": "Disposition Authority's Report to the DoD Component Head",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "development": "",
+        "production": "",
+        "other": "",
+        "source": "Para. 4.5.e. of DoDI 5000.81",
+        "type": "Regulatory"
+      },
+      "marks": {
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "other": "initial"
+      },
+      "notes": "Regulatory. Based on the disposition official’s recommendation in the Disposition Analysis, the Component Head will determine and document the disposition of the initiative and process it in accordance with applicable Component and requirements authority procedures. INFORMATION ACAT SOURCE TYPE REQUIREMENT DEVELOPMENT PRODUCTION OTHER II ≤ III",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "dcfa6da65d71b3b7"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "uca.disposition-authority-s-report-to-the-dod-component-head"
+    },
+    {
+      "name": "Rapid Acquisition Authority (RAA) Recommendation",
+      "columns": {
+        "name": "Rapid Acquisition Authority (RAA) Recommendation",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "development": "",
+        "production": "",
+        "other": "",
+        "source": "Section 806(c) of Public Law (PL) 107- 314",
+        "type": "Statutory"
+      },
+      "marks": {
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "other": "initial"
+      },
+      "notes": "STATUTORY. Optional request to the SecDef or DepSecDef for RAA. Considered as part of the development of the Acquisition Strategy. MDA approves the decision to request RAA at the Development Milestone.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "dcfa6da65d71b3b7"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "uca.rapid-acquisition-authority-raa-recommendation"
+    }
+  ],
+  "table_notes": [
+    "A dot (●) in a cell indicates the specific applicability of the requirement to the life-cycle event",
+    "Documentation required for the identified events will be submitted no later than 45 calendar days before the planned review."
+  ],
+  "intro": "Table 1. Information Requirements Unique to Urgent Capability Acquisition Process"
+}

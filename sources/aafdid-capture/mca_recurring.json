@@ -1,0 +1,85 @@
+{
+  "pathway": "mca",
+  "source_url": "https://www.waru.edu/aafdid/Recurring-Reporting-Requirements",
+  "row_count": 3,
+  "rows": [
+    {
+      "name": "Defense Acquisition Executive Summary (DAES)",
+      "columns": {
+        "name": "Defense Acquisition Executive Summary (DAES)",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "For MDAPs, quarterly after initial Modernized Selected Acquisition Report (MSAR) submission. Active programs that are 75 percent or more delivered through the production phase (or 75 percent expended if RDT&E only) will submit only a Unit Cost Reporting DAES pursuant to 10 U.S.C. 4371, 4372, 4373, 4374, and 4375. For MDAPs, the DAES reporting requirement ceases after a termination MSAR is submitted (90 percent of items delivered or 90 percent of funds are expended).",
+        "source": "DoDI 5000.85",
+        "type": "Regulatory",
+        "procedure": "Program Manager"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "Regulatory. Programs are required to begin input of required data into Defense Acquisition Visibility Environment (DAVE) and the Acquisition Information Repository (AIR) upon submission of the Program Objective Memorandum (POM) or Budget Estimate Submission (BES) that first identifies the program.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Recurring-Reporting-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "ad1e59f87a0e5ae3"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "mca.defense-acquisition-executive-summary-daes"
+    },
+    {
+      "name": "MODERNIZED SELECTED ACQUISITION REPORT (MSAR)",
+      "columns": {
+        "name": "MODERNIZED SELECTED ACQUISITION REPORT (MSAR)",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Program initiation (normally Milestone B except for some ship programs) or MDAP designation. Annually (as of December) for all programs and quarterly (as of March, June, and September) on an exception basis when there is: 1. A 6-month or more schedule slip in the current estimate since the prior MSAR; or 2. A unit cost increase of 15 percent or more to the current APB objective or 30 percent or more to the original APB objective. MSAR reporting requirement ceases after 90 percent of items are delivered or 90 percent of planned expenditures under the program or subprogram have been made.",
+        "source": "10 U.S.C. 4351 - 4355 10 U.S.C. 4371 - 4375 10 U.S.C. 4201 10 U.S.C. 4202 10 U.S.C. 4204",
+        "type": "Statutory",
+        "procedure": "Submitted by PM to CAE, USD(A&S) Submitted by USD(A&S) to Congress"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "ACAT REQUIREMENT DUE SOURCE TYPE REQUIREMENT PROCEDURE MDAP II ≤III STATUTORY. Provides the status of total program cost, schedule, and performance to Congress; provides program unit cost and unit cost breach information for a specific program. The first MSAR after the MDA's 10 U.S.C. 4252 CERTIFICATION AND DETERMINATION (a row in the Milestone and Phase Information Requirements Table) will include the certification and determination. For each MDAP that receives Milestone B approval after January 1, 2019, include a brief summary description of the key elements of the modular open systems approach or, if a modular open systems approach was not used, the rationale for not using such an approach. Every MSAR must include certification by the Secretary of the Military Department and the Chief of the armed force that program requirements are stable and funding is adequate to meet program cost, schedule, and performance objectives, and the Secretary and Chief must identify and report in the MSAR any increased program risk since the last report.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Recurring-Reporting-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "ad1e59f87a0e5ae3"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.modernized-selected-acquisition-report-msar"
+    },
+    {
+      "name": "UNIT COST REPORT (UCR)",
+      "columns": {
+        "name": "UNIT COST REPORT (UCR)",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Quarterly after initial MSAR submission. Unit Cost Reporting ceases after a termination MSAR is submitted (90 percent of items delivered or 90 percent of funds are expended).",
+        "source": "10 U.S.C. 4371 - 4375",
+        "type": "Statutory",
+        "procedure": "PM; CAE, USD(A&S) (see Note, this row)"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "STATUTORY. Reported via the DAES submission process. The PM provides the report quarterly to USD(A&S) for the 3 quarters excluding the quarter with the annual MSAR submission. The USD(A&S) provides the report to Congress annually (included in MSAR submission).",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Recurring-Reporting-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "ad1e59f87a0e5ae3"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.unit-cost-report-ucr"
+    }
+  ],
+  "table_notes": [
+    "Each row identifies an information requirement and the source of the requirement. STATUTORY items and sources appear in ALL CAPS; Regulatory items and sources appear in normal text. Statutory requirements cannot be waived unless the statute permits. MDAs may tailor regulatory procedures consistent with sound business practice and the risks associated with the product being acquired"
+  ]
+}

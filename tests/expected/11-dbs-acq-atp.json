@@ -1,0 +1,161 @@
+{
+ "profile": {
+  "program": "Logistics business system (example)",
+  "pathway": "dbs",
+  "event": "acquisition_atp",
+  "mission_critical_it": true,
+  "dote_oversight": false,
+  "contract_value": 80000000,
+  "contract_cost_type": true
+ },
+ "pathway": "dbs",
+ "focus_event": "acquisition_atp",
+ "counts": {
+  "required": 15,
+  "conditional": 0,
+  "triggered": 0,
+  "undetermined": 0,
+  "reference": 0,
+  "not_applicable": 7
+ },
+ "derived": {},
+ "questions_needed": [],
+ "currency_notes": [
+  "evms-2026",
+  "cmo-2021"
+ ],
+ "items": [
+  [
+   "DBS-04",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "DBS-05",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "DBS-06",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "DBS-07",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "DBS-08",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "DBS-09",
+   "required",
+   "at_focus",
+   "statutory"
+  ],
+  [
+   "DBS-10",
+   "required",
+   "later",
+   "statutory"
+  ],
+  [
+   "DBS-11",
+   "required",
+   "later",
+   "statutory"
+  ],
+  [
+   "DBS-12",
+   "required",
+   "later",
+   "statutory"
+  ],
+  [
+   "DBS-13",
+   "required",
+   "later",
+   "statutory"
+  ],
+  [
+   "EVM-02",
+   "required",
+   "ongoing",
+   "regulatory"
+  ],
+  [
+   "EVM-05",
+   "required",
+   "ongoing",
+   "regulatory"
+  ],
+  [
+   "DBS-01",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-02",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-03",
+   "required",
+   "earlier",
+   "statutory"
+  ],
+  [
+   "DBS-14",
+   "not_applicable",
+   "not_applicable",
+   "statutory"
+  ],
+  [
+   "DBS-15",
+   "not_applicable",
+   "not_applicable",
+   "statutory"
+  ],
+  [
+   "DBS-16",
+   "not_applicable",
+   "not_applicable",
+   "statutory"
+  ],
+  [
+   "EVM-01",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "EVM-03",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "EVM-04",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ],
+  [
+   "EVM-06",
+   "not_applicable",
+   "not_applicable",
+   "regulatory"
+  ]
+ ]
+}

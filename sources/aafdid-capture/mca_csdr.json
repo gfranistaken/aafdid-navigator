@@ -1,0 +1,94 @@
+{
+  "pathway": "mca",
+  "table": "Cost Data Reporting Requirements (CSDR)",
+  "source_url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements",
+  "governing_policy": "DoDI 5000.73",
+  "intro": "The Cost Data Reporting Requirements (CSDR) Table summarizes cost reporting requirements. DoDI 5000.73 provides full details for cost data estimating and reporting.",
+  "rows": [
+    {
+      "id": "mca.csdr.contractor-business-data-report",
+      "name": "Contractor Business Data Report",
+      "when_required": "Required for contractor business entities (e.g., plant, site, or business unit) responsible for contracts or subcontracts with CSDR requirements that are expected to exceed $250 million, then-year dollars. Not required for business units based solely on CSDR requirement Middle Tier Acquisition Program contracts.",
+      "thresholds": {
+        "contract_value_then_year_usd_gt": 250000000
+      },
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "feaac30fa913a598",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.csdr.contractor-cost-data-report",
+      "name": "Contractor Cost Data Report",
+      "when_required": {
+        "acat_i_ii_programs": "All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including FMS and programs in sustainment, regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for current and former ACAT I – II programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars.",
+        "information_system_programs": "All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars.",
+        "middle_tier_acquisition_programs": "All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures.",
+        "other_programs_gt_100m": "May be required at the discretion of the CSDR approval authority for all high interest or high-risk contracts, subcontracts, or government-performed efforts.",
+        "not_required": "Contracts on programs with anticipated acquisition expenditures less than $100 million, then-year dollars. Contracts priced below $20 million, then-year dollars. PM requests and obtains approval from the DDCA for a reporting waiver (e.g., procurement of commercial systems)."
+      },
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "feaac30fa913a598",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.csdr.maintenance-and-repair-parts-data-report",
+      "name": "Maintenance and Repair Parts Data Report",
+      "when_required": "All sustainment contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed ACAT I-II level thresholds and IS programs that are anticipated to exceed $100 million, then-year dollars, when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "feaac30fa913a598",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.csdr.program-resource-distribution-table",
+      "name": "Program Resource Distribution Table",
+      "when_required": "ACAT I-II Level Programs: All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), including foreign military sales (FMS) and programs in sustainment, regardless of acquisition phase and contract type, including non-Federal Acquisition Regulation (FAR) agreements, valued at more than $50 million, then-year dollars, for ACAT I-II level programs. High-risk or high-technical-interest, as determined by the CSDR plan approval authority, or software contracts priced between $20 million and $50 million, then-year dollars.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "feaac30fa913a598",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.csdr.software-resources-data-report",
+      "name": "Software Resources Data Report",
+      "when_required": {
+        "development_and_erp_efforts": "All contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for developing and/or producing software valued at more than $20 million, then-year dollars, for: Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. All contracts, subcontracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $20 million, then-year dollars, for Middle Tier Acquisition Programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures. High-risk or high-technical-interest software efforts estimated below $20 million, then-year dollars, as determined by the CSDR plan approval authority, if the overall effort inclusive of non-software efforts exceeds $20 million, then-year dollars.",
+        "maintenance_efforts": "For all contracts, subcontracts, and government-performed efforts, regardless of acquisition phase and contract type, including non-FAR agreements, for: Programs with previous SRDR development or enterprise resource planning requirements or software maintenance efforts of more than $20 million, then-year dollars. Programs that exceed the ACAT I-II level thresholds. IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures."
+      },
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "feaac30fa913a598",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.csdr.technical-data-report",
+      "name": "Technical Data Report",
+      "when_required": "All contracts, government-performed efforts, and major components (e.g., government furnished equipment), regardless of acquisition phase and contract type, including non-FAR agreements, valued at more than $50 million, then-year dollars, for programs that exceed the ACAT I and II level threshold and IS programs anticipated to exceed $100 million, then-year dollars, in acquisition expenditures when equivalent information cannot be provided by the program manager, at the discretion of the CSDR plan approval authority.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "feaac30fa913a598",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    }
+  ],
+  "table_notes": [
+    "For CSDR purposes, contract value represents the estimated cost at contract completion (i.e., initial contract award plus all expected authorized contract changes) and is based on the assumption that all contract options will be exercised. If an indefinite delivery, indefinite quantity contract; a basic ordering agreement; a blanket purchase agreement; or a similar type of contract is estimated to exceed the designated threshold in total, the cost working group integrated product team, whose membership is defined in DoDM 5000.04, will determine which individual task or delivery orders require CSDRs and if CSDRs are required at the total contract level.",
+    "If FMS requirements are a portion of a contract that surpasses the reporting thresholds for CSDRs, the FMS content will be reported in addition to the DoD content. If a contract contains only FMS requirements and surpasses the reporting thresholds for CSDRs, the program manager will contact CAPE to determine if CSDRs should be placed on FMS contracts with no DoD content.",
+    "Contractor Cost Data Reports consist of either the Cost and Hour Report (FlexFile) and the Quantity Data Report or the DD Form 1921 series of forms and contract work breakdown structure dictionary, subject to the requirements in the approved CSDR plan.",
+    "An IS is a system of computer hardware, computer software, data, or telecommunications that performs functions such as collecting, processing, storing, transmitting, and displaying information. Computer resources, both hardware and software, that are an integral part of a weapon or weapon system are excluded. For the purpose of cost reporting, DBS and software acquisition programs are included in the IS definition.",
+    "Acquisition expenditures are the estimated total cost for development, procurement, acquisition operations and maintenance, and system-specific military construction."
+  ]
+}

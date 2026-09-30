@@ -1,0 +1,64 @@
+{
+  "pathway": "mca",
+  "table": "EVMS Reporting Requirements",
+  "source_url": "https://www.waru.edu/aafdid/EVMS-Reporting-Requirements",
+  "intro": "Earned Value Management System (EVMS)—DoDI 5000.85, Paragraph 3C.3.c.(3), provides an overview of EVMS. The following table details EVMS reporting requirements.",
+  "rows": [
+    {
+      "id": "mca.evms-reporting.lt-20m",
+      "contract_value": "< $20M",
+      "contract_value_then_year_usd": {
+        "lt": 20000000
+      },
+      "applicability": "Not required",
+      "notes": "Integrated Program Management Data and Analysis Report (IPMDAR) may be used if cost and/or schedule reporting is requested by the program management office.",
+      "source": "Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/EVMS-Reporting-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "3e450420d7b35c41",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.evms-reporting.20m-to-100m",
+      "contract_value": "≥ $20M & < $100M",
+      "contract_value_then_year_usd": {
+        "gte": 20000000,
+        "lt": 100000000
+      },
+      "applicability": "Required monthly when EVMS requirement is on contract",
+      "notes": "All IPMDAR datasets/files must be included in the CDRL. Tailoring in accordance with DI-MGMT-81861 and Implementation Guide is allowed.",
+      "source": "Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/EVMS-Reporting-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "3e450420d7b35c41",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    },
+    {
+      "id": "mca.evms-reporting.gte-100m",
+      "contract_value": "≥ $100M",
+      "contract_value_then_year_usd": {
+        "gte": 100000000
+      },
+      "applicability": "Required monthly when EVMS requirement is on contract",
+      "notes": "IPMDAR is required. All files are required.",
+      "source": "Integrated Program Management Data and Analysis Report (IPMDAR) DID DI-MGMT-81861",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/EVMS-Reporting-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "3e450420d7b35c41",
+        "extraction_method": "manual_transcription_from_pdf_text"
+      }
+    }
+  ],
+  "table_notes": [
+    "All IPMDAR data in contracts, task orders, and delivery orders will be delivered to the EVMS Central Repository.",
+    "The IPMDAR can be tailored to collect cost and/or schedule data for any contract regardless of whether EVMS is required. For information on tailoring the IPMDAR, refer to the DoD IPMDAR Implementation Guide.",
+    "Formats and reporting requirements for the IPMDAR are determined and managed by the OUSD(A&S) Acquisition Data and Analytics.",
+    "Reporting thresholds are in then-year dollars.",
+    "DI-MGMT-81861 = Data Item Management-81861"
+  ]
+}

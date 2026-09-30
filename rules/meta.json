@@ -1,0 +1,47 @@
+{
+  "name": "AAFDID Navigator rules",
+  "version": "1.0.0",
+  "built": "2026-09-30",
+  "aafdid_capture": "2026-08-22 (browser print-to-PDF of every AAFDID table page, parsed in the aafdid-open project)",
+  "live_check": "2026-09-30: every captured row located on the live AAFDID pages; differences corrected (sources/corrections-2026-09-30.json)",
+  "aos_source": "DoDI 5000.74, Change 1 (2021-06-24); AAFDID has no AoS table",
+  "requirements": 268,
+  "by_pathway_and_kind": {
+    "mca": {
+      "event": 80,
+      "recurring": 3,
+      "triggered": 25,
+      "compliance": 11,
+      "conditional": 6,
+      "contract": 6,
+      "reference": 4
+    },
+    "mta": {
+      "conditional": 35,
+      "contract": 4,
+      "event": 11
+    },
+    "uca": {
+      "conditional": 2,
+      "contract": 4,
+      "event": 4
+    },
+    "swa": {
+      "conditional": 6,
+      "contract": 5,
+      "event": 29,
+      "compliance": 11
+    },
+    "dbs": {
+      "conditional": 2,
+      "contract": 4,
+      "event": 16
+    },
+    "aos": {
+      "event": 20,
+      "conditional": 3,
+      "triggered": 1
+    }
+  },
+  "disclaimer": "Unofficial. AAFDID is itself an overview: comply with its tabular notes and the full text of each cited source. Not affiliated with or endorsed by WARU, DAU or the Department of War."
+}

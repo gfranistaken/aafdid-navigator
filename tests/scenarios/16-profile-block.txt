@@ -1,0 +1,9 @@
+AAFDID PROFILE v1
+program: Profile block input (example)
+pathway: mca
+event: Dev RFP Rel
+mca_program_type: acat_ii
+it_type: embedded_it
+contract_value: 75 million
+contract_cost_type: y
+unknown: none

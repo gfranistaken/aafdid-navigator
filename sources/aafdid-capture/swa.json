@@ -1,0 +1,635 @@
+{
+  "pathway": "swa",
+  "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+  "row_count": 33,
+  "rows": [
+    {
+      "name": "Program Protection Plan",
+      "columns": {
+        "name": "Program Protection Plan",
+        "execution_phase": "Each Decision Point",
+        "source": "DoDI 5000.83",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.program-protection-plan"
+    },
+    {
+      "name": "Acquisition Decision Memorandum (ADM) signed by Decision Authority authorizing use of SWP",
+      "columns": {
+        "name": "Acquisition Decision Memorandum (ADM) signed by Decision Authority authorizing use of SWP",
+        "execution_phase": "Entering the Planning Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.acquisition-decision-memorandum-adm-signed-by-decision-autho"
+    },
+    {
+      "name": "Draft Capability Needs Statement",
+      "columns": {
+        "name": "Draft Capability Needs Statement",
+        "execution_phase": "Entering the Planning Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.draft-capability-needs-statement"
+    },
+    {
+      "name": "Acquisition Strategy (acquisition approach, risk management, business strategy, contract strategy, IP strategy, logistics/sustainment, etc.)",
+      "columns": {
+        "name": "Acquisition Strategy (acquisition approach, risk management, business strategy, contract strategy, IP strategy, logistics/sustainment, etc.)",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "10 USC 4211 {formerly 2431a} DoDI 5000.87",
+        "type": "Statutory for major programs (> ACAT II) Regulatory for others"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "mixed",
+      "id": "swa.acquisition-strategy-acquisition-approach-risk-management-bu"
+    },
+    {
+      "name": "Bandwidth Requirements Review (part of ISP or other related document)",
+      "columns": {
+        "name": "Bandwidth Requirements Review (part of ISP or other related document)",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "§1047, P.L. 110-417",
+        "type": "Statutory for programs (> ACAT II) Regulatory for Others"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "mixed",
+      "id": "swa.bandwidth-requirements-review-part-of-isp-or-other-related-d"
+    },
+    {
+      "name": "Capability Needs Statement",
+      "columns": {
+        "name": "Capability Needs Statement",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.capability-needs-statement"
+    },
+    {
+      "name": "Clinger Cohen Act (CCA) Compliance (see CCA table)",
+      "columns": {
+        "name": "Clinger Cohen Act (CCA) Compliance (see CCA table)",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "DoDI 5000.82 Subtitle III of Title 40",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "swa.clinger-cohen-act-cca-compliance-see-cca-table"
+    },
+    {
+      "name": "Cost Analysis Requirements Document",
+      "columns": {
+        "name": "Cost Analysis Requirements Document",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "DoDI 5000.73",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.cost-analysis-requirements-document"
+    },
+    {
+      "name": "Cybersecurity Strategy (may be part of Acquisition Strategy or standalone document)",
+      "columns": {
+        "name": "Cybersecurity Strategy (may be part of Acquisition Strategy or standalone document)",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "40 USC 11313 DoDI 5000.87",
+        "type": "Statutory for Mission Critical and Mission Essential IT programs"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "swa.cybersecurity-strategy-may-be-part-of-acquisition-strategy-o"
+    },
+    {
+      "name": "Intellectual Property Strategy (may be part of Acquisition Strategy)",
+      "columns": {
+        "name": "Intellectual Property Strategy (may be part of Acquisition Strategy)",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.intellectual-property-strategy-may-be-part-of-acquisition-st"
+    },
+    {
+      "name": "Market Research (Part of Acquisition Strategy)",
+      "columns": {
+        "name": "Market Research (Part of Acquisition Strategy)",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "10 USC 3453 {formerly 2377} 41 USC 3306(a)(1)",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.market-research-part-of-acquisition-strategy"
+    },
+    {
+      "name": "Product Support Strategy including Business Case Analysis (may be part of Acquisition Strategy)",
+      "columns": {
+        "name": "Product Support Strategy including Business Case Analysis (may be part of Acquisition Strategy)",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.product-support-strategy-including-business-case-analysis-ma"
+    },
+    {
+      "name": "Program Cost Estimate and Independent Cost Estimate",
+      "columns": {
+        "name": "Program Cost Estimate and Independent Cost Estimate",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "DoDI 5000.87 DoDI 5000.73",
+        "type": "CAPE ICE for programs > ACAT II unless delegated"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.program-cost-estimate-and-independent-cost-estimate"
+    },
+    {
+      "name": "Test Strategy (may be part of Acquisition Strategy)",
+      "columns": {
+        "name": "Test Strategy (may be part of Acquisition Strategy)",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory Programs on DOT&E Oversight list may require a TEMP"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.test-strategy-may-be-part-of-acquisition-strategy"
+    },
+    {
+      "name": "User Agreement",
+      "columns": {
+        "name": "User Agreement",
+        "execution_phase": "Entering the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.user-agreement"
+    },
+    {
+      "name": "Clinger Cohen Act (CCA) Compliance (see CCA table)",
+      "columns": {
+        "name": "Clinger Cohen Act (CCA) Compliance (see CCA table)",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.82 Subtitle III of Title 40",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "swa.clinger-cohen-act-cca-compliance-see-cca-table"
+    },
+    {
+      "name": "Contractor Business Data Report (CTRs with $250M)",
+      "columns": {
+        "name": "Contractor Business Data Report (CTRs with $250M)",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.73",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.contractor-business-data-report-ctrs-with-250m"
+    },
+    {
+      "name": "Contractor Cost Data Report ($100M+ contracts)",
+      "columns": {
+        "name": "Contractor Cost Data Report ($100M+ contracts)",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.73",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.contractor-cost-data-report-100m-contracts"
+    },
+    {
+      "name": "Core Logistics Determination (CLD)/Core Logistics and Sustaining Workloads Estimate (CLSWE)",
+      "columns": {
+        "name": "Core Logistics Determination (CLD)/Core Logistics and Sustaining Workloads Estimate (CLSWE)",
+        "execution_phase": "During the Execution Phase",
+        "source": "10 USC 2464",
+        "type": "Statutory for programs with “software maintenance\""
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "swa.core-logistics-determination-cld-core-logistics-and-sustaini"
+    },
+    {
+      "name": "DOT&E Report on Initial Operational Test and Evaluation (IOT&E)",
+      "columns": {
+        "name": "DOT&E Report on Initial Operational Test and Evaluation (IOT&E)",
+        "execution_phase": "During the Execution Phase",
+        "source": "10 USC 4171 {formerly 2399} 10 USC 139",
+        "type": "Statutory for programs on the DOT&E Oversight List"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "swa.dot-e-report-on-initial-operational-test-and-evaluation-iot-"
+    },
+    {
+      "name": "Maintenance and Repair Parts Data Report ($100M+ Programs)",
+      "columns": {
+        "name": "Maintenance and Repair Parts Data Report ($100M+ Programs)",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.73",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.maintenance-and-repair-parts-data-report-100m-programs"
+    },
+    {
+      "name": "Operational Test Plan",
+      "columns": {
+        "name": "Operational Test Plan",
+        "execution_phase": "During the Execution Phase",
+        "source": "10 USC 4171 {formerly 2399}",
+        "type": "Statutory for programs on the DOT&E Oversight List"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "swa.operational-test-plan"
+    },
+    {
+      "name": "Periodic updates to cost estimate and CARD",
+      "columns": {
+        "name": "Periodic updates to cost estimate and CARD",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.periodic-updates-to-cost-estimate-and-card"
+    },
+    {
+      "name": "Periodic updates to strategies (acquisition, contracting, test, cybersecurity, IP, product support)",
+      "columns": {
+        "name": "Periodic updates to strategies (acquisition, contracting, test, cybersecurity, IP, product support)",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Statutory/ Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "mixed",
+      "id": "swa.periodic-updates-to-strategies-acquisition-contracting-test-"
+    },
+    {
+      "name": "Post Implementation Review",
+      "columns": {
+        "name": "Post Implementation Review",
+        "execution_phase": "During the Execution Phase",
+        "source": "40 USC 11313 DoDI 5000.82",
+        "type": "Statutory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "swa.post-implementation-review"
+    },
+    {
+      "name": "Product Roadmap or equivalent",
+      "columns": {
+        "name": "Product Roadmap or equivalent",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.product-roadmap-or-equivalent"
+    },
+    {
+      "name": "Program Backlog or equivalent",
+      "columns": {
+        "name": "Program Backlog or equivalent",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.program-backlog-or-equivalent"
+    },
+    {
+      "name": "Program Metrics",
+      "columns": {
+        "name": "Program Metrics",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.program-metrics"
+    },
+    {
+      "name": "Semi-Annual Data Reporting to OUSD(A&S)",
+      "columns": {
+        "name": "Semi-Annual Data Reporting to OUSD(A&S)",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.semi-annual-data-reporting-to-ousd-a-s"
+    },
+    {
+      "name": "Software Resources Data Report ($100M+ Programs)",
+      "columns": {
+        "name": "Software Resources Data Report ($100M+ Programs)",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.73",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.software-resources-data-report-100m-programs"
+    },
+    {
+      "name": "System Architecture",
+      "columns": {
+        "name": "System Architecture",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.system-architecture"
+    },
+    {
+      "name": "Technical Data Report ($100M+ Programs)",
+      "columns": {
+        "name": "Technical Data Report ($100M+ Programs)",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.73",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 7,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.technical-data-report-100m-programs"
+    },
+    {
+      "name": "Value Assessment (at least annually)",
+      "columns": {
+        "name": "Value Assessment (at least annually)",
+        "execution_phase": "During the Execution Phase",
+        "source": "DoDI 5000.87",
+        "type": "Regulatory"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements",
+        "pdf_page": 7,
+        "pdf_sha256": "1b9ebb1e6e01b239"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "swa.value-assessment-at-least-annually"
+    }
+  ],
+  "intro": "Below is a draft table that attempts to provide an initial pass on statute tied to 5000.87."
+}

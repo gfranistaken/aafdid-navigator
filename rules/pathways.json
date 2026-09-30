@@ -1,0 +1,208 @@
+{
+  "schema": "aafdid-navigator/pathways@1",
+  "pathways": [
+    {
+      "id": "mca",
+      "code": "MCA",
+      "name": "Major Capability Acquisition",
+      "instruction": "DoDI 5000.85",
+      "summary": "Milestone-based pathway for MDAPs, major systems and other complex acquisitions. The milestone decision authority sets the entry point: MDD, Milestone A, B or C.",
+      "aafdid_url": "https://www.waru.edu/aafdid/mca",
+      "aaf_url": "https://aaf.waru.edu/aaf/mca/",
+      "decision_authority": "ACAT ID: the Defense Acquisition Executive. ACAT IB: the service acquisition executive. ACAT IC and II: the component acquisition executive or designee. ACAT III: as the component acquisition executive designates (DoDI 5000.85, Table 1).",
+      "events": [
+        {"id": "mdd", "short": "MDD", "name": "Materiel Development Decision"},
+        {"id": "ms_a", "short": "MS A", "name": "Milestone A"},
+        {"id": "cdd_val", "short": "CDD Val", "name": "Capability Development Document validation"},
+        {"id": "dev_rfp_rel", "short": "Dev RFP Rel", "name": "Development RFP Release Decision"},
+        {"id": "ms_b", "short": "MS B", "name": "Milestone B"},
+        {"id": "ms_c", "short": "MS C", "name": "Milestone C"},
+        {"id": "frp_dec", "short": "FRP/FD", "name": "Full-Rate Production or Full Deployment Decision"},
+        {"id": "other", "short": "Other", "name": "Other, as required"}
+      ],
+      "tables": [
+        {"id": "ms", "name": "Milestone and Phase Information Requirements", "url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements"},
+        {"id": "rec", "name": "Recurring Program Reports", "url": "https://www.waru.edu/aafdid/Recurring-Reporting-Requirements"},
+        {"id": "exc", "name": "Exceptions, Waivers, and Alternative Management and Reporting Requirements", "url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements"},
+        {"id": "cca", "name": "Clinger-Cohen Act Compliance", "url": "https://www.waru.edu/aafdid/CCA-Compliance"},
+        {"id": "csdr", "name": "Cost Data Reporting Requirements", "url": "https://www.waru.edu/aafdid/Cost-Data-Reporting-Requirements"},
+        {"id": "brch", "name": "Statutory Program Breach Definitions", "url": "https://www.waru.edu/aafdid/Statutory-Program-Breach-Definitions"},
+        {"id": "apb", "name": "Acquisition Program Baselines", "url": "https://www.waru.edu/aafdid/Acquisition-Program-Baselines"}
+      ],
+      "notes": [
+        "AAFDID's MCA overview: statutory requirements in the MCA tables may not be waived unless the relevant statute permits it.",
+        "Programs may combine pathways; for example, an MCA program may use the software pathway for its software (DoDI 5000.02, para 4.1.a)."
+      ]
+    },
+    {
+      "id": "mta",
+      "code": "MTA",
+      "name": "Middle Tier of Acquisition",
+      "instruction": "DoDI 5000.80 (Change 1, November 2024); 10 U.S.C. 3602",
+      "summary": "Rapid Prototyping fields a prototype with residual operational capability within 5 years. Rapid Fielding starts production within 6 months and completes fielding within 5 years. The clock starts when the decision authority signs the program-start ADM.",
+      "aafdid_url": "https://www.waru.edu/aafdid/mta",
+      "aaf_url": "https://aaf.waru.edu/aaf/mta/",
+      "decision_authority": "The component acquisition executive unless delegated (DoDI 5000.80, para 2.6.a). Above MDAP thresholds, USD(A&S) must approve MTA use in writing (paras 2.1.b, 4.1.c).",
+      "events": [
+        {"id": "entrance", "short": "Entrance", "name": "Program entrance: the ADM starts the MTA clock"},
+        {"id": "execution", "short": "Execution", "name": "Throughout program execution"},
+        {"id": "exit", "short": "Exit", "name": "Program exit: the outcome ADM"}
+      ],
+      "tables": [
+        {"id": "osd", "name": "Program Information Requirements (Table 1: submissions to OSD for all MTA programs)", "url": "https://www.waru.edu/aafdid/MTA-Program-Information-Requirements"},
+        {"id": "sr", "name": "Statutory and Regulatory Requirements that may be applicable", "url": "https://www.waru.edu/aafdid/MTA-Statutory-Regulatory-Requirements"}
+      ],
+      "notes": [
+        "AAFDID's MTA overview: MTA has no milestones, and decision authorities keep discretion over documentation. The statutory and regulatory table lists requirements that may be applicable.",
+        "AAFDID's MTA tables do not separate Rapid Prototyping from Rapid Fielding. The difference shows only in the cost-estimate notes."
+      ]
+    },
+    {
+      "id": "uca",
+      "code": "UCA",
+      "name": "Urgent Capability Acquisition",
+      "instruction": "DoDI 5000.81",
+      "summary": "Fields capability for urgent operational needs in less than 2 years. Cost may not exceed MDAP thresholds (DoDI 5000.02, para 4.2.a).",
+      "aafdid_url": "https://www.waru.edu/aafdid/uca",
+      "aaf_url": "https://aaf.waru.edu/aaf/uca/",
+      "decision_authority": "Set under DoDD 5000.71 and DoDI 5000.81; confirm with your component.",
+      "events": [
+        {"id": "development", "short": "Development", "name": "Development Milestone"},
+        {"id": "production", "short": "P&D", "name": "Production and Deployment Milestone"},
+        {"id": "other", "short": "Other", "name": "Other, including disposition"}
+      ],
+      "tables": [
+        {"id": "ir", "name": "UCA Unique Information Requirements", "url": "https://www.waru.edu/aafdid/UCA-Unique-Information-Requirements"}
+      ],
+      "also_review": {
+        "pathway": "mca",
+        "tables": ["ms", "exc"],
+        "map_field": {"from": "uca_acat", "to": "mca_program_type"},
+        "status": "conditional",
+        "reason": "AAFDID's UCA page says to use the ACAT II and III entries of the MCA tables as well, with applicability set by DoDI 5000.81."
+      },
+      "notes": [
+        "Documents for each event are due no later than 45 calendar days before the planned review (AAFDID UCA table note).",
+        "AAFDID's UCA overview: documentation may take any appropriate written form and evolves in parallel with the acquisition."
+      ]
+    },
+    {
+      "id": "swa",
+      "code": "SWA",
+      "name": "Software Acquisition",
+      "instruction": "DoDI 5000.87; 10 U.S.C. 3603",
+      "summary": "Application and embedded software paths with a planning phase and an execution phase of iterative releases. Programs are not treated as MDAPs, and viability must be shown within 1 year of first obligating funds.",
+      "aafdid_url": "https://www.waru.edu/aafdid/swa",
+      "aaf_url": "https://aaf.waru.edu/aaf/software/",
+      "decision_authority": "The component acquisition executive unless USD(A&S) designates a special interest program or delegates otherwise (DoDI 5000.87, para 2.7.c).",
+      "events": [
+        {"id": "planning", "short": "Planning", "name": "Entering the planning phase"},
+        {"id": "execution_entry", "short": "Execution entry", "name": "Entering the execution phase"},
+        {"id": "execution", "short": "Execution", "name": "During the execution phase"},
+        {"id": "each_decision", "short": "Each DP", "name": "Each decision point"}
+      ],
+      "tables": [
+        {"id": "ir", "name": "Application and Embedded Software Information Requirements", "url": "https://www.waru.edu/aafdid/SWA-Application-and-Embedded-SW-Information-Requirements"},
+        {"id": "cca", "name": "SWA Clinger-Cohen Act Compliance", "url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance"}
+      ],
+      "notes": [
+        "AAFDID calls its SWA table a draft first pass at statute tied to DoDI 5000.87. It does not separate application and embedded programs."
+      ]
+    },
+    {
+      "id": "dbs",
+      "code": "DBS",
+      "name": "Defense Business Systems",
+      "instruction": "DoDI 5000.75",
+      "summary": "Business systems for finance, contracting, logistics, human resources and similar functions. They move through the Business Capability Acquisition Cycle and its Authority to Proceed (ATP) decision points.",
+      "aafdid_url": "https://www.waru.edu/aafdid/dbs",
+      "aaf_url": "https://aaf.waru.edu/aaf/dbs/",
+      "decision_authority": "Set by DoDI 5000.75; confirm with your component.",
+      "events": [
+        {"id": "solution_analysis_atp", "short": "SA ATP", "name": "Solution Analysis ATP", "phase": "Capability Need Identification"},
+        {"id": "functional_requirements_atp", "short": "FR ATP", "name": "Functional Requirements ATP", "phase": "Solution Analysis"},
+        {"id": "acquisition_atp", "short": "Acq ATP", "name": "Acquisition ATP", "phase": "Functional Requirements and Acquisition Planning"},
+        {"id": "contract_award", "short": "Award", "name": "Contract award", "phase": "Functional Requirements and Acquisition Planning"},
+        {"id": "limited_deployment_atp", "short": "LD ATP", "name": "Limited Deployment ATP(s)", "phase": "Functional Requirements and Acquisition Planning (as AAFDID prints it)"},
+        {"id": "full_deployment_atp", "short": "FD ATP", "name": "Full Deployment ATP", "phase": "Functional Requirements and Acquisition Planning (as AAFDID prints it)"},
+        {"id": "capability_support_atp", "short": "CS ATP", "name": "Capability Support ATP", "phase": "Acquisition, Testing and Deployment"}
+      ],
+      "tables": [
+        {"id": "sr", "name": "DBS Statutory Requirements", "url": "https://www.waru.edu/aafdid/DBS-Statutory-Requirements"}
+      ],
+      "notes": [
+        "AAFDID's DBS overview: information supporting requirements validation and the annual investment certification cannot be tailored.",
+        "AAFDID prints the Limited and Full Deployment ATPs under the Functional Requirements and Acquisition Planning phase. This tool keeps AAFDID's wording."
+      ]
+    },
+    {
+      "id": "aos",
+      "code": "AOS",
+      "name": "Acquisition of Services",
+      "instruction": "DoDI 5000.74 (Change 1, June 2021)",
+      "summary": "Services at or above the simplified acquisition threshold, managed in three phases (Plan, Develop, Execute) and seven steps. The services category (S-CAT) sets the decision authority.",
+      "aafdid_url": "https://www.waru.edu/aafdid/aos",
+      "aaf_url": "https://aaf.waru.edu/aaf/services/",
+      "decision_authority": "S-CAT I and II: the service or component acquisition executive or designee. S-CAT III to V: the component Senior Services Manager or designee. Special Interest: USD(A&S) or designee (DoDI 5000.74, Table 1).",
+      "events": [
+        {"id": "plan", "short": "Plan", "name": "Plan: form the team, review the current strategy, market research"},
+        {"id": "develop", "short": "Develop", "name": "Develop: define requirements, SRRB, acquisition strategy"},
+        {"id": "execute", "short": "Execute", "name": "Execute: award and manage performance"}
+      ],
+      "tables": [
+        {"id": "dodi", "name": "Requirements drawn from DoDI 5000.74 (AAFDID has no AoS table)", "url": "https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/500074p.pdf"}
+      ],
+      "notes": [
+        "AAFDID has not published an Acquisition of Services requirements table. Every AoS entry here comes from DoDI 5000.74 or the DFARS and cites its paragraph.",
+        "AAFDID's AoS overview: most regulatory information requirements are addressed in the acquisition strategy, and S-CAT decision authorities decide what regulatory information is required."
+      ]
+    }
+  ],
+  "finder": {
+    "title": "Find the pathway",
+    "intro": "Answer in order. The first yes points to a pathway. The decision authority approves the choice, and programs may combine pathways (DoDI 5000.02, para 4.1.a).",
+    "start": "f_services",
+    "steps": [
+      {
+        "id": "f_services",
+        "text": "Are you buying services, meaning work performed by a contractor, rather than a product, system or software?",
+        "help": "Services at or above the simplified acquisition threshold follow DoDI 5000.74. Services managed as part of another pathway's program stay with that program.",
+        "cite": "DoDI 5000.02, para 4.2.f; DoDI 5000.74, paras 1.1.b and 1.2.a",
+        "yes": {"result": "aos"},
+        "no": {"next": "f_business"}
+      },
+      {
+        "id": "f_business",
+        "text": "Is it a business system that supports business operations such as finance, contracting, logistics, budgeting, installations or human resources?",
+        "help": "Covered defense business system software uses the DBS pathway, though it may use the software pathway for custom-built parts (DoDI 5000.87, para 1.2.b).",
+        "cite": "DoDI 5000.02, para 4.2.e",
+        "yes": {"result": "dbs"},
+        "no": {"next": "f_urgent"}
+      },
+      {
+        "id": "f_urgent",
+        "text": "Does it answer a validated urgent operational need, fieldable in less than 2 years, at a cost below the MDAP thresholds?",
+        "help": "Urgent needs are designated under DoDD 5000.71 and DoDI 5000.81. The MDAP thresholds rose in December 2025, to more than $1.0B RDT&E or $4.5B procurement in FY2024 dollars (10 U.S.C. 4201).",
+        "cite": "DoDI 5000.02, para 4.2.a",
+        "yes": {"result": "uca"},
+        "no": {"next": "f_software"}
+      },
+      {
+        "id": "f_software",
+        "text": "Is the effort mainly software: applications, or upgrades to software embedded in a weapon system?",
+        "help": "The application path covers software on commercial or modified hardware or cloud platforms. The embedded path covers upgrades to software in weapon systems, while the host system may stay on another pathway.",
+        "cite": "DoDI 5000.87, paras 1.2.b and 3.1.b; 10 U.S.C. 3603",
+        "yes": {"result": "swa"},
+        "no": {"next": "f_mta"}
+      },
+      {
+        "id": "f_mta",
+        "text": "Can it be fielded within 5 years using mature technology, either as prototypes demonstrated in an operational environment or by starting production of a proven item within 6 months?",
+        "help": "Rapid Prototyping: residual operational capability within 5 years. Rapid Fielding: production within 6 months and fielding within 5 years. Neither may be planned past those limits.",
+        "cite": "DoDI 5000.80, paras 1.2.c and 1.2.d",
+        "yes": {"result": "mta"},
+        "no": {"result": "mca"}
+      }
+    ]
+  }
+}

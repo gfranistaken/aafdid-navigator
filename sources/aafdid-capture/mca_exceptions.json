@@ -1,0 +1,579 @@
+{
+  "pathway": "mca",
+  "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+  "row_count": 22,
+  "rows": [
+    {
+      "name": "ALTERNATE LFT&E PLAN",
+      "columns": {
+        "name": "ALTERNATE LFT&E PLAN",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "A DoD Component- approved final draft plan is due 45 calendar days prior to the Development RFP Release decision. The final plan is required at Milestone B or as soon as practicable after program initiation.",
+        "source": "10 U.S.C. 4172",
+        "type": "Statutory",
+        "procedure": "PM to DOT&E"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial"
+      },
+      "notes": "STATUTORY. Only required for programs on the DOT&E oversight list for LFT&E with or requesting a waiver from full-up, system-level testing.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.alternate-lft-e-plan"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF CONDUCTING DT&E WITHOUT AN APPROVED TEMP",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF CONDUCTING DT&E WITHOUT AN APPROVED TEMP",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Notification is required not later than 30 days after any decision is made for a lead DT&E Organization to conduct any developmental",
+        "source": "§904, P.L. 112-239",
+        "type": "Statutory",
+        "procedure": "PM to USD(A&S) to Congress"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-conducting-dt-e-without-an-app"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF CORE LOGISTICS COMMERCIAL ITEM EXCEPTION",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF CORE LOGISTICS COMMERCIAL ITEM EXCEPTION",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due upon determination that the system or equipment is a commercial item.",
+        "source": "10 U.S.C. 2464",
+        "type": "Statutory",
+        "procedure": "DAE to Congress"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial"
+      },
+      "notes": "STATUTORY. The commercial item exception notice must include the justification for the determination.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-core-logistics-commercial-item"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF CRITICAL COST BREACH",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF CRITICAL COST BREACH",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due within 45 calendar days of a Program Deviation Report",
+        "source": "10 U.S.C. 4371 - 4377",
+        "type": "Statutory",
+        "procedure": "Service Secretary to Congress"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "STATUTORY.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-critical-cost-breach"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF INCLUDING INCENTIVE FEES OR PENALTIES IN CONTRACTS",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF INCLUDING INCENTIVE FEES OR PENALTIES IN CONTRACTS",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Notification required upon entering into an EMD or Production contract that includes incentive fees or penalties, based on the achievement of reliability and",
+        "source": "10 U.S.C. 4328",
+        "type": "Statutory",
+        "procedure": "MDA to Congress; Copy USD(A&S), USD(R&E)"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial"
+      },
+      "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-including-incentive-fees-or-pe"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF MDA REVISION OF THE ACQUISITION STRATEGY",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF MDA REVISION OF THE ACQUISITION STRATEGY",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Notification reports an MDA revision to the acquisition strategy to the congressional defense committees when the program has experienced: (1) a significant change to the cost of the program or system; (2) a critical change to the cost of the program or system; (3) a significant change to the schedule of the program or system; or (4) a significant change to the performance of the program or system.",
+        "source": "10 U.S.C. 4211",
+        "type": "Statutory",
+        "procedure": "MDA to Congress (copy DAE)"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial"
+      },
+      "notes": "STATUTORY. Each level of change for dollars is defined in section 4211 with a cross reference to section 4371. A significant change in schedule is defined as a delay greater than six months. A significant change in performance is not defined in statute. ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-mda-revision-of-the-acquisitio"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF MDAP SUBPROGRAM DESIGNATION(S)",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF MDAP SUBPROGRAM DESIGNATION(S)",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due not less than 30 calendar days before approval of a subprogram APB.",
+        "source": "10 U.S.C. 4203",
+        "type": "Statutory",
+        "procedure": "MDA to Congress (copy DAE)"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "STATUTORY. Reports the DAE's determination that (1) different categories of end items in an MDAP, or (2) delivery increments or blocks of an MDAP warrant separate acquisition reporting and will be designated Major Subprograms. The APB Table provides additional policy regarding subprograms.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-mdap-subprogram-designation-s"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF PRESERVATION AND STORAGE OF UNIQUE PRODUCTION TOOLING WAIVER",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF PRESERVATION AND STORAGE OF UNIQUE PRODUCTION TOOLING WAIVER",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due before Milestone C or at any time before the end of the item's service life if the Secretary determines the waiver is in the best interest of the DoD.",
+        "source": "§815, P.L. 110-417",
+        "type": "Statutory",
+        "procedure": "DAE to Congress"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "STATUTORY. Based on the Secretary's written determination that such a waiver is in the best interest of the DoD.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-preservation-and-storage-of-un"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF SIGNIFICANT COST BREACH",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF SIGNIFICANT COST BREACH",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due within 45 calendar days of a Program Deviation Report",
+        "source": "10 U.S.C. 4371-4375",
+        "type": "Statutory",
+        "procedure": "Service Secretary to Congress"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "STATUTORY. Due within 45 calendar days of a Program Deviation Report. Reporting under Chapter 325-Cost Growth-Unit Cost Reports (Nunn-McCurdy) does not apply if a program has received a limited reporting waiver under 10 U.S.C. 4351, subsection (h). ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-significant-cost-breach"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF WAIVER OF PROHIBITION ON USING COVERED TELECOMMUNICATIONS EQUIPMENT OR SERVICES FOR NUCLEAR COMMAND, CONTROL, AND COMMUNICATIONS SYSTEMS",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF WAIVER OF PROHIBITION ON USING COVERED TELECOMMUNICATIONS EQUIPMENT OR SERVICES FOR NUCLEAR COMMAND, CONTROL, AND COMMUNICATIONS SYSTEMS",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Required when the Secretary of Defense waives the prohibitions described in and pursuant to §1656 of P.L. 115- 912. This waiver authority is only delegable to the Deputy Secretary of Defense or the co-chairs of the Council on Oversight of the National Leadership Command, Control, and Communications System. The Secretary may only waive the prohibition for a single, one-year period.",
+        "source": "§1656, P.L. 115-91 FAR 4.2102 FAR 4.2104",
+        "type": "Statutory",
+        "procedure": "Agency head to Congress; Copy to USD(A&S), USD(R&E), DoD CIO"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial"
+      },
+      "notes": "The cited section of the law fully details the prohibition and the limited waiver authority of the Secretary.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-waiver-of-prohibition-on-using"
+    },
+    {
+      "name": "CONGRESSIONAL NOTIFICATION OF WAIVER OF PROHIBITIONS ON CERTAIN TELECOMMUNICATIONS AND VIDEO SURVEILLANCE SERVICES OR EQUIPMENT",
+      "columns": {
+        "name": "CONGRESSIONAL NOTIFICATION OF WAIVER OF PROHIBITIONS ON CERTAIN TELECOMMUNICATIONS AND VIDEO SURVEILLANCE SERVICES OR EQUIPMENT",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Required when the head of executive agency waives the prohibitions described in and pursuant to §889 of P.L. 115-232.",
+        "source": "§889, P.L. 115-232 DFARS Subpart 204.2100",
+        "type": "Statutory",
+        "procedure": "Agency head to Congress; Copy to USD(A&S), USD(R&E), DoD CIO"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial"
+      },
+      "notes": "The cited section of the law fully details the prohibition as well as the condition for the waivers. ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.congressional-notification-of-waiver-of-prohibitions-on-cert"
+    },
+    {
+      "name": "COST-TYPE DEVELOPMENT CONTRACT DETERMINATION",
+      "columns": {
+        "name": "COST-TYPE DEVELOPMENT CONTRACT DETERMINATION",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due at the Development RFP Release Decision Point upon MDA conditional approval of a cost type contract selected for a development program; due at Milestone B if the contract type changes from fixed price to a cost type contract.",
+        "source": "§818, P.L. 109-364",
+        "type": "Statutory",
+        "procedure": "MDA Written Determination"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "STATUTORY. The MDA may authorize the use of a cost-type contract for a development program only upon a written determination that: (1) the program is so complex and technically challenging that it would not be practicable to reduce program risk to a level that would permit the use of a fixed-price contract; and (2) the complexity and technical challenge of the program are not the result of a failure to meet the requirements of 10 U.S.C. 4252. The MDA's written determination will include an explanation of the level of program risk, and, if the MDA determines that the program risk is high, the steps that have been taken to reduce program risk and the reasons for proceeding with Milestone B approval despite the high level of program risk. In considering program risk to determine whether a cost or fixed price engineering and manufacturing development contract meets the statutory requirement, the MDA will consider the following: the firmness of the capability requirements and maturity of the technology required; the experience level of potential offerors; and the capacity of industry to absorb potential overruns and the business case for industry to do so.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.cost-type-development-contract-determination"
+    },
+    {
+      "name": "COST-TYPE PRODUCTION CONTRACT EXCEPTION CERTIFICATION",
+      "columns": {
+        "name": "COST-TYPE PRODUCTION CONTRACT EXCEPTION CERTIFICATION",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Applicable to contracts for the production of MDAPs: Entered October which The granted the using contract production. prohibition USD(A&S) a cost-type into, 1, an for 2014, exception MDAP on, has against and or after for to",
+        "source": "§811, P.L. 112- 239",
+        "type": "Statutory",
+        "procedure": "USD(A&S) to Congress"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "STATUTORY. The USD(A&S) may only grant the exception: (1) in the case of a particular cost-type contract if the USD(A&S) provides written certification to the congressional defense committees that a cost-type contract is ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III needed to provide a required capability in a timely and cost-effective manner; (2) the USD(A&S) takes affirmative steps to make sure that the use of cost-type pricing is limited to only those line items or portions of the contract where such pricing is needed to achieve the purposes of the exception; and, (3) an explanation of the steps identified under clause (2), accompanies the written certification under clause (1).",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.cost-type-production-contract-exception-certification"
+    },
+    {
+      "name": "DT&E EXCEPTION REPORTING",
+      "columns": {
+        "name": "DT&E EXCEPTION REPORTING",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Case 1: When an MDAP proceeds with implementing a TEMP that includes a developmental test plan disapproved by the Director, DT&E (D(DT&E)). Case 2: When an MDAP proceeds to IOT&E following an assessment by the D(DT&E) that the program is not ready for operational testing.",
+        "source": "§904, P.L. 112-239",
+        "type": "Statutory",
+        "procedure": "PM to USD(R&E) to Congress"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "STATUTORY The report due for Case 1 must include a description of the specific aspects of the DT&E plan determined to be inadequate; an explanation of why the program disregarded the DASD(DT&E)'s recommendations; and identification of the steps taken to address the concerns of the DASD(DT&E). The report due for Case 2 must include an explanation of why the program proceeded to IOT&E despite the DASD(DT&E) findings; a description of the aspects of the TEMP that had to be set aside to enable the program to proceed to IOT&E; a description of how the program addressed the specific areas of concern raised in the assessment of operational test readiness; and a ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III statement of whether IOT&E identified any significant shortcomings in the program. The USD(R&E) will compile all such exception reports and annually, not later than 60 days after the end of each fiscal year through 2018, submit a report on each case to the congressional defense committees. The D(DT&E) replaced the DASD(DT&E) during the OSD re-organization pursuant to Section 901 of P.L. 114-328.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 7,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.dt-e-exception-reporting"
+    },
+    {
+      "name": "LEAD SYSTEM INTEGRATOR EXCEPTION CERTIFICATION",
+      "columns": {
+        "name": "LEAD SYSTEM INTEGRATOR EXCEPTION CERTIFICATION",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due if the MDA grants an exception.",
+        "source": "10 U.S.C. 4292",
+        "type": "Statutory",
+        "procedure": "DAE to Congress"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial"
+      },
+      "notes": "STATUTORY for MDAPs, ACAT II programs, and any AIS program that exceeds the dollar values for a major system as identified in Table 1 in DoDI 5000.85, Appendix 3A. Satisfies the statutory restrictions applicable to exceptional use of a lead systems integrator.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 8,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.lead-system-integrator-exception-certification"
+    },
+    {
+      "name": "LFT&E WAIVER FROM FULL-UP, SYSTEM-LEVEL TESTING",
+      "columns": {
+        "name": "LFT&E WAIVER FROM FULL-UP, SYSTEM-LEVEL TESTING",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due at Milestone B or as soon as practicable after program initiation.",
+        "source": "10 U.S.C. 4172",
+        "type": "Statutory",
+        "procedure": "DAE to Congress"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial"
+      },
+      "notes": "STATUTORY. Only required for programs on the DOT&E Oversight List for LFT&E that are requesting a waiver from full-up, system-level testing.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 8,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.lft-e-waiver-from-full-up-system-level-testing"
+    },
+    {
+      "name": "Management of Joint DoD and Director of National Intelligence (DNI) Programs",
+      "columns": {
+        "name": "Management of Joint DoD and Director of National Intelligence (DNI) Programs",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "When the DoD participates in a National Intelligence Program acquisition that is wholly or in the majority funded by the DNI.",
+        "source": "MoA.",
+        "type": "Regulatory",
+        "procedure": "None"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial"
+      },
+      "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III Joint DoD and DNI oversight of wholly and majority National Intelligence Program-funded acquisition programs will be conducted in accordance with Intelligence Community Policy Guidance 801.1 and the Memorandum of Agreement (MoA) between the DNI and the Secretary of Defense.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 8,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "regulatory",
+      "id": "mca.management-of-joint-dod-and-director-of-national-intelligenc"
+    },
+    {
+      "name": "MDA RESPONSE TO A CONGRESSIONAL MILESTONE APPROVAL INQUIRY",
+      "columns": {
+        "name": "MDA RESPONSE TO A CONGRESSIONAL MILESTONE APPROVAL INQUIRY",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due upon congressional inquiry.",
+        "source": "10 U.S.C. sections 4251, 4252, and 4153",
+        "type": "Statutory",
+        "procedure": "MDA to Congress (copy DAE)"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "STATUTORY for MDAPs after Milestone A, B, or C approval, or for major subprograms of MDAPs after Milestone A approval. A response to an inquiry must include the independent cost and schedule estimates and the independent technical risk assessment. A response must also include the following milestone-specific information: After Milestone A, an explanation of the basis for the \"4251 WRITTEN DETERMINATION\" and a copy of the determination, further information, or underlying documentation for the information in the \"MILESTONE SUMMARY REPORT.\" After Milestone B, an explanation of the basis for the \"4252 CERTIFICATION AND DETERMINATION\" or further information or underlying documentation for the information in the \"MILESTONE SUMMARY REPORT.\" DoD will submit the additional information in unclassified form, but may include a classified annex. After Milestone C, further information or underlying documentation for the information in the \"MILESTONE SUMMARY REPORT.\"",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 9,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.mda-response-to-a-congressional-milestone-approval-inquiry"
+    },
+    {
+      "name": "NUNN-MCCURDY ASSESSMENT AND CERTIFICATION",
+      "columns": {
+        "name": "NUNN-MCCURDY ASSESSMENT AND CERTIFICATION",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "When a Service Secretary has reported an increase in cost that equals or exceeds the critical cost growth threshold.",
+        "source": "10 U.S.C. 4376-4377",
+        "type": "Statutory",
+        "procedure": "USD(A&S)"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III STATUTORY. The remedial actions required when a program or subprogram experiences critical cost growth. 10 U.S.C. 4376 identifies the required elements of the certification. 10 U.S.C. 4377 identifies required actions if the deficient program is not terminated.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 9,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.nunn-mccurdy-assessment-and-certification"
+    },
+    {
+      "name": "Program Deviation Report",
+      "columns": {
+        "name": "Program Deviation Report",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due within 30 business days of occurrence of the deviation. Initial MDA notification is due immediately upon becoming aware of an impending deviation.",
+        "source": "Introductory text to the Acquisition Program Baselines Table, and the Statutory Program Breach Definitions Table",
+        "type": "Regulatory",
+        "procedure": "PM to MDA"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial"
+      },
+      "notes": "Regulatory. Management details are provided in the MCA AAFDID tables identified as the source of the requirement.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "mixed",
+      "id": "mca.program-deviation-report"
+    },
+    {
+      "name": "ROOT CAUSE ANALYSIS",
+      "columns": {
+        "name": "ROOT CAUSE ANALYSIS",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "A root cause analysis is an essential element in the procedures to avoid the statutorily presumed termination of an MDAP (or designated subprogram) that experiences a program acquisition unity cost or procurement until cost increase equal to or greater than the critical cost",
+        "source": "10 U.S.C. 4273 10 U.S.C. 4371-4377",
+        "type": "Statutory",
+        "procedure": "SecDef, D, CAPE, in Consultation with the JROC"
+      },
+      "marks": {
+        "mdap": "initial"
+      },
+      "notes": "ACAT SOURCE TYPE REQUIREMENT DUE PROCEDURE MDAP II ≤III",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.root-cause-analysis"
+    },
+    {
+      "name": "SURVIVABILITY AND LIVE FIRE TESTING STATUS REPORT",
+      "columns": {
+        "name": "SURVIVABILITY AND LIVE FIRE TESTING STATUS REPORT",
+        "mdap": "",
+        "acat_ii": "",
+        "acat_iii_or_below": "",
+        "due": "Due as soon as practicable after a decision to proceed to operational use or to make procurement funds available for a covered system is made prior to Milestone C approval.",
+        "source": "10 U.S.C. 4172",
+        "type": "Statutory",
+        "procedure": "DOT&E to Congress"
+      },
+      "marks": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial"
+      },
+      "notes": "STATUTORY. DOT&E LFT&E Oversight programs only, including those that respond to urgent needs. Program also requires the LFT&E Report (see LFT&E Report row in the Milestone and Phase Information Requirements Table).",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Exceptions-Waivers-and-Alternative-Requirements",
+        "pdf_page": 11,
+        "pdf_sha256": "fc6c9b5f2cf3f1fb"
+      },
+      "footnote_refs": [],
+      "authority_type": "statutory",
+      "id": "mca.survivability-and-live-fire-testing-status-report"
+    }
+  ],
+  "table_notes": [
+    "Each row identifies an information requirement and the source of the requirement. STATUTORY items and sources appear in ALL CAPS; Regulatory items and sources appear in normal text. Statutory requirements cannot be waived unless the statute permits. MDAs may tailor regulatory procedures consistent with sound business practice and the risks associated with the product being acquired"
+  ]
+}

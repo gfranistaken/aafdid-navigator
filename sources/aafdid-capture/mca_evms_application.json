@@ -1,0 +1,75 @@
+{
+  "pathway": "mca",
+  "source_url": "https://www.waru.edu/aafdid/EVMS-Application-Requirements",
+  "row_count": 3,
+  "rows": [
+    {
+      "name": "< $20M",
+      "columns": {
+        "contract_value": "< $20M",
+        "applicability": "EVMS not required; may be applied at PM discretion based on risk to the Government",
+        "notes": "Requires business case analysis and MDA approval.",
+        "source": "Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/EVMS-Application-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "f3df5795b38c8343"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.20m"
+    },
+    {
+      "name": "≥ $20M &<$100M",
+      "columns": {
+        "contract_value": "≥ $20M &<$100M",
+        "applicability": "EVMS Required; Contractor is required to have an EVMS that complies with the guidelines in EIA-748.*",
+        "notes": "The Government reserves the right to review a contractor’s EVMS when deemed necessary to verify compliance.",
+        "source": "Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/EVMS-Application-Requirements",
+        "pdf_page": 1,
+        "pdf_sha256": "f3df5795b38c8343"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.20m-100m"
+    },
+    {
+      "name": "≥ $100M",
+      "columns": {
+        "contract_value": "≥ $100M",
+        "applicability": "EVMS Required; Contractor is required to have an EVMS that has been determined to be in compliance with the guidelines in EIA-748.*",
+        "notes": "The Contractor will provide access to all pertinent records and data requested by the Contracting Officer or duly authorized representative as necessary to permit initial and ongoing Government compliance reviews to ensure that the EVMS complies, and continues to comply, with the guidelines in EIA-748.*",
+        "source": "Part 7 of Office of Management and Budget Circular A- 11 FAR 52.234-4, FAR subpart, 34.2 DFARS 234.201 DoDI 5000.85, Para. 3C.3.c.(3)"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/EVMS-Application-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "f3df5795b38c8343"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "mca.100m"
+    }
+  ],
+  "table_notes": [
+    "While the DODI 5000.85 provides an overview for EVM, the application of EVM is not specific to any one acquisition pathway. EVM should be applied per the contract type and thresholds described above.",
+    "For programs or contracts associated with programs where the OUSD(A&S) is the MDA, the OUSD(A&S) Acquisition Data and Analytics, in coordination with the CAE or designee, will review proposed contract work scope for EVMS applicability and provide a recommendation to the DAE/MDA for a determination of EVMS applicability. For all other ACAT levels, the CAE or designee, will review and determine EVMS applicability. If EVMS is determined to apply, then threshold application in this table is utilized or a waiver from the CAE is required. If, based on the nature of the work, EVMS is determined not to apply, then EVMS is not placed on contract.",
+    "The term \"contracts\" includes contracts, subcontracts, intra-government work agreements, and other agreements.",
+    "For IDIQ contracts, inclusion of EVMS requirements is based on the estimated ceiling of the total IDIQ contract, and then is applied to the individual task/delivery orders, or group(s) of related task/delivery orders, that meet or are expected to meet the conditions of contract type, value, duration, and work scope. The EVMS requirements should be placed on the base IDIQ contract and applied to the task/delivery orders, or group(s) of related task/delivery orders. \"Related\" refers to dependent efforts that can be measured and scheduled across task/delivery orders.",
+    "The Integrated Baseline Review is required when EVMS is determined to be applicable.",
+    "The initiation of an over-target baseline or over-target schedule must be approved by the Government PM.",
+    "Application thresholds are in then-year dollars.",
+    "EIA-748 = Electronic Industries Alliance (EIA) 748-Current Version"
+  ],
+  "intro": "EVMS is applied to cost reimbursable or incentive contracts, inclusive of options, with 18 months or greater period of performance and based on the nature of the work scope."
+}

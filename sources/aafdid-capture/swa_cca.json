@@ -1,0 +1,198 @@
+{
+  "pathway": "swa",
+  "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+  "row_count": 11,
+  "rows": [
+    {
+      "name": "Conduct an analysis of alternatives",
+      "columns": {
+        "action": "Conduct an analysis of alternatives",
+        "documentation": "Acquisition Strategy (Business Strategy section)"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.conduct-an-analysis-of-alternatives"
+    },
+    {
+      "name": "Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS programs, conduct a life-cycle cost estimate.",
+      "columns": {
+        "action": "Conduct an economic analysis that includes a calculation of the return on investment; or for non-AIS programs, conduct a life-cycle cost estimate.",
+        "documentation": "Component Cost Estimate, Component Cost Position"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.conduct-an-economic-analysis-that-includes-a-calculation-of-"
+    },
+    {
+      "name": "Determination that the acquisition supports core, priority functions of the DoD.",
+      "columns": {
+        "action": "Determination that the acquisition supports core, priority functions of the DoD.",
+        "documentation": "Capability Needs Statement (Capabilities section)"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.determination-that-the-acquisition-supports-core-priority-fu"
+    },
+    {
+      "name": "Determine that no private sector or government source can better support the function",
+      "columns": {
+        "action": "Determine that no private sector or government source can better support the function",
+        "documentation": "Acquisition Strategy"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.determine-that-no-private-sector-or-government-source-can-be"
+    },
+    {
+      "name": "Develop clearly established measures and accountability for program progress.",
+      "columns": {
+        "action": "Develop clearly established measures and accountability for program progress.",
+        "documentation": "Acquisition Strategy (Program Metrics, Value Assessment)"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.develop-clearly-established-measures-and-accountability-for-"
+    },
+    {
+      "name": "Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, to include relevant standards.",
+      "columns": {
+        "action": "Ensure that the acquisition is consistent with the DoD Information Enterprise policies and architecture, to include relevant standards.",
+        "documentation": "System Architecture"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.ensure-that-the-acquisition-is-consistent-with-the-dod-infor"
+    },
+    {
+      "name": "Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant standards.",
+      "columns": {
+        "action": "Ensure that the program has a Cybersecurity Strategy that is consistent with DoD policies, standards and architectures, to include relevant standards.",
+        "documentation": "Cybersecurity Strategy"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.ensure-that-the-program-has-a-cybersecurity-strategy-that-is"
+    },
+    {
+      "name": "Ensure, to the maximum extent practicable, (1) modular contracting has been used, and (2) the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent of....",
+      "columns": {
+        "action": "Ensure, to the maximum extent practicable, (1) modular contracting has been used, and (2) the program is being implemented in phased, successive increments, each of which meets part of the mission need and delivers measurable benefit, independent of....",
+        "documentation": "Acquisition Strategy (Contracting Strategy section)"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.ensure-to-the-maximum-extent-practicable-1-modular-contracti"
+    },
+    {
+      "name": "Establish outcome-based performance measures linked to strategic goals",
+      "columns": {
+        "action": "Establish outcome-based performance measures linked to strategic goals",
+        "documentation": "Capability Needs Statement (Performance Attributes section)"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.establish-outcome-based-performance-measures-linked-to-strat"
+    },
+    {
+      "name": "Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of",
+      "columns": {
+        "action": "Redesign the processes that the system supports to reduce costs, improve effectiveness and maximize the use of",
+        "documentation": "Capability Needs Statement (Program Summary section)"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 1,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.redesign-the-processes-that-the-system-supports-to-reduce-co"
+    },
+    {
+      "name": "Register Mission-Critical and Mission-Essential systems with the DoD CIO.",
+      "columns": {
+        "action": "Register Mission-Critical and Mission-Essential systems with the DoD CIO.",
+        "documentation": "DoD Information Technology Portfolio Repository"
+      },
+      "marks": {},
+      "notes": "",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/SWA-Clinger-Cohen-Act-Compliance",
+        "pdf_page": 2,
+        "pdf_sha256": "54d5e4d7166b7830"
+      },
+      "footnote_refs": [],
+      "authority_type": "unspecified",
+      "id": "swa.register-mission-critical-and-mission-essential-systems-with"
+    }
+  ],
+  "table_notes": [
+    "Under certain scenarios, some statutory information may be required; e.g.: Benefit Analysis and Determination (Part of ACQ Strat); Consideration of Technology Issues (Part of ACQ Strat); Contract-type Determination (Part of ACQ Strat); Cooperative Opportunities (Part of ACQ Strat); Cybersecurity Strategy (required by 5000.87 regardless); DOT&E Report on Initial Operational Test and Evaluation (IOT&E); Independent Cost Estimate (required by 5000.87 regardless); IP Strategy (Part of ACQ Strat); Market Research (Part of ACQ Strat); Operational Test Plan (OTP)",
+    "Other potential scenarios involving international partners, dual pathway, hybrid acquisition of a business system (.75 + .87 use) offer another layer of complexity that will have to be explored by the program and service level OGC."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+ "profile": {
+  "program": "Pathway not chosen yet (example)"
+ },
+ "pathway": null,
+ "focus_event": null,
+ "counts": {},
+ "derived": {},
+ "questions_needed": [
+  "pathway"
+ ],
+ "currency_notes": [],
+ "items": []
+}

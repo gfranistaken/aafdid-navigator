@@ -1,0 +1,25 @@
+{
+  "pathway": "aos",
+  "page": "overview",
+  "source_url": "https://www.waru.edu/aafdid/aos",
+  "requirements_status": "not_yet_published",
+  "governing_dodi": "DoDI 5000.74",
+  "statutory_authority": "FY11 NDAA section 863; 10 U.S.C. Chapter 341 (Sections 4501-4509)",
+  "overview_text": "DoDI 5000.74 Overview. The DoDI 5000.74, “Defense Acquisition of Services,” is authorized pursuant to FY11 NDAA, section 863 “Requirements for the Acquisition of Services”. The DoDI 5000.74 establishes processes for identifying, assessing, reviewing, and validating requirements for the acquisition of services. The services acquisition process is comprised of seven-steps, broken into three phases: planning, developing, and executing. The seven-step process begins with the formation of the multi-functional team, followed by reviewing the current strategy, performing market research, defining the requirement, developing an acquisition strategy, executing the strategy, and managing performance during the post-award period.",
+  "statutory_sections": {
+    "4501": "Procurement of contract services: management structure",
+    "4502": "Procurement of contract services: senior officials responsible for management of acquisition of contract services",
+    "4505": "Procurement of services: tracking of purchases",
+    "4506": "Procurement of services: data analysis and requirements validation",
+    "4507": "Procurement of services: contracts for professional and technical services",
+    "4508": "Contractor performance of acquisition functions closely associated with inherently governmental functions",
+    "4509": "Contracts for advisory and assistance services: cost comparison studies"
+  },
+  "regulatory_text": "DoDI 5000.74 Regulatory Requirements. Most regulatory information requirements are addressed in the Acquisition Strategy. Services Category Decision Authorities have the authority to determine what regulatory information is required. Please refer to DoDI 5000.74 for full policy regarding the use of the Acquisition of Services Pathway.",
+  "provenance": {
+    "source_url": "https://www.waru.edu/aafdid/aos",
+    "pdf_page": 1,
+    "pdf_sha256": "13fdc1c0248b80bd",
+    "extraction_method": "manual_transcription_from_pdf_text"
+  }
+}

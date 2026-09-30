@@ -1,0 +1,2642 @@
+{
+  "table": "Milestone and Phase Information Requirements",
+  "pathway": "mca",
+  "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+  "row_count": 80,
+  "rows": [
+    {
+      "name": "10 U.S.C. 4251 MILESTONE A COMPLIANCE",
+      "source_raw": "10 U.S.C. 4251 DoDI 5000.85",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs and major subprograms. By this table, the MDA does not have authority to delegate this requirement. 1. Before granting Milestone A approval for an MDAP or a major sub-program, the MDA must ensure that the program information is sufficient to warrant entry into TMRR; cost, schedule, technical, and performance tradeoffs do not overly constrain the future trade space; and plans to proceed into EMD are sound. 2. Additional statutory requirements include, but are not limited to, a written record of the decision, the Milestone Summary Report (see row later in this table), retention of Milestone A documentation, and congressional notification within 15 days. Refer to the statute for the complete and detailed listing of Milestone A statutory requirements.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.10-u-s-c-4251-milestone-a-compliance"
+    },
+    {
+      "name": "10 U.S.C. 4252 MILESTONE B COMPLIANCE",
+      "source_raw": "10 U.S.C. 4252 10 U.S.C. 4402 DoDI 5000.85",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_b": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs and major subprograms before Milestone B approval. By this table, the MDA does not have authority to delegate this requirement. Before granting Milestone B approval for an MDAP or a major subprogram, the MDA must ensure that the program is affordable; program information warrants entry into EMD; the MilDep Secretary and the Chief of the armed force concur with trade-offs; and the program complies with the modular open system approach requirements provided in 10 U.S.C. 4402. Refer to the statute for the complete and detailed listing of Milestone B statutory requirements.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_b": "initial"
+      },
+      "authority_type": "mixed",
+      "id": "mca.10-u-s-c-4252-milestone-b-compliance"
+    },
+    {
+      "name": "10 U.S.C. 4253 MILESTONE C COMPLIANCE",
+      "source_raw": "10 U.S.C. 4253 DoDI 5000.85",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. Within 15 days of granting Milestone C approval for an MDAP, the MDA must provide the congressional defense committes (and, in the case of intelligence- related programs, the congressional intelligence committees) a brief Milestone C program summary report. This requirement is also addressed in the \"Milestone Summary Report\" row of this table. Refer to the statute for the complete and detailed listing of Milestone C reporting requirements.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_c": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.10-u-s-c-4253-milestone-c-compliance"
+    },
+    {
+      "name": "ACQUISITION APPROACH (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 4211 15 U.S.C. 631, et seq. 10 U.S.C. 4820",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs and major systems. Describe the top-level business and technical management approach in sufficient detail to allow the MDA to assess (1) the viability of the approach; (2) the method of implementing laws and policies; and (3) program objectives. Provide a clear explanation of how the strategy is designed to be implemented within the available resources of time, funding, and management capacity. Discuss the tailoring that will address program requirements and constraints. Where appropriate, the strategy should consider the delivery of required capability in increments, each dependent on available, mature technology, and recognizing up front the need for future capability improvements. 10 U.S.C. 4211 explicitly requires the Acquisition Approach to address industrial base considerations in accordance with 10 U.S.C. 4820.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.acquisition-approach-part-of-acquisition-strategy"
+    },
+    {
+      "name": "Acquisition Decision Memorandum (ADM)",
+      "source_raw": "DoDI 5000.85 10 U.S.C. 4251 10 U.S.C. 4252",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "mdd": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Documents MDA decisions and direction. The approved AoA study guidance and study plan will be attached to the ADM. The ADM serves as the \"written record\" required by U.S. Code.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "mdd": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "mixed",
+      "id": "mca.acquisition-decision-memorandum-adm"
+    },
+    {
+      "name": "ACQUISITION PROGRAM BASELINE (APB)",
+      "source_raw": "10 U.S.C. 4214 10 U.S.C. 4377",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs at Milestones B and C and the FRP decision; a Regulatory requirement at all other Program Type/Event combinations, including the required draft at Development RFP Release. For the APB, the draft due at RFP Release does not require CAE approval. The APB is not approved by the MDA until Milestone B. See the introductory text for the Acquisition Program Baselines Table and the Statutory Program Breach Definitions Table for reporting requirements at other than the identified decision points.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 2,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.acquisition-program-baseline-apb"
+    },
+    {
+      "name": "ACQUISITION STRATEGY",
+      "source_raw": "10 U.S.C. 4211 DoDI 5000.85",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs and major systems (including AIS programs that exceed the dollar thresholds for a \"major system,\" as identified in DoDI 5000.85, Appendix 3A); Regulatory for other programs. 10 U.S.C. 4211 provides a comprehensive/detailed list of required strategy content; required content may be extended with regulatory requirements. Major changes to the program planning reflected in the Acquisition Strategy require MDA approval. 1. If the MDA revises the strategy for an MDAP or major defense subprogram because of a significant or critical change to the cost of the program or system, or a significant change to the schedule or performance of the program or system, the MDA must notify the congressional defense committees consistent with the Exceptions, Waivers, and Alternative Management and Reporting Requirements Table. 2. The MDA must review and re-approve the strategy upon a significant change to the schedule or performance of the program (or system), or if there has been a significant or critical change to the cost of the program (or system). 3. The strategy may also be reviewed and approved at any other time considered relevant by the MDA. A summary of the Product Support Strategy in the Acquisition Strategy is a regulatory requirement for all programs at all milestones and the FRP decision. Many of the acquisition strategy information requirements have a respective entry in this Table.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.acquisition-strategy"
+    },
+    {
+      "name": "Affordability Analysis",
+      "source_raw": "DoDI 5000.85",
+      "type_raw": "Regulatory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "mdd": "initial",
+        "ms_a": "update",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Affordability analysis will be conducted prior to Milestone A (or Milestone B, if \"B\" is the initial milestone) and updated if program funding changes dictate a reassessment of affordability. The Affordability Analysis is used, in part, to support the development of programs goals pursuant to 10 U.S.C. 4271 and further described in DoDI 5000.85.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "mdd": "initial",
+        "ms_a": "update",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.affordability-analysis"
+    },
+    {
+      "name": "ANALYSIS OF ALTERNATIVES (AoA)",
+      "source_raw": "40 U.S.C. 11312 §811, P.L. 106-398 10 U.S.C. 4251 10 U.S.C. 4252 DoDD 5105.84",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA (DCAPE evaluates and assesses AoAs for all ACAT I programs)",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs at Milestone A through Milestone B. The DoD Component is responsible for performing the AoA consistent with the study guidance developed by the Director, Cost Assessment and Program Evaluation (DCAPE) and the study plan approved by DCAPE. DoDD 5105.84 details the responsibility of DCAPE for AoAs. 10 U.S.C. 4251, as amended by Section 802 of the FY2025 NDAA, allows for the conduct of early experimentation with a combatant commander to satisfy the statutory requirement for an AoA.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.analysis-of-alternatives-aoa"
+    },
+    {
+      "name": "AoA Study Guidance and AoA Study Plan",
+      "source_raw": "10 U.S.C. 139a and 4251 §832, P.L. 116-92 DoDD 5105.84 DoDI 5000.85",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "DCAPE or DoD Component Equivalent",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "mdd": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory requirements to guide the AoA. AoA Study Guidance informs the preparation of the AoA Study Plan. DCAPE will develop and issue the AoA Study Guidance for all MDAPs. AoA Study Guidance must be provided to DoD Component(s) for development of the AoA Study Plan, which the DoD Components submit to DCAPE for approval.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "mdd": "initial"
+      },
+      "authority_type": "mixed",
+      "id": "mca.aoa-study-guidance-and-aoa-study-plan"
+    },
+    {
+      "name": "BANDWIDTH REQUIREMENTS REVIEW",
+      "source_raw": "§1047, P.L. 110- 417 This Table",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "DoD CIO",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs and major weapon systems; Regulatory for all other programs. Bandwidth requirements data will be documented in the Information Support Plan (ISP). If the ISP is waived for a program, conformance with bandwidth review will be based on data provided in the Capability Development Document (CDD), consistent with the Net-Ready guidance in Enclosure C to Chairman of the Joint Chiefs of Staff Instruction (CJCSI) 5123.01I, Charter of The Joint Requirements Oversight Council and Implementation of the Joint Capabilities Integration and Development System.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 3,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.bandwidth-requirements-review"
+    },
+    {
+      "name": "BENEFITS ANALYSIS AND DETERMINATION (Part of Acquisition Strategy)",
+      "source_raw": "15 U.S.C. 644(a- e) 15 U.S.C. 657q",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY; applies to bundled acquisitions only. Includes MARKET RESEARCH to determine whether consolidation of the requirements is necessary and justified. Required a Milestone C, if there was no Milestone B. 15 U.S.C. 632 defines a bundled contract as a contract that is entered into to meet requirements that are consolidated in a bundling of contract requirements. The term \"bundling of contract requirements\" means consolidating two or more procurement requirements for goods or services previously provided or performed under separate smaller contracts into a solicitation of offers for a single contract that is likely to be unsuitable for award to a small-business concern.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.benefits-analysis-and-determination-part-of-acquisition-stra"
+    },
+    {
+      "name": "BUSINESS STRATEGY (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 4211",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY; the business strategy will describe the rationale for the contracting approach and how competition will be maintained at the system and subsystem levels throughout the program life cycle; the strategy will detail how contract incentives will be employed to support Department goals.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.business-strategy-part-of-acquisition-strategy"
+    },
+    {
+      "name": "Capability Development Document (CDD)",
+      "source_raw": "CJCSI 5123.01I",
+      "type_raw": "Regulatory",
+      "approval_authority": "JROC, JCB, or Component Validation",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "cdd_val": "update",
+        "dev_rfp_rel": "update",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. A draft CDD is required at Milestone A; a validated CDD is required at the Development RFP Release Decision Point and informs Milestone B. If a requirements change is needed prior to Milestone C, the CDD will be updated and revalidated. An equivalent DoD Component-validated requirements document will satisfy the CDD requirement for certain information systems. For approval authorities, JROC is Joint Requirements Oversight Council; JCB is Joint Capabilities Board.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "cdd_val": "update",
+        "dev_rfp_rel": "update",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.capability-development-document-cdd"
+    },
+    {
+      "name": "CLINGER-COHEN ACT (CCA) COMPLIANCE",
+      "source_raw": "U.S.C. Title 40, Subtitle III, Chapters 111, 113, 115 §811, P.L. 106-398 DoDI 5000.82",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA and Component CIO or designee",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for all programs that acquire information technology (IT); Regulatory for other programs. See DoDI 5000.82 for amplifying regulatory policy. A summary of required actions is in the CCA Compliance Table. The PM will report CCA compliance to the MDA and the Component CIO or designee. For IT within an MCA program employing an incremental development model, the program manager will report CCA compliance at each Milestone and/or Limited Deployment Decision Point for the IT.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "mixed",
+      "id": "mca.clinger-cohen-act-cca-compliance"
+    },
+    {
+      "name": "Concept of Operations/Operational Mode Summary/Mission Profile (CONOPS/OMS/MP)",
+      "source_raw": "CJCSI 5123.01, CJCSI 3010.02E JP 5-0",
+      "type_raw": "Regulatory",
+      "approval_authority": "DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_c": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. The CONOPS/OMS/MP is a Component-approved document that is derived from and consistent with the validated/approved capability requirements document. The CONOPS/OMS/MP describes the operational tasks, events, durations, frequency, and environment in which the materiel solution is expected to perform each mission and each phase of the mission. The CONOPS/OMS/MP will be provided to the MDA at the specified decision events and normally provided to industry as part of the RFP.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_c": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.concept-of-operations-operational-mode-summary-mission-profi"
+    },
+    {
+      "name": "CONTRACT-TYPE DETERMINATION (Part of Acquisition Strategy)",
+      "source_raw": "§818, P.L. 109- 364; §811, P.L. 112-239",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. Satisfied when the MDA approves the Acquisition Strategy with specified contract types. Only required for MDAPs at Development RFP Release and Milestones B and C. The MDA for an MDAP may conditionally approve the contract type selected for a development program at the Development RFP Release Decision Point, and give final approval at the time of Milestone B approval. The development contract type must be consistent with the level of program risk and may be either a fixed price or cost type contract. If selecting a cost-type contract or a contract utilizing certain incentive provisions, the MDA must comply with the conditions and reporting requirements listed in the Exceptions, Waivers, and Alternative Management and Reporting Requirements Table. The DoD MAY NOT enter into cost-type contracts for production of an MDAP unless compliant with the conditions and notifications listed in the Exceptions, Waivers, and Alternative Management and Reporting Requirements Table.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 4,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.contract-type-determination-part-of-acquisition-strategy"
+    },
+    {
+      "name": "CONTRACTING STRATEGY (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 4211 10 U.S.C. 3453 41 U.S.C. 3306(a) (1) and 3307(d)",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY; discuss (1) the planned contract type and how it relates to risk management in each acquisition phase; (2) whether risk management enables the use of fixed- price elements in subsequent contracts; (3) market research; and (4) small business participation. Include the following sub-elements: CONTRACT-TYPE DETERMINATION; TERMINATION LIABILITY ESTIMATE.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.contracting-strategy-part-of-acquisition-strategy"
+    },
+    {
+      "name": "COOPERATIVE OPPORTUNITIES (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 4211 10 U.S.C. 2350a",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. Due at the first program milestone review. The requirement to discuss opportunities for cooperative research and development will be satisfied via the International Involvement section in the Acquisition Strategy outline and will include consideration of foreign military sales. For programs responding to urgent needs, proven capabilities will be assessed during the COURSE OF ACTION ANALYSIS.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.cooperative-opportunities-part-of-acquisition-strategy"
+    },
+    {
+      "name": "CORE LOGISTICS DETERMINATION / CORE LOGISTICS AND SUSTAINING WORKLOADS ESTIMATE",
+      "source_raw": "10 U.S.C. 2464 10 U.S.C. 4251 10 U.S.C. 4252 §801, P.L. 112-81 DoDIs 5000.91, 4151.20, and 4151.24",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA/DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. Only the CORE LOGISTICS DETERMINATION is required at Milestone A. Required at Milestone C if there was no Milestone B. Documented in the PSS. By Milestone A, the PM with support of the DoD Component will document its determination of applicability of core depot-level maintenance and repair capability requirements in the PSS. For Milestone B, the PM with support of the DoD Component will attach the program's estimated requirements for maintenance, repair, and workloads to the PSS. By regulation, the program's maintenance planning will ensure that core depot-level maintenance and repair capabilities and capacity are established NLT 4 years after IOC. The PM will ensure that a depot source of repair designation is made NLT 90 days after the Critical Design Review. See the LCSP row, this table. Not required for AIS programs",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "initial"
+      },
+      "authority_type": "mixed",
+      "id": "mca.core-logistics-determination-core-logistics-and-sustaining-w"
+    },
+    {
+      "name": "Cost Analysis Requirements Description (CARD)",
+      "source_raw": "DoDI 5000.73",
+      "type_raw": "Regulatory",
+      "approval_authority": "DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "initial",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Procedures are specified in DoDI 5000.73. DoDI 5000.73 provides CAPE the authority to assess the sufficiency of the CARD prior to DoD Component approval. The DoD Component, with CAPE concurrence, will determine the CARD requirements for ACAT II and below programs.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "initial",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.cost-analysis-requirements-description-card"
+    },
+    {
+      "name": "Critical Design Review (CDR) Assessment",
+      "source_raw": "DoDI 5000.88",
+      "type_raw": "Regulatory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. USD(R&E) will conduct CDR assessments for ACAT ID programs. Components will conduct assessments on ACAT IB/IC programs. The CDR and associated CDR assessment are conducted after MS B and prior to MS C.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "other": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.critical-design-review-cdr-assessment"
+    },
+    {
+      "name": "CYBERSECURITY STRATEGY",
+      "source_raw": "40 U.S.C. 11313 DoDI 8500.01 DoDI 5000.82 §811, P.L. 106-398",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "DoD CIO or Component CIO",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "mdd": "initial",
+        "ms_a": "update",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for mission essential and mission critical technology, and a regulatory requirement for all other technology, including national security systems. The CYBERSECURITY STRATEGY reflects both the program's long-term approach for, and implementation of, cybersecurity throughout the program lifecycle. See DoDI 8500.01, DoDI 8510.01, and DoDI 5000.82. The CYBERSECURITY STRATEGY is a stand-alone appendix to the Program Protection Plan (PPP). The approved CYBERSECURITY STRATEGY is initially due before Milestone A, and will be updated, as needed, in each lifecycle phase and prior to receiving an ATO. The DoD CIO is the approval authority for MCA ACAT ID programs; the Component CIO is the approval authority for all other ACATs / acquisition pathways. See the Major Capability Acquisition Pathway Integration with Risk Management Framework guidance published on the DoD CIO Library for more information.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 5,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "mdd": "initial",
+        "ms_a": "update",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.cybersecurity-strategy"
+    },
+    {
+      "name": "Depot Source of Repair (DSOR) Determination",
+      "source_raw": "10 U.S.C. Chapter 146 DoDI 4151.18 DoDI 4151.24 DoDI 5000.91",
+      "type_raw": "Regulatory",
+      "approval_authority": "ASD(S) or designee",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_b": "update",
+        "ms_c": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. The Depot Source of Repair (DSOR) determination process applies to any program with an approved JCIDS capability requirements document when the APB is approved. Initial DSOR assignments are determined jointly between the Military Departments and the Office of the USD(A&S) for ACAT III and above programs. No later than 90 calendar days after the critical design review or equivalent, the designated authority will approve the DSOR Certification and Determination. The resulting DSOR assignments will be documented in the next update of the PSS, but no later than Milestone C or equivalent programmatic decision. 10 U.S.C Chapter 146 provides statutory language related to maintenance and repair activity.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_b": "update",
+        "ms_c": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.depot-source-of-repair-dsor-determination"
+    },
+    {
+      "name": "Development RFP Release Cost Assessment",
+      "source_raw": "DoDI 5000.73",
+      "type_raw": "Regulatory",
+      "approval_authority": "CAPE",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "dev_rfp_rel": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Requirements and procedures for this assessment are specified in DoDI 5000.73.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.development-rfp-release-cost-assessment"
+    },
+    {
+      "name": "DoD Component Cost Estimate",
+      "source_raw": "DoDI 5000.73",
+      "type_raw": "Regulatory",
+      "approval_authority": "DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. See the direction in DoDI 5000.73. The DoD Component will determine the cost estimating requirements for ACAT II and below programs.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.dod-component-cost-estimate"
+    },
+    {
+      "name": "DoD Component Cost Position",
+      "source_raw": "DoDI 5000.73",
+      "type_raw": "Regulatory",
+      "approval_authority": "DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Mandatory for MDAPs; documented DoD Component Cost Position must be signed by the appropriate DoD Component Deputy Assistant Secretary for Cost and Economics (or Defense Agency equivalent) and include a date of record.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.dod-component-cost-position"
+    },
+    {
+      "name": "DoD Component Live Fire Test and Evaluation (LFT&E) Report",
+      "source_raw": "This table DoDI 5000.89",
+      "type_raw": "Regulatory",
+      "approval_authority": "CAE",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Programs on the Director, Operational Test and Evaluation (DOT&E) Oversight List for LFT&E oversight only; due upon completion of LFT&E.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.dod-component-live-fire-test-and-evaluation-lft-e-report"
+    },
+    {
+      "name": "DOT&E REPORT ON INITIAL OPERATIONAL TEST AND EVALUATION (IOT&E)",
+      "source_raw": "10 U.S.C. 4171 10 U.S.C. 139 DoDI 5000.89",
+      "type_raw": "Statutory",
+      "approval_authority": "DOT&E",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "frp_dec": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY; required for DOT&E Oversight List programs only. The DOT&E publishes an online list of programs under operational test and evaluation (OT&E) and LFT&E oversight at https://osd.deps.mil/org/dote-extranet/SitePages/Home.aspx (requires login with a Common Access Card (CAC)). A final decision to proceed beyond Low-Rate Initial Production (LRIP) or beyond Limited Deployment may not be made until the DOT&E has submitted the IOT&E Report to the Secretary of Defense, and the congressional defense committees have received that report. If DoD decides to proceed to operational use of the program or to make procurement funds available for the program before the MDA's FRP decision, the DOT&E's report will be submitted as soon as practicable after the DoD decision to proceed.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 6,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "frp_dec": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.dot-e-report-on-initial-operational-test-and-evaluation-iot-"
+    },
+    {
+      "name": "DT&E Program Assessment",
+      "source_raw": "DoDI 5000.89",
+      "type_raw": "Regulatory",
+      "approval_authority": "USD(R&E) or designee for ACAT IB & IC programs on DT&E oversight",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory: For ACAT IB/IC programs on the T&E oversight list for which USD(R&E) did not conduct a DT&E sufficiency assessment, the USD(R&E) will provide the MDA with a program assessment at the Development RFP Release Decision Point and MS B and C. This will be updated to support the Operational Test Readiness Review (OTRR) or as requested by the MDA or PM.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 7,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.dt-e-program-assessment"
+    },
+    {
+      "name": "DT&E SUFFICIENCY ASSESSMENT",
+      "source_raw": "§838, P.L. 115-91 10 U.S.C. 133a 10 U.S.C. 4252 10 U.S.C. 4253 DoDD 5137.02 DoDI 5000.89",
+      "type_raw": "Statutory",
+      "approval_authority": "USD(R&E) or designee for ACAT ID; Component DT&E Official for ACAT IB & IC programs",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY: USD(R&E) or designee will conduct the MS B and MS C DT&E sufficiency assessments for MDAPs for which the USD(A&S) is the MDA and report the DT&E sufficiency assessment determinations to the USD(A&S). The senior official within the Military Department, Defense Agency, or DoD Field Activity with responsibility for DT&E will conduct the MS B and MS C DT&E sufficiency assessments for MDAPs for which the MDA is the Service or Component Acquisition Executive. The DT&E Sufficiency Assessment will be part of the Milestone C program information.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 7,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.dt-e-sufficiency-assessment"
+    },
+    {
+      "name": "Exit Criteria",
+      "source_raw": "This table",
+      "type_raw": "Regulatory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Exit criteria are specific events and accomplishments that must be achieved before a program can proceed to the designated acquisition phase covered by the criteria; documented in the ADM.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 7,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.exit-criteria"
+    },
+    {
+      "name": "FREQUENCY ALLOCATION APPLICATION (DD FORM 1494)",
+      "source_raw": "§104, P.L. 102- 538 47 U.S.C. 305, 901-904",
+      "type_raw": "Statutory",
+      "approval_authority": "National Telecommunications and Information Administration (NTIA)",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for all systems/equipment that use the electromagnetic spectrum while operating in the United States and its possessions. The DD Form 1494, Application for Equipment Frequency Allocation, is available from https://www.esd.whs.mil/Directives/forms/dd1000_1499/DD1494/ . The Title 47 STATUTORY requirement for DoD milestone decision is satisfied when the NTIA has authorized national spectrum certification(s) for the program at Stage 1, 2, 3 or 4, as applicable, in response to submitted DD Form(s) 1494 by the program manager.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 7,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.frequency-allocation-application-dd-form-1494"
+    },
+    {
+      "name": "Full Funding Certification Memorandum",
+      "source_raw": "DoDI 5000.73",
+      "type_raw": "Regulatory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. See DoDI 5000.73 for details, including coordination requirements. The requirement at \"Dev RFP Rel\" reflects DoDI 5000.73 policy that requires a full funding certification statement to be included at the LRIP and FRP decisions.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 7,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.full-funding-certification-memorandum"
+    },
+    {
+      "name": "GENERAL EQUIPMENT VALUATION (Part of Acquisition Strategy)",
+      "source_raw": "P.L. 101-576, Statement of Federal Financial Accounting Standards 23 and P.L. 101-576, Statement of Federal Financial Accounting Standards 6",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_c": "initial",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY; a program description that identifies contract-deliverable equipment items to include weapon systems, non-weapon systems, and other deliverable items; includes plan(s) to ensure that all deliverable equipment requiring capitalization is serially identified and valued. Only required at Milestone C; updated as necessary for the FRP Decision. The capitalization thresholds are unit costs at or above $1 million for Air Force and Navy general fund assets, and unit costs at or above $250 thousand for all internal use software and for other equipment assets for all other general and working capital funds. Ensure all contracts and contract systems are compliant with Financial Improvement and Audit Readiness (FIAR) requirements.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 7,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_c": "initial",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.general-equipment-valuation-part-of-acquisition-strategy"
+    },
+    {
+      "name": "INDEPENDENT COST ESTIMATE (ICE)",
+      "source_raw": "Chapter 222 of Title 10 U.S.C.",
+      "type_raw": "Statutory",
+      "approval_authority": "DCAPE",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs. DoDI 5000.73 provides detailed instructions.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 8,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.independent-cost-estimate-ice"
+    },
+    {
+      "name": "INDEPENDENT LOGISTICS ASSESSMENT",
+      "source_raw": "10 U.S.C. 4325 DoDI 5000.91",
+      "type_raw": "Statutory",
+      "approval_authority": "IAW CAE-directed policy",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for weapon system MDAPs only. Recurs NLT every 5 years after IOC. DoDI 5000.91 and the Independent Logistics Assessment Guidebook provide additional detail. Must be completed prior to key acquisition decision points including Milestones B and C and the FRP Decision. Results of the assessment will be reported to the Assistant Secretary of Defense (Sustainment) via the OSD Acquisition Information Repository (AIR).",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 8,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.independent-logistics-assessment"
+    },
+    {
+      "name": "INDEPENDENT TECHNICAL RISK ASSESSMENT (ITRA)",
+      "source_raw": "10 U.S.C. 4272 10 U.S.C. 4251/4252/4253 DoDI 5000.85 DoDI 5000.88",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "USD(R&E) or as designated",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_b": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. ITRAs will be conducted on all MDAPs prior to Milestone A approval as required by DoDI 5000.88. ITRAs are required by 10 U.S.C. 4272 for Milestone B approval, and any decision to enter into low-rate initial production or full rate production. ITRAs may also be conducted at the direction of the Secretary or Deputy Secretary. USD(R&E) will conduct and approve ITRAs for ACAT ID programs. Components will conduct ITRAs on ACAT IB/IC programs. USD(R&E) will determine ITRA approval authority for ACAT IB/IC programs. ITRAs inform the 10 U.S.C. 4251, 4252, and 4253 requirements. For programs for which an ITRA is conducted, a separate Technology Readiness Assessment (TRA) report is not required. Additional policy associated with ITRAs is included in DoDI 5000.88, and the Defense Acquisition University website provides informative support material.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 8,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_b": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "mixed",
+      "id": "mca.independent-technical-risk-assessment-itra"
+    },
+    {
+      "name": "INDUSTRIAL BASE CAPABILITY CONSIDERATIONS (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 4211 10 U.S.C. 4820 DoDI 5000.60",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs; Regulatory for others. Summarizes the results of the industrial base capabilities' analysis. The OSD Office of Industrial Base Policy hosts a number of resources providing detailed manufacturing and industrial base policy and guidance.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 8,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.industrial-base-capability-considerations-part-of-acquisitio"
+    },
+    {
+      "name": "Information Support Plan (ISP)",
+      "source_raw": "DoDI 8330.01",
+      "type_raw": "Regulatory",
+      "approval_authority": "DoD Component or as delegated",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "footnote_refs": [
+        4
+      ],
+      "notes": "Regulatory. Applicable to all IT, including NSS. A draft[^4] is due for Development RFP Release; approved at Milestone B. Unless waived, the plan is updated at the Critical Design Review. The ISP of record is due prior to Milestone C; an updated ISP of record may be required during O&S. Enter data on-line at https://gtg.csd.disa.mil/ (requires an account and login with CAC). DoDI 8320.02 and DoDI 8410.03 provide related policy for data sharing, IT services, and network management.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 8,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.information-support-plan-isp"
+    },
+    {
+      "name": "Information Technology and National Security System Interoperability Certification",
+      "source_raw": "DoDI 8330.01",
+      "type_raw": "Regulatory",
+      "approval_authority": "JITC or DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "frp_dec": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Applicable to all IT, including NSS. Testing completed before or during OT&E. The Joint Interoperability Test Command (JITC) certifies interoperability of IT with joint, multinational, and/or interagency interoperability requirements. DoD Components certify all other IT. Certification must occur prior to deployment.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 8,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "frp_dec": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.information-technology-and-national-security-system-interope"
+    },
+    {
+      "name": "Initial Capabilities Document (ICD)",
+      "source_raw": "CJCSI 5123.01I",
+      "type_raw": "Regulatory",
+      "approval_authority": "JROC, JCB, or Component Validation",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "mdd": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. The ICD is the fundamental requirements document establishing validated capability requirements; required for the MDD.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 9,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "mdd": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.initial-capabilities-document-icd"
+    },
+    {
+      "name": "INTELLECTUAL PROPERTY (IP) STRATEGY (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 3771, 3772 and 3774 10 U.S.C. 4211 DoDI 5010.44",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for major weapon systems and subsystems; Regulatory for other program types. The IP Strategy must be updated as appropriate to support and account for evolving IP considerations associated with the award and administration of all contracts throughout the program life cycle. Becomes part of the Product Support Strategy (PSS) during Operations and Support (O&S). Title 10, Chapter 275, provides statute regarding the management of proprietary data and data rights.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 9,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.intellectual-property-ip-strategy-part-of-acquisition-strate"
+    },
+    {
+      "name": "Item Unique Identification Implementation Plan",
+      "source_raw": "DoDI 8320.04",
+      "type_raw": "Regulatory",
+      "approval_authority": "CAE or as delegated",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Design considerations related to unique identification are included in the Systems Engineering Plan (SEP).",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 9,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.item-unique-identification-implementation-plan"
+    },
+    {
+      "name": "LFT&E REPORT",
+      "source_raw": "10 U.S.C. 4172",
+      "type_raw": "Statutory",
+      "approval_authority": "DOT&E",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. A covered system may not proceed beyond LRIP until realistic survivability testing of the system is completed and the report is submitted to the Secretary of Defense and the congressional defense committees. A major munition program or a missile program may not proceed beyond LRIP until realistic lethality testing of the program is completed and the report is submitted to the Secretary of Defense and the congressional defense committees. 10 U.S.C. 4172 defines \"realistic survivability testing\" and \"realistic lethality testing\".",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 9,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.lft-e-report"
+    },
+    {
+      "name": "Life-Cycle Mission Data Plan",
+      "source_raw": "This table Sec. 811 PL 106- 398",
+      "type_raw": "Statutory, Regulatory",
+      "approval_authority": "DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [
+        4
+      ],
+      "notes": "Regulatory; only required if the system is dependent on Intelligence Mission Data. A draft[^4] update is due for Development RFP Release; approved at Milestone B.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 9,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.life-cycle-mission-data-plan"
+    },
+    {
+      "name": "LIFE-CYCLE SUSTAINMENT PLAN",
+      "source_raw": "10 U.S.C. 4324; OMB Circular A- 94; DoDI 5000.91",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "USD(A&S) or designee, CAE or designee",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY: An approved Life Cycle Sustainment Plan (LCSP) is required for covered systems (i.e., MDAPs) at Milestone B IAW Section 4324 of Title 10 U.S.C. Regulatory: IAW DoDI 5000.91, an LCSP4 is also required at MS A, and an update is required for the RFP Release decision point. A tailored LCSP is required for non-covered systems, starting at Milestone A. USD(A&S), or as designated, will approve the LCSP for an ACAT ID program or special interest program. DoD component heads will approve LCSPs for ACAT IB, ACAT IC, or below programs unless delegated. DoDI 5000.91 establishes policy for the LCSP and identifies statutory requirements; guidance is available at www.waru.edu/tools/product-support-manager-psm- guidebook. While the Product Support Strategy (PSS) is also identified in this table, it is part of the LCSP.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 9,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.life-cycle-sustainment-plan"
+    },
+    {
+      "name": "LOW-RATE INITIAL PRODUCTION (LRIP) QUANTITY",
+      "source_raw": "10 U.S.C. 4231 DoDI 5000.85",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs and ACAT II programs; Regulatory for other programs. A preliminary quantity is determined at the Development RFP Release Decision Point; the final LRIP quantity is determined at Milestone B. The LRIP quantity will be documented in the ADM. For programs on the DOT&E Oversight List, LRIP quantities must equal or exceed the numbers required for testing as identified in the approved Test and Evaluation Master Plan (TEMP). Additional compliance details are provided in the cited section of U.S.C.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 9,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial",
+        "ms_b": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.low-rate-initial-production-lrip-quantity"
+    },
+    {
+      "name": "MARKET RESEARCH (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 3453 41 U.S.C. 3306(a) (1) and 3307(d) DoDI 5000.85",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "mdd": "initial",
+        "ms_a": "update",
+        "dev_rfp_rel": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. A stand-alone Regulatory requirement at MDD. STATUTORY updates (as part of the ACQUISITION STRATEGY) required at Milestone A and the Development RFP release point; not required thereafter. Conducted to reduce the duplication of existing technologies and products, and to understand potential materiel solutions, technology maturity, and potential sources, to assure maximum participation of small business concerns, and possible strategies to acquire them. For programs responding to urgent needs, included in the Course of Action Approach at the Development Milestone. Note: The cited sections of U.S.C. provide statutory direction.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "mdd": "initial",
+        "ms_a": "update",
+        "dev_rfp_rel": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.market-research-part-of-acquisition-strategy"
+    },
+    {
+      "name": "MILESTONE SUMMARY REPORT",
+      "source_raw": "10 U.S.C. 4251 10 U.S.C. 4252 10 U.S.C. 4253",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA through the DAE to Congress",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs. Report due NLT 15 days after milestone approval for all MDAPs and major subprograms of MDAPs. Required content and reporting procedures are described in the respective section of U.S. Code. The Milestone Summary Report satisfies the statutory requirement for \"a written record of the milestone decision.\"",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.milestone-summary-report"
+    },
+    {
+      "name": "Mobile Electrical Power Systems (MEPS)",
+      "source_raw": "DoDI 4120.11",
+      "type_raw": "Regulatory",
+      "approval_authority": "PM Responsibility",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Applicable to all programs that require MEPS equipment. PMs will coordinate through their Service MEPS Office in accordance with DoDI 4120.11. DoDI 4120.11 establishes the principal policy associated with DoD MEPS management.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.mobile-electrical-power-systems-meps"
+    },
+    {
+      "name": "MODULAR OPEN SYSTEMS APPROACH (MOSA) (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 4401 10 U.S.C. 4402 DoDI 5000.85",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY for MDAPs; Regulatory for other programs. Describe how a MOSA will or will not be used to evolve system capability, improve interoperability, reduce cost or schedule, and refresh technology. Planning will be consistent with the discussion in DoDI 5000.85, Para. 3C.3.a.(5).",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.modular-open-systems-approach-mosa-part-of-acquisition-strat"
+    },
+    {
+      "name": "MULTI-YEAR PROCUREMENT (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 3501 DoDI 5000.73",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY; when appropriate, include a summary discussion of multi-year procurement (further discussed in DoDI 5000.73).",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.multi-year-procurement-part-of-acquisition-strategy"
+    },
+    {
+      "name": "NAVWAR Compliance Determination",
+      "source_raw": "DoDI 4650.08",
+      "type_raw": "Regulatory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Applicable to all programs producing or using positioning, navigation, and timing (PNT) information. The MDA confirms that the program has complied with procedures identified in DoDI 4650.08, including planned testing and evaluation.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.navwar-compliance-determination"
+    },
+    {
+      "name": "Operational Test Agency (OTA) Report of OT&E Results",
+      "source_raw": "This table",
+      "type_raw": "Regulatory",
+      "approval_authority": "OTA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Required earlier than the FRP decision if early operational assessments or operational testing are conducted.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.operational-test-agency-ota-report-of-ot-e-results"
+    },
+    {
+      "name": "OPERATIONAL TEST PLAN (OTP)",
+      "source_raw": "10 U.S.C. 4171 DoDI 5000.89",
+      "type_raw": "Regulatory, Statutory",
+      "approval_authority": "DOT&E or Component equivalent",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY/Regulatory. An OTP, approved before the start of OT&E, is mandatory for all programs. Approval by DOT&E is a STATUTORY requirement for programs on the DOT&E Oversight list. DoD Component-equivalent approval is a Regulatory requirement for all other programs.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 10,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "frp_dec": "initial",
+        "other": "initial"
+      },
+      "authority_type": "mixed",
+      "id": "mca.operational-test-plan-otp"
+    },
+    {
+      "name": "PESHE AND NEPA/E.O. 12114 COMPLIANCE SCHEDULE",
+      "source_raw": "42 U.S.C. 4321 42 U.S.C., Chapter 55 E.O. 12114",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA or designee",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_b": "initial",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. The Programmatic Environment, Safety, and Occupational Health Evaluation (PESHE) and National Environmental Policy Act (NEPA) / Executive Order (E.O.) 12114 Compliance Schedule is approved by the MDA or designee. Related design considerations must be included in the SEP; related operations or sustainment considerations after Milestone C will be included in the PSS.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 11,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_b": "initial",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.peshe-and-nepa-e-o-12114-compliance-schedule"
+    },
+    {
+      "name": "POST IMPLEMENTATION REVIEW (PIR)",
+      "source_raw": "40 U.S.C. 11313 DoDI 5000.82",
+      "type_raw": "Statutory",
+      "approval_authority": "Functional Sponsor",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. Responds to statute that requires Federal Agencies to compare actual program results with established performance objectives. The PIR is a process that aggregates information needed to successfully evaluate the degree to which a capability has been achieved. The preparation of the TEMP and the MDA's decision to proceed with FRP satisfy the requirement for weapons systems. DoD Components will plan, conduct, and document the required review for IT systems and NSS post IOC. Approval by the Functional Sponsor will require coordination with the Component CIO.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 11,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "other": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.post-implementation-review-pir"
+    },
+    {
+      "name": "PRELIMINARY DESIGN REVIEW (PDR) ASSESSMENT",
+      "source_raw": "10 U.S.C. 4252 DoDI 5000.88",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_b": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. USD(R&E) will conduct and approve PDR assessments for ACAT ID programs. Components will conduct PDR assessments on ACAT IB/IC programs.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 11,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_b": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.preliminary-design-review-pdr-assessment"
+    },
+    {
+      "name": "PRESERVATION AND STORAGE OF UNIQUE TOOLING PLAN",
+      "source_raw": "§815, P.L. 110-417",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_c": "initial",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. Part of the PSS. The MDA must approve the plan prior to Milestone C approval; updated only as necessary thereafter. The plan must identify any contract clauses, facilities, and funding required to preserve and to store the unique tooling associated with the production of the MDAP hardware through the end of the service life of the end item. See paragraph 4.11.g in DoDI 5000.91 for details; see also PSS row, this table.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 11,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_c": "initial",
+        "other": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.preservation-and-storage-of-unique-tooling-plan"
+    },
+    {
+      "name": "PRODUCT SUPPORT (INCLUDING SUSTAINMENT, LOGISTICS, AND MAINTENANCE) (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 2464 10 U.S.C. 2466 10 U.S.C. 4211",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. For MDAPS, major systems, and business systems, content requirements of an Acquisition Strategy will ensure that each strategy will: consider requirements related to product support, logistics, maintenance, and sustainment IAW 10 U.S.C. 2464 and 2466.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 11,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.product-support-including-sustainment-logistics-and-maintena"
+    },
+    {
+      "name": "PRODUCT SUPPORT STRATEGY (PSS)",
+      "source_raw": "10 U.S.C 4324 OMB Circular A- 94 DoDI 5000.91",
+      "type_raw": "Statutory, Regulatory",
+      "approval_authority": "USD(A&S) or designee, CAE or designee",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "footnote_refs": [
+        4
+      ],
+      "notes": "STATUTORY for MDAPs; regulatory for other program. A draft[^4] update is due for the Development RFP Release; approved at Milestone B. The PSS is part of the Life Cycle Sustainment Plan and satisfies the statutory product support strategy requirement of 10 U.S.C. 4324. USD(A&S), or designee, will approve the PSS for ACAT ID programs and USD(A&S)-designated business system or special interest programs. The CAE, or designee, will approve the PSS for an ACAT IB, or IC or below program. See DoDI 5000.91 for PSS details. The PSS has the following annexes: Core Logistics Analysis (row above); IP Strategy (row above); Preservation and Storage of Unique Tooling Plan (row above); Product Support Business Case Analysis (10 U.S.C. 4324 and DoDI 5000.91); Programmatic, Environment, Safety, and Occupational Health (ESOH) (PESHE) (row below); Replaced System sustainment Plan (row below); and System Disposal Plan (10 U.S.C. 4252, DoDI 4160.28, DoD 4160.21-M, DoD 4160.28-M and DoDI 5000.91).",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 11,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "authority_type": "mixed",
+      "id": "mca.product-support-strategy-pss"
+    },
+    {
+      "name": "PROGRAM COST, FIELDING, AND PERFORMANCE GOALS",
+      "source_raw": "10 U.S.C. 4271 DoDI 5000.85",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. The MDA must establish program cost, fielding, and performance goals (also called targets) before funds are obligated for technology development, systems development, or production of an MDAP. These goals will replace affordability goals and caps for MDAPs proceeding through Milestone A (or the initial milestone event) after October 1, 2017. * (Other) If following Milestone A, the estimated procurement unit cost for the program or the estimated date for IOC for the baseline description for the program exceeds the program cost or fielding targets established by the MDA, the MDA will re-assess the program and, if justified, increase the program cost target and/or increase the fielding target prior to the next milestone or production decision in consultation with OSD advisors. The new goals must be approved before the program can proceed through a milestone event.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 11,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "other": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.program-cost-fielding-and-performance-goals"
+    },
+    {
+      "name": "Program DT&E Assessment",
+      "source_raw": "DoDI 5000.89",
+      "type_raw": "Regulatory",
+      "approval_authority": "USD(R&E) or designee for ACAT IB & IC programs on DT&E oversight",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory: For ACAT IB/IC programs on the T&E oversight list for which USD(R&E) did not conduct a DT&E sufficiency assessment, the USD(R&E) will provide the MDA with a program assessment at the Development RFP Release Decision Point and at MSs B and C. The program assessment will be based on the completed DT&E and any operational T&E activities completed to date, and will address the adequacy of the program planning, the implications of testing results to date, and the risks to successfully meeting the goals of the remaining T&E events in the program. The assessment will be updated to support the Operational Test Readiness Review or as requested by the MDA or PM.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 12,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "other": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.program-dt-e-assessment"
+    },
+    {
+      "name": "Program Protection Plan (PPP)",
+      "source_raw": "DoDI 5200.39 DoDI 5200.44 DoDI 5000.83",
+      "type_raw": "Regulatory",
+      "approval_authority": "USD(R&E) for ACAT ID; CAE (or designee) for all other programs",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. After the Full Rate Production or Full Deployment decision, the PPP will transition to the PM responsible for system sustainment and disposal. The PPP includes appropriate appendixes or links to required information. For all programs under USD(A&S) oversight, the office of the USD(R&E) will be the approval authority for the PPP; for all other ACATs, the official designated by the DoD Component head will be the approval authority.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 12,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.program-protection-plan-ppp"
+    },
+    {
+      "name": "RELIABILITY AND MAINTAINABILITY (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 4328 January 31, 2019 USD(A&S) Policy Memo, \"Implementation of title 10, United States Code, section 2443 - Sustainment Factors in Weapon System Design.\"",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY; For MDAPs and Major Systems, the PM must, as part of the ACQUISITION STRATEGY: Include measurable requirements for engineering activities and design specifications for R&M for TMRR, EMD and Production solicitations; otherwise justify in writing the determination to exclude engineering activities and design specifications for reliability or maintainability from the solicitation. Indicate if sustainment factors, including R&M, are included in the process for source selection; Describe incentive fees and penalties (as appropriate) to incentivize achievement of design specification requirements for R&M in all EMD and Production solicitations and contracts. The MDA will notify the congressional defense committees upon entering into an EMD or Production contract that includes incentive fees or penalties.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 12,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.reliability-and-maintainability-part-of-acquisition-strategy"
+    },
+    {
+      "name": "REPLACED SYSTEM SUSTAINMENT PLAN",
+      "source_raw": "10 U.S.C. 4321",
+      "type_raw": "Statutory",
+      "approval_authority": "DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial",
+        "ms_b": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. May be submitted as early as Milestone A, but no later than Milestone B. Required when an MDAP replaces an existing system and the capability of the old system remains necessary and relevant during fielding of and transition to the new system. The plan must provide for the appropriate level of budgeting for sustainment of the old system, the schedule for developing and fielding the new system, and an analysis of the ability of the existing system to maintain mission capability against relevant threats. Is an annex to the PSS.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 12,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.replaced-system-sustainment-plan"
+    },
+    {
+      "name": "Request for Proposal (RFP)",
+      "source_raw": "Federal Acquisition Regulation (FAR) Subpart 15.203",
+      "type_raw": "Regulatory",
+      "approval_authority": "MDA is release authority",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. RFPs are issued as necessary; they include specifications, deliverable lists, and statement of work. See also Defense Federal Acquisition Regulation Supplement (DFARS) subpart 201.170 and Class Deviation 2019-O00010, dated August 20, 2019, for peer review requirements. When the DAE is the MDA, the peer review, as described in the Defense Federal Acquisition Regulation Supplement subpart 201.170, will be conducted and provide the basis for the PM's recommendation for RFP approval to the MDA. For acquisitions where government property will be provided to a contractor for the performance of a contract, a business case analysis must be performed, demonstrating it is in the government's best interest to provide government property, otherwise the contract could not be performed. In addition, the solicitation and ensuing contract must have the appropriate government property clause and mandatory clauses incorporated. ADDITIONAL SOURCES: FAR 45.102.b and DFARS 245.103-70.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 13,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.request-for-proposal-rfp"
+    },
+    {
+      "name": "RISK MANAGEMENT (Part of Acquisition Strategy)",
+      "source_raw": "10 U.S.C. 4211 10 U.S.C. 4212",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY; include a comprehensive approach to risk management and mitigation. Planning will be consistent with the risk management and competitive prototyping discussions in DoDI 5000.85. If prototyping is not used, explain why.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 13,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.risk-management-part-of-acquisition-strategy"
+    },
+    {
+      "name": "Should Cost Target",
+      "source_raw": "DoDI 5000.85",
+      "type_raw": "Regulatory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. \"Should cost\" is a regulatory tool designed to proactively target cost reduction and drive productivity improvement into programs. Paragraph 3C.3.c.(2) in Appendix 3C of DoDI 5000.85 provides additional detail on \"Should Cost.\"",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 13,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "frp_dec": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.should-cost-target"
+    },
+    {
+      "name": "SMALL BUSINESS INNOVATION RESEARCH (SBIR)/SMALL BUSINESS TECHNOLOGY TRANSFER (STTR) PROGRAM TECHNOLOGIES (Part of Acquisition Strategy)",
+      "source_raw": "15 U.S.C. 638",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA/SAE Monitor",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. PMs will establish goals for applying SBIR and STTR technologies in programs of record and incentivize primes to meet those goals. For contracts with a value at or above $100 million, PMs will establish goals for the transition of Phase III technologies in subcontracting plans and require primes to report the number and dollar amount of Phase III SBIR or STTR contracts. Not required at Milestone B.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 13,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_c": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.small-business-innovation-research-sbir-small-business-techn"
+    },
+    {
+      "name": "Spectrum Supportability Risk Assessment (SSRA)",
+      "source_raw": "DoDI 4650.01",
+      "type_raw": "Regulatory",
+      "approval_authority": "Component CIO or designee",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Applicable to all systems/equipment that use the electromagnetic spectrum in the United States and in other host nations. Due at milestone reviews and prior to requesting authorization to operate (for other than testing) in the United States or in host nations.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 13,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "ms_b": "initial",
+        "ms_c": "initial",
+        "other": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.spectrum-supportability-risk-assessment-ssra"
+    },
+    {
+      "name": "SUSTAINMENT REVIEW",
+      "source_raw": "10 U.S.C. 4323 DoDI 5000.91",
+      "type_raw": "Statutory",
+      "approval_authority": "CAE",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "other": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. Component Secretaries will conduct a SUSTAINMENT REVIEW (SR) of each MDAP and major weapon system no less than every 5 years after declaration of a program's/ system's IOC and throughout the program life cycle to assess the product support strategy, performance, and O&S costs of the weapon system. The results of the SR will be documented in a memorandum by the relevant decision authority. The Secretary concerned will make the memorandum and supporting documentation for each SR available to the USD(A&S) within 30 days after the review is completed. The Secretary concerned will use availability and reliability thresholds and cost estimates as the basis for the circumstances that prompt such a review.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 13,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "other": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.sustainment-review"
+    },
+    {
+      "name": "Systems Engineering Plan (SEP)",
+      "source_raw": "DoDI 5000.88",
+      "type_raw": "Regulatory",
+      "approval_authority": "USD(R&E) (for ACAT ID) or MDA or designee",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. The MDA, or designee, is the approval authority for ACAT IB/IC SEPs, and below. The SEP approval authority for ACAT ID programs will be the USD(R&E) or delegated authority. The SEP will be approved before each release of acquisition Requests for Proposal (RFP) involving prototyping, technology maturation, risk reduction, engineering and manufacturing development, or production contracts. The SEP will be updated after contract award, if needed. A SEP outline and additional engineering guidance are available at https://www.cto.mil/sea/pg/ .",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 14,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.systems-engineering-plan-sep"
+    },
+    {
+      "name": "TECHNOLOGY READINESS ASSESSMENT (TRA)",
+      "source_raw": "10 U.S.C. 4252 10 U.S.C. 4272",
+      "type_raw": "Statutory",
+      "approval_authority": "ITRA approval authority",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. For programs for which an ITRA is conducted, a Technology Readiness Assessment (TRA) report is not required. Programs will continue to assess and document the technology maturity of all critical technologies consistent with the TRA Guidance.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 14,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "initial"
+      },
+      "authority_type": "statutory",
+      "id": "mca.technology-readiness-assessment-tra"
+    },
+    {
+      "name": "Technology Targeting Risk Assessment",
+      "source_raw": "This Table DIA Directive 5000.200 DIA Instruction 5000.002",
+      "type_raw": "Regulatory",
+      "approval_authority": "Validation by DIA or DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Prepared by the DoD Component and coordinated with the DoD Component intelligence analytical centers per DoDI O-5240.24. Forms the analytic foundation for counterintelligence assessments in the associated PPP. DIA will validate the report for ACAT ID; the DoD Component will be the validation authority for ACATs IB, IC, and below.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 14,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.technology-targeting-risk-assessment"
+    },
+    {
+      "name": "TERMINATION LIABILITY ESTIMATE (Part of Acquisition Strategy)",
+      "source_raw": "§812, P.L. 112-239",
+      "type_raw": "Statutory",
+      "approval_authority": "MDA",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "STATUTORY. Only for MDAPs. Must be documented in the ACQUISITION STRATEGY for any contract for the development or production of an MDAP for which potential termination liability could reasonably be expected to exceed $100 million. Updates may therefore be required at other than the marked events. The estimate must include how such termination liability is likely to increase or decrease over the period of performance. The PM must consider the estimate before making recommendations on decisions to enter into or terminate such contracts.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 14,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "initial",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "statutory",
+      "id": "mca.termination-liability-estimate-part-of-acquisition-strategy"
+    },
+    {
+      "name": "Test and Evaluation Master Plan (TEMP)",
+      "source_raw": "DoDI 5000.89",
+      "type_raw": "Regulatory",
+      "approval_authority": "See Notes.",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [
+        4
+      ],
+      "notes": "Regulatory. A draft[^4] update is due for the Development RFP Release Decision Point; approved at Milestone B. DOT&E will co-approve the TEMP for DOT&E Oversight programs (DoDD 5141.02); the DoD Component OT authority will approve the OT portion of the TEMP for all other programs. The approval of the DT&E plan within the TEMP will be consistent with the procedures specified in the Test and Evaluation Instruction. The TEMP outline guidance for OT&E is located at https://osd.deps.mil/org/dote- extranet/SitePages/Home.aspx . The TEMP guidance for DT&E content is included in the Test and Evaluation Enterprise Guidebook .",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 14,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_a": "initial",
+        "dev_rfp_rel": "update",
+        "ms_b": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.test-and-evaluation-master-plan-temp"
+    },
+    {
+      "name": "Validated On-line Life- cycle Threat (VOLT) Report",
+      "source_raw": "This Table DIEM-A Standard 401",
+      "type_raw": "Regulatory",
+      "approval_authority": "DIA or DoD Component",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "mdd": "initial",
+        "ms_a": "update",
+        "dev_rfp_rel": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. MDAPs require a unique system-specific VOLT Report to support capability development and PM assessments of mission needs and capability gaps against likely threat capabilities at IOC. The VOLT Report uses the bi-annual Defense Intelligence Threat Library Threat Modules as its analytic foundation. The threat modules provide the PM projections of technology and adversary capability trends for the next 20 years. VOLT Reports are required for all other programs unless waived by the MDA. In conjunction with the VOLT Report, the requirements sponsor and Component capability developer will collaboratively develop critical intelligence parameters in accordance with the JCIDS. Programs on the DOT&E Oversight List require a unique, system-specific VOLT Report, unless waived by both the MDA and the DOT&E. DoD Components produce a VOLT Report. DIA validates the VOLT Report for ACAT ID programs; the DoD Component validates the VOLT Report for ACAT IB and IC programs and below.",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 14,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "mdd": "initial",
+        "ms_a": "update",
+        "dev_rfp_rel": "update",
+        "ms_c": "update",
+        "frp_dec": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.validated-on-line-life-cycle-threat-volt-report"
+    },
+    {
+      "name": "Waveform Analysis Application",
+      "source_raw": "DoDI 4630.09",
+      "type_raw": "Regulatory",
+      "approval_authority": "DoD CIO",
+      "applicability_matrix": {
+        "mdap": "initial",
+        "acat_ii": "initial",
+        "acat_iii_or_below": "initial",
+        "ms_b": "initial",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "footnote_refs": [],
+      "notes": "Regulatory. Application to the DoD CIO for approval of the development or modification of waveforms. Required at Milestone B, C, FRP, and any time post FRP if a waveform is added or modified. Table Notes: ● 1. A dot ( ) in a cell indicates the specific applicability of the requirement to program type and life-cycle event, and represents the initial submission requirement. Moving right across a row, a checkmark ü ( ) indicates the requirement for updated information. 2. All of the \"Life-Cycle Events\" will not necessarily apply to all \"Program Types.\" 3. Unless otherwise specified, when discussed in DoDI 5000.85, documentation for identified events will be submitted no later than 45 calendar days before the planned review. 4. Requires a PM- and PEO-approved draft. 5. Information requirements that have been finalized and approved by the responsible authority in support of the Development RFP Release Decision Point do not have to be re- submitted prior to Milestone B unless changes have occurred. In that case, updated documents will be provided",
+      "provenance": {
+        "source_url": "https://www.waru.edu/aafdid/Milestone-and-Phase-Information-Requirements",
+        "pdf_page": 14,
+        "pdf_sha256": "64df49c305c9df53"
+      },
+      "program_types": [
+        "mdap",
+        "acat_ii",
+        "acat_iii_or_below"
+      ],
+      "events": {
+        "ms_b": "initial",
+        "ms_c": "update",
+        "frp_dec": "update",
+        "other": "update"
+      },
+      "authority_type": "regulatory",
+      "id": "mca.waveform-analysis-application"
+    }
+  ]
+}
