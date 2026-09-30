@@ -1,5 +1,5 @@
 /*!
- * AAFDID Navigator engine 1.0.0
+ * AAFDID Navigator engine 1.1.0
  * Evaluates a program profile against the AAFDID rules bundle (rules/aafdid-rules.json).
  * Runs in browsers (window.AAFDID) and in Node (require('./aafdid.js')). No dependencies.
  * Logic is three-valued: a condition is true, false, or unknown when an answer is missing.
@@ -12,7 +12,7 @@
 }(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
-  var ENGINE_VERSION = '1.0.0';
+  var ENGINE_VERSION = '1.1.0';
   var STATUS_BY_KIND = {
     event: 'required', recurring: 'required', contract: 'required', compliance: 'required',
     conditional: 'conditional', triggered: 'triggered', reference: 'reference'
@@ -43,11 +43,30 @@
     if ('eq' in c) return v === c.eq;
     if ('ne' in c) return v !== c.ne;
     if ('in' in c) return c['in'].indexOf(v) !== -1;
+    if (v !== null && typeof v === 'object' && 'lo' in v) return rangeTest(c, v);
     var n = Number(v);
     if ('gte' in c) return n >= c.gte;
     if ('gt' in c) return n > c.gt;
     if ('lte' in c) return n <= c.lte;
     if ('lt' in c) return n < c.lt;
+    throw new Error('Unknown condition: ' + JSON.stringify(c));
+  }
+
+  // A dollar range {lo, hi} stands for the amounts strictly between its ends (hi null: no
+  // upper end). Ranges are cut at the rules' thresholds, so a comparison is settled unless
+  // a threshold falls inside the range, which makes it unknown.
+  function atLeast(r, t) {
+    if (r.lo !== null && r.lo >= t) return true;
+    if (r.hi !== null && r.hi !== undefined && r.hi <= t) return false;
+    return null;
+  }
+
+  function rangeTest(c, r) {
+    var k;
+    if ('gte' in c) return atLeast(r, c.gte);
+    if ('gt' in c) return atLeast(r, c.gt);
+    if ('lte' in c) { k = atLeast(r, c.lte); return k === null ? null : !k; }
+    if ('lt' in c) { k = atLeast(r, c.lt); return k === null ? null : !k; }
     throw new Error('Unknown condition: ' + JSON.stringify(c));
   }
 
@@ -118,6 +137,26 @@
     return hit;
   }
 
+  // The range an amount falls in. A value exactly on a cut goes where the range bounds say.
+  function rangeFor(q, n) {
+    var opts = q.options || [];
+    for (var i = 0; i < opts.length; i++) {
+      var o = opts[i];
+      var loOk = n > o.lo || (o.lo_incl && n === o.lo);
+      var hiOk = o.hi === null || o.hi === undefined || n < o.hi || (o.hi_incl && n === o.hi);
+      if (loOk && hiOk) return o.value;
+    }
+    return null;
+  }
+
+  // A dollar answer: a range id, label or synonym, or an amount, which is stored as its range.
+  function normalizeMoney(q, v) {
+    if (typeof v === 'string') { var hit = matchChoice(q, v); if (hit) return hit; }
+    var n = parseMoney(v);
+    if (n === null) return null;
+    return q.options && q.options.length ? rangeFor(q, n) : n;
+  }
+
   function matchEvent(pw, v) {
     if (!pw) return null;
     var c = canon(v), hit = null;
@@ -150,7 +189,7 @@
       if (isUnknown(v) || q.type === 'event') return;
       if (typeof v === 'string' && UNKNOWN_WORDS.indexOf(v.trim().toLowerCase()) !== -1) return;
       if (q.type === 'boolean') v = parseBool(v);
-      else if (q.type === 'money') v = parseMoney(v);
+      else if (q.type === 'money') v = normalizeMoney(q, v);
       else if (q.type === 'choice') v = matchChoice(q, v);
       if (isUnknown(v)) bad.push({ field: q.id, value: String(raw), reason: 'value not recognized' });
       else out[q.id] = v;
@@ -165,6 +204,19 @@
   }
 
   function normalize(bundle, input) { return normalizeDetailed(bundle, input).profile; }
+
+  // The profile with each dollar range replaced by its bounds, for evaluating conditions.
+  function evalProfile(bundle, profile) {
+    var ep = {};
+    Object.keys(profile).forEach(function (k) { ep[k] = profile[k]; });
+    bundle.questions.questions.forEach(function (q) {
+      if (q.type !== 'money' || typeof ep[q.id] !== 'string') return;
+      (q.options || []).forEach(function (o) {
+        if (o.value === ep[q.id]) ep[q.id] = { lo: o.lo, hi: o.hi === undefined ? null : o.hi };
+      });
+    });
+    return ep;
+  }
 
   function pathwayById(bundle, id) {
     for (var i = 0; i < bundle.pathways.length; i++) if (bundle.pathways[i].id === id) return bundle.pathways[i];
@@ -185,26 +237,36 @@
   }
 
   // ---------------------------------------------------------------- services category
+  // p is the evaluation profile: dollar answers are ranges (or amounts). Thresholds come from bundle.scat.
   function servicesCategory(bundle, p) {
     if (p.pathway !== 'aos') return null;
     var rows = {};
     (bundle.scat || []).forEach(function (s) { rows[s.id] = s; });
+    function cmp(v, op, n) {
+      if (n === undefined || n === null) return null;
+      var c = { field: 'v' }; c[op] = n;
+      return test(c, { v: v });
+    }
+    var SI = 'Unless ASD(A) designates it Special Interest.';
     var id = null, note = '';
-    var t = p.svc_total_value, a = p.svc_annual_value;
+    var t = p.svc_total_value, a = p.svc_annual_value, siUnknown = isUnknown(p.svc_special_interest);
+    var one = rows.I || {};
+    var aOver = cmp(a, 'gt', one.annual_gt);
     if (p.svc_special_interest === true) id = 'special_interest';
-    else if (!isUnknown(a) && a > 3e8) {
-      id = 'I';
-      if (isUnknown(p.svc_special_interest)) note = 'Unless ASD(A) designates it Special Interest.';
-    }
+    else if (aOver === true) { id = 'I'; if (siUnknown) note = SI; }
     else if (!isUnknown(t)) {
-      if (t >= 1e9 || (!isUnknown(a) && a > 3e8)) id = 'I';
-      else if (t >= 2.5e8) { id = 'II'; if (isUnknown(a) && t > 3e8) note = 'S-CAT I instead if more than $300M falls in any one year.'; }
-      else if (t >= 1e8) id = 'III';
-      else if (t >= 1e7) id = 'IV';
-      else { id = 'V'; note = 'Only if above the simplified acquisition threshold; below it, DoDI 5000.74 does not apply.'; }
-      if (isUnknown(p.svc_special_interest)) note = (note ? note + ' ' : '') + 'Unless ASD(A) designates it Special Interest.';
+      var at = ['I', 'II', 'III', 'IV'].map(function (k) { return cmp(t, 'gte', (rows[k] || {}).total_gte); });
+      if (at[0] === true) id = 'I';
+      else if (at[0] === false && at[1] === true) {
+        id = 'II';
+        if (aOver === null && cmp(t, 'gt', one.annual_gt) !== false) note = 'S-CAT I instead if more than $300M falls in any one year.';
+      }
+      else if (at[1] === false && at[2] === true) id = 'III';
+      else if (at[2] === false && at[3] === true) id = 'IV';
+      else if (at[3] === false) { id = 'V'; note = 'Only if above the simplified acquisition threshold; below it, DoDI 5000.74 does not apply.'; }
+      if (id && siUnknown) note = (note ? note + ' ' : '') + SI;
     }
-    if (!id) return { id: null, label: 'Undetermined', decision_authority: null, note: 'Enter the total estimated value.', cite: bundle.scat_cite };
+    if (!id) return { id: null, label: 'Undetermined', decision_authority: null, note: 'Answer the total estimated value.', cite: bundle.scat_cite };
     var r = rows[id] || {};
     return { id: id, label: r.label || id, rule: r.rule || '', decision_authority: r.decision_authority || '', note: note, cite: bundle.scat_cite };
   }
@@ -308,6 +370,7 @@
   function evaluate(bundle, input) {
     var nd = normalizeDetailed(bundle, input);
     var profile = nd.profile;
+    var ep = evalProfile(bundle, profile);
     var result = {
       engine: 'aafdid-navigator', engine_version: ENGINE_VERSION, rules_version: bundle.meta.version,
       aafdid_capture: bundle.meta.aafdid_capture, live_check: bundle.meta.live_check,
@@ -327,7 +390,7 @@
     var items = [];
     bundle.requirements.forEach(function (req) {
       if (req.pathways.indexOf(pw.id) === -1) return;
-      items.push(assess(bundle, req, profile, pw, focus, idx, null));
+      items.push(assess(bundle, req, ep, pw, focus, idx, null));
     });
     // Entries of another pathway's tables that AAFDID says to review too (UCA -> MCA ACAT II/III).
     // Until the mapped answer is given they are not listed; the question counts them instead.
@@ -335,8 +398,8 @@
     if (pw.also_review) {
       var ar = pw.also_review;
       var mapped = {};
-      Object.keys(profile).forEach(function (k) { mapped[k] = profile[k]; });
-      mapped[ar.map_field.to] = profile[ar.map_field.from];
+      Object.keys(ep).forEach(function (k) { mapped[k] = ep[k]; });
+      mapped[ar.map_field.to] = ep[ar.map_field.from];
       bundle.requirements.forEach(function (req) {
         if (req.pathways.indexOf(ar.pathway) === -1 || ar.tables.indexOf(req.table) === -1) return;
         if (test(req.applies_if, mapped) === false) return;
@@ -357,7 +420,7 @@
     }
 
     if (pw.id === 'aos') {
-      result.derived.services_category = servicesCategory(bundle, profile);
+      result.derived.services_category = servicesCategory(bundle, ep);
     }
 
     var gOrder = ['at_focus', 'by_event', 'later', 'ongoing', 'as_required', 'earlier', 'conditional', 'review', 'triggered', 'undetermined', 'reference', 'not_applicable'];
@@ -563,6 +626,7 @@
 
   return {
     version: ENGINE_VERSION, test: test, fieldsOf: fieldsOf, unknownFields: unknownFields, normalize: normalize, normalizeDetailed: normalizeDetailed, evaluate: evaluate,
+    evalProfile: evalProfile, rangeFor: rangeFor,
     visibleQuestions: visibleQuestions, servicesCategory: servicesCategory, toProfileBlock: toProfileBlock,
     parseProfileBlock: parseProfileBlock, parseInput: parseInput, toMarkdown: toMarkdown, toChecklist: toChecklist,
     parseMoney: parseMoney, whenBits: whenBits, TYPE_LABEL: TYPE_LABEL, GROUP_TITLE: GROUP_TITLE

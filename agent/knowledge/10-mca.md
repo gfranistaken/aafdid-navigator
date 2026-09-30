@@ -1,6 +1,6 @@
 # MCA requirements: Major Capability Acquisition
 
-Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the MCA pathway only.
+Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the MCA pathway only.
 
 - Governing instruction: DoDI 5000.85
 - Summary: Milestone-based pathway for MDAPs, major systems and other complex acquisitions. The milestone decision authority sets the entry point: MDD, Milestone A, B or C.

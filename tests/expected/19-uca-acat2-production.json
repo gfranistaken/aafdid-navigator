@@ -5,7 +5,7 @@
   "uca_acat": "acat_ii",
   "dote_oversight": false,
   "it_type": "none",
-  "contract_value": 40000000,
+  "contract_value": "20m_to_50m",
   "contract_cost_type": true,
   "event": "production"
  },

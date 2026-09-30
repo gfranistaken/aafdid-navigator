@@ -28,7 +28,7 @@ event: <the next event's id from the pathway file, or omit>
 unknown: <comma-separated fields not answered yet>
 ```
 
-Only fields asked for the pathway appear (see 01-intake.md). Booleans are `yes` or `no`, and dollar amounts are plain numbers.
+Only fields asked for the pathway appear (see 01-intake.md). Booleans are `yes` or `no`. Dollar fields hold a range id, such as `contract_value: 20m_to_50m`, never an amount.
 
 When reading a pasted profile, match values to the options in 01-intake.md, including the listed synonyms ("ACAT IC" is `mdap`; "Milestone B" is `ms_b`). If a field is not an intake field for the pathway, or a value matches no option, say which ones you could not use and treat those fields as unknown.
 
@@ -53,6 +53,7 @@ Answer in order. The first yes points to a pathway. The decision authority appro
 2. Note the next event (`event`). If it is missing, list requirements by event instead of splitting them.
 3. Open the pathway's knowledge file. Use only records whose Pathway line names that pathway. The one exception is UCA, which also reviews some MCA rows (see 12-uca.md).
 4. For each record, test its Condition code against the profile. `always` holds for every program on the pathway. A field the profile does not answer is unknown. `AND` is false if any part is false, and unknown if any part is unknown. `OR` is true if any part is true, and unknown if any part is unknown.
+   Dollar answers are ranges (01-intake.md lists them), cut at the thresholds the rules use. Compare using the amounts inside the range: `contract_value >= 20,000,000` is true for `20m_to_50m` and false for `under_20m`, and `contract_value > 50,000,000` is false for `20m_to_50m`.
 5. Assign a status:
    - The condition holds: use the record's "Status when the condition holds". Required, May apply, Only if triggered, or Reference rule.
    - The condition is false but the "May apply instead when" code holds: May apply.
@@ -130,7 +131,7 @@ pathway: mta
 event: entrance
 mta_path: rf
 mta_size: non_major
-contract_value: 45000000
+contract_value: 20m_to_50m
 contract_cost_type: no
 ```
 
@@ -141,7 +142,7 @@ Correct result (the not-applicable list is left out):
 - Pathway: Middle Tier of Acquisition (MTA), DoDI 5000.80 (Change 1, November 2024); 10 U.S.C. 3602
 - Next event: Program entrance: the ADM starts the MTA clock
 - Counts: 6 required, 23 may apply, 0 triggered, 0 need an answer, 23 not applicable
-- Rules 1.0.0: AAFDID capture 2026-08-22, checked live 2026-09-30
+- Rules 1.1.0: AAFDID capture 2026-08-22, checked live 2026-09-30
 
 ## Due at Program entrance: the ADM starts the MTA clock (2)
 
@@ -230,7 +231,8 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: Decides the Clinger-Cohen Act entries. AAFDID presumes the first three CCA actions are satisfied for weapon systems with embedded IT.
    - Affects: MCA-C01, MCA-C02, MCA-C03, MCA-C04, MCA-C05, MCA-C06, MCA-C07, MCA-C08, MCA-C09, MCA-C10, MCA-C11, MCA-M15
 6. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
+   - Values (ranges): `under_20m` = Under $20M; `20m_to_50m` = $20M to $50M; `50m_to_100m` = Over $50M, under $100M; `100m_plus` = $100M or more
+   - Ask for the range, never the exact amount. If the user gives an amount anyway, record the range it falls in.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: CSDR-02, CSDR-03, CSDR-04, CSDR-05, CSDR-06, EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
 7. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
@@ -258,7 +260,8 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: AAFDID's MTA tables mark each requirement for major systems, non-major systems, or programs above MDAP thresholds.
    - Affects: CSDR-02, MTA-S02, MTA-S03, MTA-S04, MTA-S05, MTA-S06, MTA-S07, MTA-S08, MTA-S11, MTA-S12, MTA-S13, MTA-S14, MTA-S16, MTA-S32, MTA-T01, MTA-T03, MTA-T04, MTA-T06, MTA-T07
 5. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
+   - Values (ranges): `under_20m` = Under $20M; `20m_to_50m` = $20M to $50M; `50m_to_100m` = Over $50M, under $100M; `100m_plus` = $100M or more
+   - Ask for the range, never the exact amount. If the user gives an amount anyway, record the range it falls in.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: CSDR-02, CSDR-05, EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
 6. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
@@ -288,7 +291,8 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: Decides the Clinger-Cohen Act entries. AAFDID presumes the first three CCA actions are satisfied for weapon systems with embedded IT.
    - Also affects these MCA entries to review (12-uca.md): MCA-C01, MCA-C02, MCA-C03, MCA-C04, MCA-C05, MCA-C06, MCA-C07, MCA-C08, MCA-C09, MCA-C10, MCA-C11, MCA-M15
 6. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
+   - Values (ranges): `under_20m` = Under $20M; `20m_to_50m` = $20M to $50M; `50m_to_100m` = Over $50M, under $100M; `100m_plus` = $100M or more
+   - Ask for the range, never the exact amount. If the user gives an amount anyway, record the range it falls in.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
    - Also affects these MCA entries to review (12-uca.md): CSDR-02, CSDR-03, CSDR-04, CSDR-05, CSDR-06, SWA-19
@@ -322,7 +326,8 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: The Core Logistics Determination is statutory for programs with software maintenance (10 U.S.C. 2464).
    - Affects: SWA-20
 7. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
+   - Values (ranges): `under_20m` = Under $20M; `20m_to_50m` = $20M to $50M; `50m_to_100m` = Over $50M, under $100M; `100m_plus` = $100M or more
+   - Ask for the range, never the exact amount. If the user gives an amount anyway, record the range it falls in.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06, SWA-19
 8. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
@@ -348,7 +353,8 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Why it matters: IOT&E reports, live fire reports and waivers apply only to oversight programs, and DOT&E approval of the operational test plan is statutory for them.
    - Affects: DBS-14, DBS-15, DBS-16
 5. `contract_value`: What is the largest planned contract or agreement value, including options, in then-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
+   - Values (ranges): `under_20m` = Under $20M; `20m_to_50m` = $20M to $50M; `50m_to_100m` = Over $50M, under $100M; `100m_plus` = $100M or more
+   - Ask for the range, never the exact amount. If the user gives an amount anyway, record the range it falls in.
    - Why it matters: EVMS and cost data reporting thresholds are set by contract value.
    - Affects: CSDR-02, CSDR-03, CSDR-05, CSDR-06, EVM-01, EVM-02, EVM-03, EVM-04, EVM-05, EVM-06
 6. `contract_cost_type`: Is that contract cost-reimbursable or incentive-type, with 18 months or more of performance?
@@ -365,11 +371,13 @@ Ask the questions for the program's pathway in the order below, one per message.
    - Values: `plan` = Plan: form the team, review the current strategy, market research (also: planning, plan phase); `develop` = Develop: define requirements, SRRB, acquisition strategy (also: development, develop phase); `execute` = Execute: award and manage performance (also: execution, execute phase). Leave blank to list every event.
    - Why it matters: Requirements due at that event are listed first, then later ones, then recurring and triggered items.
 3. `svc_total_value`: What is the total estimated value of the services, all years, in current-year dollars?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
+   - Values (ranges): `under_10m` = Under $10M; `10m_to_50m` = $10M to under $50M; `50m_to_100m` = $50M to under $100M; `100m_to_250m` = $100M to under $250M; `250m_to_500m` = $250M to under $500M; `500m_to_1b` = $500M to under $1B; `1b_plus` = $1B or more
+   - Ask for the range, never the exact amount. If the user gives an amount anyway, record the range it falls in.
    - Why it matters: Sets the services category (S-CAT), the decision authority and most thresholds (DoDI 5000.74, Table 1).
    - Affects: AOS-05, AOS-06, AOS-08, AOS-09, AOS-10, AOS-11, AOS-21, AOS-22
 4. `svc_annual_value`: What is the highest estimated value in any single year?
-   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.
+   - Values (ranges): `under_25m` = Under $25M; `25m_to_250m` = $25M to under $250M; `250m_to_300m` = $250M to $300M; `300m_plus` = Over $300M
+   - Ask for the range, never the exact amount. If the user gives an amount anyway, record the range it falls in.
    - Why it matters: S-CAT I applies above $300M in any year. A Services Acquisition Workshop is required at $250M a year, and a written acquisition plan at $25M in any fiscal year.
    - Affects: AOS-08, AOS-10, AOS-11
 5. `svc_special_interest`: Has ASD(A) designated it a Special Interest services acquisition?
@@ -393,7 +401,7 @@ Ask the questions for the program's pathway in the order below, one per message.
 
 # MCA requirements: Major Capability Acquisition
 
-Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the MCA pathway only.
+Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the MCA pathway only.
 
 - Governing instruction: DoDI 5000.85
 - Summary: Milestone-based pathway for MDAPs, major systems and other complex acquisitions. The milestone decision authority sets the entry point: MDD, Milestone A, B or C.
@@ -2290,7 +2298,7 @@ Knowledge file 10 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 # MTA requirements: Middle Tier of Acquisition
 
-Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the MTA pathway only.
+Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the MTA pathway only.
 
 - Governing instruction: DoDI 5000.80 (Change 1, November 2024); 10 U.S.C. 3602
 - Summary: Rapid Prototyping fields a prototype with residual operational capability within 5 years. Rapid Fielding starts production within 6 months and completes fielding within 5 years. The clock starts when the decision authority signs the program-start ADM.
@@ -2985,7 +2993,7 @@ Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 # UCA requirements: Urgent Capability Acquisition
 
-Knowledge file 12 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the UCA pathway only.
+Knowledge file 12 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the UCA pathway only.
 
 - Governing instruction: DoDI 5000.81
 - Summary: Fields capability for urgent operational needs in less than 2 years. Cost may not exceed MDAP thresholds (DoDI 5000.02, para 4.2.a).
@@ -3148,7 +3156,7 @@ For a UCA program, go through the MCA records in 10-mca.md from tables `ms` and 
 
 # SWA requirements: Software Acquisition
 
-Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the SWA pathway only.
+Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the SWA pathway only.
 
 - Governing instruction: DoDI 5000.87; 10 U.S.C. 3603
 - Summary: Application and embedded software paths with a planning phase and an execution phase of iterative releases. Programs are not treated as MDAPs, and viability must be shown within 1 year of first obligating funds.
@@ -3770,7 +3778,7 @@ Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 # DBS requirements: Defense Business Systems
 
-Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the DBS pathway only.
+Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the DBS pathway only.
 
 - Governing instruction: DoDI 5000.75
 - Summary: Business systems for finance, contracting, logistics, human resources and similar functions. They move through the Business Capability Acquisition Cycle and its Authority to Proceed (ATP) decision points.
@@ -4124,7 +4132,7 @@ Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record 
 
 # AoS requirements: Acquisition of Services
 
-Knowledge file 15 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the AoS pathway only.
+Knowledge file 15 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the AoS pathway only.
 
 - Governing instruction: DoDI 5000.74 (Change 1, June 2021)
 - Summary: Services at or above the simplified acquisition threshold, managed in three phases (Plan, Develop, Execute) and seven steps. The services category (S-CAT) sets the decision authority.

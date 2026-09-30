@@ -6,7 +6,7 @@
   "mission_critical_it": true,
   "dote_oversight": true,
   "software_maintenance": true,
-  "contract_value": 150000000,
+  "contract_value": "100m_plus",
   "contract_cost_type": true,
   "event": "execution_entry"
  },

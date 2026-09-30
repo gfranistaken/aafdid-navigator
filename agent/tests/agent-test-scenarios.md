@@ -22,7 +22,7 @@ pathway: mta
 event: entrance
 mta_path: rf
 mta_size: non_major
-contract_value: 45000000
+contract_value: 20m_to_50m
 contract_cost_type: no
 ```
 
@@ -42,7 +42,7 @@ pathway: mta
 event: entrance
 mta_path: rp
 mta_size: major
-contract_value: 120000000
+contract_value: 100m_plus
 contract_cost_type: yes
 ```
 
@@ -79,7 +79,7 @@ pathway: mca
 event: ms_b
 mca_program_type: mdap
 it_type: it_system
-contract_value: 600000000
+contract_value: 100m_plus
 contract_cost_type: yes
 unknown: dote_oversight
 ```
@@ -101,7 +101,7 @@ pathway: mca
 event: ms_c
 mca_program_type: acat_iii
 it_type: embedded_it
-contract_value: 30000000
+contract_value: 20m_to_50m
 contract_cost_type: no
 unknown: dote_oversight
 ```
@@ -160,7 +160,7 @@ program: Counter-UAS urgent need (example)
 pathway: uca
 event: development
 uca_acat: acat_iii
-contract_value: 12000000
+contract_value: under_20m
 contract_cost_type: yes
 unknown: dote_oversight, it_type
 ```
@@ -185,7 +185,7 @@ swa_above_acat_ii: yes
 mission_critical_it: yes
 dote_oversight: yes
 software_maintenance: yes
-contract_value: 150000000
+contract_value: 100m_plus
 contract_cost_type: yes
 ```
 
@@ -224,7 +224,7 @@ pathway: dbs
 event: acquisition_atp
 mission_critical_it: yes
 dote_oversight: no
-contract_value: 80000000
+contract_value: 50m_to_100m
 contract_cost_type: yes
 ```
 
@@ -242,8 +242,8 @@ AAFDID PROFILE v1
 program: Engineering support services (example)
 pathway: aos
 event: develop
-svc_total_value: 40000000
-svc_annual_value: 12000000
+svc_total_value: 10m_to_50m
+svc_annual_value: under_25m
 svc_special_interest: no
 svc_vehicle: standalone
 svc_overlap: no
@@ -265,8 +265,8 @@ AAFDID PROFILE v1
 program: Enterprise IT services task order (example)
 pathway: aos
 event: develop
-svc_total_value: 150000000
-svc_annual_value: 60000000
+svc_total_value: 100m_to_250m
+svc_annual_value: 25m_to_250m
 svc_special_interest: no
 svc_vehicle: task_order
 svc_overlap: yes
@@ -287,7 +287,7 @@ svc_sensitive_functions: yes
 AAFDID PROFILE v1
 program: Services with only a total value (example)
 pathway: aos
-svc_total_value: 400000000
+svc_total_value: 250m_to_500m
 unknown: svc_annual_value, svc_special_interest, svc_vehicle, svc_overlap, svc_sensitive_functions
 ```
 
@@ -308,7 +308,7 @@ pathway: mca
 event: dev_rfp_rel
 mca_program_type: acat_ii
 it_type: embedded_it
-contract_value: 75000000
+contract_value: 50m_to_100m
 contract_cost_type: yes
 unknown: dote_oversight
 ```
@@ -331,7 +331,7 @@ event: ms_b
 mca_program_type: mdap
 dote_oversight: yes
 it_type: none
-contract_value: 1200000000
+contract_value: 100m_plus
 contract_cost_type: no
 ```
 
@@ -352,7 +352,7 @@ event: ms_c
 mca_program_type: mdap
 dote_oversight: yes
 it_type: embedded_it
-contract_value: 250000000
+contract_value: 100m_plus
 contract_cost_type: yes
 ```
 
@@ -373,7 +373,7 @@ event: production
 uca_acat: acat_ii
 dote_oversight: no
 it_type: none
-contract_value: 40000000
+contract_value: 20m_to_50m
 contract_cost_type: yes
 ```
 
@@ -394,7 +394,7 @@ pathway: dbs
 event: limited_deployment_atp
 mission_critical_it: no
 dote_oversight: no
-contract_value: 150000000
+contract_value: 100m_plus
 contract_cost_type: yes
 ```
 
@@ -414,7 +414,7 @@ pathway: mta
 event: execution
 mta_path: rp
 mta_size: exceeds_mdap
-contract_value: 300000000
+contract_value: 100m_plus
 contract_cost_type: yes
 ```
 
@@ -435,7 +435,7 @@ event: planning
 swa_above_acat_ii: no
 mission_critical_it: yes
 software_maintenance: no
-contract_value: 8000000
+contract_value: under_20m
 contract_cost_type: no
 unknown: dote_oversight
 ```
@@ -476,7 +476,7 @@ AAFDID PROFILE v1
 program: Services block pasted from a chat (example)
 pathway: aos
 event: execute
-svc_total_value: 1500000000
+svc_total_value: 1b_plus
 svc_vehicle: idiq_base
 unknown: svc_annual_value, svc_special_interest, svc_overlap, svc_sensitive_functions
 ```
@@ -495,7 +495,7 @@ unknown: svc_annual_value, svc_special_interest, svc_overlap, svc_sensitive_func
 ```
 AAFDID PROFILE v1
 pathway: aos
-svc_annual_value: 350000000
+svc_annual_value: 300m_plus
 unknown: svc_total_value, svc_special_interest, svc_vehicle, svc_overlap, svc_sensitive_functions
 ```
 
@@ -550,8 +550,8 @@ contract_value: ~$20,000,000.004
 AAFDID PROFILE v1
 program: Services — odd spacing and a | pipe (example)
 pathway: aos
-svc_total_value: 500000000
-svc_annual_value: 45000000
+svc_total_value: 500m_to_1b
+svc_annual_value: 25m_to_250m
 svc_special_interest: no
 unknown: svc_vehicle, svc_overlap, svc_sensitive_functions
 ```
@@ -563,3 +563,46 @@ unknown: svc_vehicle, svc_overlap, svc_sensitive_functions
 - Questions to ask: svc_vehicle, svc_overlap, svc_sensitive_functions
 - Must not list as required, may apply or also review (1): AOS-11
 - Services category: S-CAT II; decision authority: Service or component acquisition executive, or designee
+
+## 31-ranges-by-label
+
+```
+AAFDID PROFILE v1
+program: Ranges given by label and id (example)
+pathway: aos
+event: develop
+svc_total_value: 250m_to_500m
+svc_annual_value: 250m_to_300m
+svc_special_interest: no
+svc_vehicle: idiq_base
+unknown: svc_overlap, svc_sensitive_functions
+```
+
+- Due at Develop: define requirements, SRRB, acquisition strategy (7): AOS-04, AOS-05, AOS-06, AOS-10, AOS-12, AOS-13, AOS-14
+- Required (16): AOS-04, AOS-05, AOS-06, AOS-10, AOS-12, AOS-13, AOS-14, AOS-17, AOS-18, AOS-19, AOS-20, AOS-21, AOS-22, AOS-01, AOS-02, AOS-03
+- May apply (3): AOS-15, AOS-16, AOS-23
+- Only if triggered (1): AOS-24
+- Needs an answer (2): AOS-07, AOS-09
+- Questions to ask: svc_overlap, svc_sensitive_functions
+- Must not list as required, may apply or also review (2): AOS-08, AOS-11
+- Services category: S-CAT II; decision authority: Service or component acquisition executive, or designee
+
+## 32-contract-range-alias
+
+```
+AAFDID PROFILE v1
+program: Range synonym (example)
+pathway: dbs
+event: acquisition_atp
+mission_critical_it: yes
+dote_oversight: no
+contract_value: 100m_plus
+contract_cost_type: yes
+```
+
+- Due at Acquisition ATP (5): DBS-05, DBS-06, DBS-07, DBS-08, DBS-09
+- Required (14): DBS-05, DBS-06, DBS-07, DBS-08, DBS-09, DBS-10, DBS-11, DBS-12, DBS-13, EVM-03, EVM-06, DBS-01, DBS-02, DBS-03
+- May apply (6): DBS-04, CSDR-01, CSDR-02, CSDR-03, CSDR-05, CSDR-06
+- Only if triggered (0): none
+- Needs an answer (0): none
+- Must not list as required, may apply or also review (7): DBS-14, DBS-15, DBS-16, EVM-01, EVM-02, EVM-04, EVM-05

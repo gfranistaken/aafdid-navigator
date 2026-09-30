@@ -1,6 +1,6 @@
 # UCA requirements: Urgent Capability Acquisition
 
-Knowledge file 12 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the UCA pathway only.
+Knowledge file 12 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the UCA pathway only.
 
 - Governing instruction: DoDI 5000.81
 - Summary: Fields capability for urgent operational needs in less than 2 years. Cost may not exceed MDAP thresholds (DoDI 5000.02, para 4.2.a).

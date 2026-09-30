@@ -1,10 +1,10 @@
 {
  "profile": {
-  "program": "Logistics business system (example)",
+  "program": "Range synonym (example)",
   "pathway": "dbs",
   "mission_critical_it": true,
   "dote_oversight": false,
-  "contract_value": "50m_to_100m",
+  "contract_value": "100m_plus",
   "contract_cost_type": true,
   "event": "acquisition_atp"
  },
@@ -82,13 +82,13 @@
    "statutory"
   ],
   [
-   "EVM-02",
+   "EVM-03",
    "required",
    "ongoing",
    "regulatory"
   ],
   [
-   "EVM-05",
+   "EVM-06",
    "required",
    "ongoing",
    "regulatory"
@@ -172,7 +172,7 @@
    "regulatory"
   ],
   [
-   "EVM-03",
+   "EVM-02",
    "not_applicable",
    "not_applicable",
    "regulatory"
@@ -184,7 +184,7 @@
    "regulatory"
   ],
   [
-   "EVM-06",
+   "EVM-05",
    "not_applicable",
    "not_applicable",
    "regulatory"

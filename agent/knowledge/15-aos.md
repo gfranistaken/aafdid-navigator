@@ -1,6 +1,6 @@
 # AoS requirements: Acquisition of Services
 
-Knowledge file 15 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the AoS pathway only.
+Knowledge file 15 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the AoS pathway only.
 
 - Governing instruction: DoDI 5000.74 (Change 1, June 2021)
 - Summary: Services at or above the simplified acquisition threshold, managed in three phases (Plan, Develop, Execute) and seven steps. The services category (S-CAT) sets the decision authority.

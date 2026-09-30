@@ -5,7 +5,7 @@
   "mca_program_type": "mdap",
   "dote_oversight": true,
   "it_type": "none",
-  "contract_value": 1200000000,
+  "contract_value": "100m_plus",
   "contract_cost_type": false,
   "event": "ms_b"
  },

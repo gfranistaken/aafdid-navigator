@@ -138,9 +138,6 @@ textarea { max-width: 100%; font: 13px/1.5 var(--font-mono); min-height: 120px; 
 .seg button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .seg button.unsure[aria-pressed="true"] { background: var(--und-bg); color: var(--ink); border-color: var(--und); }
 .opt-help { font-size: 12.5px; color: var(--ink-3); margin: 2px 0 0; }
-.money { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-.money input { max-width: 220px; }
-.money .echo { font: 500 13px var(--font-mono); color: var(--ink-3); }
 
 .timeline { overflow-x: auto; padding: 6px 2px 2px; }
 .timeline ol { list-style: none; margin: 0; padding: 0; display: flex; min-width: max-content; position: relative; }
@@ -251,11 +248,11 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
   <div class="secbanner-in">
     <svg class="secicon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.8 1.8 20.8h20.4L12 2.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 9.2v5.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.25" fill="currentColor"/></svg>
     <div class="sectext">
-      <p><strong>Not a secure system. Do not enter sensitive information.</strong> That includes classified information, Controlled Unclassified Information (CUI), source selection or other procurement-sensitive information such as an IGCE, proprietary data, and personal information. This is an unofficial public website, not a U.S. Government system. A generic program label and rounded dollar figures are all the tool needs.</p>
+      <p><strong>Not a secure system. Do not enter sensitive information.</strong> That includes classified information, Controlled Unclassified Information (CUI), source selection or other procurement-sensitive information such as an IGCE, proprietary data, and personal information. This is an unofficial public website, not a U.S. Government system. The tool needs only a generic program label and dollar ranges, never exact amounts.</p>
       <details class="secmore">
         <summary>What happens to what you enter</summary>
-        <p>The page runs entirely in your browser, and nothing you enter is sent to a server. It does keep your answers in this browser on this device, so they are still here when you come back. On a shared computer, use a private window, or clear them when you finish.</p>
-        <button class="btn" type="button" id="forget">Clear saved answers</button>
+        <p>The page runs entirely in your browser, and nothing you enter is sent to a server. Your answers are kept only until you close this tab. To come back to a program later, copy its profile in step 5 and paste it back in.</p>
+        <button class="btn" type="button" id="forget">Clear my answers now</button>
       </details>
     </div>
   </div>
@@ -330,7 +327,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
 
     <section class="step" id="handoff" aria-labelledby="h-handoff">
       <div class="step-head"><span class="step-num">5</span><h2 id="h-handoff">Hand it off</h2>
-        <p class="step-lede">Save the profile, share the checklist, or give the profile to an AI agent. The agent files in the project repository use the same rules and the same requirement codes.</p></div>
+        <p class="step-lede">Copy the profile to keep it (answers clear when you close the tab), share the checklist, or give the profile to an AI agent. The agent files in the project repository use the same rules and the same requirement codes.</p></div>
       <div class="handoff">
         <div class="card">
           <h3>Program profile</h3>
@@ -383,7 +380,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
   var CUR = {}; B.currency.notes.forEach(function (n) { CUR[n.id] = n; });
   var EVERY = {}; B.pathways.forEach(function (p) { p.events.forEach(function (e) { if (e.every) EVERY[e.id] = true; }); });
   var STORE = 'aafdid-navigator-profile-v1';
-  var EXAMPLE = { program: 'F3 replacement power supply', pathway: 'mta', event: 'entrance', mta_path: 'rf', mta_size: 'non_major', contract_value: 45000000, contract_cost_type: false };
+  var EXAMPLE = { program: 'F3 replacement power supply', pathway: 'mta', event: 'entrance', mta_path: 'rf', mta_size: 'non_major', contract_value: '20m_to_50m', contract_cost_type: false };
 
   var state = { profile: {}, example: false, finderPath: [], finderAt: B.finder.start, typeFilter: 'all', search: '', ignored: [] };
 
@@ -400,12 +397,6 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     });
     (kids || []).forEach(function (k) { if (k !== null && k !== undefined) e.appendChild(typeof k === 'string' ? document.createTextNode(k) : k); });
     return e;
-  }
-  function money(n) {
-    if (n === null || n === undefined || n === '') return '';
-    if (n >= 1e9) return '$' + (+(n / 1e9).toFixed(3)) + 'B';
-    if (n >= 1e6) return '$' + (+(n / 1e6).toFixed(3)) + 'M';
-    return '$' + Math.round(n).toLocaleString('en-US');
   }
   function niceDate(iso) {
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
@@ -425,9 +416,10 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
       else fallback();
     } catch (e) { fallback(); }
   }
-  function save() { try { localStorage.setItem(STORE, JSON.stringify({ profile: state.profile, example: state.example })); } catch (e) { /* storage unavailable */ } }
+  // Answers live only in this tab (sessionStorage) and are gone when it closes.
+  function save() { try { sessionStorage.setItem(STORE, JSON.stringify({ profile: state.profile, example: state.example })); } catch (e) { /* storage unavailable */ } }
   function restore() {
-    try { var s = JSON.parse(localStorage.getItem(STORE) || 'null'); if (s && s.profile) { state.profile = s.profile; state.example = !!s.example; return true; } } catch (e) { /* ignore */ }
+    try { var s = JSON.parse(sessionStorage.getItem(STORE) || 'null'); if (s && s.profile) { state.profile = s.profile; state.example = !!s.example; return true; } } catch (e) { /* ignore */ }
     return false;
   }
 
@@ -449,7 +441,7 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
     });
     ch.appendChild(list);
     $('foot').innerHTML = '';
-    $('foot').appendChild(el('p', null, [el('b', { 'class': 'foot-warn', text: 'Not a secure system. ' }), 'Do not enter classified information, CUI or other sensitive information. The page runs in your browser, sends nothing you enter to a server, and keeps your answers only in this browser.']));
+    $('foot').appendChild(el('p', null, [el('b', { 'class': 'foot-warn', text: 'Not a secure system. ' }), 'Do not enter classified information, CUI or other sensitive information. The page runs in your browser, sends nothing you enter to a server, and keeps your answers only until you close the tab.']));
     $('foot').appendChild(el('p', null, ['Source tables: ', el('a', { href: 'https://www.waru.edu/aafdid', target: '_blank', rel: 'noopener', text: 'AAFDID' }), ' (Warfighting Acquisition University). ' + B.meta.aafdid_capture + '. ' + B.meta.live_check + '.']));
     $('foot').appendChild(el('p', { text: 'Acquisition of Services entries come from ' + B.meta.aos_source + '.' }));
     $('foot').appendChild(el('p', { text: B.meta.disclaimer }));
@@ -567,9 +559,9 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
   function renderQuestion(q) {
     var f = el('div', { 'class': 'field', id: 'q-' + q.id });
     var labId = 'lab-' + q.id;
-    f.appendChild(el(q.type === 'money' ? 'label' : 'span', q.type === 'money' ? { 'for': 'in-' + q.id, id: labId } : { 'class': 'label', id: labId }, [q.text]));
+    f.appendChild(el('span', { 'class': 'label', id: labId }, [q.text]));
     var v = state.profile[q.id];
-    if (q.type === 'choice' || q.type === 'boolean') {
+    if (q.type === 'choice' || q.type === 'boolean' || q.type === 'money') {
       var seg = el('div', { 'class': 'seg', role: 'group', 'aria-labelledby': labId });
       var opts = q.type === 'boolean' ? [{ value: true, label: 'Yes' }, { value: false, label: 'No' }] : q.options;
       opts.forEach(function (o) {
@@ -578,17 +570,6 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
       seg.appendChild(el('button', { type: 'button', 'class': 'unsure', 'aria-pressed': v === undefined ? 'true' : 'false', onclick: function () { setAnswer(q.id, null); } }, ['Not sure']));
       f.appendChild(seg);
       if (q.options) q.options.forEach(function (o) { if (o.help && v === o.value) f.appendChild(el('p', { 'class': 'opt-help', text: o.help })); });
-    } else if (q.type === 'money') {
-      var inp = el('input', { type: 'text', id: 'in-' + q.id, inputmode: 'decimal', autocomplete: 'off', placeholder: 'e.g. 45M or 1.2B', value: v !== undefined ? money(v).replace('$', '') : '' });
-      var echo = el('span', { 'class': 'echo', text: v !== undefined ? '= ' + money(v) : 'Not entered' });
-      inp.addEventListener('change', function () {
-        var n = A.parseMoney(inp.value);
-        if (inp.value.trim() && n === null) { echo.textContent = 'Not a dollar amount. Try 45M, 1.2B or 45000000.'; return; }
-        setAnswer(q.id, n);
-      });
-      inp.setAttribute('aria-describedby', 'note-' + q.id);
-      f.appendChild(el('div', { 'class': 'money' }, [inp, echo]));
-      f.appendChild(el('p', { 'class': 'field-note', id: 'note-' + q.id, text: 'A rounded figure is enough, because the tool only compares it with thresholds. Don’t enter an IGCE or any other sensitive estimate.' }));
     }
     var gates = q.gates && q.gates.length ? ' Affects ' + q.gates.length + ' requirement' + (q.gates.length === 1 ? '' : 's') + '.' : '';
     f.appendChild(el('span', { 'class': 'why', text: q.why + gates }));
@@ -777,11 +758,13 @@ footer { border-top: 1px solid var(--rule); background: var(--panel); }
   $('forget').addEventListener('click', function () {
     clearAll();
     $('paste').value = '';
-    try { localStorage.removeItem(STORE); } catch (e) { /* storage unavailable */ }
-    toast('Saved answers cleared from this browser');
+    try { sessionStorage.removeItem(STORE); } catch (e) { /* storage unavailable */ }
+    toast('Your answers are cleared');
   });
 
   renderMeta();
+  // Earlier versions kept answers in localStorage, which outlives the tab. Remove any left behind.
+  try { localStorage.removeItem(STORE); } catch (e) { /* storage unavailable */ }
   if (!restore()) { state.profile = JSON.parse(JSON.stringify(EXAMPLE)); state.example = true; }
   renderFinder();
   update();

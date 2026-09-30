@@ -2,8 +2,8 @@
  "profile": {
   "program": "Services — odd spacing and a | pipe (example)",
   "pathway": "aos",
-  "svc_total_value": 500000000,
-  "svc_annual_value": 45000000,
+  "svc_total_value": "500m_to_1b",
+  "svc_annual_value": "25m_to_250m",
   "svc_special_interest": false
  },
  "pathway": "aos",

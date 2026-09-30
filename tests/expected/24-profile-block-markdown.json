@@ -2,7 +2,7 @@
  "profile": {
   "program": "Services block pasted from a chat (example)",
   "pathway": "aos",
-  "svc_total_value": 1500000000,
+  "svc_total_value": "1b_plus",
   "svc_vehicle": "idiq_base",
   "event": "execute"
  },

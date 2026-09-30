@@ -4,7 +4,7 @@
   "pathway": "mca",
   "mca_program_type": "acat_iii",
   "it_type": "embedded_it",
-  "contract_value": 30000000,
+  "contract_value": "20m_to_50m",
   "contract_cost_type": false,
   "event": "ms_c"
  },

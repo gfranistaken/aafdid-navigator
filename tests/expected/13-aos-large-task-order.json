@@ -2,8 +2,8 @@
  "profile": {
   "program": "Enterprise IT services task order (example)",
   "pathway": "aos",
-  "svc_total_value": 150000000,
-  "svc_annual_value": 60000000,
+  "svc_total_value": "100m_to_250m",
+  "svc_annual_value": "25m_to_250m",
   "svc_special_interest": false,
   "svc_vehicle": "task_order",
   "svc_overlap": true,

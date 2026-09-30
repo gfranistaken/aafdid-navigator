@@ -60,7 +60,7 @@ pathway: mta
 event: entrance
 mta_path: rf
 mta_size: non_major
-contract_value: 45000000
+contract_value: 20m_to_50m
 contract_cost_type: no
 ```
 

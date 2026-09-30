@@ -1,6 +1,6 @@
 # SWA requirements: Software Acquisition
 
-Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the SWA pathway only.
+Knowledge file 13 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the SWA pathway only.
 
 - Governing instruction: DoDI 5000.87; 10 U.S.C. 3603
 - Summary: Application and embedded software paths with a planning phase and an execution phase of iterative releases. Programs are not treated as MDAPs, and viability must be shown within 1 year of first obligating funds.

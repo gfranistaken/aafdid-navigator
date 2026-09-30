@@ -29,10 +29,10 @@
 | `dote_oversight` | boolean | MCA, UCA, SWA, DBS | |
 | `software_maintenance` | boolean | SWA | |
 | `it_type` | choice | MCA, UCA | `it_system` `embedded_it` `none` |
-| `contract_value` | money | MCA, MTA, UCA, SWA, DBS | then-year dollars, including options |
+| `contract_value` | money | MCA, MTA, UCA, SWA, DBS | range of the largest contract, then-year dollars, including options: `under_20m` `20m_to_50m` `50m_to_100m` `100m_plus` |
 | `contract_cost_type` | boolean | MCA, MTA, UCA, SWA, DBS | cost-reimbursable or incentive, 18 months or more |
-| `svc_total_value` | money | AoS | total estimated value, all years, current-year dollars (rounded is enough) |
-| `svc_annual_value` | money | AoS | highest single year |
+| `svc_total_value` | money | AoS | range of the total estimated value, all years, current-year dollars: `under_10m` `10m_to_50m` `50m_to_100m` `100m_to_250m` `250m_to_500m` `500m_to_1b` `1b_plus` |
+| `svc_annual_value` | money | AoS | range of the highest single year: `under_25m` `25m_to_250m` `250m_to_300m` `300m_plus` |
 | `svc_special_interest` | boolean | AoS | |
 | `svc_vehicle` | choice | AoS | `standalone` `idiq_base` `task_order` |
 | `svc_overlap` | boolean | AoS | |
@@ -41,11 +41,19 @@
 A missing field is unknown, and so is a value such as `unknown`, `tbd` or `not sure`. The engines accept these input forms:
 
 - `yes`/`no`, `y`/`n` and `true`/`false`
-- money such as `45M`, `$1.2B`, `about $45 million`, `4.5e7` or `45000000`, kept to whole dollars unless cents are given
+- dollar answers as a range id, label or synonym (`20m_to_50m`, `$20M to $50M`, `$100M+`), or as an amount such as `45M`, `about $45 million` or `45000000`, which is stored as the range it falls in
 - option values, option labels or the synonyms in each option's `aliases` (for example `ACAT IC` for `mdap`)
 - event ids, short names such as `MS B`, full names, or the event's `aliases` (for example `Milestone B`, `MSB`)
 
 Matching ignores case, spaces and punctuation. Anything else is not guessed: the result's `unrecognized` list names each ignored field or value with the reason, and the field stays unknown. An event marked `every` (SWA "Each decision point") cannot be the next event, because its items are due at every decision point.
+
+## Dollar ranges
+
+Dollar questions are answered with ranges, so nobody has to enter an estimate. `tools/build_rules.py` writes each dollar question's `options` (id, label, `lo`, `hi`, and whether each end is included). It cuts the ranges at every threshold the rules test for that field, plus the services-category thresholds in `scat` (`total_gte`, `annual_gt`).
+
+- **A value exactly on a cut** goes where the rules put it. "At least" and "under" tests (`gte`, `lt`) put it in the upper range; "over" and "at most" tests (`gt`, `lte`) put it in the lower one.
+- **Where the rules disagree**, the upper range wins. At exactly $20M, EVMS applies at "$20M or more" but CSDR reports start "over $20M", so a $20M contract counts as `20m_to_50m` and may show a CSDR report that strictly starts above it. This can only add a report, never drop one.
+- **Conditions are evaluated on ranges.** For a condition, a range stands for the amounts strictly inside it. A threshold at an end of the range settles the comparison; a threshold inside the range would leave it unknown, which the cuts prevent.
 
 ## Requirement record
 

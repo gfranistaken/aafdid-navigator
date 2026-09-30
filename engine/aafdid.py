@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AAFDID Navigator engine 1.0.0, Python port of engine/aafdid.js.
+"""AAFDID Navigator engine 1.1.0, Python port of engine/aafdid.js.
 
 Evaluates a program profile against rules/aafdid-rules.json. Standard library only.
 Logic is three-valued: a condition is True, False, or None (unknown) when an answer is missing.
@@ -17,7 +17,7 @@ License: MIT.
 import json, math, re, sys
 from pathlib import Path
 
-ENGINE_VERSION = "1.0.0"
+ENGINE_VERSION = "1.1.0"
 STATUS_BY_KIND = {"event": "required", "recurring": "required", "contract": "required", "compliance": "required",
                   "conditional": "conditional", "triggered": "triggered", "reference": "reference"}
 STATUS_ORDER = ["required", "conditional", "review", "triggered", "undetermined", "reference", "not_applicable"]
@@ -256,6 +256,8 @@ def test(c, p):
         return not js_eq(v, c["ne"])
     if "in" in c:
         return any(js_eq(v, x) for x in c["in"])
+    if isinstance(v, dict) and "lo" in v:
+        return range_test(c, v)
     n = js_number(v)
     if "gte" in c:
         return n >= c["gte"]
@@ -265,6 +267,31 @@ def test(c, p):
         return n <= c["lte"]
     if "lt" in c:
         return n < c["lt"]
+    raise ValueError("Unknown condition: " + json.dumps(c))
+
+
+def at_least(r, t):
+    """A dollar range {lo, hi} stands for the amounts strictly between its ends (hi None: no upper
+    end). Ranges are cut at the rules' thresholds, so a comparison is settled unless a threshold
+    falls inside the range, which makes it unknown."""
+    if r.get("lo") is not None and r["lo"] >= t:
+        return True
+    if r.get("hi") is not None and r["hi"] <= t:
+        return False
+    return None
+
+
+def range_test(c, r):
+    if "gte" in c:
+        return at_least(r, c["gte"])
+    if "gt" in c:
+        return at_least(r, c["gt"])
+    if "lte" in c:
+        k = at_least(r, c["lte"])
+        return None if k is None else (not k)
+    if "lt" in c:
+        k = at_least(r, c["lt"])
+        return None if k is None else (not k)
     raise ValueError("Unknown condition: " + json.dumps(c))
 
 
@@ -361,6 +388,28 @@ def match_choice(q, v):
     return None
 
 
+def range_for(q, n):
+    """The range an amount falls in. A value exactly on a cut goes where the range bounds say."""
+    for o in q.get("options") or []:
+        lo_ok = n > o["lo"] or (o["lo_incl"] and n == o["lo"])
+        hi_ok = o.get("hi") is None or n < o["hi"] or (o["hi_incl"] and n == o["hi"])
+        if lo_ok and hi_ok:
+            return o["value"]
+    return None
+
+
+def normalize_money(q, v):
+    """A dollar answer: a range id, label or synonym, or an amount, which is stored as its range."""
+    if isinstance(v, str):
+        hit = match_choice(q, v)
+        if hit:
+            return hit
+    n = parse_money(v)
+    if n is None:
+        return None
+    return range_for(q, n) if q.get("options") else n
+
+
 def match_event(pw, v):
     if not pw:
         return None
@@ -404,7 +453,7 @@ def normalize_detailed(bundle, inp):
         if t == "boolean":
             v = parse_bool(v)
         elif t == "money":
-            v = parse_money(v)
+            v = normalize_money(q, v)
         elif t == "choice":
             v = match_choice(q, v)
         if is_unknown(v):
@@ -424,6 +473,18 @@ def normalize_detailed(bundle, inp):
 
 def normalize(bundle, inp):
     return normalize_detailed(bundle, inp)["profile"]
+
+
+def eval_profile(bundle, profile):
+    """The profile with each dollar range replaced by its bounds, for evaluating conditions."""
+    ep = dict(profile)
+    for q in bundle["questions"]["questions"]:
+        if q.get("type") != "money" or not isinstance(ep.get(q["id"]), str):
+            continue
+        for o in q.get("options") or []:
+            if o["value"] == ep[q["id"]]:
+                ep[q["id"]] = {"lo": o["lo"], "hi": o.get("hi")}
+    return ep
 
 
 def pathway_by_id(bundle, pid):
@@ -447,36 +508,46 @@ def visible_questions(bundle, profile):
 # ------------------------------------------------------------------ services category
 
 def services_category(bundle, p):
+    """p is the evaluation profile: dollar answers are ranges (or amounts). Thresholds come from bundle["scat"]."""
     if p.get("pathway") != "aos":
         return None
-    rows = {s["id"]: s for s in bundle.get("scat") or []}
+    rows = {r["id"]: r for r in bundle.get("scat") or []}
+
+    def cmp(v, op, n):
+        if n is None:
+            return None
+        return test({"field": "v", op: n}, {"v": v})
+    si_note = "Unless ASD(A) designates it Special Interest."
     sid, note = None, ""
     t, a = p.get("svc_total_value"), p.get("svc_annual_value")
     si_unknown = is_unknown(p.get("svc_special_interest"))
+    one = rows.get("I") or {}
+    a_over = cmp(a, "gt", one.get("annual_gt"))
     if p.get("svc_special_interest") is True:
         sid = "special_interest"
-    elif not is_unknown(a) and a > 3e8:
+    elif a_over is True:
         sid = "I"
         if si_unknown:
-            note = "Unless ASD(A) designates it Special Interest."
+            note = si_note
     elif not is_unknown(t):
-        if t >= 1e9 or (not is_unknown(a) and a > 3e8):
+        at = [cmp(t, "gte", (rows.get(k) or {}).get("total_gte")) for k in ("I", "II", "III", "IV")]
+        if at[0] is True:
             sid = "I"
-        elif t >= 2.5e8:
+        elif at[0] is False and at[1] is True:
             sid = "II"
-            if is_unknown(a) and t > 3e8:
+            if a_over is None and cmp(t, "gt", one.get("annual_gt")) is not False:
                 note = "S-CAT I instead if more than $300M falls in any one year."
-        elif t >= 1e8:
+        elif at[1] is False and at[2] is True:
             sid = "III"
-        elif t >= 1e7:
+        elif at[2] is False and at[3] is True:
             sid = "IV"
-        else:
+        elif at[3] is False:
             sid = "V"
             note = "Only if above the simplified acquisition threshold; below it, DoDI 5000.74 does not apply."
-        if si_unknown:
-            note = (note + " " if note else "") + "Unless ASD(A) designates it Special Interest."
+        if sid and si_unknown:
+            note = (note + " " if note else "") + si_note
     if not sid:
-        return {"id": None, "label": "Undetermined", "decision_authority": None, "note": "Enter the total estimated value.",
+        return {"id": None, "label": "Undetermined", "decision_authority": None, "note": "Answer the total estimated value.",
                 "cite": bundle.get("scat_cite")}
     r = rows.get(sid, {})
     return {"id": sid, "label": r.get("label") or sid, "rule": r.get("rule") or "",
@@ -609,6 +680,7 @@ def assess(bundle, req, profile, pw, focus, idx, override):
 def evaluate(bundle, inp):
     nd = normalize_detailed(bundle, inp)
     profile = nd["profile"]
+    ep = eval_profile(bundle, profile)
     meta = bundle["meta"]
     result = {"engine": "aafdid-navigator", "engine_version": ENGINE_VERSION, "rules_version": meta["version"],
               "aafdid_capture": meta["aafdid_capture"], "live_check": meta["live_check"], "profile": profile,
@@ -630,14 +702,14 @@ def evaluate(bundle, inp):
         for e in pw["events"]:
             if e["id"] == focus:
                 result["focus_event"] = {"id": e["id"], "short": e["short"], "name": e["name"]}
-    items = [assess(bundle, req, profile, pw, focus, idx, None) for req in bundle["requirements"] if pw["id"] in req["pathways"]]
+    items = [assess(bundle, req, ep, pw, focus, idx, None) for req in bundle["requirements"] if pw["id"] in req["pathways"]]
     # Entries of another pathway's tables that AAFDID says to review too (UCA -> MCA ACAT II/III).
     # Until the mapped answer is given they are not listed; the question counts them instead.
     review_pending = 0
     ar = pw.get("also_review")
     if ar:
-        mapped = dict(profile)
-        mapped[ar["map_field"]["to"]] = profile.get(ar["map_field"]["from"])
+        mapped = dict(ep)
+        mapped[ar["map_field"]["to"]] = ep.get(ar["map_field"]["from"])
         for req in bundle["requirements"]:
             if ar["pathway"] not in req["pathways"] or req["table"] not in ar["tables"]:
                 continue
@@ -654,7 +726,7 @@ def evaluate(bundle, inp):
             src_pw = pathway_by_id(bundle, ar["pathway"])
             items.append(assess(bundle, req, mapped, src_pw, None, event_info(src_pw), {"status": ar["status"], "reason": ar["reason"]}))
     if pw["id"] == "aos":
-        result["derived"]["services_category"] = services_category(bundle, profile)
+        result["derived"]["services_category"] = services_category(bundle, ep)
 
     def first_event(it):
         best = 99

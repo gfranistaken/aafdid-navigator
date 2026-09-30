@@ -4,7 +4,7 @@
   "pathway": "mta",
   "mta_path": "rp",
   "mta_size": "exceeds_mdap",
-  "contract_value": 300000000,
+  "contract_value": "100m_plus",
   "contract_cost_type": true,
   "event": "execution"
  },

@@ -11,13 +11,13 @@ People and agents use the same rule base, so they get the same answer with the s
 
 **Open the navigator:** [gfranistaken.github.io/aafdid-navigator](https://gfranistaken.github.io/aafdid-navigator/)
 
-**Not a secure system.** Do not enter classified information, CUI, source selection or other procurement-sensitive information, proprietary data, or personal information into the web page or paste it into a profile. The page runs entirely in the browser and sends nothing you enter to a server, but it is an unofficial public website, not a U.S. Government system. A generic program label and rounded dollar figures are all it needs.
+**Not a secure system.** Do not enter classified information, CUI, source selection or other procurement-sensitive information, proprietary data, or personal information into the web page or paste it into a profile. The page runs entirely in the browser, sends nothing you enter to a server, and forgets the answers when the tab closes, but it is an unofficial public website, not a U.S. Government system. It needs only a generic program label and dollar ranges, never exact amounts.
 
 **Unofficial.** AAFDID itself is an overview: comply with its tabular notes and the full text of each cited source. This project is not affiliated with or endorsed by WARU, DAU or the Department of War.
 
 | | |
 | --- | --- |
-| Rules | 1.0.0 · 268 requirement records across all six pathways |
+| Rules | 1.1.0 · 268 requirement records across all six pathways |
 | AAFDID capture | August 22, 2026 (every AAFDID table page, print-to-PDF, parsed in [aafdid-open](https://github.com/gfranistaken/aafdid-open)) |
 | Live check | September 30, 2026: every captured row was located on the live AAFDID pages, and the differences found were corrected |
 | Acquisition of Services | Drawn from DoDI 5000.74, because AAFDID has no AoS table |

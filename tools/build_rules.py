@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CAP = ROOT / "sources" / "aafdid-capture"
 RULES = ROOT / "rules"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 CAPTURED = "2026-08-22"
 CHECKED = "2026-09-30"
 
@@ -646,6 +646,69 @@ for note in currency["notes"]:
                 hit = True
         if hit:
             r.setdefault("currency", []).append(note["id"])
+
+# ---------------------------------------------------------------- dollar questions: answer by range, never by amount
+# Each dollar question offers ranges cut at every threshold the rules test for that field,
+# plus the services-category thresholds, so no answer needs an exact figure. A value that
+# sits exactly on a cut belongs to the side the rules put it on: "at least" and "under"
+# tests (gte, lt) put it in the upper range; "over" and "at most" tests (gt, lte) put it
+# in the lower one. Where the rules disagree (EVMS at $20M or more, CSDR over $20M), the
+# upper range wins, which can only add a report, never drop one.
+def threshold_ops(field):
+    th = {}
+    def walk(c):
+        if not isinstance(c, dict):
+            return
+        for k in ("all", "any"):
+            for x in c.get(k, []):
+                walk(x)
+        if "not" in c:
+            walk(c["not"])
+        if c.get("field") == field:
+            for op in ("gte", "gt", "lte", "lt"):
+                if op in c:
+                    th.setdefault(c[op], set()).add(op)
+    for r in out:
+        walk(r["applies_if"]); walk(r.get("conditional_if")); walk((r.get("type_rule") or {}).get("if"))
+    return th
+
+SCAT_FIELDS = {"svc_total_value": "total_gte", "svc_annual_value": "annual_gt"}
+def short_money(v):
+    return (f"{v / 1e9:g}b" if v >= 1e9 else f"{v / 1e6:g}m").replace(".", "_")
+
+def ranges_for(field):
+    th = threshold_ops(field)
+    if field in SCAT_FIELDS:
+        key = SCAT_FIELDS[field]
+        for row in aos["scat"]:
+            if key in row:
+                th.setdefault(row[key], set()).add(key.split("_")[1])
+    cuts = sorted(th)
+    upper = {t: bool(th[t] & {"gte", "lt"}) for t in cuts}
+    opts = []
+    for i in range(len(cuts) + 1):
+        lo = cuts[i - 1] if i else None
+        hi = cuts[i] if i < len(cuts) else None
+        lo_incl = lo is None or upper[lo]
+        hi_incl = hi is not None and not upper[hi]
+        if lo is None:
+            label, oid = (f"{money(hi)} or less" if hi_incl else f"Under {money(hi)}"), f"under_{short_money(hi)}"
+            aliases = [f"below {money(hi)}", f"less than {money(hi)}"]
+        elif hi is None:
+            label, oid = (f"{money(lo)} or more" if lo_incl else f"Over {money(lo)}"), f"{short_money(lo)}_plus"
+            aliases = [f"more than {money(lo)}"] + ([f"{money(lo)}+"] if lo_incl else [f"over {money(lo)}"])
+        else:
+            label = {(True, True): f"{money(lo)} to {money(hi)}", (True, False): f"{money(lo)} to under {money(hi)}",
+                     (False, False): f"Over {money(lo)}, under {money(hi)}", (False, True): f"Over {money(lo)}, up to {money(hi)}"}[(lo_incl, hi_incl)]
+            oid = f"{short_money(lo)}_to_{short_money(hi)}"
+            aliases = [f"{money(lo)}-{money(hi)}", f"{money(lo)} to {money(hi)}"]
+        opts.append({"value": oid, "label": label, "aliases": [a for a in aliases if a.lower() != label.lower()],
+                     "lo": 0 if lo is None else lo, "lo_incl": lo_incl, "hi": hi, "hi_incl": hi_incl})
+    return opts
+
+for q in questions["questions"]:
+    if q.get("type") == "money":
+        q["options"] = ranges_for(q["id"])
 
 # ---------------------------------------------------------------- questions: which requirements each one gates
 sys.path.insert(0, str(ROOT / "engine"))

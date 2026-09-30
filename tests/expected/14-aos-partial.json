@@ -2,7 +2,7 @@
  "profile": {
   "program": "Services with only a total value (example)",
   "pathway": "aos",
-  "svc_total_value": 400000000
+  "svc_total_value": "250m_to_500m"
  },
  "pathway": "aos",
  "focus_event": null,

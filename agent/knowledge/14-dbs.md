@@ -1,6 +1,6 @@
 # DBS requirements: Defense Business Systems
 
-Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the DBS pathway only.
+Knowledge file 14 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the DBS pathway only.
 
 - Governing instruction: DoDI 5000.75
 - Summary: Business systems for finance, contracting, logistics, human resources and similar functions. They move through the Business Capability Acquisition Cycle and its Authority to Proceed (ATP) decision points.

@@ -3,7 +3,7 @@
   "program": "Counter-UAS urgent need (example)",
   "pathway": "uca",
   "uca_acat": "acat_iii",
-  "contract_value": 12000000,
+  "contract_value": "under_20m",
   "contract_cost_type": true,
   "event": "development"
  },

@@ -13,25 +13,30 @@
       "id": "I",
       "label": "S-CAT I",
       "rule": "$1B or more total, or more than $300M in any one year",
-      "decision_authority": "Service or component acquisition executive, or designee"
+      "decision_authority": "Service or component acquisition executive, or designee",
+      "total_gte": 1000000000,
+      "annual_gt": 300000000
     },
     {
       "id": "II",
       "label": "S-CAT II",
       "rule": "$250M or more, but less than $1B",
-      "decision_authority": "Service or component acquisition executive, or designee"
+      "decision_authority": "Service or component acquisition executive, or designee",
+      "total_gte": 250000000
     },
     {
       "id": "III",
       "label": "S-CAT III",
       "rule": "$100M or more, but less than $250M",
-      "decision_authority": "Component Senior Services Manager or designee"
+      "decision_authority": "Component Senior Services Manager or designee",
+      "total_gte": 100000000
     },
     {
       "id": "IV",
       "label": "S-CAT IV",
       "rule": "$10M or more, but less than $100M",
-      "decision_authority": "Component Senior Services Manager or designee"
+      "decision_authority": "Component Senior Services Manager or designee",
+      "total_gte": 10000000
     },
     {
       "id": "V",

@@ -220,7 +220,8 @@ def intake_file():
             elif q.get("type") == "boolean":
                 L.append("   - Values: `yes`, `no`, or leave blank if not sure.")
             elif q.get("type") == "money":
-                L.append("   - Value: a dollar amount such as `45000000`, `45M` or `1.2B`. A rounded figure is enough, because the rules only compare it with thresholds.")
+                L.append("   - Values (ranges): " + "; ".join(f"`{o['value']}` = {o['label']}" for o in q["options"]))
+                L.append("   - Ask for the range, never the exact amount. If the user gives an amount anyway, record the range it falls in.")
             else:
                 L.append("   - Values: " + "; ".join(f"`{o['value']}` = {o['label']}" + (f" (also: {', '.join(o['aliases'])})" if o.get("aliases") else "") for o in q["options"]))
                 for o in q["options"]:
@@ -264,7 +265,7 @@ def procedure_file():
         "unknown: <comma-separated fields not answered yet>",
         "```",
         "",
-        "Only fields asked for the pathway appear (see 01-intake.md). Booleans are `yes` or `no`, and dollar amounts are plain numbers.",
+        "Only fields asked for the pathway appear (see 01-intake.md). Booleans are `yes` or `no`. Dollar fields hold a range id, such as `contract_value: 20m_to_50m`, never an amount.",
         "",
         "When reading a pasted profile, match values to the options in 01-intake.md, including the listed synonyms (\"ACAT IC\" is `mdap`; \"Milestone B\" is `ms_b`). If a field is not an intake field for the pathway, or a value matches no option, say which ones you could not use and treat those fields as unknown.",
         "",
@@ -286,6 +287,7 @@ def procedure_file():
         "2. Note the next event (`event`). If it is missing, list requirements by event instead of splitting them.",
         "3. Open the pathway's knowledge file. Use only records whose Pathway line names that pathway. The one exception is UCA, which also reviews some MCA rows (see 12-uca.md).",
         "4. For each record, test its Condition code against the profile. `always` holds for every program on the pathway. A field the profile does not answer is unknown. `AND` is false if any part is false, and unknown if any part is unknown. `OR` is true if any part is true, and unknown if any part is unknown.",
+        "   Dollar answers are ranges (01-intake.md lists them), cut at the thresholds the rules use. Compare using the amounts inside the range: `contract_value >= 20,000,000` is true for `20m_to_50m` and false for `under_20m`, and `contract_value > 50,000,000` is false for `20m_to_50m`.",
         "5. Assign a status:",
         "   - The condition holds: use the record's \"Status when the condition holds\". Required, May apply, Only if triggered, or Reference rule.",
         "   - The condition is false but the \"May apply instead when\" code holds: May apply.",
@@ -404,7 +406,7 @@ You help DoW program offices find which AAFDID information requirements apply to
 
 ## Conversation
 1. If the user pastes a block starting "AAFDID PROFILE v1", adopt it as the program profile. Name any field or value you can't match to 01-intake.md and treat it as unknown.
-2. If the user says "start intake", or asks for requirements without a profile, ask the intake questions for their pathway from 01-intake.md. Ask one question per message, in order, and always allow "not sure". If they don't know the pathway, run the pathway finder first.
+2. If the user says "start intake", or asks for requirements without a profile, ask the intake questions for their pathway from 01-intake.md. Ask one question per message, in order, and always allow "not sure". Ask for dollar ranges, never exact amounts. If they don't know the pathway, run the pathway finder first.
 3. When the user says "show profile", print the profile block exactly as 00-procedure.md shows it, and nothing else.
 4. When asked which requirements apply, follow the procedure in 00-procedure.md and use its output format.
 

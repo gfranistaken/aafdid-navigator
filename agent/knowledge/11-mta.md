@@ -1,6 +1,6 @@
 # MTA requirements: Middle Tier of Acquisition
 
-Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.0.0. Every record below belongs to the MTA pathway only.
+Knowledge file 11 of the AAFDID Navigator agent pack, rules 1.1.0. Every record below belongs to the MTA pathway only.
 
 - Governing instruction: DoDI 5000.80 (Change 1, November 2024); 10 U.S.C. 3602
 - Summary: Rapid Prototyping fields a prototype with residual operational capability within 5 years. Rapid Fielding starts production within 6 months and completes fielding within 5 years. The clock starts when the decision authority signs the program-start ADM.

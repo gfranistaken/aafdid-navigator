@@ -4,7 +4,7 @@
   "pathway": "dbs",
   "mission_critical_it": false,
   "dote_oversight": false,
-  "contract_value": 150000000,
+  "contract_value": "100m_plus",
   "contract_cost_type": true,
   "event": "limited_deployment_atp"
  },

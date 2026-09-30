@@ -22,7 +22,7 @@ event: <the next event's id from the pathway file, or omit>
 unknown: <comma-separated fields not answered yet>
 ```
 
-Only fields asked for the pathway appear (see 01-intake.md). Booleans are `yes` or `no`, and dollar amounts are plain numbers.
+Only fields asked for the pathway appear (see 01-intake.md). Booleans are `yes` or `no`. Dollar fields hold a range id, such as `contract_value: 20m_to_50m`, never an amount.
 
 When reading a pasted profile, match values to the options in 01-intake.md, including the listed synonyms ("ACAT IC" is `mdap`; "Milestone B" is `ms_b`). If a field is not an intake field for the pathway, or a value matches no option, say which ones you could not use and treat those fields as unknown.
 
@@ -47,6 +47,7 @@ Answer in order. The first yes points to a pathway. The decision authority appro
 2. Note the next event (`event`). If it is missing, list requirements by event instead of splitting them.
 3. Open the pathway's knowledge file. Use only records whose Pathway line names that pathway. The one exception is UCA, which also reviews some MCA rows (see 12-uca.md).
 4. For each record, test its Condition code against the profile. `always` holds for every program on the pathway. A field the profile does not answer is unknown. `AND` is false if any part is false, and unknown if any part is unknown. `OR` is true if any part is true, and unknown if any part is unknown.
+   Dollar answers are ranges (01-intake.md lists them), cut at the thresholds the rules use. Compare using the amounts inside the range: `contract_value >= 20,000,000` is true for `20m_to_50m` and false for `under_20m`, and `contract_value > 50,000,000` is false for `20m_to_50m`.
 5. Assign a status:
    - The condition holds: use the record's "Status when the condition holds". Required, May apply, Only if triggered, or Reference rule.
    - The condition is false but the "May apply instead when" code holds: May apply.
@@ -124,7 +125,7 @@ pathway: mta
 event: entrance
 mta_path: rf
 mta_size: non_major
-contract_value: 45000000
+contract_value: 20m_to_50m
 contract_cost_type: no
 ```
 
@@ -135,7 +136,7 @@ Correct result (the not-applicable list is left out):
 - Pathway: Middle Tier of Acquisition (MTA), DoDI 5000.80 (Change 1, November 2024); 10 U.S.C. 3602
 - Next event: Program entrance: the ADM starts the MTA clock
 - Counts: 6 required, 23 may apply, 0 triggered, 0 need an answer, 23 not applicable
-- Rules 1.0.0: AAFDID capture 2026-08-22, checked live 2026-09-30
+- Rules 1.1.0: AAFDID capture 2026-08-22, checked live 2026-09-30
 
 ## Due at Program entrance: the ADM starts the MTA clock (2)
 

@@ -1,0 +1,8 @@
+AAFDID PROFILE v1
+program: Ranges given by label and id (example)
+pathway: aos
+event: develop
+svc_total_value: $250M to under $500M
+svc_annual_value: 250m_to_300m
+svc_special_interest: no
+svc_vehicle: idiq base
