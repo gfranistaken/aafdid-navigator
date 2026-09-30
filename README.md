@@ -9,6 +9,8 @@ A human interface and an AI-agent tool for working through AAFDID, the Adaptive 
 
 People and agents use the same rule base, so they get the same answer with the same requirement codes.
 
+**Open the navigator:** [gfranistaken.github.io/aafdid-navigator](https://gfranistaken.github.io/aafdid-navigator/)
+
 **Unofficial.** AAFDID itself is an overview: comply with its tabular notes and the full text of each cited source. This project is not affiliated with or endorsed by WARU, DAU or the Department of War.
 
 | | |
@@ -22,7 +24,7 @@ People and agents use the same rule base, so they get the same answer with the s
 
 | You are | Use |
 | --- | --- |
-| A program manager, engineer or analyst | `web/index.html`: open it in a browser, or publish it with GitHub Pages (below) |
+| A program manager, engineer or analyst | The [web navigator](https://gfranistaken.github.io/aafdid-navigator/), or `web/index.html` opened straight from disk (it works offline) |
 | Building an agent in GenAI.mil, Claude, ChatGPT or similar | [`agent/`](agent/README.md): instructions, knowledge files and test scenarios |
 | An agent or script that can run code | `node engine/cli.js profile.txt` or `python3 engine/aafdid.py profile.txt` |
 | Maintaining the rules | `rules/`, `sources/`, `tools/`, `tests/` (see [docs/RULES.md](docs/RULES.md)) |
